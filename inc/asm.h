@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/08 15:35:32 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/11/08 17:20:48 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct				s_instruction
 {
 	char					*label;
 	char					*mnm;
+	int						etat; // a 1 si un seul argument
 	char					*reg_1;
 	char					*reg_2;
 	char					*reg_3;
@@ -32,6 +33,7 @@ typedef struct				s_instruction
 	char					*ind_1;
 	char					*ind_2;
 	char					*ind_3;
+	int						value;
 	struct s_instruction	*next;
 }							t_instruction;
 
@@ -42,6 +44,7 @@ typedef struct				s_instruction
 bool	parse_id(t_id *id, char *line);
 
 void	parse_instruction(t_instruction *new, char *line);
+
 bool	parse_one_dir(t_instruction *new, char *line); // LIVE ZJMP FORK LFOR
 bool	parse_log_op(t_instruction *new, char *line); // AND OR XOR
 bool	parse_arith_op(t_instruction *new, char *line); // ADD SUB
@@ -54,11 +57,22 @@ bool	parse_sti(t_instruction *new, char *line); // STI
 // if (#) get next line
 
 /*
+** CONVERSION ==================================================================
+*/
+
+void	create_cor(t_instruction *new, t_id *id);
+
+void	fill_id(t_id *id, int fd);
+
+
+void 	fill_instruction(t_instruction *, int fd);
+
+/*
 ** ADDIOTIONALS FCT ============================================================
 */
 
 int		get_next_line(const int fd, char **line);
-int		ft_strequ	
-
+int		ft_strequ(char *s1, char *s2);
+char	*ft_itoa_base(intmax_t value, intmax_t base);
 
 #endif
