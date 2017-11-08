@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/08 15:05:52 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/11/08 15:35:32 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,20 @@ void	parse_instruction(t_instruction *new, char *line);
 bool	parse_one_dir(t_instruction *new, char *line); // LIVE ZJMP FORK LFOR
 bool	parse_log_op(t_instruction *new, char *line); // AND OR XOR
 bool	parse_arith_op(t_instruction *new, char *line); // ADD SUB
+bool	parse_ldi_lldi(t_instruction *new, char *line); // LDI LLDI
+bool	parse_ld_lld(t_instruction *new, char *line); // LD LLD
+bool	parse_aff(t_instruction *new, char *line); // AFF
+bool	parse_st(t_instruction *new, char *line); // ST
+bool	parse_sti(t_instruction *new, char *line); // STI
 
-
-int		get_next_line(const int fd, char **line);
+// if (#) get next line
 
 /*
-** =============================================================================
+** ADDIOTIONALS FCT ============================================================
 */
+
+int		get_next_line(const int fd, char **line);
+int		ft_strequ	
+
 
 #endif
