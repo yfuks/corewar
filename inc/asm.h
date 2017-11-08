@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/08 15:04:47 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/11/08 15:05:52 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct				s_instruction
 	char					*ind_3;
 	struct s_instruction	*next;
 }							t_instruction;
-
 
 /*
 ** PARSER ======================================================================
