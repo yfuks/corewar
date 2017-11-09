@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/08 17:20:48 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/09 16:06:49 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct				s_id
 
 typedef struct				s_instruction
 {
-	char					*label;
+	char					*label; // 1er read
 	char					*mnm;
 	int						etat; // a 1 si un seul argument
 	char					*reg_1;
@@ -34,6 +34,7 @@ typedef struct				s_instruction
 	char					*ind_2;
 	char					*ind_3;
 	int						value;
+    size_t                  nb_line;
 	struct s_instruction	*next;
 }							t_instruction;
 
@@ -55,6 +56,13 @@ bool	parse_st(t_instruction *new, char *line); // ST
 bool	parse_sti(t_instruction *new, char *line); // STI
 
 // if (#) get next line
+
+/*
+** LIST FCT ====================================================================
+*/
+
+void            *ft_memalloc(size_t size);
+t_instruction   *ft_append_list(t_instruction *new, int nb_line);
 
 /*
 ** CONVERSION ==================================================================
