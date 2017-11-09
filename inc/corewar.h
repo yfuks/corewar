@@ -92,7 +92,7 @@ int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options);
 int				parse_options(int index, char **av, t_options *options);
 t_arena			*new_arena(void);
 t_champion		*new_champion(char *name, char *description);
-t_champion		*parse_champion(int index, char **av, t_arena *arena);
+t_champion		*parse_champion(int index, char **av, t_arena *arena, t_options *options);
 void			add_champion_in_arena(t_champion *champion, t_arena *arena);
 int				print_usage(void);
 
