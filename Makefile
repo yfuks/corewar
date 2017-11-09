@@ -24,15 +24,17 @@ INCDIR			= inc/
 OBJDIR			= obj/
 ASMDIR			= $(SRCDIR)asm/
 COREWARDIR		= $(SRCDIR)corewar/
+TOOLSDIR		= $(SRCDIR)tools/
 
 # FILES
 SRCSASM			= $(ASMDIR)main.c \
 
 SRCSCOREWAR		= $(COREWARDIR)main.c \
-
+				  $(TOOLSDIR)ft_strlen.c \
+				  $(TOOLSDIR)ft_putstr_fd.c \
 # OBJ FILES
-OBJSASM 		= $(SRCSASM:$(ASMDIR)%.c=$(OBJDIR)asm/%.o)
-OBJSCOREWAR 	= $(SRCSCOREWAR:$(COREWARDIR)%.c=$(OBJDIR)corewar/%.o)
+OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)
+OBJSCOREWAR 	= $(SRCSCOREWAR:$(SRCDIR)%.c=$(OBJDIR)%.o)
 
 # INC FILES 
 INC 			= -I./$(INCDIR)
@@ -66,6 +68,7 @@ check:
 	test -d $(OBJDIR) || mkdir $(OBJDIR)
 	test -d $(OBJDIR)asm || mkdir $(OBJDIR)asm
 	test -d $(OBJDIR)corewar || mkdir $(OBJDIR)corewar
+	test -d $(OBJDIR)tools || mkdir $(OBJDIR)tools	
 
 $(NAME_ASM): $(OBJSASM)
 	$(CC) $(FLAGS) -o $(NAME_ASM) $(OBJSASM) $(INC)
