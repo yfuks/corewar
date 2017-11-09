@@ -34,7 +34,8 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_putstr_fd.c \
 				  $(TOOLSDIR)ft_strcmp.c \
 				  $(COREWARDIR)print_usage.c \
-				  $(COREWARDIR)parse_arguments.c
+				  $(COREWARDIR)parse_arguments.c \
+				  $(COREWARDIR)parse_options.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

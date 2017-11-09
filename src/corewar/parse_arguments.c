@@ -37,6 +37,7 @@ int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options)
 {
 	int i;
 
+	(void)arena;
 	i = 1;
 	if (ac <= 1)
 		return (0);
@@ -48,8 +49,8 @@ int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options)
 			if (!parse_options(i, av, options))
 				return (0);
 		}
-		else if (!parse_champion(i, av, arena, options))
-				return (0);
+		// else if (!parse_champion(i, av, arena, options))
+		// 		return (0);
 		i++;
 	}
 	return (1);
