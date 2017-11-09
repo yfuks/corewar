@@ -32,6 +32,8 @@ SRCSASM			= $(ASMDIR)main.c \
 SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_strlen.c \
 				  $(TOOLSDIR)ft_putstr_fd.c \
+				  $(TOOLSDIR)ft_strcmp.c
+
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)
 OBJSCOREWAR 	= $(SRCSCOREWAR:$(SRCDIR)%.c=$(OBJDIR)%.o)
