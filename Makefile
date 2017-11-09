@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/07 16:50:04 by yfuks            ###   ########.fr        #
+#    Updated: 2017/11/09 17:49:03 by yfuks            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -32,7 +32,9 @@ SRCSASM			= $(ASMDIR)main.c \
 SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_strlen.c \
 				  $(TOOLSDIR)ft_putstr_fd.c \
-				  $(TOOLSDIR)ft_strcmp.c
+				  $(TOOLSDIR)ft_strcmp.c \
+				  $(COREWARDIR)print_usage.c \
+				  $(COREWARDIR)parse_arguments.c
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

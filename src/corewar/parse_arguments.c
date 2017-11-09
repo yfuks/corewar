@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 16:44:53 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/09 16:44:54 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/11/09 17:35:36 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char *opts[] = {
 	"-dump",
 	"-p",
 	0
-}
+};
 
 static int		is_options(int index, char **av)
 {
