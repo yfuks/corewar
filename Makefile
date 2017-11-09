@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/09 17:49:03 by yfuks            ###   ########.fr        #
+#    Updated: 2017/11/09 18:22:46 by yfuks            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -36,6 +36,10 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)print_usage.c \
 				  $(COREWARDIR)parse_arguments.c \
 				  $(COREWARDIR)parse_options.c \
+				  $(COREWARDIR)parse_champion.c \
+				  $(TOOLSDIR)ft_isdigit.c \
+				  $(TOOLSDIR)ft_isspace.c \
+				  $(TOOLSDIR)ft_atoi.c
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)
