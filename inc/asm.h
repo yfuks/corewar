@@ -6,13 +6,16 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/10 16:07:13 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/10 18:41:31 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
 # include <stdlib.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 typedef struct				s_id
 {
@@ -46,6 +49,8 @@ typedef struct				s_instruction
 ** PARSER ======================================================================
 */
 
+bool	parse(t_id *id, t_instruction *tmp, int fd);
+
 bool	parse_id(t_id *id, char *line);
 
 void	parse_label(t_instruction *tmp, char *line);
@@ -70,8 +75,8 @@ bool	parse_sti(t_instruction *tmp, char *line); // STI
 ** LIST FCT ====================================================================
 */
 
-void            *ft_memalloc(size_t size);
-t_instruction   *ft_append_list(t_instruction *tmp);
+t_instruction   *add_end_instruction(t_instruction *tmp);
+t_instruction   *add_end_label(t_label *instr_label);
 
 /*
 ** CONVERSION ==================================================================
@@ -84,5 +89,11 @@ void	fill_id_hex(t_id *id, int fd);
 void 	fill_instruction_hex(t_instruction *tmp, int fd);
 void    get_bytecode(t_instruction *tmp);
 void    get_value_param(t_instruction *tmp);
+
+/*
+** ERROR =======================================================================
+*/
+
+bool	error_stdin(char **av, int ac); // ac == 2, arg fini par .s
 
 #endif
