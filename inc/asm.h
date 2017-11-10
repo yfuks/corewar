@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/09 18:39:13 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/11/10 14:52:17 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ typedef struct				s_id
 {
 	char					*name;
 	char					*comment;
-    size_t                  etat;
+    size_t                  state;
 }							t_id;
 
 typedef struct              s_label
@@ -31,16 +31,10 @@ typedef struct				s_instruction
 {
 	char					*label; // 1er read
 	char					*mnm;
-	int						etat; // a 1 si un seul argument
-	char					*reg_1;
-	char					*reg_2;
-	char					*reg_3;
-	char					*dir_1;
-	char					*dir_2;
-	char					*dir_3;
-	char					*ind_1;
-	char					*ind_2;
-	char					*ind_3;
+	int						state; // a 1 si un seul argument
+	char					reg[3];
+	char					dir[3];
+	char					ind[3];
 	int						value;
     size_t                  nb_line;
     struct s_label          *instr_label;
