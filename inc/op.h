@@ -78,4 +78,16 @@ typedef struct		header_s
   char				comment[COMMENT_LENGTH + 1];
 }					header_t;
 
+typedef struct 		s_op
+{
+	char			command[6];
+	int				nb_arg;
+	int				args_types[MAX_ARGS_NUMBER];
+	int				op_code;
+	int				nb_cycles;
+	char			*description;
+	int				ocp;
+	int				fuks;
+}					t_op;   
+
 #endif
