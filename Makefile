@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/09 18:22:46 by yfuks            ###   ########.fr        #
+#    Updated: 2017/11/10 15:04:40 by yfuks            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -40,7 +40,11 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_isdigit.c \
 				  $(TOOLSDIR)ft_isspace.c \
 				  $(TOOLSDIR)ft_atoi.c \
-				  $(TOOLSDIR)ft_atol.c
+				  $(TOOLSDIR)ft_atol.c \
+				  $(COREWARDIR)parse_file.c \
+				  $(COREWARDIR)new_champion.c \
+				  $(TOOLSDIR)ft_bzero.c \
+				  $(TOOLSDIR)ft_strdup.c
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)
