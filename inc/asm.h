@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/10 14:52:17 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/10 16:07:13 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,5 @@ void	fill_id_hex(t_id *id, int fd);
 void 	fill_instruction_hex(t_instruction *tmp, int fd);
 void    get_bytecode(t_instruction *tmp);
 void    get_value_param(t_instruction *tmp);
-
-/*
-** ADDIOTIONALS FCT ============================================================
-*/
-
-int		get_next_line(const int fd, char **line);
-int		ft_strequ(char *s1, char *s2);
-char	*ft_itoa_base(intmax_t value, intmax_t base);
 
 #endif
