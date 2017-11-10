@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/09 18:19:21 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/10 15:08:44 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_champion
 {
 	char				*name;
 	char				*description;
+	char				code[CHAMP_MAX_SIZE];
 	int					player_id;
 	int					registers[REG_NUMBER];
 	int					carry;
@@ -59,22 +60,22 @@ void			print_arena(t_arena *arena);
 int				check_opcode(t_process **proc, t_champion *champion, t_arena *arena);
 void			exec_command(t_process **proc, t_champion *champion, t_arena *arena);
 
-void			live(t_process **proc, t_arena *arena);
-void			ld(t_process **proc, t_champion *champion, t_arena *arena);
-void			st(t_process **proc, t_champion *champion, t_arena *arena);
-void			add(t_process **proc, t_champion *champion, t_arena *arena);
-void			sub(t_process **proc, t_champion *champion, t_arena *arena);
-void			and(t_process **proc, t_champion *champion, t_arena *arena);
-void			or(t_process **proc, t_champion *champion, t_arena *arena);
-void			xor(t_process **proc, t_champion *champion, t_arena *arena);
-void			zjmp(t_process **proc, t_champion *champion, t_arena *arena);
-void			ldi(t_process **proc, t_champion *champion, t_arena *arena);
-void			sti(t_process **proc, t_champion *champion, t_arena *arena);
-void			fork(t_process **proc, t_champion *champion, t_arena *arena);
-void			lld(t_process **proc, t_champion *champion, t_arena *arena);
-void			lldi(t_process **proc, t_champion *champion, t_arena *arena);
-void			lfork(t_process **proc, t_champion *champion, t_arena *arena);
-void			aff(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_live(t_process **proc, t_arena *arena);
+void			cmd_ld(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_st(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_add(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_sub(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_and(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_or(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_xor(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_zjmp(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_ldi(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_sti(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_fork(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_lld(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_lldi(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_lfork(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_aff(t_process **proc, t_champion *champion, t_arena *arena);
 
 /*
 **	ARENA
@@ -91,6 +92,7 @@ int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options);
 int				parse_options(int index, char **av, t_options *options);
 t_champion		*new_champion(char *name, char *description);
 t_champion		*parse_champion(int index, char **av);
+t_champion		*parse_file(char *filename);
 void			add_champion_in_arena(t_champion *champion, t_arena *arena);
 int				print_usage(void);
 
