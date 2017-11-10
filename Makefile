@@ -40,7 +40,8 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_isdigit.c \
 				  $(TOOLSDIR)ft_isspace.c \
 				  $(TOOLSDIR)ft_atoi.c \
-				  $(TOOLSDIR)ft_atol.c
+				  $(TOOLSDIR)ft_atol.c \
+				  $(TOOLSDIR)ft_itoa_base.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

@@ -9,5 +9,6 @@ int			ft_isdigit(char c);
 int			ft_isspace(char c);
 int			ft_atoi(char *str);
 long int	ft_atol(char *str);
+char		*ft_itoa_base(int nb, int base);
 
 #endif
