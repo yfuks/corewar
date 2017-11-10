@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/10 15:04:40 by yfuks            ###   ########.fr        #
+#    Updated: 2017/11/10 17:32:09 by yfuks            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -45,6 +45,7 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)new_champion.c \
 				  $(TOOLSDIR)ft_bzero.c \
 				  $(TOOLSDIR)ft_strdup.c
+				  $(TOOLSDIR)ft_itoa_base.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)
