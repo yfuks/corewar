@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/12 17:32:13 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/11/13 17:42:31 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdbool.h>
-
-typedef struct				s_id
-{
-	char					*name;
-	char					*comment;
-    size_t                  state;
-}							t_id;
+# include "op.h"
 
 typedef struct              s_label
 {
@@ -50,9 +44,9 @@ typedef struct				s_instruction
 ** PARSER ======================================================================
 */
 
-bool	parse(t_id *id, t_instruction *tmp, int fd);
+bool	parse(t_header *id, t_instruction *tmp, int fd);
 
-bool	parse_id(t_id *id, char *line);
+bool	parse_id(t_header *id, char *line);
 
 void	parse_label(t_instruction *tmp, char *line);
 void    check_double_label(t_instruction *tmp, char *line);
@@ -83,9 +77,9 @@ t_instruction   *add_end_label(t_label *instr_label);
 ** CONVERSION ==================================================================
 */
 
-void	create_cor(t_instruction *tmp, t_id *id);
+void	create_cor(t_instruction *tmp, t_header *id);
 
-void	fill_id_hex(t_id *id, int fd);
+void	fill_id_hex(t_header *id, int fd);
 
 void 	fill_instruction_hex(t_instruction *tmp, int fd);
 void    get_bytecode(t_instruction *tmp);

@@ -6,22 +6,25 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:16 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/13 14:24:17 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/11/13 17:47:32 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "op.h"
 #include "asm.h"
 #include "tools.h"
+
+#include <stdio.h>
 
 int     main(int ac, char **av)
 {
 	int				fd;
-	t_id			*header;
+	t_header		*header;
 	t_instruction	*list_instr;
 
 	if (!error_stdin(av, ac))
 		return (1);
-	if(!(header = ft_memalloc(sizeof(t_id))))
+	if(!(header = ft_memalloc(sizeof(t_header))))
 		return (1);
 	if(!(list_instr = ft_memalloc(sizeof(t_instruction))))
 		return (1);

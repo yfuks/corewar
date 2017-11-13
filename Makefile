@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/13 15:36:27 by alansiva         ###   ########.fr        #
+#    Updated: 2017/11/13 17:43:46 by alansiva         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -30,6 +30,7 @@ TOOLSDIR		= $(SRCDIR)tools/
 SRCSASM			= $(ASMDIR)main.c \
 				  $(ASMDIR)error_stdin.c \
 				  $(ASMDIR)parse.c \
+				  $(ASMDIR)parse_id.c \
 				  $(TOOLSDIR)ft_strrchr.c \
 				  $(TOOLSDIR)ft_strlen.c \
 				  $(TOOLSDIR)ft_putstr_fd.c \
