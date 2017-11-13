@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 16:44:53 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/10 15:10:12 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/13 13:55:21 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,18 @@ int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options)
 	(void)arena;
 	champion = NULL;
 	if (ac <= 1)
-		return (0);
+		return (print_usage(av[0]));
 	while (i < ac)
 	{
 		if (is_options(i, av))
 		{
 			if (!parse_options(i, av, options))
-				return (0);
+				return (print_usage(av[0]));
 			else
 				if (options->dump != -1)
 					i += 1;
 		}
-		else 
+		else
 		{
 			if (!(champion = parse_champion(i, av)))
 				return (0);

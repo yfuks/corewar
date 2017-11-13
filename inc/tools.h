@@ -1,12 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/13 13:34:18 by yfuks             #+#    #+#             */
+/*   Updated: 2017/11/13 14:25:16 by yfuks            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef TOOLS_H
 # define TOOLS_H
 
-<<<<<<< HEAD
-#include <stdlib.h>
-=======
 # include <stdlib.h>
->>>>>>> 5a86f99a71eb14c64ebf318a5e4b1a4407225bcd
 
 int			ft_strlen(const char *s);
 void		ft_putstr_fd(const char *s, int fd);
@@ -21,5 +28,7 @@ char		*ft_itoa_base(int nb, int base);
 int			get_next_line(const int fd, char **line);
 int			ft_strequ(char *s1, char *s2);
 void   		*ft_memalloc(size_t size);
+void		ft_putnbr_fd(int n, int fd);
+char		*ft_itoa(int n);
 
 #endif

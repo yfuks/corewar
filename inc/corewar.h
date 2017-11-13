@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/10 15:08:44 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/13 13:36:14 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ t_champion		*new_champion(char *name, char *description);
 t_champion		*parse_champion(int index, char **av);
 t_champion		*parse_file(char *filename);
 void			add_champion_in_arena(t_champion *champion, t_arena *arena);
-int				print_usage(void);
+int				print_usage(char *executable_name);
 
 #endif
