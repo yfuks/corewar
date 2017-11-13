@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/13 13:45:26 by alansiva         ###   ########.fr        #
+#    Updated: 2017/11/13 14:42:35 by alansiva         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -29,9 +29,14 @@ TOOLSDIR		= $(SRCDIR)tools/
 # FILES
 SRCSASM			= $(ASMDIR)main.c \
 				  $(ASMDIR)error_stdin.c \
+				  $(ASMDIR)parse.c \
 				  $(TOOLSDIR)ft_strrchr.c \
 				  $(TOOLSDIR)ft_strlen.c \
 				  $(TOOLSDIR)ft_putstr_fd.c \
+				  $(TOOLSDIR)ft_memalloc.c \
+				  $(TOOLSDIR)ft_bzero.c \
+				  $(TOOLSDIR)ft_strnew.c \
+				  $(TOOLSDIR)get_next_line.c \
 
 SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_strlen.c \

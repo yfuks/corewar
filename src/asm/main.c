@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:16 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/13 14:14:02 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/13 14:24:17 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int     main(int ac, char **av)
 		return (1);
 	if (!parse(header, list_instr, fd))
 		return (1);
+	exit(1);
 	if(close(fd) == -1)
 		return (1);
 	create_cor(list_instr, header);

@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 17:27:11 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/13 14:15:16 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/13 14:40:58 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define TOOLS_H
 # include <unistd.h>
 
+void	ft_bzero(void *s, size_t n);
 int		ft_strlen(const char *s);
 void	ft_putstr_fd(const char *s, int fd);
 int		get_next_line(const int fd, char **line);

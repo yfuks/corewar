@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alansiva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 14:19:55 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/13 14:44:29 by alansiva         ###   ########.fr       */
+/*   Created: 2017/11/13 14:41:20 by alansiva          #+#    #+#             */
+/*   Updated: 2017/11/13 14:41:55 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"tools.h"
-#include <stdlib.h>
+#include "tools.h"
 
-char	*ft_strnew(size_t size)
+void	ft_bzero(void *s, size_t n)
 {
-	char *mem;
-
-	mem = (char*)malloc(sizeof(char) * (size + 1));
-	if (mem != NULL)
-		ft_bzero(mem, size + 1);
-	else
-		mem = NULL;
-	return (mem);
+	while (n > 0)
+	{
+		*(unsigned char*)s = 0;
+		s++;
+		n--;
+	}
 }
