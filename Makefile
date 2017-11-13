@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/12 17:57:47 by alansiva         ###   ########.fr        #
+#    Updated: 2017/11/13 13:45:26 by alansiva         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -31,6 +31,7 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(ASMDIR)error_stdin.c \
 				  $(TOOLSDIR)ft_strrchr.c \
 				  $(TOOLSDIR)ft_strlen.c \
+				  $(TOOLSDIR)ft_putstr_fd.c \
 
 SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_strlen.c \
