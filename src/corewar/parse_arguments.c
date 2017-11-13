@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 16:44:53 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/13 13:55:21 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/13 18:34:44 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,19 @@ static int		is_options(int index, char **av)
 	return (0);
 }
 
+static void		print_champ(t_champion *champion)
+{
+	ft_putstr_fd("======= CHAMP ======\nName: ", 1);
+	ft_putstr_fd(champion->name, 1);
+	ft_putstr_fd("\nDescription: ", 1);
+	ft_putstr_fd(champion->description, 1);
+	ft_putstr_fd("\nSize: ", 1);
+	ft_putnbr_fd(champion->prog_size, 1);
+	ft_putstr_fd(" bytes\nid: ", 1);
+	ft_putnbr_fd(champion->player_id, 1);
+	ft_putstr_fd("\n", 1);		
+}
+
 int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options)
 {
 	int 		i;
@@ -56,8 +69,9 @@ int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options)
 		}
 		else
 		{
-			if (!(champion = parse_champion(i, av)))
+			if (!(champion = parse_champion(av[0], &i, av)))
 				return (0);
+			print_champ(champion); // DEBUG
 //			add_champion_in_arena(champion, arena);
 		}
 		i++;

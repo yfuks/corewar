@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/13 13:36:14 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/13 17:41:39 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ typedef struct	s_champion
 {
 	char				*name;
 	char				*description;
-	char				code[CHAMP_MAX_SIZE];
+	char				code[CHAMP_MAX_SIZE + 1];
+	unsigned int		prog_size;
 	int					player_id;
 	int					registers[REG_NUMBER];
 	int					carry;
@@ -90,8 +91,8 @@ void			check_deads(t_champion champions[MAX_PLAYERS]);
 
 int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options);
 int				parse_options(int index, char **av, t_options *options);
-t_champion		*new_champion(char *name, char *description);
-t_champion		*parse_champion(int index, char **av);
+t_champion		*new_champion(char *filename, header_t *header, int fd);
+t_champion		*parse_champion(char *executable_name, int *index, char **av);
 t_champion		*parse_file(char *filename);
 void			add_champion_in_arena(t_champion *champion, t_arena *arena);
 int				print_usage(char *executable_name);

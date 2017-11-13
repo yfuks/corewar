@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 17:56:54 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/09 18:20:15 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/13 18:30:29 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,23 @@ static int		check_champion_number(char *nbr)
 	return (ft_atoi(nbr));
 }
 
-t_champion		*parse_champion(int index, char **av)
+t_champion		*parse_champion(char *executable_name, int *index, char **av)
 {
 	int			nbr_champ;
 	t_champion	*champion;
-	int			i;
 
-	i = index;
 	nbr_champ = 0;
-	if (!ft_strcmp(av[i], "-n"))
+	if (!ft_strcmp(av[*index], "-n"))
 	{
-		i++;
-		if (!(nbr_champ = check_champion_number(av[i])))
+		*index += 1;
+		if (!(nbr_champ = check_champion_number(av[*index])))
+		{
+			print_usage(executable_name);
 			return (NULL);
-		i++;
+		}
+		*index += 1;
 	}
-	if (!(champion = parse_file(av[i])))
+	if (!(champion = parse_file(av[*index])))
 		return (NULL);
 	champion->player_id = nbr_champ;
 	return (champion);
