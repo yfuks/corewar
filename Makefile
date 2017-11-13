@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/13 17:43:46 by alansiva         ###   ########.fr        #
+#    Updated: 2017/11/13 18:15:17 by alansiva         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -45,7 +45,8 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(TOOLSDIR)ft_strsub.c \
 				  $(TOOLSDIR)ft_strcmp.c \
 				  $(TOOLSDIR)ft_strdup.c \
-				  $(TOOLSDIR)ft_strchr.c 
+				  $(TOOLSDIR)ft_strchr.c \
+				  $(TOOLSDIR)ft_split_t_sp.c 
 
 SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_strlen.c \
