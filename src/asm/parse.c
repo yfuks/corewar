@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/13 14:44:49 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/11/13 15:55:30 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ bool	parse(t_id *header, t_instruction *list_instr, int fd)
 	list_instr = NULL;
 	while ((ret_gnl = get_next_line(fd, &line)) == 1)
 	{
-		if (header->state == 2)
-			break ;
+		if (header->state < 2)
+			parse_id(header, line);
 	}
 	return (true);
 }
