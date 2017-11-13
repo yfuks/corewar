@@ -6,13 +6,12 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:16 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/13 13:40:31 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/13 14:14:02 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 #include "tools.h"
-#include <unistd.h>
 
 int     main(int ac, char **av)
 {
