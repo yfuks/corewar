@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 15:57:38 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/13 17:44:30 by yfuks            ###   ########.fr       */
+/*   Created: 2017/11/13 17:53:09 by yfuks             #+#    #+#             */
+/*   Updated: 2017/11/13 18:09:49 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
-#include "tools.h"
+#include <stdlib.h>
 
-int main(int argc, char **argv)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	t_arena		arena;
-	t_options	options;
+	unsigned int	i;
+	char			*dest;
+	const char		*sourc;
 
-	options.dump = -1;
-	options.print = 0;
-	ft_bzero(&arena, sizeof(arena));
-	if (!parse_arguments(argc, argv, &arena, &options))
-		return (1);
-	return (0);
+	if (src == NULL || dst == NULL)
+		return (NULL);
+	dest = dst;
+	sourc = src;
+	i = 0;
+	while (i < n)
+	{
+		dest[i] = sourc[i];
+		i++;
+	}
+	return (dst);
 }

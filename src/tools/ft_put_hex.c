@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_put_hex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 15:57:38 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/13 17:44:30 by yfuks            ###   ########.fr       */
+/*   Created: 2017/11/13 16:12:31 by yfuks             #+#    #+#             */
+/*   Updated: 2017/11/13 16:14:33 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
 #include "tools.h"
+#include <stdlib.h>
 
-int main(int argc, char **argv)
+void		ft_put_hex_fd(unsigned int n, int fd)
 {
-	t_arena		arena;
-	t_options	options;
+	char	*hexa;
 
-	options.dump = -1;
-	options.print = 0;
-	ft_bzero(&arena, sizeof(arena));
-	if (!parse_arguments(argc, argv, &arena, &options))
-		return (1);
-	return (0);
+	if (!(hexa = ft_uitoa_base(n, 16)))
+		return ;
+	ft_putstr_fd(hexa, fd);
+	free(hexa);
 }

@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/13 14:25:58 by yfuks            ###   ########.fr        #
+#    Updated: 2017/11/13 18:08:24 by yfuks            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -47,7 +47,12 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_strdup.c \
 				  $(TOOLSDIR)ft_itoa_base.c \
 				  $(TOOLSDIR)ft_putnbr_fd.c \
-				  $(TOOLSDIR)ft_itoa.c
+				  $(TOOLSDIR)ft_itoa.c \
+				  $(TOOLSDIR)reverse_uint.c \
+				  $(TOOLSDIR)ft_uitoa_base.c \
+				  $(TOOLSDIR)ft_put_hex.c \
+				  $(TOOLSDIR)ft_strcpy.c \
+				  $(TOOLSDIR)ft_memcpy.c
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)
