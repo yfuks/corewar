@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alansiva <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 17:27:11 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/12 17:56:32 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/11/13 14:15:16 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ int		ft_strequ(char *s1, char *s2);
 char	*ft_itoa_base(int value, int base);
 void    *ft_memalloc(size_t size);
 char    *ft_strrchr(const char *s, int c);
-
+char	*ft_strnew(size_t size);
 #endif
