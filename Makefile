@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/07 16:50:04 by yfuks            ###   ########.fr        #
+#    Updated: 2017/11/13 14:25:58 by yfuks            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -32,6 +32,23 @@ SRCSASM			= $(ASMDIR)main.c \
 SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_strlen.c \
 				  $(TOOLSDIR)ft_putstr_fd.c \
+				  $(TOOLSDIR)ft_strcmp.c \
+				  $(COREWARDIR)print_usage.c \
+				  $(COREWARDIR)parse_arguments.c \
+				  $(COREWARDIR)parse_options.c \
+				  $(COREWARDIR)parse_champion.c \
+				  $(TOOLSDIR)ft_isdigit.c \
+				  $(TOOLSDIR)ft_isspace.c \
+				  $(TOOLSDIR)ft_atoi.c \
+				  $(TOOLSDIR)ft_atol.c \
+				  $(COREWARDIR)parse_file.c \
+				  $(COREWARDIR)new_champion.c \
+				  $(TOOLSDIR)ft_bzero.c \
+				  $(TOOLSDIR)ft_strdup.c \
+				  $(TOOLSDIR)ft_itoa_base.c \
+				  $(TOOLSDIR)ft_putnbr_fd.c \
+				  $(TOOLSDIR)ft_itoa.c
+
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)
 OBJSCOREWAR 	= $(SRCSCOREWAR:$(SRCDIR)%.c=$(OBJDIR)%.o)

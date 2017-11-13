@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 15:57:38 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/13 13:36:37 by yfuks            ###   ########.fr       */
+/*   Created: 2017/11/09 18:21:42 by yfuks             #+#    #+#             */
+/*   Updated: 2017/11/09 18:22:01 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "tools.h"
 
-int main(int argc, char **argv)
+long int		ft_atol(char *str)
 {
-	t_arena		arena;
-	t_options	options;
+	int			i;
+	long		res;
+	int			negatif;
 
-	options.dump = -1;
-	options.print = 0;
-	if (!parse_arguments(argc, argv, &arena, &options))
-		return (1);
-	return (0);
+	res = 0;
+	i = 0;
+	while (str[i] && ft_isspace(str[i]))
+		++i;
+	negatif = str[i] == '-' ? -1 : 1;
+	if (str[i] == '-' || str[i] == '+')
+		++i;
+	while (str[i] && ft_isdigit(str[i]))
+	{
+		res *= 10;
+		res += negatif * (str[i] - '0');
+		++i;
+	}
+	return (res);
 }

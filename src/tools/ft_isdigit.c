@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 15:57:38 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/13 13:36:37 by yfuks            ###   ########.fr       */
+/*   Created: 2017/11/09 18:20:36 by yfuks             #+#    #+#             */
+/*   Updated: 2017/11/09 18:20:44 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
-
-int main(int argc, char **argv)
+int		ft_isdigit(char c)
 {
-	t_arena		arena;
-	t_options	options;
-
-	options.dump = -1;
-	options.print = 0;
-	if (!parse_arguments(argc, argv, &arena, &options))
-		return (1);
-	return (0);
+	return (c >= '0' && c <= '9');
 }
