@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alansiva <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 14:41:20 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/13 14:41:55 by alansiva         ###   ########.fr       */
+/*   Created: 2017/11/10 15:04:53 by yfuks             #+#    #+#             */
+/*   Updated: 2017/11/13 14:50:18 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tools.h"
+#include <stdlib.h>
 
 void	ft_bzero(void *s, size_t n)
 {
-	while (n > 0)
-	{
-		*(unsigned char*)s = 0;
-		s++;
-		n--;
-	}
+	char	*dest;
+	size_t	i;
+
+	dest = (char *)s;
+	i = 0;
+	while (i < n)
+		dest[i++] = 0;
 }
