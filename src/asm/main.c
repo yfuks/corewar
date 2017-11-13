@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:16 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/12 17:34:45 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/11/13 13:40:31 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,9 @@ int     main(int ac, char **av)
 
 	if (!error_stdin(av, ac))
 		return (1);
-    exit(1);
 	if(!(header = ft_memalloc(sizeof(t_id))))
 		return (1);
 	if(!(list_instr = ft_memalloc(sizeof(t_instruction))))
-		return (1);
-	if (!error_stdin(av, ac))
 		return (1);
 	if((fd = open(av[1], O_RDONLY)) == -1)
 		return (1);
