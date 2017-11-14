@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/13 17:42:31 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/11/14 08:34:21 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <fcntl.h>
 # include <stdbool.h>
 # include "op.h"
+
+typedef struct				s_hstate
+{
+	int						name_state;
+	int						comment_state;
+}							t_hstate;
 
 typedef struct              s_label
 {

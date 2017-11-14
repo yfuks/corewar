@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 17:27:11 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/13 18:25:01 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/11/14 08:30:14 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-void		ft_bzero(void *s, size_t n);	
+void		ft_bzero(void *s, size_t n);
 int			ft_strlen(const char *s);
 void		ft_putstr_fd(const char *s, int fd);
 int			ft_strcmp(const char *s1, const char *s2);
@@ -41,5 +41,6 @@ char		*ft_strchr(const char *s, int c);
 char		*ft_strcat(char *dest, const char *src);
 char		*ft_strsub(char const *s, unsigned int start, size_t len);
 char		**ft_split_t_sp(const char *s, char c, char d);
+char		*ft_strtrim(const char *s);
 
 #endif

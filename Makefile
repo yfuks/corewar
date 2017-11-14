@@ -1,4 +1,4 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,9 +6,9 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/13 18:15:17 by alansiva         ###   ########.fr        #
+#    Updated: 2017/11/14 08:29:55 by jthillar         ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 # EXECUTABLES
 NAME_ASM 		= asm
@@ -46,7 +46,8 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(TOOLSDIR)ft_strcmp.c \
 				  $(TOOLSDIR)ft_strdup.c \
 				  $(TOOLSDIR)ft_strchr.c \
-				  $(TOOLSDIR)ft_split_t_sp.c 
+				  $(TOOLSDIR)ft_strstrim.c \
+				  $(TOOLSDIR)ft_split_t_sp.c
 
 SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_strlen.c \
@@ -72,7 +73,7 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)
 OBJSCOREWAR 	= $(SRCSCOREWAR:$(SRCDIR)%.c=$(OBJDIR)%.o)
 
-# INC FILES 
+# INC FILES
 INC 			= -I./$(INCDIR)
 
 # =================================== Colors ================================= #
@@ -96,7 +97,7 @@ WHITE		= "\033[0;37m"
 
 all: check $(NAME_ASM) $(NAME_COREWAR)
 
-$(OBJDIR)%.o : $(SRCDIR)%.c 
+$(OBJDIR)%.o : $(SRCDIR)%.c
 	$(CC) $(FLAGS) -c $< -o $@ $(INC)
 	echo "["$(PURPLE)"√"$(EOC)"]" $@
 
@@ -104,7 +105,7 @@ check:
 	test -d $(OBJDIR) || mkdir $(OBJDIR)
 	test -d $(OBJDIR)asm || mkdir $(OBJDIR)asm
 	test -d $(OBJDIR)corewar || mkdir $(OBJDIR)corewar
-	test -d $(OBJDIR)tools || mkdir $(OBJDIR)tools	
+	test -d $(OBJDIR)tools || mkdir $(OBJDIR)tools
 
 $(NAME_ASM): $(OBJSASM)
 	$(CC) $(FLAGS) -o $(NAME_ASM) $(OBJSASM) $(INC)
@@ -119,10 +120,9 @@ clean:
 	printf $(YELLOW)"♲ Objects files deleted\n"$(EOC)
 
 fclean: clean
-	rm -rf $(NAME_ASM) 
+	rm -rf $(NAME_ASM)
 	rm -rf $(NAME_COREWAR)
 	printf $(YELLOW)"♲ Exec $(NAME_ASM) and $(NAME_COREWAR) deleted\n"$(EOC)
 
-re: fclean 
-	@$(MAKE) all	
-
+re: fclean
+	@$(MAKE) all
