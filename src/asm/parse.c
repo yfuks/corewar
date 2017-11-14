@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/14 10:15:53 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/14 10:41:16 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_hstate	ft_zero_state(t_hstate *state)
 {
 	state->name = 0;
 	state->comment = 0;
-
 	return (*state);
 }
 
@@ -33,12 +32,12 @@ bool	parse(t_header *header, t_instruction *list_instr, int fd)
 	state = ft_zero_state(&state);
 	while ((ret_gnl = get_next_line(fd, &line)) == 1)
 	{
+		check_commentchar(&line);
+		// printf("line '%s'\n", line);
 		if (state.name < 1 || state.comment < 1)
 			parse_id(header, line, &state);
 		else
 			break;
 	}
-	printf("%s\n", header->prog_name);
-	printf("%s\n", header->comment);
 	return (true);
 }

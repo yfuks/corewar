@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/14 08:36:35 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/14 10:37:32 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <stdio.h>
 # include <stdbool.h>
 # include "op.h"
 
@@ -51,6 +52,8 @@ typedef struct				s_instruction
 */
 
 bool	parse(t_header *id, t_instruction *tmp, int fd);
+void	check_commentchar(char **line);
+bool	check_namechar(char *line, int size);
 
 bool	parse_id(t_header *id, char *line, t_hstate *state);
 
