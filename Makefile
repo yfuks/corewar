@@ -52,7 +52,11 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_uitoa_base.c \
 				  $(TOOLSDIR)ft_put_hex.c \
 				  $(TOOLSDIR)ft_strcpy.c \
-				  $(TOOLSDIR)ft_memcpy.c
+				  $(TOOLSDIR)ft_memcpy.c \
+				  $(COREWARDIR)add_champion_in_arena.c \
+				  $(COREWARDIR)init_arena.c \
+				  $(COREWARDIR)print_champ.c \
+				  $(COREWARDIR)print_map_arena.c
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

@@ -27,7 +27,10 @@ static int		check_champion_number(char *nbr)
 			return (0);
 		i++;
 	}
-	return (ft_atoi(nbr));
+	i = ft_atoi(nbr);
+	if (i > 4)
+		return (0);
+	return (i);
 }
 
 t_champion		*parse_champion(char *executable_name, int *index, char **av)

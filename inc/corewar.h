@@ -52,6 +52,7 @@ typedef	struct	s_options
 **  AFFICHAGE
 */
 
+void			print_map_arena(t_arena *arena);
 void			print_arena(t_arena *arena);
 
 /*
@@ -82,6 +83,7 @@ void			cmd_aff(t_process **proc, t_champion *champion, t_arena *arena);
 **	ARENA
 */
 
+int				init_arena(t_arena *arena);
 void			next_cycle(t_arena *arena);
 void			check_deads(t_champion champions[MAX_PLAYERS]);
 
@@ -94,7 +96,8 @@ int				parse_options(int index, char **av, t_options *options);
 t_champion		*new_champion(char *filename, header_t *header, int fd);
 t_champion		*parse_champion(char *executable_name, int *index, char **av);
 t_champion		*parse_file(char *filename);
-void			add_champion_in_arena(t_champion *champion, t_arena *arena);
+int				add_champion_in_arena(t_champion *champion, t_arena *arena);
 int				print_usage(char *executable_name);
+void			print_champ(t_champion *champion);
 
 #endif
