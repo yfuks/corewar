@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/14 08:34:21 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/14 08:36:35 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 typedef struct				s_hstate
 {
-	int						name_state;
-	int						comment_state;
+	int						name;
+	int						comment;
 }							t_hstate;
 
 typedef struct              s_label
@@ -52,7 +52,7 @@ typedef struct				s_instruction
 
 bool	parse(t_header *id, t_instruction *tmp, int fd);
 
-bool	parse_id(t_header *id, char *line);
+bool	parse_id(t_header *id, char *line, t_hstate *state);
 
 void	parse_label(t_instruction *tmp, char *line);
 void    check_double_label(t_instruction *tmp, char *line);

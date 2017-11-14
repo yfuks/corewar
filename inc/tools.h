@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 17:27:11 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/14 08:30:14 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/14 08:44:38 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ char		*ft_strcat(char *dest, const char *src);
 char		*ft_strsub(char const *s, unsigned int start, size_t len);
 char		**ft_split_t_sp(const char *s, char c, char d);
 char		*ft_strtrim(const char *s);
+char		*ft_strncpy(char *dest, const char *src, size_t n);
 
 #endif

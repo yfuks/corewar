@@ -1,1 +1,2 @@
-	  .name "salut"   	
+.comment "hello"   
+	  .name "salut"
