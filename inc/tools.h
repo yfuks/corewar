@@ -25,7 +25,7 @@ long int		ft_atol(char *str);
 char			*ft_strdup(const char *s1);
 void			ft_bzero(void *s, size_t n);
 char			*ft_itoa_base(int nb, int base);
-char			*ft_uitoa_base(unsigned int nb, int base);
+char			*ft_uitoa_base(unsigned char nb, int base);
 int				get_next_line(const int fd, char **line);
 int				ft_strequ(char *s1, char *s2);
 void   			*ft_memalloc(size_t size);

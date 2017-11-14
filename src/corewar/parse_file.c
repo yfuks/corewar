@@ -19,7 +19,7 @@
 #include <stdio.h>
 
 #define BUFF_SIZE 1
-#define STD_ERR 1
+#define STD_ERR 2
 
 static t_champion	*print_cant_read_file(char *file)
 {

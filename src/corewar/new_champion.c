@@ -15,7 +15,7 @@
 #include "corewar.h"
 #include "tools.h"
 
-#define STD_ERR 1
+#define STD_ERR 2
 
 static int		print_wrong_size(char *filename, t_champion *champion, int size)
 {

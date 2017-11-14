@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-static int			len_number(unsigned int nb, int base)
+static int			len_number(unsigned char nb, int base)
 {
 	int				len_nb;
 
@@ -31,7 +31,7 @@ static int			len_number(unsigned int nb, int base)
 	return(len_nb);
 }
 
-char				*ft_uitoa_base(unsigned int nb, int base)
+char				*ft_uitoa_base(unsigned char nb, int base)
 {
 	int				size;
 	char 			*ret;

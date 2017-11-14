@@ -34,18 +34,6 @@ static int		is_options(int index, char **av)
 	return (0);
 }
 
-static void		print_champ(t_champion *champion)
-{
-	ft_putstr_fd("======= CHAMP ======\nName: ", 1);
-	ft_putstr_fd(champion->name, 1);
-	ft_putstr_fd("\nDescription: ", 1);
-	ft_putstr_fd(champion->description, 1);
-	ft_putstr_fd("\nSize: ", 1);
-	ft_putnbr_fd(champion->prog_size, 1);
-	ft_putstr_fd(" bytes\nid: ", 1);
-	ft_putnbr_fd(champion->player_id, 1);
-	ft_putstr_fd("\n", 1);		
-}
 
 int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options)
 {
@@ -63,16 +51,15 @@ int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options)
 		{
 			if (!parse_options(i, av, options))
 				return (print_usage(av[0]));
-			else
-				if (options->dump != -1)
+			else if (options->dump != -1)
 					i += 1;
 		}
 		else
 		{
 			if (!(champion = parse_champion(av[0], &i, av)))
 				return (0);
-			print_champ(champion); // DEBUG
-//			add_champion_in_arena(champion, arena);
+			//print_champ(champion); // DEBUG
+			add_champion_in_arena(champion, arena);
 		}
 		i++;
 	}

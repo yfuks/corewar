@@ -39,10 +39,9 @@ int				parse_options(int index, char **av, t_options *options)
 	{
 		if (!is_valid_dump_arg(index, av))
 			return (0);
-		else
-			options->dump = ft_atoi(av[index + 1]);
+		options->dump = ft_atoi(av[index + 1]);
 	}
 	else if (ft_strcmp(av[index], "-p") == 0)
-		options->print = 49;
+		options->print = 1;
 	return (1);
 }
