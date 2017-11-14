@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:06:16 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/14 11:41:08 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/14 12:18:57 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 #include "op.h"
 #include "tools.h"
 
-void	parse_label(t_instruction *list_instr, char *line)
+void	parse_label(t_instruction **list_instr, char *line)
 {
 	int state_label_char;
 	int i;
 
 	i = -1;
 	state_label_char = 0;
-	list_instr = NULL;
 	while(line[++i])
 	{
 		if (line[i] == LABEL_CHAR)
@@ -41,7 +40,9 @@ void	parse_label(t_instruction *list_instr, char *line)
 			line = ft_strtrim(ft_strsub(line, 0, i));
 			if (!check_labelschar(line))
 				return;
-			printf("%s\n", line);
+			add_end_instruction(list_instr);
+			if(!((*list_instr)->label = ft_strnew(ft_strlen(line))))
+			 	return;
+			(*list_instr)->label = ft_strcpy((*list_instr)->label, line);
 	}
-
 }

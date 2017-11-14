@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/14 11:38:22 by jthillar         ###   ########.fr        #
+#    Updated: 2017/11/14 11:49:59 by jthillar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(ASMDIR)check_commentchar.c \
 				  $(ASMDIR)check_namechar.c \
 				  $(ASMDIR)check_labelschar.c \
+				  $(ASMDIR)add_instruction.c \
 				  $(TOOLSDIR)ft_strrchr.c \
 				  $(TOOLSDIR)ft_strlen.c \
 				  $(TOOLSDIR)ft_putstr_fd.c \

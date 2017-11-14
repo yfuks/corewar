@@ -6,14 +6,13 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/14 11:37:48 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/14 12:17:56 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-//#include "op.h"
+#include "op.h"
 #include "tools.h"
-#include <stdio.h>
 
 t_hstate	ft_zero_state(t_hstate *state)
 {
@@ -39,7 +38,9 @@ bool	parse(t_header *header, t_instruction *list_instr, int fd)
 		}
 		else
 		{
-			parse_label(list_instr, line);
+			parse_label(&list_instr, line);
+			printf("%s\n", list_instr->label);
+
 		}
 	}
 	return (true);

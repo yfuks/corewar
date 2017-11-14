@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/14 11:39:15 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/14 12:18:04 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ bool	check_namechar(char *line, int size); // verifie s'il n'y a pas un mauvais 
 
 bool	parse_id(t_header *id, char *line, t_hstate *state);
 
-void	parse_label(t_instruction *list_instr, char *line);
-bool	check_labelschar(char *line);
+void	parse_label(t_instruction **list_instr, char *line);
+bool	check_labelschar(char *line); // verifie que les nom de label soit valide
 void    check_double_label(t_instruction *list_instr, char *line);
 void    get_label(t_instruction *list_instr, char *line);
 
@@ -82,7 +82,7 @@ bool	parse_sti(t_instruction *list_instr, char *line); // STI
 ** LIST FCT ====================================================================
 */
 
-t_instruction   *add_end_instruction(t_instruction *list_instr);
+void   			add_end_instruction(t_instruction **list_instr);
 t_instruction   *add_end_label(t_label *instr_label);
 
 /*
