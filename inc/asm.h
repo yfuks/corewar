@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/14 10:37:32 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/14 11:07:16 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,26 +51,26 @@ typedef struct				s_instruction
 ** PARSER ======================================================================
 */
 
-bool	parse(t_header *id, t_instruction *tmp, int fd);
+bool	parse(t_header *id, t_instruction *list_instr, int fd);
 void	check_commentchar(char **line);
-bool	check_namechar(char *line, int size);
+bool	check_namechar(char *line, int size); // verifie s'il n'y a pas un mauvais caractere dans le .nom ou .comment
 
 bool	parse_id(t_header *id, char *line, t_hstate *state);
 
-void	parse_label(t_instruction *tmp, char *line);
-void    check_double_label(t_instruction *tmp, char *line);
-void    get_label(t_instruction *tmp, char *line);
+void	parse_label(t_instruction *list_instr, char *line);
+void    check_double_label(t_instruction *list_instr, char *line);
+void    get_label(t_instruction *list_instr, char *line);
 
-void	parse_instruction(t_instruction *tmp, char *line);
+void	parse_instruction(t_instruction *list_instr, char *line);
 
-bool	parse_one_dir(t_instruction *tmp, char *line); // LIVE ZJMP FORK LFOR
-bool	parse_log_op(t_instruction *tmp, char *line); // AND OR XOR
-bool	parse_arith_op(t_instruction *tmp, char *line); // ADD SUB
-bool	parse_ldi_lldi(t_instruction *tmp, char *line); // LDI LLDI
-bool	parse_ld_lld(t_instruction *tmp, char *line); // LD LLD
-bool	parse_aff(t_instruction *tmp, char *line); // AFF
-bool	parse_st(t_instruction *tmp, char *line); // ST
-bool	parse_sti(t_instruction *tmp, char *line); // STI
+bool	parse_one_dir(t_instruction *list_instr, char *line); // LIVE ZJMP FORK LFOR
+bool	parse_log_op(t_instruction *list_instr, char *line); // AND OR XOR
+bool	parse_arith_op(t_instruction *list_instr, char *line); // ADD SUB
+bool	parse_ldi_lldi(t_instruction *list_instr, char *line); // LDI LLDI
+bool	parse_ld_lld(t_instruction *list_instr, char *line); // LD LLD
+bool	parse_aff(t_instruction *list_instr, char *line); // AFF
+bool	parse_st(t_instruction *list_instr, char *line); // ST
+bool	parse_sti(t_instruction *list_instr, char *line); // STI
 
 
 // if (#) get next line
@@ -79,20 +79,20 @@ bool	parse_sti(t_instruction *tmp, char *line); // STI
 ** LIST FCT ====================================================================
 */
 
-t_instruction   *add_end_instruction(t_instruction *tmp);
+t_instruction   *add_end_instruction(t_instruction *list_instr);
 t_instruction   *add_end_label(t_label *instr_label);
 
 /*
 ** CONVERSION ==================================================================
 */
 
-void	create_cor(t_instruction *tmp, t_header *id);
+void	create_cor(t_instruction *list_instr, t_header *id);
 
 void	fill_id_hex(t_header *id, int fd);
 
-void 	fill_instruction_hex(t_instruction *tmp, int fd);
-void    get_bytecode(t_instruction *tmp);
-void    get_value_param(t_instruction *tmp);
+void 	fill_instruction_hex(t_instruction *list_instr, int fd);
+void    get_bytecode(t_instruction *list_instr);
+void    get_value_param(t_instruction *list_instr);
 
 /*
 ** ERROR =======================================================================

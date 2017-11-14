@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/14 10:41:16 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/14 11:05:57 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,15 @@ bool	parse(t_header *header, t_instruction *list_instr, int fd)
 	char	*line;
 	t_hstate	state;
 
-	list_instr = NULL;
 	state = ft_zero_state(&state);
 	while ((ret_gnl = get_next_line(fd, &line)) == 1)
 	{
 		check_commentchar(&line);
-		// printf("line '%s'\n", line);
 		if (state.name < 1 || state.comment < 1)
-			parse_id(header, line, &state);
+			if (!parse_id(header, line, &state))
+				return (false);
 		else
-			break;
+			parse_label(list_instr, line);
 	}
 	return (true);
 }
