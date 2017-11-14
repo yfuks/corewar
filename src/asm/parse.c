@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/14 12:17:56 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/14 18:11:29 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,21 @@ t_hstate	ft_zero_state(t_hstate *state)
 	return (*state);
 }
 
-bool	parse(t_header *header, t_instruction *list_instr, int fd)
+bool	parse(t_header *header, t_instruction **list_instr, int fd)
 {
-	int		ret_gnl;
-	char	*line;
+	int			ret_gnl;
+	t_instruction *cursor;
+	char		*line;
 	t_hstate	state;
+	int 		nb_line;
 
 	state = ft_zero_state(&state);
+	nb_line = 0;
 	while ((ret_gnl = get_next_line(fd, &line)) == 1)
 	{
+		nb_line++;
+		cursor = add_end_instruction(list_instr);
+		cursor->nb_line = nb_line;
 		check_commentchar(&line);
 		if (state.name < 1 || state.comment < 1)
 		{
@@ -37,11 +43,8 @@ bool	parse(t_header *header, t_instruction *list_instr, int fd)
 				return (false);
 		}
 		else
-		{
-			parse_label(&list_instr, line);
-			printf("%s\n", list_instr->label);
-
-		}
+			parse_label(list_instr, cursor, line);
+		printf("%zu : %s\n",cursor->nb_line , cursor->label);
 	}
 	return (true);
 }

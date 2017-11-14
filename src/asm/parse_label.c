@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:06:16 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/14 12:18:57 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/14 17:56:23 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "op.h"
 #include "tools.h"
 
-void	parse_label(t_instruction **list_instr, char *line)
+void	parse_label(t_instruction **list_instr, t_instruction *cursor,char *line)
 {
 	int state_label_char;
 	int i;
@@ -37,12 +37,14 @@ void	parse_label(t_instruction **list_instr, char *line)
 		|| line[i - 1] == DIRECT_CHAR || line[i - 1] == SEPARATOR_CHAR)
 			return ; //s'il y a un espace, un tab ou un %, le label fait parti d'argument ou il y a une erreur
 		else
+		{
 			line = ft_strtrim(ft_strsub(line, 0, i));
-			if (!check_labelschar(line))
+			if (!check_labelschar(line) || !check_double_label(list_instr, line))
 				return;
-			add_end_instruction(list_instr);
-			if(!((*list_instr)->label = ft_strnew(ft_strlen(line))))
+			if(!(cursor->label = ft_strnew(ft_strlen(line))))
 			 	return;
-			(*list_instr)->label = ft_strcpy((*list_instr)->label, line);
+			cursor->label = ft_strcpy(cursor->label, line);
+			// printf("double : %zu : %s\n", (*list_instr)->nb_line,(*list_instr)->label);
+		}
 	}
 }

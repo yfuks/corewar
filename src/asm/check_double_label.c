@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_instruction.c                                  :+:      :+:    :+:   */
+/*   check_double_label.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/14 11:44:37 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/14 17:52:14 by jthillar         ###   ########.fr       */
+/*   Created: 2017/11/14 13:26:23 by jthillar          #+#    #+#             */
+/*   Updated: 2017/11/14 18:11:11 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,16 @@
 #include "op.h"
 #include "tools.h"
 
-t_instruction  *add_end_instruction(t_instruction **list_instr)
+bool	check_double_label(t_instruction **list_instr, char *label)
 {
-	t_instruction *cursor;
+	t_instruction *tmp;
 
-	cursor = *list_instr;
-	if (*list_instr)
+	tmp = *list_instr;
+	while (tmp && tmp->next)
 	{
-		while (cursor && cursor->next)
-			cursor = cursor->next;
-		if (!(cursor->next = (t_instruction*)malloc(sizeof(t_instruction))))
-			return (NULL);
-		// (cursor)->next->prev = cursor;
-		return (cursor->next);
+		if (tmp->label != NULL && ft_strcmp(label, tmp->label) == 0)
+			return (false);
+		tmp = tmp->next;
 	}
-	else
-		*list_instr = ft_memalloc(sizeof(t_instruction));
-	return (*list_instr);
+	return (true);
 }
