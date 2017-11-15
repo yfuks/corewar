@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 16:44:53 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/13 13:55:21 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/13 18:34:44 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int		is_options(int index, char **av)
 	return (0);
 }
 
+
 int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options)
 {
 	int 		i;
@@ -50,15 +51,15 @@ int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options)
 		{
 			if (!parse_options(i, av, options))
 				return (print_usage(av[0]));
-			else
-				if (options->dump != -1)
+			else if (options->dump != -1)
 					i += 1;
 		}
 		else
 		{
-			if (!(champion = parse_champion(i, av)))
+			if (!(champion = parse_champion(av[0], &i, av)))
 				return (0);
-//			add_champion_in_arena(champion, arena);
+			//print_champ(champion); // DEBUG
+			add_champion_in_arena(champion, arena);
 		}
 		i++;
 	}
