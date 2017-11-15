@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 14:33:28 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/13 17:10:21 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/15 15:27:33 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_champion	*print_cant_read_file(char *file)
 	return (NULL);
 }
 
-static t_champion	*print_champ_too_large(char *file, header_t *header)
+static t_champion	*print_champ_too_large(char *file, t_header *header)
 {
 	ft_putstr_fd("Error: File ", STD_ERR);
 	ft_putstr_fd(file, STD_ERR);
@@ -50,14 +50,14 @@ static t_champion	*print_invalid_header(char *file)
 	return (NULL);
 }
 
-static header_t		*read_champion_header(int fd)
+static t_header		*read_champion_header(int fd)
 {
-	header_t	*header;
+	t_header	*header;
 
-	if (!(header = (header_t *)malloc(sizeof(header_t))))
+	if (!(header = (t_header *)malloc(sizeof(t_header))))
 		return (NULL);
-	ft_bzero(header, sizeof(header_t));
-	read(fd, header, sizeof(header_t));
+	ft_bzero(header, sizeof(t_header));
+	read(fd, header, sizeof(t_header));
 	header->magic = reverse_uint(header->magic);
 	header->prog_size = reverse_uint(header->prog_size);
 	return (header);
@@ -67,7 +67,7 @@ t_champion			*parse_file(char *filename)
 {
 	int			fd;
 	t_champion	*champion;
-	header_t	*header;
+	t_header	*header;
 
 	if ((fd = open(filename, O_RDONLY)) == -1)
 		return (print_cant_read_file(filename));

@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/13 17:41:39 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/15 15:25:11 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void			check_deads(t_champion champions[MAX_PLAYERS]);
 
 int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options);
 int				parse_options(int index, char **av, t_options *options);
-t_champion		*new_champion(char *filename, header_t *header, int fd);
+t_champion		*new_champion(char *filename, t_header *header, int fd);
 t_champion		*parse_champion(char *executable_name, int *index, char **av);
 t_champion		*parse_file(char *filename);
 int				add_champion_in_arena(t_champion *champion, t_arena *arena);

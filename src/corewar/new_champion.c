@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 14:58:41 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/13 18:09:29 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/15 15:27:58 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int		read_code(char *filename, t_champion *champion, int fd)
 	return (1);
 }
 
-t_champion      *new_champion(char *filename, header_t *header, int fd)
+t_champion      *new_champion(char *filename, t_header *header, int fd)
 {
 	t_champion	*champion;
 
