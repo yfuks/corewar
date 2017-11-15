@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/15 12:16:30 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/15 13:07:31 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,10 @@ bool 	parse_second_read(t_instruction **list_instr, int fd)
 
 	while ((ret_gnl = get_next_line(fd, &line)) == 1)
 	{
-		printf("ret_gnl : %d\n",ret_gnl);
 		while (cursor->start_instr == 0)
 			cursor = cursor->next;
 		printf("%zu : %s\n",cursor->nb_line , cursor->label);
 		break;
-		// if (cursor->start_instr = 1)
-		// {
-		//
-		// }
 	}
 	return (true);
 }
