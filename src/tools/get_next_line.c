@@ -6,49 +6,14 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 14:13:34 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/13 14:17:39 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/15 15:18:11 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tools.h"
+#include <unistd.h>
 
-char	*ft_strndup(char **s, int c)
-{
-	int		i;
-	int		size;
-	char	*dest;
-
-	i = 0;
-	size = ft_strlen(*s);
-	if (!(dest = ft_strnew(size + 1)))
-		return (NULL);
-	while ((*s)[i] != c && (*s)[i])
-	{
-		dest[i] = (*s)[i];
-		i++;
-	}
-	dest[i] = '\0';
-	ft_strdel(s);
-	return (dest);
-}
-
-int		ft_realloc(char **rest)
-{
-	char	*tmp;
-
-	if (!(tmp = ft_strnew(ft_strlen(*rest))))
-		return (0);
-	tmp = ft_strcpy(tmp, *rest);
-	ft_memdel((void **)rest);
-	if (!(*rest = ft_strnew(ft_strlen(tmp) + BUFF_SIZE)))
-		return (0);
-	*rest = ft_strcpy(*rest, tmp);
-	ft_memdel((void **)&tmp);
-	tmp = NULL;
-	return (1);
-}
-
-int		end_of_file(char **rest, char **str, char **line)
+static int	end_of_file(char **rest, char **str, char **line)
 {
 	unsigned int i;
 
@@ -76,7 +41,7 @@ int		end_of_file(char **rest, char **str, char **line)
 	return (1);
 }
 
-int		get_next_line(const int fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
 	int				ret;
 	char			buf[BUFF_SIZE + 1];

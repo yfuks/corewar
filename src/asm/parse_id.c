@@ -6,13 +6,12 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:56:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/14 10:35:42 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/15 15:06:56 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 #include "tools.h"
-#include <stdio.h>
 
 static void	fill_id_name(t_header *header, char *line, t_hstate *state)
 {

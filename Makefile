@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/15 13:05:50 by jthillar         ###   ########.fr        #
+#    Updated: 2017/11/15 15:17:00 by jthillar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(ASMDIR)check_labelschar.c \
 				  $(ASMDIR)check_double_label.c \
 				  $(ASMDIR)add_instruction.c \
+				  $(ASMDIR)parse_instruction.c \
 				  $(TOOLSDIR)ft_strrchr.c \
 				  $(TOOLSDIR)ft_strlen.c \
 				  $(TOOLSDIR)ft_putstr_fd.c \
@@ -44,6 +45,8 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(TOOLSDIR)ft_bzero.c \
 				  $(TOOLSDIR)ft_strnew.c \
 				  $(TOOLSDIR)get_next_line.c \
+				  $(TOOLSDIR)ft_realloc.c \
+				  $(TOOLSDIR)ft_strndup.c \
 				  $(TOOLSDIR)ft_strdel.c \
 				  $(TOOLSDIR)ft_strcpy.c \
 				  $(TOOLSDIR)ft_memdel.c \

@@ -6,11 +6,12 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 08:29:07 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/14 09:10:17 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/15 15:13:43 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tools.h"
+#include <stdlib.h>
 
 static char	*fill_it(char *dest, const char *src, size_t start, size_t end)
 {

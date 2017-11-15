@@ -6,17 +6,13 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/15 12:16:20 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/15 15:05:44 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
 # include <stdlib.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <stdio.h>
 # include <stdbool.h>
 # include "op.h"
 # define SPACE	' '
@@ -37,6 +33,7 @@ typedef struct              s_label
 typedef struct				s_instruction
 {
 	char					*label; // 1er read
+	char 					*double_label; // on stock le label s'il est double dans cette chaine seulement
 	char					*mnm;
 	int						state; // a 1 si un seul argument
 	int						start_instr;
@@ -65,7 +62,7 @@ bool	check_labelschar(char *line); // verifie que les nom de label soit valide
 bool    check_double_label(t_instruction **list_instr, char *label);
 //void    get_label(t_instruction *list_instr, char *line);
 
-void	parse_instruction(t_instruction *list_instr, char *line);
+bool	parse_instruction(t_instruction **list_instr, t_instruction *cursor,char *line);
 
 bool	parse_one_dir(t_instruction *list_instr, char *line); // LIVE ZJMP FORK LFOR
 bool	parse_log_op(t_instruction *list_instr, char *line); // AND OR XOR

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alansiva <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:29:25 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/13 15:31:21 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/11/15 15:13:22 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tools.h"
+#include <stdlib.h>
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {

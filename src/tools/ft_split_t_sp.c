@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_t_sp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alansiva <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 17:49:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/13 18:22:44 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/11/15 15:12:14 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <unistd.h>
 #include "tools.h"
 
 size_t		ft_count_word(char const *str, char c, char d)

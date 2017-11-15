@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:27:23 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/14 11:38:10 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/15 14:36:29 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static bool error_labelschar()
 {
-	ft_putstr_fd("Error : wrong label char\n", 1);
+	ft_putstr_fd("Error : wrong label char\n", 2);
 	return (false);
 }
 

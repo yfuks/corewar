@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:06:16 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 13:05:57 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/15 14:47:35 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,18 @@ void	parse_label(t_instruction **list_instr, t_instruction *cursor,char *line)
 		else
 		{
 			line = ft_strtrim(ft_strsub(line, 0, i));
-			if (!check_labelschar(line) || !check_double_label(list_instr, line))
+			if (!check_labelschar(line))
 				return;
+			if(!check_double_label(list_instr, line))
+			{
+				if(!(cursor->double_label = ft_strnew(ft_strlen(line))))
+					return;
+				cursor->double_label = ft_strcpy(cursor->double_label, line);
+					return;
+			}
 			if(!(cursor->label = ft_strnew(ft_strlen(line))))
-			 	return;
+				return;
 			cursor->label = ft_strcpy(cursor->label, line);
-			// printf("double : %zu : %s\n", (*list_instr)->nb_line,(*list_instr)->label);
 		}
 	}
 }
