@@ -1,31 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   check_labelschar.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/14 08:44:11 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 15:13:01 by jthillar         ###   ########.fr       */
+/*   Created: 2017/11/14 11:27:23 by jthillar          #+#    #+#             */
+/*   Updated: 2017/11/15 14:36:29 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "asm.h"
+#include "op.h"
+#include "tools.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t n)
+static bool error_labelschar()
 {
-	size_t		i;
+	ft_putstr_fd("Error : wrong label char\n", 2);
+	return (false);
+}
+
+bool	check_labelschar(char *line)
+{
+	int i;
+	int j;
+	int compt;
 
 	i = 0;
-	while (i < n && src[i])
+	while (line[i])
 	{
-		dst[i] = src[i];
-		i++;
+		j = 0;
+		compt = i;
+		while (LABEL_CHARS[j])
+		{
+			if (line[i] == LABEL_CHARS[j])
+				i++;
+			j++;
+		}
+		if (i == compt)
+			return (error_labelschar());
 	}
-	while (i < n)
-	{
-		dst[i] = '\0';
-		i++;
-	}
-	return (dst);
+	return (true);
 }

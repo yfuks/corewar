@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   check_double_label.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/14 08:44:11 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 15:13:01 by jthillar         ###   ########.fr       */
+/*   Created: 2017/11/14 13:26:23 by jthillar          #+#    #+#             */
+/*   Updated: 2017/11/15 15:01:37 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "asm.h"
+#include "tools.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t n)
+bool	check_double_label(t_instruction **list_instr, char *label)
 {
-	size_t		i;
+	t_instruction *tmp;
 
-	i = 0;
-	while (i < n && src[i])
+	tmp = *list_instr;
+	while (tmp && tmp->next)
 	{
-		dst[i] = src[i];
-		i++;
+		// printf("%zu : %s\n", tmp->nb_line, tmp->label);
+		if (tmp->label != NULL && ft_strcmp(label, tmp->label) == 0)
+			return (false);
+		tmp = tmp->next;
 	}
-	while (i < n)
-	{
-		dst[i] = '\0';
-		i++;
-	}
-	return (dst);
+	return (true);
 }

@@ -6,15 +6,25 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:34:18 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/13 18:07:56 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/15 15:18:20 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOOLS_H
 # define TOOLS_H
-
+# define BUFF_SIZE 1
+# include <unistd.h>
 # include <stdlib.h>
 
+char			*ft_strrchr(const char *s, int c);
+char			*ft_strnew(size_t size);
+void			ft_strdel(char **as);
+void			ft_memdel(void **ap);
+char			*ft_strchr(const char *s, int c);
+char			*ft_strcat(char *dest, const char *src);
+char			*ft_strsub(char const *s, unsigned int start, size_t len);
+char			**ft_split_t_sp(const char *s, char c, char d);
+char			*ft_strtrim(const char *s);
 int				ft_strlen(const char *s);
 void			ft_putstr_fd(const char *s, int fd);
 int				ft_strcmp(const char *s1, const char *s2);
@@ -36,5 +46,6 @@ void			ft_put_hex_fd(unsigned int n, int fd);
 char			*ft_strcpy(char *dst, const char *src);
 char			*ft_strncpy(char *dst, const char *src, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
-
+char			*ft_strndup(char **s, int c);
+int				ft_realloc(char **rest);
 #endif

@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   check_commentchar.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/14 08:44:11 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 15:13:01 by jthillar         ###   ########.fr       */
+/*   Created: 2017/11/14 10:24:42 by jthillar          #+#    #+#             */
+/*   Updated: 2017/11/14 10:25:38 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "tools.h"
+#include "op.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t n)
+void	check_commentchar(char **line)
 {
-	size_t		i;
+	int i;
 
 	i = 0;
-	while (i < n && src[i])
+	while ((*line)[i])
 	{
-		dst[i] = src[i];
+		if ((*line)[i] == COMMENT_CHAR)
+		{
+			*line = ft_strsub(*line, 0, i);
+			break;
+		}
 		i++;
 	}
-	while (i < n)
-	{
-		dst[i] = '\0';
-		i++;
-	}
-	return (dst);
 }

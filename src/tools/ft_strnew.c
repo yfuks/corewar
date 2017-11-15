@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/14 08:44:11 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 15:13:01 by jthillar         ###   ########.fr       */
+/*   Created: 2017/11/13 14:19:55 by jthillar          #+#    #+#             */
+/*   Updated: 2017/11/13 14:44:29 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include"tools.h"
 #include <stdlib.h>
 
-char	*ft_strncpy(char *dst, const char *src, size_t n)
+char	*ft_strnew(size_t size)
 {
-	size_t		i;
+	char *mem;
 
-	i = 0;
-	while (i < n && src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dst[i] = '\0';
-		i++;
-	}
-	return (dst);
+	mem = (char*)malloc(sizeof(char) * (size + 1));
+	if (mem != NULL)
+		ft_bzero(mem, size + 1);
+	else
+		mem = NULL;
+	return (mem);
 }

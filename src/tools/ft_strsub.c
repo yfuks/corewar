@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/14 08:44:11 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 15:13:01 by jthillar         ###   ########.fr       */
+/*   Created: 2017/11/13 15:29:25 by alansiva          #+#    #+#             */
+/*   Updated: 2017/11/15 15:13:22 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "tools.h"
 #include <stdlib.h>
 
-char	*ft_strncpy(char *dst, const char *src, size_t n)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	size_t		i;
+	unsigned int	i;
+	char			*str;
 
 	i = 0;
-	while (i < n && src[i])
+	if (!(str = ft_strnew(len)) || !s)
+		return (NULL);
+	while (i < len)
 	{
-		dst[i] = src[i];
+		str[i] = s[start + i];
 		i++;
 	}
-	while (i < n)
-	{
-		dst[i] = '\0';
-		i++;
-	}
-	return (dst);
+	return (str);
 }

@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alansiva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/14 08:44:11 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 15:13:01 by jthillar         ###   ########.fr       */
+/*   Created: 2017/11/13 15:26:38 by alansiva          #+#    #+#             */
+/*   Updated: 2017/11/13 15:35:28 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-char	*ft_strncpy(char *dst, const char *src, size_t n)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t		i;
-
-	i = 0;
-	while (i < n && src[i])
+	while (*s != '\0')
 	{
-		dst[i] = src[i];
-		i++;
+		if (c == *s)
+			return ((char*)s);
+		s++;
 	}
-	while (i < n)
-	{
-		dst[i] = '\0';
-		i++;
-	}
-	return (dst);
+	if (c == '\0')
+		return ((char*)s);
+	else
+		return (NULL);
 }

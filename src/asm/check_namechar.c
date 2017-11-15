@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   check_namechar.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/14 08:44:11 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 15:13:01 by jthillar         ###   ########.fr       */
+/*   Created: 2017/11/14 10:29:50 by jthillar          #+#    #+#             */
+/*   Updated: 2017/11/15 15:09:51 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "tools.h"
+#include "asm.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t n)
+static bool 	error_namechar()
 {
-	size_t		i;
+	ft_putstr_fd("Error : wrong character\n", 2);
+	return (false);
+}
+
+bool	check_namechar(char *line, int size)
+{
+	int i;
 
 	i = 0;
-	while (i < n && src[i])
+	while (i < size)
 	{
-		dst[i] = src[i];
+		if (line[i] == '\"')
+			return (error_namechar());
 		i++;
 	}
-	while (i < n)
-	{
-		dst[i] = '\0';
-		i++;
-	}
-	return (dst);
+	return (true);
 }
