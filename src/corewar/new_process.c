@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_hex.c                                       :+:      :+:    :+:   */
+/*   new_process.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 16:12:31 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/15 17:27:51 by yfuks            ###   ########.fr       */
+/*   Created: 2017/11/15 16:24:59 by yfuks             #+#    #+#             */
+/*   Updated: 2017/11/15 16:49:32 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tools.h"
 #include <stdlib.h>
+#include "tools.h"
+#include "corewar.h"
 
-void		ft_put_hex_fd(unsigned int n, int fd, int len)
+t_process	*new_process(int position)
 {
-	char	*hexa;
-	int		size;
+	t_process	*process;
 
-	if (len <= 2)
-	{
-		if (!(hexa = ft_uitoa_base(n, 16)))
-			return ;
-	}
-	else if (!(hexa = ft_ustoa_base(n, 16)))
-		return ;
-	size = ft_strlen(hexa);
-	while (size < len)
-	{
-		ft_putstr_fd("0", fd);
-		len--;
-	}
-	ft_putstr_fd(hexa, fd);
-	free(hexa);
+	if (!(process = (t_process *)malloc(sizeof(t_process))))
+		return (NULL);
+	ft_bzero(process, sizeof(t_process));
+	process->index = position;
+	return (process);
 }

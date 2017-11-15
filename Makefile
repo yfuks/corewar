@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/15 15:24:17 by yfuks            ###   ########.fr        #
+#    Updated: 2017/11/15 17:21:48 by yfuks            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,13 +81,16 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_itoa.c \
 				  $(TOOLSDIR)reverse_uint.c \
 				  $(TOOLSDIR)ft_uitoa_base.c \
+				  $(TOOLSDIR)ft_ustoa_base.c \
 				  $(TOOLSDIR)ft_put_hex.c \
 				  $(TOOLSDIR)ft_strcpy.c \
 				  $(TOOLSDIR)ft_memcpy.c \
 				  $(COREWARDIR)add_champion_in_arena.c \
 				  $(COREWARDIR)init_arena.c \
 				  $(COREWARDIR)print_champ.c \
-				  $(COREWARDIR)print_map_arena.c
+				  $(COREWARDIR)print_map_arena.c \
+				  $(COREWARDIR)new_process.c \
+				  $(COREWARDIR)add_process_to_champion.c
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

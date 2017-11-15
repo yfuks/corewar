@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/15 15:25:11 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/15 17:00:49 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef struct	s_process
 {
-	void				*pc;
+	int					index;
 	int					remaining_cycles;
 	struct s_process	*next;
 }				t_process;
@@ -91,6 +91,8 @@ void			check_deads(t_champion champions[MAX_PLAYERS]);
 **	TOOLS
 */
 
+t_process		*new_process(int position);
+void			add_process_to_champion(t_champion *champion, t_process *process);
 int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options);
 int				parse_options(int index, char **av, t_options *options);
 t_champion		*new_champion(char *filename, t_header *header, int fd);

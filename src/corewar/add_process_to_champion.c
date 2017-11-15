@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_hex.c                                       :+:      :+:    :+:   */
+/*   add_process_to_champion.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 16:12:31 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/15 17:27:51 by yfuks            ###   ########.fr       */
+/*   Created: 2017/11/15 16:29:13 by yfuks             #+#    #+#             */
+/*   Updated: 2017/11/15 16:48:49 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tools.h"
-#include <stdlib.h>
+#include "corewar.h"
+#include <unistd.h>
 
-void		ft_put_hex_fd(unsigned int n, int fd, int len)
+void	add_process_to_champion(t_champion *champion, t_process *process)
 {
-	char	*hexa;
-	int		size;
+	t_process *tmp;
 
-	if (len <= 2)
+	tmp = champion->process;
+	if (!champion->process)
 	{
-		if (!(hexa = ft_uitoa_base(n, 16)))
-			return ;
-	}
-	else if (!(hexa = ft_ustoa_base(n, 16)))
+		champion->process = process;
 		return ;
-	size = ft_strlen(hexa);
-	while (size < len)
-	{
-		ft_putstr_fd("0", fd);
-		len--;
 	}
-	ft_putstr_fd(hexa, fd);
-	free(hexa);
+	while(champion->process->next != NULL)
+		champion->process = champion->process->next;
+	champion->process->next = process;
+	champion->process = tmp;
 }

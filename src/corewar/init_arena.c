@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:08:36 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/14 16:08:37 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/11/15 17:01:02 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int			init_arena(t_arena *arena)
 	int i;
 	int size;
 	int position;
+	t_process *process;
 
 	position = 0;
 	i = 0;
@@ -96,6 +97,9 @@ int			init_arena(t_arena *arena)
 	{
 		ft_memcpy(&arena->arena[position], arena->champions[i].code, \
 		arena->champions[i].prog_size);
+		if (!(process = new_process(position)))
+			return (0);
+		add_process_to_champion(&arena->champions[i], process);
 		position += size;
 		i++;
 	}
