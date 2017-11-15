@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/14 18:29:00 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/15 12:16:20 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct				s_instruction
 	char					*label; // 1er read
 	char					*mnm;
 	int						state; // a 1 si un seul argument
+	int						start_instr;
 	char					reg[3];
 	char					dir[3];
 	char					ind[3];
@@ -53,7 +54,7 @@ typedef struct				s_instruction
 ** PARSER ======================================================================
 */
 
-bool	parse(t_header *header, t_instruction **list_instr, int fd);
+bool	parse(t_header *header, t_instruction **list_instr, int fd, char *filename);
 void	check_commentchar(char **line);
 bool	check_namechar(char *line, int size); // verifie s'il n'y a pas un mauvais caractere dans le .nom ou .comment
 
