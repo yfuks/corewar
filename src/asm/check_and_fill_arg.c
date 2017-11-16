@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:27:41 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/16 16:01:04 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 18:50:08 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 extern t_op g_op_tab[17];
 
 /*
-**verifie si les labels dans les arguements correspondent aux label des instructions
+**verifie si les labels dans les arguements correspondent
+**aux label des instructions
 */
 
 static bool	check_arg_label(t_instruction **list_instr, char *arg)
@@ -38,7 +39,8 @@ static bool	check_arg_label(t_instruction **list_instr, char *arg)
 }
 
 /*
-**verifie si les types des arguments correspondent bien a ce qui est donne dans op.c
+**verifie si les types des arguments correspondent
+**bien a ce qui est donne dans op.c
 */
 
 static bool	check_arg_type(char **arg, t_instruction **cursor)
@@ -50,7 +52,8 @@ static bool	check_arg_type(char **arg, t_instruction **cursor)
 	good = 0;
 	while (arg[i] && g_op_tab[(*cursor)->opcode - 1].args_types[i])
 	{
-		if ((*cursor)->arg_type[i] & g_op_tab[(*cursor)->opcode - 1].args_types[i])
+		if ((*cursor)->arg_type[i] &
+		g_op_tab[(*cursor)->opcode - 1].args_types[i])
 			good++;
 		i++;
 	}
@@ -59,7 +62,8 @@ static bool	check_arg_type(char **arg, t_instruction **cursor)
 	return (false);
 }
 
-bool		check_and_fill_arg(t_instruction **list_instr, t_instruction **cursor, char **arg)
+bool		check_and_fill_arg(t_instruction **list_instr,
+			t_instruction **cursor, char **arg)
 {
 	int i;
 
@@ -77,7 +81,10 @@ bool		check_and_fill_arg(t_instruction **list_instr, t_instruction **cursor, cha
 				return (false);
 		}
 		else
+		{
+			printf("%s\n", arg[i]);
 			return (false);
+		}
 		i++;
 	}
 	if (!check_arg_type(arg, cursor))

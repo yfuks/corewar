@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/16 15:29:01 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 18:42:25 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct				s_instruction
 	int						state; // a 1 si un seul argument
 	int						start_instr;
 	int						arg_type[3];
+	int						instr_byte_size;
+	int						total_byte_size;
 	char					reg[3];
 	char					dir[3];
 	char					ind[3];
@@ -106,5 +108,6 @@ void    get_value_param(t_instruction *list_instr);
 */
 
 bool	error_stdin(char **av, int ac); // ac == 2, arg fini par .s
+bool	error_arg(int i, t_instruction **cursor);
 
 #endif

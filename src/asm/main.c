@@ -6,13 +6,14 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:16 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/16 15:09:11 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 18:28:36 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 #include "op.h"
 #include "tools.h"
+#include <stdio.h>
 #include <fcntl.h>
 
 int     main(int ac, char **av)

@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/16 15:28:52 by jthillar         ###   ########.fr        #
+#    Updated: 2017/11/16 18:03:47 by jthillar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME_COREWAR 	= corewar
 
 # COMPILATION
 CC				= clang
-FLAGS			= -Wall -Wextra -Werror -g3
+FLAGS			= -g3
 
 # DIRECTORYS
 SRCDIR			= src/
