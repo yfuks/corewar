@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/15 15:10:17 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 11:50:09 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "op.h"
 #include "tools.h"
 #include <fcntl.h>
+#include <stdio.h>
 
 static t_hstate	ft_zero_state(t_hstate *state)
 {
@@ -46,7 +47,6 @@ static bool 	parse_first_read(t_header *header, t_instruction **list_instr, int 
 			cursor->start_instr = 1;
 			parse_label(list_instr, cursor, line);
 		}
-		// printf("%zu : %s\n",cursor->nb_line , cursor->label);
 	}
 	return (true);
 }
@@ -60,14 +60,14 @@ static bool 	parse_second_read(t_instruction **list_instr, int fd)
 	cursor = *list_instr;
 	while ((ret_gnl = get_next_line(fd, &line)) == 1)
 	{
-		// printf("%zu : %s\n",cursor->nb_line , cursor->label);
-		if (cursor->start_instr == 0)
+		if (cursor && cursor->start_instr == 0)
 			cursor = cursor->next;
 		else
 		{
+			check_commentchar(&line);
 			if(!(parse_instruction(list_instr, cursor, line)))
 				return (false);
-			if (cursor->next)
+			if (cursor && cursor->next)
 				cursor = cursor->next;
 		}
 	}

@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/15 15:24:17 by yfuks            ###   ########.fr        #
+#    Updated: 2017/11/16 13:53:12 by jthillar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(ASMDIR)check_double_label.c \
 				  $(ASMDIR)add_instruction.c \
 				  $(ASMDIR)parse_instruction.c \
+				  $(ASMDIR)parse_mnemonique.c \
+				  $(ASMDIR)parse_arguments.c \
 				  $(TOOLSDIR)ft_strrchr.c \
 				  $(TOOLSDIR)ft_strlen.c \
 				  $(TOOLSDIR)ft_putstr_fd.c \
@@ -57,7 +59,10 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(TOOLSDIR)ft_strchr.c \
 				  $(TOOLSDIR)ft_strtrim.c \
 				  $(TOOLSDIR)ft_split_t_sp.c \
-				  $(TOOLSDIR)ft_strncpy.c
+				  $(TOOLSDIR)ft_split.c \
+				  $(TOOLSDIR)ft_strncpy.c \
+				  $(TOOLSDIR)ft_isdigit.c \
+				  $(TOOLSDIR)op.c
 
 
 SRCSCOREWAR		= $(COREWARDIR)main.c \

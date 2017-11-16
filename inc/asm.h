@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/15 15:05:44 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 13:48:07 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "op.h"
 # define SPACE	' '
 # define TAB 	'\t'
+# define SIGNE  '-'
+# define REG_CHAR 'r'
 
 typedef struct				s_hstate
 {
@@ -34,9 +36,10 @@ typedef struct				s_instruction
 {
 	char					*label; // 1er read
 	char 					*double_label; // on stock le label s'il est double dans cette chaine seulement
-	char					*mnm;
+	int						opcode;
 	int						state; // a 1 si un seul argument
 	int						start_instr;
+	int						arg_type[3];
 	char					reg[3];
 	char					dir[3];
 	char					ind[3];
@@ -63,6 +66,8 @@ bool    check_double_label(t_instruction **list_instr, char *label);
 //void    get_label(t_instruction *list_instr, char *line);
 
 bool	parse_instruction(t_instruction **list_instr, t_instruction *cursor,char *line);
+bool	parse_mnemonique(t_instruction **cursor, char **line);
+bool	parse_arguments(t_instruction **cursor, char **line);
 
 bool	parse_one_dir(t_instruction *list_instr, char *line); // LIVE ZJMP FORK LFOR
 bool	parse_log_op(t_instruction *list_instr, char *line); // AND OR XOR

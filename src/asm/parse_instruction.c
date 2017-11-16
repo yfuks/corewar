@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 13:13:19 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 15:29:27 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 13:35:04 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,30 @@
 #include "op.h"
 #include "tools.h"
 #include <unistd.h>
+#include <stdio.h>
 
-// void	get_mnm(t_instruction **cursor, char *line)
-// {
-// 	int 	i;
-// 	char	*mnm_compare;
-// 	i = 0;
-// 	while (line[i])
-// 	{
-// 		if (line[i] == TAB || line[i] == space)
-// 		{
-// 			if(!(mnm_compare = ft_strnew(i)))
-// 				return ;
-// 			mnm_compare = ft_strcpy(mnm_compare, )
-// 		}
-// 		i++;
-// 	}
-//
-// }
+static bool	error_instruction(int i)
+{
+	if (i == 1)
+		ft_putstr_fd("Error : wrong mnemonique\n",2);
+	if (i == 2)
+		ft_putstr_fd("Error : wrong arguments\n",2);
+	return (false);
+}
 
 bool	parse_instruction(t_instruction **list_instr, t_instruction *cursor, char *line)
 {
-
 	if (!(ft_strcmp((line = ft_strtrim(line)), "")))
 		return (true);
 	if (cursor->label != NULL)
 		line = ft_strtrim(ft_strsub(line, ft_strlen(cursor->label) + 1, ft_strlen(line)));
 	if (cursor->double_label != NULL)
 		line = ft_strtrim(ft_strsub(line, ft_strlen(cursor->double_label) + 1, ft_strlen(line)));
-	// get_mnm(&cursor, line))
-	// printf("mnm : '%s'\n", cursor->mnm);
+	if (!parse_mnemonique(&cursor, &line))
+		return (error_instruction(1));
+	// printf("opcode : %d - line : '%s'\n", cursor-> opcode,line);
+	if (!parse_arguments(&cursor, &line))
+		return (false);
 	list_instr = NULL;
 	return (true);
 }

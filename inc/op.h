@@ -6,7 +6,7 @@
 /*   By: zaz <zaz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2017/11/15 13:06:21 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 13:46:25 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct		t_header
 
 typedef struct 		s_op
 {
-	char			command[6];
+	char			*command;
 	int				nb_arg;
 	int				args_types[MAX_ARGS_NUMBER];
 	int				op_code;
