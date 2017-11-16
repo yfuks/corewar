@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:06:16 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 15:29:26 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 15:11:40 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 void	parse_label(t_instruction **list_instr, t_instruction *cursor,char *line)
 {
-	int state_label_char;
-	int i;
+	int	state_label_char;
+	int	i;
 
 	i = -1;
 	state_label_char = 0;
@@ -40,16 +40,16 @@ void	parse_label(t_instruction **list_instr, t_instruction *cursor,char *line)
 		{
 			line = ft_strtrim(ft_strsub(line, 0, i));
 			if (!check_labelschar(line))
-				return;
-			if(!check_double_label(list_instr, line))
+				return ;
+			if (!check_double_label(list_instr, line))
 			{
-				if(!(cursor->double_label = ft_strnew(ft_strlen(line))))
-					return;
+				if (!(cursor->double_label = ft_strnew(ft_strlen(line))))
+					return ;
 				cursor->double_label = ft_strcpy(cursor->double_label, line);
-					return;
+					return ;
 			}
-			if(!(cursor->label = ft_strnew(ft_strlen(line))))
-				return;
+			if (!(cursor->label = ft_strnew(ft_strlen(line))))
+				return ;
 			cursor->label = ft_strcpy(cursor->label, line);
 		}
 	}

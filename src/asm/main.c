@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:16 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/15 15:06:40 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 15:09:11 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ int     main(int ac, char **av)
 
 	if (!error_stdin(av, ac))
 		return (1);
-	if(!(header = ft_memalloc(sizeof(t_header))))
+	if (!(header = ft_memalloc(sizeof(t_header))))
 		return (1);
 	list_instr = NULL;
-	if((fd = open(av[1], O_RDONLY)) == -1)
+	if ((fd = open(av[1], O_RDONLY)) == -1)
 		return (1);
 	if (!parse(header, &list_instr, fd, av[1]))
 		return (1);
 	exit(1);
-	if(close(fd) == -1)
+	if (close(fd) == -1)
 		return (1);
 	create_cor(list_instr, header);
 	return (0);

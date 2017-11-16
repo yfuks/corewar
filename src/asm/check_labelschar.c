@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:27:23 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 14:36:29 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 15:15:39 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include "op.h"
 #include "tools.h"
 
-static bool error_labelschar()
+static bool	error_labelschar()
 {
 	ft_putstr_fd("Error : wrong label char\n", 2);
 	return (false);
 }
 
-bool	check_labelschar(char *line)
+bool		check_labelschar(char *line)
 {
 	int i;
 	int j;

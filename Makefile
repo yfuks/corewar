@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/16 13:53:12 by jthillar         ###   ########.fr        #
+#    Updated: 2017/11/16 15:28:52 by jthillar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,12 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(ASMDIR)parse_instruction.c \
 				  $(ASMDIR)parse_mnemonique.c \
 				  $(ASMDIR)parse_arguments.c \
+				  $(ASMDIR)check_and_fill_arg.c \
 				  $(TOOLSDIR)ft_strrchr.c \
 				  $(TOOLSDIR)ft_strlen.c \
+				  $(TOOLSDIR)ft_itoa.c \
 				  $(TOOLSDIR)ft_putstr_fd.c \
+				  $(TOOLSDIR)ft_putnbr_fd.c \
 				  $(TOOLSDIR)ft_memalloc.c \
 				  $(TOOLSDIR)ft_bzero.c \
 				  $(TOOLSDIR)ft_strnew.c \

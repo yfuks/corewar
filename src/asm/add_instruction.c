@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:44:37 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/16 11:47:09 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 15:14:07 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "asm.h"
 #include "tools.h"
 
-t_instruction  *add_end_instruction(t_instruction **list_instr)
+t_instruction	*add_end_instruction(t_instruction **list_instr)
 {
-	t_instruction *cursor;
-	t_instruction *tmp;
+	t_instruction	*cursor;
+	t_instruction	*tmp;
 
 	cursor = *list_instr;
 	if (*list_instr)
@@ -28,7 +28,6 @@ t_instruction  *add_end_instruction(t_instruction **list_instr)
 			return (NULL);
 		tmp = cursor->next;
 		tmp->next = NULL;
-		// (cursor)->next->prev = cursor;
 		return (cursor->next);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:56:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/15 15:29:24 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 15:10:36 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ static void	fill_id_com(t_header *header, char *line, t_hstate *state)
 	}
 }
 
-bool	parse_id(t_header *header, char *line, t_hstate *state)
+bool		parse_id(t_header *header, char *line, t_hstate *state)
 {
-	char 	*compare_name;
-	char 	*compare_comment;
+	char	*compare_name;
+	char	*compare_comment;
 
 	line = ft_strtrim(line);
 	if (line[0] != '.')
@@ -56,7 +56,7 @@ bool	parse_id(t_header *header, char *line, t_hstate *state)
 	{
 		if (!(compare_name = ft_strnew(5)))
 			return (false);
-		if(!(compare_name = ft_strncpy(compare_name, line, 5)))
+		if (!(compare_name = ft_strncpy(compare_name, line, 5)))
 			return (false);
 		if (ft_strcmp(NAME_CMD_STRING, compare_name) == 1)
 			return (false);
@@ -71,13 +71,13 @@ bool	parse_id(t_header *header, char *line, t_hstate *state)
 	{
 		if (!(compare_comment = ft_strnew(8)))
 			return (false);
-		if(!(compare_comment = ft_strncpy(compare_comment, line, 8)))
+		if (!(compare_comment = ft_strncpy(compare_comment, line, 8)))
 			return (false);
 		if (ft_strcmp(COMMENT_CMD_STRING, compare_comment) == 1)
 			return (false);
 		else
 		{
-			line = ft_strtrim(ft_strsub(line,  8, ft_strlen(line)));
+			line = ft_strtrim(ft_strsub(line, 8, ft_strlen(line)));
 			fill_id_com(header, line, state);
 		}
 	}

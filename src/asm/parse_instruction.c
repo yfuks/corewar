@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 13:13:19 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/16 13:35:04 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 16:01:31 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ bool	parse_instruction(t_instruction **list_instr, t_instruction *cursor, char *
 		line = ft_strtrim(ft_strsub(line, ft_strlen(cursor->double_label) + 1, ft_strlen(line)));
 	if (!parse_mnemonique(&cursor, &line))
 		return (error_instruction(1));
-	// printf("opcode : %d - line : '%s'\n", cursor-> opcode,line);
-	if (!parse_arguments(&cursor, &line))
+	if (!parse_arguments(list_instr, &cursor, &line))
 		return (false);
 	list_instr = NULL;
 	return (true);

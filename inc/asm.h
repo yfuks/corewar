@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/16 13:48:07 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 15:29:01 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ bool    check_double_label(t_instruction **list_instr, char *label);
 
 bool	parse_instruction(t_instruction **list_instr, t_instruction *cursor,char *line);
 bool	parse_mnemonique(t_instruction **cursor, char **line);
-bool	parse_arguments(t_instruction **cursor, char **line);
+bool	parse_arguments(t_instruction **list_instr, t_instruction **cursor, char **line);
+bool	check_and_fill_arg(t_instruction **list_instr, t_instruction **cursor, char **arg);
 
 bool	parse_one_dir(t_instruction *list_instr, char *line); // LIVE ZJMP FORK LFOR
 bool	parse_log_op(t_instruction *list_instr, char *line); // AND OR XOR

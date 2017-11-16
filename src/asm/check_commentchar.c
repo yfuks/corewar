@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 10:24:42 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/14 10:25:38 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/16 15:14:40 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	check_commentchar(char **line)
 		if ((*line)[i] == COMMENT_CHAR)
 		{
 			*line = ft_strsub(*line, 0, i);
-			break;
+			break ;
 		}
 		i++;
 	}
