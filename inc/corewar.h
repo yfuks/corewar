@@ -31,6 +31,7 @@ typedef struct	s_champion
 	int					player_id;
 	int					registers[REG_NUMBER];
 	int					carry;
+	int					is_dead;
 	t_process			*process;
 }				t_champion;
 
@@ -59,33 +60,35 @@ void			print_arena(t_arena *arena);
 **	BATTLE
 */
 
-int				check_opcode(t_process **proc, t_champion *champion, t_arena *arena);
-void			exec_command(t_process **proc, t_champion *champion, t_arena *arena);
+void			check_process(t_arena *arena);
+int				check_opcode(t_process *proc, t_arena *arena);
+void			exec_command(t_process *proc, t_champion *champion, t_arena *arena);
 
-void			cmd_live(t_process **proc, t_arena *arena);
-void			cmd_ld(t_process **proc, t_champion *champion, t_arena *arena);
-void			cmd_st(t_process **proc, t_champion *champion, t_arena *arena);
-void			cmd_add(t_process **proc, t_champion *champion, t_arena *arena);
-void			cmd_sub(t_process **proc, t_champion *champion, t_arena *arena);
-void			cmd_and(t_process **proc, t_champion *champion, t_arena *arena);
-void			cmd_or(t_process **proc, t_champion *champion, t_arena *arena);
-void			cmd_xor(t_process **proc, t_champion *champion, t_arena *arena);
-void			cmd_zjmp(t_process **proc, t_champion *champion, t_arena *arena);
-void			cmd_ldi(t_process **proc, t_champion *champion, t_arena *arena);
-void			cmd_sti(t_process **proc, t_champion *champion, t_arena *arena);
-void			cmd_fork(t_process **proc, t_champion *champion, t_arena *arena);
-void			cmd_lld(t_process **proc, t_champion *champion, t_arena *arena);
-void			cmd_lldi(t_process **proc, t_champion *champion, t_arena *arena);
-void			cmd_lfork(t_process **proc, t_champion *champion, t_arena *arena);
-void			cmd_aff(t_process **proc, t_champion *champion, t_arena *arena);
+void			cmd_live(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_ld(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_st(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_add(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_sub(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_and(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_or(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_xor(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_zjmp(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_ldi(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_sti(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_fork(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_lld(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_lldi(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_lfork(t_process *proc, t_champion *champion, t_arena *arena);
+void			cmd_aff(t_process *proc, t_champion *champion, t_arena *arena);
 
 /*
 **	ARENA
 */
 
 int				init_arena(t_arena *arena);
-void			next_cycle(t_arena *arena);
-void			check_deads(t_champion champions[MAX_PLAYERS]);
+void			play(t_arena *arena, t_options *options);
+int				check_deads(t_arena *arena);
+
 
 /*
 **	TOOLS

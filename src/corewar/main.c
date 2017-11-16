@@ -32,6 +32,7 @@ int main(int argc, char **argv)
 	 	print_champ(&arena.champions[i]);
 		i++;
 	 }
-	print_map_arena(&arena);
+	play(&arena, &options);
+	//print_map_arena(&arena);
 	return (0);
 }

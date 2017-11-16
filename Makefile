@@ -90,7 +90,13 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)print_champ.c \
 				  $(COREWARDIR)print_map_arena.c \
 				  $(COREWARDIR)new_process.c \
-				  $(COREWARDIR)add_process_to_champion.c
+				  $(COREWARDIR)add_process_to_champion.c \
+				  $(COREWARDIR)play.c \
+				  $(COREWARDIR)check_process.c \
+				  $(COREWARDIR)check_deads.c \
+				  $(COREWARDIR)exec_command.c \
+				  $(TOOLSDIR)op.c \
+				  $(COREWARDIR)check_opcode.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)
