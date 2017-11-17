@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:53:50 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/16 15:12:18 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/17 11:54:58 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 #include <stdio.h>
 
 extern t_op g_op_tab[17];
+
+/*
+** On verifie que le mnmemonique recupere en dbut d'instruction correspont
+** a l'un de ceux dans g_op_tab. Si c'est bon on ajoute l'OPCODE dans le maillon
+*/
 
 static int	mnm_compare(char *mnm_line, t_instruction **cursor)
 {
@@ -32,6 +37,14 @@ static int	mnm_compare(char *mnm_line, t_instruction **cursor)
 	}
 	return (0);
 }
+
+/*
+** - Pour parser le mnemonique on recupere la chaine de caratere en debut de ligne
+** (ligne qui a ete prealablement strimer et d'ou le nom de label a ete
+** supprimer)
+** - On comapare ensuite notre chaine de caractere avec la list de mnemonique
+** dans l'g_op_tap
+*/
 
 bool		parse_mnemonique(t_instruction **cursor, char **line)
 {

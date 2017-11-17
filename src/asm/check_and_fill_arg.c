@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:27:41 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/16 18:50:08 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/17 09:25:10 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ static bool	check_arg_type(char **arg, t_instruction **cursor)
 	return (false);
 }
 
+/*
+** On comapre les premiers caractere de chaque arguemnts trouve, pour savoir
+** de quels types d'arguemts il pourrait sagir
+*/
+
 bool		check_and_fill_arg(t_instruction **list_instr,
 			t_instruction **cursor, char **arg)
 {
@@ -81,10 +86,7 @@ bool		check_and_fill_arg(t_instruction **list_instr,
 				return (false);
 		}
 		else
-		{
-			printf("%s\n", arg[i]);
 			return (false);
-		}
 		i++;
 	}
 	if (!check_arg_type(arg, cursor))

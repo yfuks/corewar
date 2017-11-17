@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/16 18:03:47 by jthillar         ###   ########.fr        #
+#    Updated: 2017/11/17 08:51:49 by jthillar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME_COREWAR 	= corewar
 
 # COMPILATION
 CC				= clang
-FLAGS			= -g3
+FLAGS			= -Werror -Wextra -Wall -g3
 
 # DIRECTORYS
 SRCDIR			= src/
@@ -41,6 +41,7 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(ASMDIR)parse_mnemonique.c \
 				  $(ASMDIR)parse_arguments.c \
 				  $(ASMDIR)check_and_fill_arg.c \
+				  $(ASMDIR)ft_count_bytes.c \
 				  $(TOOLSDIR)ft_strrchr.c \
 				  $(TOOLSDIR)ft_strlen.c \
 				  $(TOOLSDIR)ft_itoa.c \

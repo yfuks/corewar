@@ -6,12 +6,17 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:56:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/16 15:10:36 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/17 11:45:37 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 #include "tools.h"
+
+/*
+** - On rempli la strucure header par le nom et on change la variable d'etat
+** car le nom a ete donne
+*/
 
 static void	fill_id_name(t_header *header, char *line, t_hstate *state)
 {
@@ -24,9 +29,13 @@ static void	fill_id_name(t_header *header, char *line, t_hstate *state)
 		if (!(check_namechar(line, ft_strlen(line) - 1)))
 			return ;
 		ft_strncpy(&(*header->prog_name), line, ft_strlen(line) - 1);
-		// printf("header->prog_name '%s'\n", header->prog_name);
 	}
 }
+
+/*
+** - On rempli la strucure header par le commentaire et on change la variable
+** d'etat car le commentaire a ete donne 
+*/
 
 static void	fill_id_com(t_header *header, char *line, t_hstate *state)
 {
@@ -41,6 +50,15 @@ static void	fill_id_com(t_header *header, char *line, t_hstate *state)
 		ft_strncpy(&(*header->comment), line, ft_strlen(line) - 1);
 	}
 }
+
+/*
+** - On enleve les SPACE et TAB au debut et fin de ligne
+** - On regarde si les premier caractere correspondent bien a .c et .n
+** - On compare si la chaine apres le . correspondent a "comment ou name"
+** en faisant attention au variable d'etat
+** - On enleve les SPACE et TAB au debut et fin de ligne
+** - On rempli la strucure header par le nom ou commentaire
+*/
 
 bool		parse_id(t_header *header, char *line, t_hstate *state)
 {
@@ -63,7 +81,6 @@ bool		parse_id(t_header *header, char *line, t_hstate *state)
 		else
 		{
 			line = ft_strtrim(ft_strsub(line, 5, ft_strlen(line)));
-			// printf("line '%s'\n", line);
 			fill_id_name(header, line, state);
 		}
 	}
