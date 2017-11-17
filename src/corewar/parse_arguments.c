@@ -51,8 +51,8 @@ int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options)
 		{
 			if (!parse_options(i, av, options))
 				return (print_usage(av[0]));
-			else if (options->dump != -1)
-					i += 1;
+			if (options->dump != -1)
+				i += 1;
 		}
 		else
 		{
@@ -61,7 +61,9 @@ int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options)
 			//print_champ(champion); // DEBUG
 			add_champion_in_arena(champion, arena);
 		}
-		i++;
+		i++;	
 	}
+	if (champion == NULL)
+		return(print_usage(av[0]));
 	return (1);
 }

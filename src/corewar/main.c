@@ -21,17 +21,17 @@ int main(int argc, char **argv)
 
 	options.dump = -1;
 	options.print = 0;
-	 i = 0;
+	i = 0;
 	ft_bzero(&arena, sizeof(arena));
 	if (!parse_arguments(argc, argv, &arena, &options))
 		return (1);
 	if (!init_arena(&arena))
 		return (1);
-	 while (arena.champions[i].prog_size)
-	 {
-	 	print_champ(&arena.champions[i]);
+	while (arena.champions[i].prog_size)
+	{
+		print_champ(&arena.champions[i]);
 		i++;
-	 }
+	}
 	play(&arena, &options);
 	//print_map_arena(&arena);
 	return (0);
