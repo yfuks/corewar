@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/17 11:38:51 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/17 12:13:16 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ static t_hstate	ft_zero_state(t_hstate *state)
 ** - on parse et reupere les labels
 */
 
-static bool 	parse_first_read(t_header *header, t_instruction **list_instr, int fd, t_hstate *state)
+static bool		parse_first_read(t_header *header, t_instruction **list_instr,
+	int fd, t_hstate *state)
 {
 	char			*line;
 	t_instruction	*cursor;
 	int				ret_gnl;
-	int 			nb_line;
+	int				nb_line;
 
 	nb_line = 0;
 	while ((ret_gnl = get_next_line(fd, &line)) == 1)
@@ -54,7 +55,7 @@ static bool 	parse_first_read(t_header *header, t_instruction **list_instr, int 
 		if (state->name < 1 || state->comment < 1)
 		{
 			if (!parse_id(header, line, state))
-			return (false);
+				return (false);
 		}
 		else
 		{
@@ -73,10 +74,10 @@ static bool 	parse_first_read(t_header *header, t_instruction **list_instr, int 
 ** - on parse et ajoute les donnes des instruction
 */
 
-static bool 	parse_second_read(t_instruction **list_instr, int fd)
+static bool		parse_second_read(t_instruction **list_instr, int fd)
 {
 	char			*line;
-	t_instruction 	*cursor;
+	t_instruction	*cursor;
 	int				ret_gnl;
 
 	cursor = *list_instr;
@@ -100,7 +101,8 @@ static bool 	parse_second_read(t_instruction **list_instr, int fd)
 ** On separe le parsing en deux pour les deux read
 */
 
-bool	parse(t_header *header, t_instruction **list_instr, int fd, char *filename)
+bool			parse(t_header *header, t_instruction **list_instr, int fd,
+	char *filename)
 {
 	t_hstate	state;
 

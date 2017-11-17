@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:06:16 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/17 11:51:18 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/17 12:17:16 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,20 @@
 ** - on ajoute le label dans le maillon
 */
 
-void	parse_label(t_instruction **list_instr, t_instruction *cursor,char *line)
+void	parse_label(t_instruction **list_instr, t_instruction *cursor,
+	char *line)
 {
 	int	state_label_char;
 	int	i;
 
 	i = -1;
 	state_label_char = 0;
-	while(line[++i])
+	while (line[++i])
 	{
 		if (line[i] == LABEL_CHAR)
 		{
 			state_label_char = 1;
-			break;
+			break ;
 		}
 	}
 	if (state_label_char == 0)

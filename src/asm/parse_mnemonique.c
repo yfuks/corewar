@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:53:50 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/17 11:54:58 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/17 12:16:32 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static int	mnm_compare(char *mnm_line, t_instruction **cursor)
 }
 
 /*
-** - Pour parser le mnemonique on recupere la chaine de caratere en debut de ligne
-** (ligne qui a ete prealablement strimer et d'ou le nom de label a ete
+** - Pour parser le mnemonique on recupere la chaine de caratere en debut de
+** ligne (ligne qui a ete prealablement strimer et d'ou le nom de label a ete
 ** supprimer)
 ** - On comapare ensuite notre chaine de caractere avec la list de mnemonique
 ** dans l'g_op_tap
@@ -65,6 +65,5 @@ bool		parse_mnemonique(t_instruction **cursor, char **line)
 		}
 		i++;
 	}
-	// printf("cursor->opcode : %d		line : '%s'\n", (*cursor)->opcode, *line);
 	return (true);
 }

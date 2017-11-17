@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:16 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/16 18:28:36 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/17 12:11:08 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-int     main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	int				fd;
 	t_header		*header;

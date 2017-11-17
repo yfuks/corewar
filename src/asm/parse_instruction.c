@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 13:13:19 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/17 10:15:24 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/17 12:13:50 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static bool	error_instruction(int i)
 bool		parse_instruction(t_instruction **list_instr, t_instruction *cursor,
 	char *line)
 {
-	// printf("list_instr : %zu\n", cursor->nb_line);
 	if (!(ft_strcmp((line = ft_strtrim(line)), "")))
 		return (true);
 	if (cursor->label != NULL)
