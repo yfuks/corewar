@@ -97,6 +97,8 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)exec_command.c \
 				  $(TOOLSDIR)op.c \
 				  $(COREWARDIR)check_opcode.c \
+				  $(COREWARDIR)cmd_sti.c \
+				  $(COREWARDIR)is_valid_param.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

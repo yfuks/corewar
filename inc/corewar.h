@@ -63,6 +63,7 @@ void			print_arena(t_arena *arena);
 void			check_process(t_arena *arena);
 int				check_opcode(t_process *proc, t_arena *arena);
 void			exec_command(t_process *proc, t_champion *champion, t_arena *arena);
+int				is_valid_param(int cmd_opcode, char encoding);
 
 void			cmd_live(t_process *proc, t_champion *champion, t_arena *arena);
 void			cmd_ld(t_process *proc, t_champion *champion, t_arena *arena);
@@ -88,7 +89,6 @@ void			cmd_aff(t_process *proc, t_champion *champion, t_arena *arena);
 int				init_arena(t_arena *arena);
 void			play(t_arena *arena, t_options *options);
 int				check_deads(t_arena *arena);
-
 
 /*
 **	TOOLS

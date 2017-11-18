@@ -13,32 +13,30 @@
 #include "tools.h"
 #include "corewar.h"
 
-// static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena) =
-// {
-// 	cmd_live,
-// 	cmd_ld,
-// 	cmd_st,
-// 	cmd_add,
-// 	cmd_sub,
-// 	cmd_and,
-// 	cmd_or,
-// 	cmd_xor,
-// 	cmd_zjmp,
-// 	cmd_ldi,
-// 	cmd_sti,
-// 	cmd_fork,
-// 	cmd_lld,
-// 	cmd_lldi,
-// 	cmd_lfork,
-// 	cmd_aff
-// };
-
-//static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena) = 
-//{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena) =
+{
+ 	0, //cmd_live,
+ 	0, //cmd_ld,
+ 	0, //cmd_st,
+ 	0, //cmd_add,
+ 	0, //cmd_sub,
+ 	0, //cmd_and,
+ 	0, //cmd_or,
+ 	0, //cmd_xor,
+ 	0, //cmd_zjmp,
+ 	0, //cmd_ldi,
+ 	cmd_sti,
+ 	0, //cmd_fork,
+ 	0, //cmd_lld,
+ 	0, //cmd_lldi,
+ 	0, //cmd_lfork,
+ 	0, //cmd_aff
+};
 
 void		exec_command(t_process *proc, t_champion *champion, t_arena *arena)
 {
 	int		opcode;
+	char  encoding;
 
 	(void)champion;
 	if (!(opcode = check_opcode(proc, arena)))
@@ -46,8 +44,11 @@ void		exec_command(t_process *proc, t_champion *champion, t_arena *arena)
 		proc->index += 1;
 		return ;
 	}
-	ft_putstr_fd("\nopcode: ", 1);
-	ft_putnbr_fd(opcode, 1);
-	ft_putstr_fd("\n", 1);
-	//func[opcode - 1](proc, champion, arena);
+	encoding = arena->arena[proc->index + 1];
+	if (!is_valid_param(opcode, encoding))
+	{
+		proc->index += 1;
+		return ;
+	}
+	func[opcode - 1](proc, champion, arena);
 }

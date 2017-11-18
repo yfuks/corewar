@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_opcode.c                                     :+:      :+:    :+:   */
+/*   cmd_sti.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/16 17:28:06 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/16 17:28:08 by jpascal          ###   ########.fr       */
+/*   Created: 2017/11/18 16:07:53 by yfuks             #+#    #+#             */
+/*   Updated: 2017/11/18 16:07:54 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-#include "tools.h"
 
-t_op op_tab[17];
 
-int			check_opcode(t_process *proc, t_arena *arena)
+
+void	   		cmd_sti(t_process *proc, t_champion *champion, t_arena *arena)
 {
-	int		i;
+  char  encoding;
 
-	i = 0;
-	while (op_tab[i].op_code != arena->arena[proc->index] && i < 17)
-		i++;
-	if (i >= 17)
-		return (0);
-	return (op_tab[i].op_code);
-
+  encoding = arena->arena[proc->index + 1];
+  (void)champion;
 }
