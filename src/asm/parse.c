@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/17 12:13:16 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/20 15:52:19 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,10 @@ static bool		parse_second_read(t_instruction **list_instr, int fd)
 	char			*line;
 	t_instruction	*cursor;
 	int				ret_gnl;
+	int 			cumul;
 
 	cursor = *list_instr;
+	cumul = 0;
 	while ((ret_gnl = get_next_line(fd, &line)) == 1)
 	{
 		if (cursor && cursor->start_instr == 0)
@@ -90,6 +92,8 @@ static bool		parse_second_read(t_instruction **list_instr, int fd)
 			check_commentchar(line);
 			if (!(parse_instruction(list_instr, cursor, line)))
 				return (false);
+			cursor->cumul_byte_size = cumul + cursor->instr_byte_size;
+			cumul = cursor->cumul_byte_size;
 			if (cursor && cursor->next)
 				cursor = cursor->next;
 		}

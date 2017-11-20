@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/17 11:21:33 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/20 15:27:10 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,10 @@ typedef struct				s_instruction
 	int						state; // a 1 si un seul argument
 	int						start_instr;
 	int						arg_type[3];
+	char					**arg;
+	int						arg_value[3];
 	int						instr_byte_size;
 	int						cumul_byte_size;
-	// char					reg[3];
-	// char					dir[3];
-	// char					ind[3];
-	int						value;
     size_t                  nb_line;
 	struct s_label          *instr_label;
     struct s_instruction	*next;
@@ -70,9 +68,11 @@ bool    check_double_label(t_instruction **list_instr, char *label);
 bool	parse_instruction(t_instruction **list_instr, t_instruction *cursor,char *line);
 bool	parse_mnemonique(t_instruction **cursor, char **line);
 bool	parse_arguments(t_instruction **list_instr, t_instruction **cursor, char **line);
-bool	check_and_fill_arg(t_instruction **list_instr, t_instruction **cursor, char **arg);
+bool	check_and_fill_arg(t_instruction **list_instr, t_instruction **cursor);
+
+bool 	fill_arg_value(t_instruction **cursor);
+
 void	ft_count_bytes(t_instruction **cursor);
-void 	ft_count_cumul(t_instruction **list_instr);
 
 bool	parse_one_dir(t_instruction *list_instr, char *line); // LIVE ZJMP FORK LFOR
 bool	parse_log_op(t_instruction *list_instr, char *line); // AND OR XOR

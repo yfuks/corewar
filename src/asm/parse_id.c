@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:56:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/17 11:45:37 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/20 14:12:54 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	fill_id_name(t_header *header, char *line, t_hstate *state)
 
 /*
 ** - On rempli la strucure header par le commentaire et on change la variable
-** d'etat car le commentaire a ete donne 
+** d'etat car le commentaire a ete donne
 */
 
 static void	fill_id_com(t_header *header, char *line, t_hstate *state)

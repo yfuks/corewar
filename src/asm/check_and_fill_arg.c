@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:27:41 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/17 09:25:10 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/20 16:02:01 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ static bool	check_arg_label(t_instruction **list_instr, char *arg)
 **bien a ce qui est donne dans op.c
 */
 
-static bool	check_arg_type(char **arg, t_instruction **cursor)
+static bool	check_arg_type(t_instruction **cursor)
 {
 	int i;
 	int good;
 
 	i = 0;
 	good = 0;
-	while (arg[i] && g_op_tab[(*cursor)->opcode - 1].args_types[i])
+	while ((*cursor)->arg[i] && g_op_tab[(*cursor)->opcode - 1].args_types[i])
 	{
 		if ((*cursor)->arg_type[i] &
 		g_op_tab[(*cursor)->opcode - 1].args_types[i])
@@ -68,28 +68,28 @@ static bool	check_arg_type(char **arg, t_instruction **cursor)
 */
 
 bool		check_and_fill_arg(t_instruction **list_instr,
-			t_instruction **cursor, char **arg)
+			t_instruction **cursor)
 {
 	int i;
 
 	i = 0;
-	while (arg[i])
+	while ((*cursor)->arg[i])
 	{
-		if (arg[i][0] == DIRECT_CHAR)
+		if ((*cursor)->arg[i][0] == DIRECT_CHAR)
 			(*cursor)->arg_type[i] = T_DIR;
-		else if (arg[i][0] == REG_CHAR)
+		else if ((*cursor)->arg[i][0] == REG_CHAR)
 			(*cursor)->arg_type[i] = T_REG;
-		else if (ft_isdigit(arg[i][0]) || arg[i][0] == LABEL_CHAR)
+		else if (ft_isdigit((*cursor)->arg[i][0]) || (*cursor)->arg[i][0] == LABEL_CHAR)
 		{
 			(*cursor)->arg_type[i] = T_IND;
-			if (!check_arg_label(list_instr, arg[i]))
+			if ((*cursor)->arg[i][0] == LABEL_CHAR && !check_arg_label(list_instr, (*cursor)->arg[i]))
 				return (false);
 		}
 		else
 			return (false);
 		i++;
 	}
-	if (!check_arg_type(arg, cursor))
+	if (!check_arg_type(cursor) || !fill_arg_value(cursor))
 		return (false);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 08:32:53 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/17 11:46:23 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/20 14:22:19 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,5 @@ void ft_count_bytes(t_instruction **cursor)
 				(*cursor)->instr_byte_size += 4;
 			i++;
 		}
-	}
-}
-
-void 	ft_count_cumul(t_instruction **list_instr)
-{
-	t_instruction 	*tmp;
-	int 			cumul;
-
-	cumul = 0;
-	tmp = *list_instr;
-	while (tmp && tmp->next)
-	{
-		cumul = tmp->cumul_byte_size;
-		tmp = tmp->next;
-		tmp->cumul_byte_size = cumul + tmp->instr_byte_size;
 	}
 }
