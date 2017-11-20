@@ -99,6 +99,13 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)check_opcode.c \
 				  $(COREWARDIR)cmd_sti.c \
 				  $(COREWARDIR)is_valid_param.c \
+				  $(COREWARDIR)next_index.c \
+				  $(TOOLSDIR)ctos.c \
+				  $(TOOLSDIR)ctoi.c \
+				  $(COREWARDIR)get_command_arguments.c \
+				  $(COREWARDIR)add_to_index.c \
+				  $(COREWARDIR)copy_int_to_arena.c \
+				  $(TOOLSDIR)ft_uctoa_base.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

@@ -33,7 +33,7 @@ static int	number_taken(int j, t_champion champions[MAX_PLAYERS])
 	i = 0;
 	while (champions[i].prog_size && i < MAX_PLAYERS)
 	{
-		if (champions[i].player_id == j)
+		if (champions[i].player_id == (unsigned int)j)
 			return (1);
 		i++;
 	}
@@ -51,7 +51,7 @@ static int 	check_valid_champions_id(t_arena *arena)
 		i++;
 	while (arena->champions[j].prog_size && i < MAX_PLAYERS)
 	{
-		if (arena->champions[j].player_id > i)
+		if (arena->champions[j].player_id > (unsigned int)i)
 			return (print_champion_number_not_valid(arena->champions[j]));
 		j++;
 	}
@@ -73,7 +73,7 @@ static int		init_champions_id(t_arena *arena)
 				j++;
 			arena->champions[i].player_id = j;
 		}
-		arena->champions[i].registers[0] = arena->champions[i].player_id;
+		arena->champions[i].registers[0] = (arena->champions[i].player_id * -1);
 		i++;
 	}
 	return (i);

@@ -38,17 +38,17 @@ void		exec_command(t_process *proc, t_champion *champion, t_arena *arena)
 	int		opcode;
 	char  encoding;
 
-	(void)champion;
 	if (!(opcode = check_opcode(proc, arena)))
 	{
-		proc->index += 1;
+		proc->index = next_index(proc->index);
 		return ;
 	}
-	encoding = arena->arena[proc->index + 1];
+	encoding = arena->arena[next_index(proc->index)];
 	if (!is_valid_param(opcode, encoding))
 	{
-		proc->index += 1;
+		proc->index = next_index(proc->index);
 		return ;
 	}
-	func[opcode - 1](proc, champion, arena);
+    if (func[opcode - 1])
+	   func[opcode - 1](proc, champion, arena);
 }

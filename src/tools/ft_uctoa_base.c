@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uitoa_base.c                                    :+:      :+:    :+:   */
+/*   ft_uctoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/20 16:50:22 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/20 16:50:39 by yfuks            ###   ########.fr       */
+/*   Created: 2017/11/20 16:49:01 by yfuks             #+#    #+#             */
+/*   Updated: 2017/11/20 16:49:05 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include <stdlib.h>
 
-static int			len_number(unsigned int nb, int base)
+static int			len_number(unsigned char nb, int base)
 {
 	int				len_nb;
 
@@ -31,7 +32,7 @@ static int			len_number(unsigned int nb, int base)
 	return(len_nb);
 }
 
-char				*ft_uitoa_base(unsigned int nb, int base)
+char				*ft_uctoa_base(unsigned char nb, int base)
 {
 	int				size;
 	char 			*ret;

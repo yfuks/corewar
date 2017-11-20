@@ -19,6 +19,9 @@ typedef struct	s_process
 {
 	int					index;
 	int					remaining_cycles;
+	char				REG[3];
+	int					DIR[3];
+	int					IND[3];
 	struct s_process	*next;
 }				t_process;
 
@@ -28,8 +31,8 @@ typedef struct	s_champion
 	char				*description;
 	char				code[CHAMP_MAX_SIZE + 1];
 	unsigned int		prog_size;
-	int					player_id;
-	int					registers[REG_NUMBER];
+	unsigned int		player_id;
+	unsigned int		registers[REG_NUMBER];
 	int					carry;
 	int					is_dead;
 	t_process			*process;
@@ -60,10 +63,13 @@ void			print_arena(t_arena *arena);
 **	BATTLE
 */
 
+int				next_index(int index);
+int        		add_to_index(int index, int nbr);
 void			check_process(t_arena *arena);
 int				check_opcode(t_process *proc, t_arena *arena);
 void			exec_command(t_process *proc, t_champion *champion, t_arena *arena);
 int				is_valid_param(int cmd_opcode, char encoding);
+void       		get_command_arguments(t_process *proc, t_arena *arena, int *index, int cmd);
 
 void			cmd_live(t_process *proc, t_champion *champion, t_arena *arena);
 void			cmd_ld(t_process *proc, t_champion *champion, t_arena *arena);
@@ -104,5 +110,6 @@ t_champion		*parse_file(char *filename);
 int				add_champion_in_arena(t_champion *champion, t_arena *arena);
 int				print_usage(char *executable_name);
 void			print_champ(t_champion *champion);
+void      		copy_int_to_arena(t_arena *arena, unsigned int value, int index);
 
 #endif

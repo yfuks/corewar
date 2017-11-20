@@ -20,11 +20,19 @@ void		ft_put_hex_fd(unsigned int n, int fd, int len)
 
 	if (len <= 2)
 	{
-		if (!(hexa = ft_uitoa_base(n, 16)))
+		if (!(hexa = ft_uctoa_base(n, 16)))
 			return ;
 	}
-	else if (!(hexa = ft_ustoa_base(n, 16)))
-		return ;
+	else if (len <= 4)
+	{
+		if (!(hexa = ft_ustoa_base(n, 16)))
+		   return ;
+	}
+	else
+	{
+		if (!(hexa = ft_uitoa_base(n, 16)))
+		   return ;
+	}
 	size = ft_strlen(hexa);
 	while (size < len)
 	{

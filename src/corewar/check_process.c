@@ -11,21 +11,21 @@
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "tools.h"
 
 static void	check_process_in_champion(t_arena *arena, t_champion *champion)
 {
-	t_process	**head;
+	t_process	*cursor;
 
-	head = &champion->process;
-	while (champion->process)
+	cursor = champion->process;
+	while (cursor != NULL)
 	{
-		if (champion->process->remaining_cycles == 0)
-			exec_command(champion->process, champion, arena);
+		if (cursor->remaining_cycles == 0)
+			exec_command(cursor, champion, arena);
 		else
-			champion->process->remaining_cycles--;
-		champion->process = champion->process->next;
+			cursor->remaining_cycles--;
+		cursor = cursor->next;
 	}
-	champion->process = *head;
 }
 
 void		check_process(t_arena *arena)
