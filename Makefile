@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/17 08:51:49 by jthillar         ###   ########.fr        #
+#    Updated: 2017/11/20 14:37:57 by alansiva         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(ASMDIR)parse_arguments.c \
 				  $(ASMDIR)check_and_fill_arg.c \
 				  $(ASMDIR)ft_count_bytes.c \
+				  $(ASMDIR)create_cor.c \
 				  $(TOOLSDIR)ft_strrchr.c \
 				  $(TOOLSDIR)ft_strlen.c \
 				  $(TOOLSDIR)ft_itoa.c \

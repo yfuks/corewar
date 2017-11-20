@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/17 11:21:33 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/20 16:21:15 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_instruction   *add_end_label(t_label *instr_label);
 ** CONVERSION ==================================================================
 */
 
-void	create_cor(t_instruction *list_instr, t_header *id);
+void	create_cor(t_instruction *list_instr, t_header *id, char *filename_s);
 
 void	fill_id_hex(t_header *id, int fd);
 
