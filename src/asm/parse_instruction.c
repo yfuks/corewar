@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 13:13:19 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/17 12:13:50 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/21 18:17:30 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,20 @@ static bool	error_instruction(int i)
 ** - On parse les arguments de l'instruction
 */
 
-bool		parse_instruction(t_instruction **list_instr, t_instruction *cursor,
-	char *line)
+bool		parse_instruction(t_instruction *cursor, char *line)
 {
 	if (!(ft_strcmp((line = ft_strtrim(line)), "")))
 		return (true);
 	if (cursor->label != NULL)
 		line = ft_strtrim(ft_strsub(line, ft_strlen(cursor->label) + 1,
 		ft_strlen(line)));
+
 	if (cursor->double_label != NULL)
 		line = ft_strtrim(ft_strsub(line, ft_strlen(cursor->double_label) + 1,
 		ft_strlen(line)));
 	if (!parse_mnemonique(&cursor, &line))
 		return (error_instruction(1));
-	if (!parse_arguments(list_instr, &cursor, &line))
+	if (!parse_arguments(&cursor, line))
 		return (false);
 	return (true);
 }

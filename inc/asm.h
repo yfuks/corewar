@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/21 14:13:55 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/21 18:20:49 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,12 @@ bool	check_labelschar(char *line); // verifie que les nom de label soit valide
 bool    check_double_label(t_instruction **list_instr, char *label);
 //void    get_label(t_instruction *list_instr, char *line);
 
-bool	parse_instruction(t_instruction **list_instr, t_instruction *cursor,char *line);
+bool	parse_instruction(t_instruction *cursor,char *line);
 bool	parse_mnemonique(t_instruction **cursor, char **line);
-bool	parse_arguments(t_instruction **list_instr, t_instruction **cursor, char **line);
-bool	check_and_fill_arg(t_instruction **list_instr, t_instruction **cursor);
+bool	parse_arguments(t_instruction **cursor, char *line);
+bool	check_and_fill_arg(t_instruction **cursor);
 
 bool 	fill_arg_value(t_instruction **list_instr, t_instruction **cursor);
-bool	fill_instr_label(t_instruction **list_instr, t_instruction **cursor, int i);
 
 void	ft_count_bytes(t_instruction **cursor);
 

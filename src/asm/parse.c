@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/21 15:36:08 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/21 18:17:24 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ static bool		parse_first_read(t_header *header, t_instruction **list_instr,
 	t_instruction	*cursor;
 	int				ret_gnl;
 	int				nb_line;
+	int 			cumul;
 
+	cumul = 0;
 	nb_line = 0;
 	while ((ret_gnl = get_next_line(fd, &line)) == 1)
 	{
@@ -61,11 +63,13 @@ static bool		parse_first_read(t_header *header, t_instruction **list_instr,
 		else
 		{
 			parse_label(list_instr, cursor, line);
-			if (!(parse_instruction(list_instr, cursor, line)))
+			if (!(parse_instruction(cursor, line)))
 				return (false);
-
+			cursor->cumul_byte_size = cumul + cursor->instr_byte_size;
+			cumul = cursor->cumul_byte_size;
 		}
 	}
+	header->prog_size = cumul + PROG_NAME_LENGTH + COMMENT_LENGTH;
 	return (true);
 }
 
@@ -76,16 +80,16 @@ static bool		parse_first_read(t_header *header, t_instruction **list_instr,
 ** - on suprime ce qui est a gauche du COMMENTCHAR s'il y en a un
 */
 
-static bool		parse_second_read(t_header *header, t_instruction **list_instr, int fd)
+static bool		parse_second_read(t_instruction **list_instr, int fd)
 {
 	char			*line;
 	t_instruction	*cursor;
 	int				ret_gnl;
-	int 			cumul;
+	// int 			cumul;
 	int i;
 
 	cursor = *list_instr;
-	cumul = 0;
+	// cumul = 0;
 	while ((ret_gnl = get_next_line(fd, &line)) == 1)
 	{
 		if (cursor && cursor->start_instr == 0)
@@ -93,21 +97,20 @@ static bool		parse_second_read(t_header *header, t_instruction **list_instr, int
 		else
 		{
 			check_commentchar(line);
-			cursor->cumul_byte_size = cumul + cursor->instr_byte_size;
+			// cursor->cumul_byte_size = cumul + cursor->instr_byte_size;
 			if(!(fill_arg_value(list_instr, &cursor)))
 				return (false);
-			// i = 0;
-			// while (cursor->arg[i])
-			// {
-			// 	printf("line : %zu -> %s,%d,%d size : %d - %d\n",cursor->nb_line, cursor->arg[i], cursor->arg_type[i], cursor->arg_value[i], cursor->instr_byte_size, cursor->cumul_byte_size);
-			// 	i++;
-			// }
-			cumul = cursor->cumul_byte_size;
+			i = 0;
+			while (cursor->arg[i])
+			{
+				printf("line : %zu -> %s,%d,%d size : %d - %d\n",cursor->nb_line, cursor->arg[i], cursor->arg_type[i], cursor->arg_value[i], cursor->instr_byte_size, cursor->cumul_byte_size);
+				i++;
+			}
+			// cumul = cursor->cumul_byte_size;
 			if (cursor && cursor->next)
 				cursor = cursor->next;
 		}
 	}
-	header->prog_size = cumul + PROG_NAME_LENGTH + COMMENT_LENGTH;
 	return (true);
 }
 
@@ -125,7 +128,7 @@ bool			parse(t_header *header, t_instruction **list_instr, int fd,
 		return (false);
 	if ((fd = open(filename, O_RDONLY)) == -1)
 		return (false);
-	if (!(parse_second_read(header, list_instr, fd)))
+	if (!(parse_second_read(list_instr, fd)))
 		return (false);
 	return (true);
 }

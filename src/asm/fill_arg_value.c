@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:46:50 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/21 14:43:45 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/21 19:07:37 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,30 @@ bool	error_fill_arg(int n, t_instruction **cursor)
 		ft_putstr_fd(" Error arg type\n", 2);
 	if (n == 2)
 		ft_putstr_fd(" Error : reg value should be under 17\n", 2);
+	if (n == 3)
+		ft_putstr_fd(" -> label in instruction does not exists\n", 2);
+	return (false);
+}
+
+/*
+** verifie si les labels dans les arguements correspondent
+** aux label des instructions
+*/
+
+static bool	check_arg_label(t_instruction **list_instr, t_instruction **cursor, int i)
+{
+	t_instruction *tmp;
+
+	tmp = *list_instr;
+	while (tmp && tmp->next)
+	{
+		if (tmp->label != NULL && ft_strcmp((*cursor)->arg[i] + 2, tmp->label) == 0)
+		{
+			(*cursor)->arg_value[i] =  (tmp->cumul_byte_size - tmp->instr_byte_size) - ((*cursor)->cumul_byte_size - (*cursor)->instr_byte_size);
+			return (true);
+		}
+		tmp = tmp->next;
+	}
 	return (false);
 }
 
@@ -41,11 +65,12 @@ bool	dir_value(t_instruction **list_instr, t_instruction **cursor, int i)
 {
 	int j;
 
-	// ft_putnbr_fd((*cursor)->instr_label[i], 1);
-	if ((*cursor)->instr_label[i] == 1)
+	if ((*cursor)->arg[i][1] && (*cursor)->arg[i][1] == LABEL_CHAR)
 	{
-		if(!(fill_instr_label(list_instr, cursor, i)))
-			return (error_fill_arg(1, cursor));
+		if (!(check_arg_label(list_instr, cursor, i)))
+			return(error_fill_arg(3, cursor));
+		// if (!(fill_instr_label(list_instr, cursor, i)))
+		// 	return (error_fill_arg(1, cursor));
 	}
 	else
 	{

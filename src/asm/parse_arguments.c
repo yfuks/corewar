@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 12:02:01 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/21 14:17:33 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/21 18:17:36 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,12 @@ bool	error_arg(int i, t_instruction **cursor)
 ** - On compte le cumul total d'octets des instruction;
 */
 
-bool	parse_arguments(t_instruction **list_instr, t_instruction **cursor,
-	char **line)
+bool	parse_arguments(t_instruction **cursor,	char *line)
 {
 	int		nb_arg;
 
 	nb_arg = 0;
-	(*cursor)->arg = ft_strsplit(*line, SEPARATOR_CHAR);
+	(*cursor)->arg = ft_strsplit(line, SEPARATOR_CHAR);
 	while ((*cursor)->arg[nb_arg])
 	{
 		(*cursor)->arg[nb_arg] = ft_strtrim((*cursor)->arg[nb_arg]);
@@ -50,8 +49,8 @@ bool	parse_arguments(t_instruction **list_instr, t_instruction **cursor,
 	}
 	if (nb_arg != g_op_tab[(*cursor)->opcode - 1].nb_arg)
 		return (error_arg(1, cursor));
-	if (!(check_and_fill_arg(list_instr, cursor)))
-		return (error_arg(2, cursor));
+	if (!(check_and_fill_arg(cursor)))
+		return (false);
 	ft_count_bytes(cursor);
 	return (true);
 }

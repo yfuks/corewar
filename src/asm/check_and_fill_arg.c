@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:27:41 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/21 14:35:35 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/21 18:17:40 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,12 @@
 
 extern t_op g_op_tab[17];
 
-/*
-**verifie si les labels dans les arguements correspondent
-**aux label des instructions
-*/
-
-static bool	check_arg_label(t_instruction **list_instr, char *arg)
+static bool	error_lab_instr(t_instruction **cursor, int n)
 {
-	t_instruction *tmp;
-
-	tmp = *list_instr;
-	arg = ft_strsub(arg, 1, ft_strlen(arg));
-	while (tmp && tmp->next)
-	{
-		if (tmp->label != NULL && ft_strcmp(arg, tmp->label) == 0)
-			return (true);
-		tmp = tmp->next;
-	}
+	ft_putstr_fd("line:", 2);
+	ft_putnbr_fd((*cursor)->nb_line, 2);
+	if (n == 1)
+		ft_putstr_fd(" -> an argument is not good\n", 2);
 	return (false);
 }
 
@@ -67,8 +56,7 @@ static bool	check_arg_type(t_instruction **cursor)
 ** de quels types d'arguemts il pourrait sagir
 */
 
-bool		check_and_fill_arg(t_instruction **list_instr,
-			t_instruction **cursor)
+bool		check_and_fill_arg(t_instruction **cursor)
 {
 	int i;
 
@@ -80,16 +68,9 @@ bool		check_and_fill_arg(t_instruction **list_instr,
 		else if ((*cursor)->arg[i][0] == REG_CHAR)
 			(*cursor)->arg_type[i] = T_REG;
 		else if (ft_isdigit((*cursor)->arg[i][0]) || (*cursor)->arg[i][0] == LABEL_CHAR)
-		{
 			(*cursor)->arg_type[i] = T_IND;
-			if ((*cursor)->arg[i][0] == LABEL_CHAR)
-			{
-				if (!check_arg_label(list_instr, (*cursor)->arg[i]))
-					return (false);
-			}
-		}
 		else
-			return (false);
+			return (error_lab_instr(cursor, 1));
 		i++;
 	}
 	if (!check_arg_type(cursor)) // || !fill_arg_value(cursor))

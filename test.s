@@ -1,7 +1,7 @@
-.name "salut"
-.comment "hello"
+.name "zork"
+.comment "just a basic living prog"
 
-l2: sti r1,%2,%0
-	and r1,%0,r1
+sti r1,%:live,%1
+and r1,%0,r1
 live: live %1
-zjmp %2
+zjmp %:live
