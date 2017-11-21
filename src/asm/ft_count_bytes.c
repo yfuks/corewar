@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 08:32:53 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/20 14:22:19 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/21 14:17:12 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 - Direct = 2 ou 4 octets
 */
 
-void ft_count_bytes(t_instruction **cursor)
+void	ft_count_bytes(t_instruction **cursor)
 {
 	int i;
 

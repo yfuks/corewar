@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:27:41 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/20 16:02:01 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/21 11:41:07 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,19 @@ bool		check_and_fill_arg(t_instruction **list_instr,
 		else if (ft_isdigit((*cursor)->arg[i][0]) || (*cursor)->arg[i][0] == LABEL_CHAR)
 		{
 			(*cursor)->arg_type[i] = T_IND;
-			if ((*cursor)->arg[i][0] == LABEL_CHAR && !check_arg_label(list_instr, (*cursor)->arg[i]))
-				return (false);
+			if ((*cursor)->arg[i][0] == LABEL_CHAR)
+			{
+				if (!check_arg_label(list_instr, (*cursor)->arg[i]))
+					return (false);
+				else
+					(*cursor)->instr_label[i] = 1;
+			}
 		}
 		else
 			return (false);
 		i++;
 	}
-	if (!check_arg_type(cursor) || !fill_arg_value(cursor))
+	if (!check_arg_type(cursor)) // || !fill_arg_value(cursor))
 		return (false);
 	return (true);
 }

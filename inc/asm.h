@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/20 15:27:10 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/21 14:13:55 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@ typedef struct				s_hstate
 	int						comment;
 }							t_hstate;
 
-typedef struct              s_label
-{
-    struct s_instruction    *label;
-    struct s_label          *next;
-}                           t_label;
-
 typedef struct				s_instruction
 {
 	char					*label; // 1er read
@@ -42,11 +36,11 @@ typedef struct				s_instruction
 	int						arg_type[3];
 	char					**arg;
 	int						arg_value[3];
+	int 					instr_label[3];
 	int						instr_byte_size;
 	int						cumul_byte_size;
-    size_t                  nb_line;
-	struct s_label          *instr_label;
-    struct s_instruction	*next;
+	size_t                  nb_line;
+	struct s_instruction	*next;
 }							t_instruction;
 
 
@@ -70,7 +64,8 @@ bool	parse_mnemonique(t_instruction **cursor, char **line);
 bool	parse_arguments(t_instruction **list_instr, t_instruction **cursor, char **line);
 bool	check_and_fill_arg(t_instruction **list_instr, t_instruction **cursor);
 
-bool 	fill_arg_value(t_instruction **cursor);
+bool 	fill_arg_value(t_instruction **list_instr, t_instruction **cursor);
+bool	fill_instr_label(t_instruction **list_instr, t_instruction **cursor, int i);
 
 void	ft_count_bytes(t_instruction **cursor);
 
@@ -91,7 +86,6 @@ bool	parse_sti(t_instruction *list_instr, char *line); // STI
 */
 
 t_instruction	*add_end_instruction(t_instruction **list_instr);
-t_instruction   *add_end_label(t_label *instr_label);
 
 /*
 ** CONVERSION ==================================================================

@@ -1,15 +1,7 @@
-.comment "hello"
-	  .name "salut"
+.name "zork"
+.comment "just a basic living prog"
 
-
-firstlab: live %1
-and  12, r1,r3
-live %1
-code:       live %42        # 5
-sti	r10,%1,%12                # 6
-zjmp %-200                      # 3
-live %42                        # 5
-sti  r5,%1,r14                 # 6
-zjmp %-200                      # 3
-live %42                        # 5
-sti  r15,%0,r14                 # 6
+l2: sti r1,%2,%0
+	and r1,%0,r1
+live: live %1
+zjmp %2

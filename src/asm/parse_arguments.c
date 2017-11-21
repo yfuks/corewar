@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 12:02:01 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/20 15:55:37 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/21 14:17:33 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ bool	parse_arguments(t_instruction **list_instr, t_instruction **cursor,
 	char **line)
 {
 	int		nb_arg;
-	int i  = 0;
 
 	nb_arg = 0;
 	(*cursor)->arg = ft_strsplit(*line, SEPARATOR_CHAR);
@@ -53,11 +52,6 @@ bool	parse_arguments(t_instruction **list_instr, t_instruction **cursor,
 		return (error_arg(1, cursor));
 	if (!(check_and_fill_arg(list_instr, cursor)))
 		return (error_arg(2, cursor));
-	while (i < nb_arg)
-	{
-		printf("%s,%d,%d\n", (*cursor)->arg[i], (*cursor)->arg_type[i], (*cursor)->arg_value[i]);
-		i++;
-	}
 	ft_count_bytes(cursor);
 	return (true);
 }
