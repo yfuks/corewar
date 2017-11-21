@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:27:41 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/21 11:41:07 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/21 14:35:35 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ bool		check_and_fill_arg(t_instruction **list_instr,
 			{
 				if (!check_arg_label(list_instr, (*cursor)->arg[i]))
 					return (false);
-				else
-					(*cursor)->instr_label[i] = 1;
 			}
 		}
 		else

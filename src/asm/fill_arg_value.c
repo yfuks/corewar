@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:46:50 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/21 14:13:18 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/21 14:43:45 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ bool	dir_value(t_instruction **list_instr, t_instruction **cursor, int i)
 {
 	int j;
 
+	// ft_putnbr_fd((*cursor)->instr_label[i], 1);
 	if ((*cursor)->instr_label[i] == 1)
 	{
 		if(!(fill_instr_label(list_instr, cursor, i)))
