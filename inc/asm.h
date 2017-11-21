@@ -91,7 +91,7 @@ t_instruction	*add_end_instruction(t_instruction **list_instr);
 ** CONVERSION ==================================================================
 */
 
-void	create_cor(t_instruction *list_instr, t_header *id);
+void	create_cor(t_instruction *list_instr, t_header *id, char *filename_s);
 
 void	fill_id_hex(t_header *id, int fd);
 

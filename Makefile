@@ -44,6 +44,7 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(ASMDIR)fill_arg_value.c \
 				  $(ASMDIR)fill_instr_label.c \
 				  $(ASMDIR)ft_count_bytes.c \
+				  $(ASMDIR)create_cor.c \
 				  $(TOOLSDIR)ft_strrchr.c \
 				  $(TOOLSDIR)ft_strlen.c \
 				  $(TOOLSDIR)ft_itoa.c \

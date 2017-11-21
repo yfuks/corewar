@@ -31,9 +31,8 @@ int	main(int ac, char **av)
 		return (1);
 	if (!parse(header, &list_instr, fd, av[1]))
 		return (1);
-	exit(1);
 	if (close(fd) == -1)
 		return (1);
-	create_cor(list_instr, header);
+	create_cor(list_instr, header, av[1]);
 	return (0);
 }
