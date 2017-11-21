@@ -1,5 +1,5 @@
-.comment "hello"
 	  .name "salut"
+.comment "hello"
 
 
 firstlab: 	live %1
