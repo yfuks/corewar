@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/21 14:43:07 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/21 15:36:08 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static bool		parse_second_read(t_header *header, t_instruction **list_instr, int
 	t_instruction	*cursor;
 	int				ret_gnl;
 	int 			cumul;
-	// int i;
+	int i;
 
 	cursor = *list_instr;
 	cumul = 0;
