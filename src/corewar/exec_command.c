@@ -17,7 +17,7 @@ t_op op_tab[17];
 
 static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena) =
 {
- 	0, //cmd_live,
+ 	cmd_live,
  	0, //cmd_ld,
  	0, //cmd_st,
  	0, //cmd_add,
@@ -52,11 +52,6 @@ void		exec_command(t_process *proc, t_champion *champion, t_arena *arena, int op
 		return ;
 	}
     if (func[opcode - 1])
-    {
-        ft_putstr_fd("Cycle: ", STD_IN);
-        ft_putnbr_fd(arena->current_cycle, STD_IN);
-        ft_putstr_fd("\n", STD_IN);
         func[opcode - 1](proc, champion, arena);
-    }
     proc->remaining_cycles = 1;
 }

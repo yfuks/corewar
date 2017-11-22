@@ -26,7 +26,8 @@ void        get_command_arguments(t_process *proc, t_arena *arena, int *index, i
     char  encoding;
     int   size_direct = 2;
 
-    size_direct = (cmd == 0 || cmd == 1 || cmd == 5 || cmd == 6 || cmd == 7 || cmd == 12) ? 4 : 2;
+    if (cmd == 0 || cmd == 1 || cmd == 5 || cmd == 6 || cmd == 7 || cmd == 12)
+        size_direct = 4;
     i = 0;
     encoding = arena->arena[*index];
     ft_bzero(proc->args, sizeof(int) * 4);
@@ -44,7 +45,10 @@ void        get_command_arguments(t_process *proc, t_arena *arena, int *index, i
         else if (tmp & T_DIR)
         {
           add_args_in_process(arena, index, size_direct, integer);
-          proc->DIR[i] = ctos(integer);
+          if (size_direct > 2)
+            proc->DIR[i] = ctoi(integer);
+          else
+            proc->DIR[i] = ctos(integer);
           proc->args[i] = T_DIR;
         }
         else if (tmp & T_IND)

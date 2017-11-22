@@ -109,6 +109,7 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)split_int_in_char.c \
 				  $(TOOLSDIR)ft_putendl_fd.c \
 				  $(COREWARDIR)cmd_and.c \
+				  $(COREWARDIR)cmd_live.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

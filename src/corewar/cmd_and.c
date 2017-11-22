@@ -46,7 +46,7 @@ void	   		cmd_and(t_process *proc, t_champion *champion, t_arena *arena)
         i++;
     }
     print_and(champion->player_id, args[0], args[1], proc->REG[2]);
-    champion->registers[args[2] - 1] = args[0] & args[1];
+    champion->registers[proc->REG[2] - 1] = (args[0] & args[1]);
     if (args[0] & args[1])
         champion->carry = 1;
     proc->index = index;
