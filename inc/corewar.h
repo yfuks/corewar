@@ -19,6 +19,8 @@ typedef struct	s_process
 {
 	int					index;
 	int					remaining_cycles;
+	char				waiting;
+	int					args[4];
 	char				REG[3];
 	int					DIR[3];
 	int					IND[3];
@@ -32,7 +34,7 @@ typedef struct	s_champion
 	char				code[CHAMP_MAX_SIZE + 1];
 	unsigned int		prog_size;
 	unsigned int		player_id;
-	unsigned int		registers[REG_NUMBER];
+	int					registers[REG_NUMBER];
 	int					carry;
 	int					is_dead;
 	t_process			*process;
@@ -43,6 +45,7 @@ typedef struct	s_arena
 	char				arena[MEM_SIZE];
 	int					current_cycle;
 	int					lives[MAX_PLAYERS];
+	int					nb_champs;
 	t_champion			champions[MAX_PLAYERS];
 }				t_arena;
 
@@ -67,7 +70,7 @@ int				next_index(int index);
 int        		add_to_index(int index, int nbr);
 void			check_process(t_arena *arena);
 int				check_opcode(t_process *proc, t_arena *arena);
-void			exec_command(t_process *proc, t_champion *champion, t_arena *arena);
+void			exec_command(t_process *proc, t_champion *champion, t_arena *arena, int opcode);
 int				is_valid_param(int cmd_opcode, char encoding);
 void       		get_command_arguments(t_process *proc, t_arena *arena, int *index, int cmd);
 

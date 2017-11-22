@@ -106,6 +106,9 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)add_to_index.c \
 				  $(COREWARDIR)copy_int_to_arena.c \
 				  $(TOOLSDIR)ft_uctoa_base.c \
+				  $(TOOLSDIR)split_int_in_char.c \
+				  $(TOOLSDIR)ft_putendl_fd.c \
+				  $(COREWARDIR)cmd_and.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

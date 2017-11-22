@@ -13,6 +13,8 @@
 #ifndef TOOLS_H
 # define TOOLS_H
 # define BUFF_SIZE 1
+# define STD_IN 1
+# define STD_ERR 2
 # include <unistd.h>
 # include <stdlib.h>
 
@@ -27,6 +29,7 @@ char			**ft_split_t_sp(const char *s, char c, char d);
 char			*ft_strtrim(const char *s);
 int				ft_strlen(const char *s);
 void			ft_putstr_fd(const char *s, int fd);
+void			ft_putendl_fd(const char *s, int fd);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_isdigit(char c);
 int				ft_isspace(char c);
@@ -38,6 +41,7 @@ char			*ft_itoa_base(int nb, int base);
 char			*ft_uctoa_base(unsigned char nb, int base);
 char			*ft_ustoa_base(unsigned short nb, int base);
 char			*ft_uitoa_base(unsigned int nb, int base);
+void            split_int_in_char(char integer[4], unsigned int value);
 int				get_next_line(const int fd, char **line);
 int				ft_strequ(char *s1, char *s2);
 void   			*ft_memalloc(size_t size);

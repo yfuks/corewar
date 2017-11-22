@@ -27,12 +27,13 @@ int main(int argc, char **argv)
 		return (1);
 	if (!init_arena(&arena))
 		return (1);
+	ft_putstr_fd("Introducing contestants...\n", STD_IN);
 	while (arena.champions[i].prog_size)
 	{
 		print_champ(&arena.champions[i]);
 		i++;
 	}
+	arena.nb_champs = i;
 	play(&arena, &options);
-	//print_map_arena(&arena);
 	return (0);
 }

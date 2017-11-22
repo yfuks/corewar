@@ -13,6 +13,8 @@
 #include "tools.h"
 #include "corewar.h"
 
+t_op op_tab[17];
+
 static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena) =
 {
  	0, //cmd_live,
@@ -20,7 +22,7 @@ static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena) =
  	0, //cmd_st,
  	0, //cmd_add,
  	0, //cmd_sub,
- 	0, //cmd_and,
+ 	cmd_and,
  	0, //cmd_or,
  	0, //cmd_xor,
  	0, //cmd_zjmp,
@@ -33,16 +35,16 @@ static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena) =
  	0, //cmd_aff
 };
 
-void		exec_command(t_process *proc, t_champion *champion, t_arena *arena)
+void		exec_command(t_process *proc, t_champion *champion, t_arena *arena, int opcode)
 {
-	int		opcode;
-	char  encoding;
+	//int        next_command_opcode;
+	char       encoding;
 
-	if (!(opcode = check_opcode(proc, arena)))
+	/*if (!(opcode = check_opcode(proc, arena)))
 	{
 		proc->index = next_index(proc->index);
 		return ;
-	}
+	}*/
 	encoding = arena->arena[next_index(proc->index)];
 	if (!is_valid_param(opcode, encoding))
 	{
@@ -50,5 +52,11 @@ void		exec_command(t_process *proc, t_champion *champion, t_arena *arena)
 		return ;
 	}
     if (func[opcode - 1])
-	   func[opcode - 1](proc, champion, arena);
+    {
+        ft_putstr_fd("Cycle: ", STD_IN);
+        ft_putnbr_fd(arena->current_cycle, STD_IN);
+        ft_putstr_fd("\n", STD_IN);
+        func[opcode - 1](proc, champion, arena);
+    }
+    proc->remaining_cycles = 1;
 }

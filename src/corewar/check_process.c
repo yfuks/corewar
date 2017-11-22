@@ -13,17 +13,25 @@
 #include "corewar.h"
 #include "tools.h"
 
+t_op op_tab[17];
+
 static void	check_process_in_champion(t_arena *arena, t_champion *champion)
 {
 	t_process	*cursor;
+	int			opcode;
 
 	cursor = champion->process;
 	while (cursor != NULL)
 	{
-		if (cursor->remaining_cycles == 0)
-			exec_command(cursor, champion, arena);
+		if (!(opcode = check_opcode(cursor, arena)))
+		{
+			cursor->index = next_index(cursor->index);
+			cursor->remaining_cycles = 1;
+		}
+		else if (cursor->remaining_cycles == op_tab[opcode - 1].nb_cycles)
+			exec_command(cursor, champion, arena, opcode);
 		else
-			cursor->remaining_cycles--;
+			cursor->remaining_cycles++;
 		cursor = cursor->next;
 	}
 }
@@ -32,10 +40,10 @@ void		check_process(t_arena *arena)
 {
 	int		i;
 
-	i = 0;
-	while (arena->champions[i].prog_size && i < MAX_PLAYERS)
+	i = arena->nb_champs;
+	while (i >= 0)
 	{
 		check_process_in_champion(arena, &arena->champions[i]);
-		i++;
+		i--;
 	}
 }
