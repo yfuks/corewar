@@ -14,7 +14,7 @@ static void     print_live(int champion_number, int value)
     ft_putstr_fd("\n", STD_IN);
 }
 
-void	   		cmd_live(t_process *proc, t_champion *champion, t_arena *arena)
+void	   		cmd_live(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
 	int		index;
 	char	integer[4];
@@ -31,7 +31,8 @@ void	   		cmd_live(t_process *proc, t_champion *champion, t_arena *arena)
 		count++;
 	}
 	player_nb = ctoi(integer);
-	print_live(champion->player_id, player_nb);
+	if (opts->verbose & SHOW_OPERATIONS)
+		print_live(champion->player_id, player_nb);
 	if (player_nb < arena->nb_champs && player_nb > 0)
 	{
 		arena->lives[player_nb - 1] += 1;

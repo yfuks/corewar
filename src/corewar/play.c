@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:18:33 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/23 13:53:11 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/23 15:43:14 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,14 @@ static int		next_cycle(t_arena *arena, int cycle_to_die, t_options *options)
 			print_map_arena(arena);
 			return (0);
 		}
-		check_process(arena);
+		check_process(arena, options);
 		arena->current_cycle += 1;
-		ft_putstr_fd("It is now cycle ", STD_IN);
-		ft_putnbr_fd(arena->current_cycle, STD_IN);
-		ft_putstr_fd("\n", STD_IN);
+		if (options->verbose & SHOW_CYCLES)
+		{
+			ft_putstr_fd("It is now cycle ", STD_IN);
+			ft_putnbr_fd(arena->current_cycle, STD_IN);
+			ft_putstr_fd("\n", STD_IN);
+		}
 		cycle--;
 	}
 	return (1);

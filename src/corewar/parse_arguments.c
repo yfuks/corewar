@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 16:44:53 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/13 18:34:44 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/23 15:33:23 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 static char *opts[] = {
 	"-dump",
 	"-p",
+	"-v",
 	0
 };
 
@@ -34,7 +35,6 @@ static int		is_options(int index, char **av)
 	return (0);
 }
 
-
 int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options)
 {
 	int 		i;
@@ -49,10 +49,8 @@ int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options)
 	{
 		if (is_options(i, av))
 		{
-			if (!parse_options(i, av, options))
+			if (!parse_options(&i, av, options))
 				return (print_usage(av[0]));
-			if (options->dump != -1)
-				i += 1;
 		}
 		else
 		{

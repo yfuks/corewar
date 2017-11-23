@@ -18,7 +18,7 @@ static void     print_and(int champion_number, int arg1, int arg2, int reg)
     ft_putstr_fd("\n", STD_IN);
 }
 
-void	   		cmd_and(t_process *proc, t_champion *champion, t_arena *arena)
+void	   		cmd_and(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
     int   index;
     int   i;
@@ -45,7 +45,8 @@ void	   		cmd_and(t_process *proc, t_champion *champion, t_arena *arena)
             args[i] = proc->IND[i];
         i++;
     }
-    print_and(champion->player_id, args[0], args[1], proc->REG[2]);
+	if (opts->verbose & SHOW_OPERATIONS)
+		print_and(champion->player_id, args[0], args[1], proc->REG[2]);
     champion->registers[proc->REG[2] - 1] = (args[0] & args[1]);
     if (args[0] & args[1])
         champion->carry = 1;
