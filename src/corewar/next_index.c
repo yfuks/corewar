@@ -18,3 +18,10 @@ int     next_index(int index)
         return (0);
     return (index + 1);
 }
+
+int     prev_index(int index)
+{
+    if (index == 0)
+        return (0);
+    return (index - 1);
+}

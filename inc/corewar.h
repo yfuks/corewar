@@ -73,6 +73,7 @@ void			print_arena(t_arena *arena);
 */
 
 int				next_index(int index);
+int    			prev_index(int index);
 int        		add_to_index(int index, int nbr);
 void			check_process(t_arena *arena, t_options *opts);
 int				check_opcode(t_process *proc, t_arena *arena);
