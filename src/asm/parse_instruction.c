@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 13:13:19 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/23 14:08:31 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/23 16:11:23 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@
 #include <unistd.h>
 #include <stdio.h>
 
-static bool	error_instruction(int i)
+static bool	error_instruction(t_instruction *cursor)
 {
-	if (i == 1)
-		ft_putstr_fd("Error : wrong mnemonique\n", 2);
-	if (i == 2)
-		ft_putstr_fd("Error : wrong arguments\n", 2);
+	ft_putstr_fd("line : ", 2);
+	ft_putnbr_fd(cursor->nb_line, 2);
+	ft_putstr_fd(" -> wrong mnemonique\n", 2);
 	return (false);
 }
 
@@ -49,7 +48,7 @@ bool		parse_instruction(t_instruction *cursor, char *line)
 		line = ft_strtrim(ft_strsub(line, ft_strlen(cursor->double_label) + 1,
 		ft_strlen(line)));
 	if (!parse_mnemonique(&cursor, &line))
-		return (error_instruction(1));
+		return (error_instruction(cursor));
 	if (!parse_arguments(&cursor, line))
 		return (false);
 	return (true);

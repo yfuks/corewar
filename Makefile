@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/21 18:20:37 by jthillar         ###   ########.fr        #
+#    Updated: 2017/11/23 16:39:05 by jthillar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ TOOLSDIR		= $(SRCDIR)tools/
 
 # FILES
 SRCSASM			= $(ASMDIR)main.c \
+				  $(ASMDIR)fill_arg_value_error.c \
 				  $(ASMDIR)error_stdin.c \
 				  $(ASMDIR)parse.c \
 				  $(ASMDIR)parse_id.c \

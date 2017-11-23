@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:06:16 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/21 10:08:20 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/23 15:51:07 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@
 ** - on ajoute le label dans le maillon
 */
 
-void	parse_label(t_instruction **list_instr, t_instruction *cursor,
-	char *line)
+static int	s_label_char(char *line)
 {
 	int	state_label_char;
 	int	i;
@@ -39,10 +38,20 @@ void	parse_label(t_instruction **list_instr, t_instruction *cursor,
 		if (line[i] == LABEL_CHAR)
 		{
 			state_label_char = 1;
-			break ;
+			return (i);
 		}
 	}
 	if (state_label_char == 0)
+		return (0);
+	return (0);
+}
+
+void		parse_label(t_instruction **list_instr, t_instruction *cursor,
+	char *line)
+{
+	int	i;
+
+	if ((i = s_label_char(line)) == 0)
 		return ;
 	else
 	{
@@ -51,15 +60,14 @@ void	parse_label(t_instruction **list_instr, t_instruction *cursor,
 			return ;
 		else
 		{
-			line = ft_strtrim(ft_strsub(line, 0, i));
-			if (!check_labelschar(line))
+			if (!check_labelschar(line = ft_strtrim(ft_strsub(line, 0, i))))
 				return ;
 			if (!check_double_label(list_instr, line))
 			{
 				if (!(cursor->double_label = ft_strnew(ft_strlen(line))))
 					return ;
 				cursor->double_label = ft_strcpy(cursor->double_label, line);
-					return ;
+				return ;
 			}
 			if (!(cursor->label = ft_strnew(ft_strlen(line))))
 				return ;

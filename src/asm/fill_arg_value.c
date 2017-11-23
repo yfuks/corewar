@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:46:50 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/23 11:45:11 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/23 16:39:38 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,13 @@
 #include <unistd.h>
 #include <stdio.h>
 
-bool	error_fill_arg(int n, t_instruction **cursor)
-{
-	ft_putstr_fd("line:", 2);
-	ft_putnbr_fd((*cursor)->nb_line, 2);
-	if (n == 1)
-		ft_putstr_fd(" Error arg type\n", 2);
-	if (n == 2)
-		ft_putstr_fd(" Error : reg value should be under 17\n", 2);
-	if (n == 3)
-		ft_putstr_fd(" -> label in instruction does not exists\n", 2);
-	return (false);
-}
-
 /*
 ** verifie si les labels dans les arguements correspondent
 ** aux label des instructions
 */
 
-static bool	check_arg_label(t_instruction **list_instr, t_instruction **cursor, int i)
+static bool	check_arg_label(t_instruction **list_instr,
+t_instruction **cursor, int i, int n)
 {
 	t_instruction *tmp;
 
@@ -42,7 +30,7 @@ static bool	check_arg_label(t_instruction **list_instr, t_instruction **cursor, 
 	while (tmp && tmp->next)
 	{
 		if (tmp->label != NULL &&
-		ft_strcmp((*cursor)->arg[i] + 2, tmp->label) == 0)
+		ft_strcmp((*cursor)->arg[i] + n, tmp->label) == 0)
 		{
 			(*cursor)->arg_value[i] = (tmp->cumul_byte_size -
 			tmp->instr_byte_size) -
@@ -54,7 +42,7 @@ static bool	check_arg_label(t_instruction **list_instr, t_instruction **cursor, 
 	return (false);
 }
 
-bool	reg_value(t_instruction **cursor, int i)
+static bool	reg_value(t_instruction **cursor, int i)
 {
 	if ((*cursor)->arg[i][1] == '\0' && !ft_isdigit((*cursor)->arg[i][1]))
 		return (error_fill_arg(1, cursor));
@@ -64,16 +52,14 @@ bool	reg_value(t_instruction **cursor, int i)
 	return (true);
 }
 
-bool	dir_value(t_instruction **list_instr, t_instruction **cursor, int i)
+static bool	dir_value(t_instruction **list_instr, t_instruction **cursor, int i)
 {
 	int j;
 
 	if ((*cursor)->arg[i][1] && (*cursor)->arg[i][1] == LABEL_CHAR)
 	{
-		if (!(check_arg_label(list_instr, cursor, i)))
-			return(error_fill_arg(3, cursor));
-		// if (!(fill_instr_label(list_instr, cursor, i)))
-		// 	return (error_fill_arg(1, cursor));
+		if (!(check_arg_label(list_instr, cursor, i, 2)))
+			return (error_fill_arg(3, cursor));
 	}
 	else
 	{
@@ -82,7 +68,7 @@ bool	dir_value(t_instruction **list_instr, t_instruction **cursor, int i)
 		j = 2;
 		while ((*cursor)->arg[i][j])
 		{
-			if(!ft_isdigit((*cursor)->arg[i][j]))
+			if (!ft_isdigit((*cursor)->arg[i][j]))
 				return (error_fill_arg(1, cursor));
 			j++;
 		}
@@ -91,24 +77,32 @@ bool	dir_value(t_instruction **list_instr, t_instruction **cursor, int i)
 	return (true);
 }
 
-bool	ind_value(t_instruction **cursor, int i)
+static bool	ind_value(t_instruction **list_instr, t_instruction **cursor, int i)
 {
 	int j;
 
-	if ((*cursor)->arg[i][0] != '-' && !ft_isdigit((*cursor)->arg[i][0]))
-		return (error_fill_arg(1, cursor));
-	j = 1;
-	while ((*cursor)->arg[i][j])
+	if ((*cursor)->arg[i][0] && (*cursor)->arg[i][0] == LABEL_CHAR)
 	{
-		if(!ft_isdigit((*cursor)->arg[i][j]))
-			return (error_fill_arg(1, cursor));
-		j++;
+		if (!(check_arg_label(list_instr, cursor, i, 1)))
+			return (error_fill_arg(3, cursor));
 	}
-	(*cursor)->arg_value[i] = ft_atoi((*cursor)->arg[i]);
+	else
+	{
+		if ((*cursor)->arg[i][0] != '-' && !ft_isdigit((*cursor)->arg[i][0]))
+			return (error_fill_arg(1, cursor));
+		j = 1;
+		while ((*cursor)->arg[i][j])
+		{
+			if (!ft_isdigit((*cursor)->arg[i][j]))
+				return (error_fill_arg(1, cursor));
+			j++;
+		}
+		(*cursor)->arg_value[i] = ft_atoi((*cursor)->arg[i]);
+	}
 	return (true);
 }
 
-bool	fill_arg_value(t_instruction **list_instr, t_instruction **cursor)
+bool		fill_arg_value(t_instruction **list_instr, t_instruction **cursor)
 {
 	int i;
 
@@ -122,7 +116,7 @@ bool	fill_arg_value(t_instruction **list_instr, t_instruction **cursor)
 		}
 		else if ((*cursor)->arg_type[i] == T_IND)
 		{
-			if (!ind_value(cursor, i))
+			if (!ind_value(list_instr, cursor, i))
 				return (false);
 		}
 		else

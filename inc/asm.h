@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/23 14:03:43 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/23 17:07:24 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 # define TAB 	'\t'
 # define SIGNE  '-'
 # define REG_CHAR 'r'
+
+typedef struct				s_count
+{
+	int				nb_line;
+	int 			cumul;
+}							t_count;
 
 typedef struct				s_hstate
 {
@@ -53,11 +59,12 @@ void	check_commentchar(char *line);
 bool	check_namechar(char *line, int size); // verifie s'il n'y a pas un mauvais caractere dans le .nom ou .comment
 
 bool	parse_id(t_header *id, char *line, t_hstate *state);
+bool	fill_id_name(t_header *header, char *line, t_hstate *state);
+bool	fill_id_com(t_header *header, char *line, t_hstate *state);
 
 void	parse_label(t_instruction **list_instr, t_instruction *cursor,char *line);
 bool	check_labelschar(char *line); // verifie que les nom de label soit valide
 bool    check_double_label(t_instruction **list_instr, char *label);
-//void    get_label(t_instruction *list_instr, char *line);
 
 bool	parse_instruction(t_instruction *cursor,char *line);
 bool	parse_mnemonique(t_instruction **cursor, char **line);
@@ -67,18 +74,6 @@ bool	check_and_fill_arg(t_instruction **cursor);
 bool 	fill_arg_value(t_instruction **list_instr, t_instruction **cursor);
 
 void	ft_count_bytes(t_instruction **cursor);
-
-bool	parse_one_dir(t_instruction *list_instr, char *line); // LIVE ZJMP FORK LFOR
-bool	parse_log_op(t_instruction *list_instr, char *line); // AND OR XOR
-bool	parse_arith_op(t_instruction *list_instr, char *line); // ADD SUB
-bool	parse_ldi_lldi(t_instruction *list_instr, char *line); // LDI LLDI
-bool	parse_ld_lld(t_instruction *list_instr, char *line); // LD LLD
-bool	parse_aff(t_instruction *list_instr, char *line); // AFF
-bool	parse_st(t_instruction *list_instr, char *line); // ST
-bool	parse_sti(t_instruction *list_instr, char *line); // STI
-
-
-// if (#) get next line
 
 /*
 ** LIST FCT ====================================================================
@@ -103,6 +98,5 @@ void    get_value_param(t_instruction *list_instr);
 */
 
 bool	error_stdin(char **av, int ac); // ac == 2, arg fini par .s
-bool	error_arg(int i, t_instruction **cursor);
-
+bool	error_fill_arg(int n, t_instruction **cursor);
 #endif
