@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:43:03 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/23 18:06:15 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/23 18:14:58 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void            cmd_zjmp(t_process *proc, t_champion *champion, t_arena *arena, 
 	}
 	ind = ctos(integer);
 	if (opts->verbose & SHOW_OPERATIONS)
-		print_zjmp(champion->player_id, ind);
-	index = add_to_index(proc->index, ind);
+		print_zjmp(champion->player_id, (ind % IDX_MOD));
+	index = add_to_index(proc->index, (ind % IDX_MOD));
 	proc->index = index;
 }
