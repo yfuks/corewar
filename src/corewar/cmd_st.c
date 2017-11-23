@@ -17,7 +17,7 @@ static void print_st_ind(int champion_number, int reg, int addr1)
 }
 
 
-void	   		cmd_st(t_process *proc, t_champion *champion, t_arena *arena)
+void	   		cmd_st(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
   int   index;
   int   index_tmp;
@@ -38,6 +38,7 @@ void	   		cmd_st(t_process *proc, t_champion *champion, t_arena *arena)
   	index_tmp = add_to_index(proc->index, (proc->IND[1] % IDX_MOD));
   	copy_int_to_arena(arena, args[0], index_tmp);
   }
-  print_st_ind(champion->player_id, proc->REG[0], proc->IND[1]);
+  if (opts->verbose & SHOW_OPERATIONS)
+	  print_st_ind(champion->player_id, proc->REG[0], proc->IND[1]);
   proc->index = index;
 }
