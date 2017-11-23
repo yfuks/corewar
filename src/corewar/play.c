@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:18:33 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/23 17:28:20 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/23 19:57:05 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int		next_cycle(t_arena *arena, int cycle_to_die, t_options *options)
 	int 	cycle;
 
 	cycle = cycle_to_die;
+	ft_bzero(arena->lives, sizeof(int) * MAX_PLAYERS);
 	while (cycle > 0)
 	{
 		check_process(arena, options);
@@ -62,7 +63,7 @@ void		play(t_arena *arena, t_options *options)
 
 	checks = 0;
 	cycle_to_die = CYCLE_TO_DIE;
-	while (cycle_to_die >= CYCLE_DELTA)
+	while (cycle_to_die >= 0)
 	{
 		if (!next_cycle(arena, cycle_to_die, options))
 			return ;
@@ -70,11 +71,16 @@ void		play(t_arena *arena, t_options *options)
 		if (arena->current_cycle != CYCLE_TO_DIE && !check_deads(arena, options, cycle_to_die))
 			return ;
 		checks++;
-		if (arena->current_cycle != CYCLE_TO_DIE
-			&& (checks == MAX_CHECKS || nb_live >= NBR_LIVE))
+		if (nb_live >= NBR_LIVE || checks >= MAX_CHECKS)
 		{
 			checks = 0;
 			cycle_to_die -= CYCLE_DELTA;
+			if (options->verbose & SHOW_CYCLES)
+			{
+				ft_putstr_fd("Cycle to die is now ", STD_IN);
+				ft_putnbr_fd(cycle_to_die, STD_IN);
+				ft_putstr_fd("\n", STD_IN);
+			}
 		}
 	}
 }

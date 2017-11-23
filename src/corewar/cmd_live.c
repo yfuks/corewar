@@ -34,7 +34,8 @@ void	   		cmd_live(t_process *proc, t_champion *champion, t_arena *arena, t_opti
 	if (opts->verbose & SHOW_OPERATIONS)
 		print_live(champion->player_id, player_nb);
 	champion->last_live = arena->current_cycle;
-	if (player_nb < arena->nb_champs && player_nb > 0)
+	player_nb *= -1;
+	if (player_nb <= arena->nb_champs && player_nb > 0)
 	{
 		arena->lives[player_nb - 1] += 1;
 		arena->last_live = player_nb;
