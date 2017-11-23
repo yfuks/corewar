@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 17:36:20 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/23 15:18:20 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/23 16:42:45 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ int			print_usage(char *executable_name)
 	ft_putstr_fd("\t\t\t\t  - 0 : Show only essentials\n", STD_ERR);	
 	ft_putstr_fd("\t\t\t\t  - 1 : Show lives\n", STD_ERR);	
 	ft_putstr_fd("\t\t\t\t  - 2 : Show cycles\n", STD_ERR);	
-	ft_putstr_fd("\t\t\t\t  - 4 : Show operations ", STD_ERR);	
+	ft_putstr_fd("\t\t\t\t  - 4 : Show operations", STD_ERR);	
 	ft_putstr_fd("(Params are NOT litteral ...)\n", STD_ERR);	
+	ft_putstr_fd("\t\t\t\t  - 8 : Show deaths\n", STD_ERR);
 	ft_putstr_fd("-p\t\t\t\t: Output visual\n", STD_ERR);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/23 15:42:42 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/23 17:28:35 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct	s_champion
 	char				*name;
 	char				*description;
 	char				code[CHAMP_MAX_SIZE + 1];
+	int					last_live;
 	unsigned int		prog_size;
 	unsigned int		player_id;
 	int					registers[REG_NUMBER];
@@ -60,6 +61,7 @@ typedef	struct	s_options
 # define SHOW_LIVES			1
 # define SHOW_CYCLES		2
 # define SHOW_OPERATIONS	4
+# define SHOW_DEATHS		8
 
 /*
 **  AFFICHAGE
@@ -103,7 +105,7 @@ void			cmd_aff(t_process *proc, t_champion *champion, t_arena *arena, t_options 
 
 int				init_arena(t_arena *arena);
 void			play(t_arena *arena, t_options *options);
-int				check_deads(t_arena *arena);
+int				check_deads(t_arena *arena, t_options *options, int cycle_to_die);
 
 /*
 **	TOOLS
