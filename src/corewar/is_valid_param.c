@@ -37,7 +37,11 @@ int  is_valid_param(int cmd_opcode, char encoding)
       **    permet de garder que les deux dernier bits
       **    00 01 11 10 devient 00 00 00 10
       */
-
+      if (op_tab[cmd_opcode - 1].args_types[i] == T_IND)
+      {
+        if(!(tmp & IND_CODE))
+          return (0);
+      } 
       if (!(op_tab[cmd_opcode - 1].args_types[i] & tmp))
         return (0);
       i++;

@@ -110,6 +110,7 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_putendl_fd.c \
 				  $(COREWARDIR)cmd_and.c \
 				  $(COREWARDIR)cmd_live.c \
+				  $(COREWARDIR)cmd_st.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

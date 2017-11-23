@@ -19,7 +19,7 @@ static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena) =
 {
  	cmd_live,
  	0, //cmd_ld,
- 	0, //cmd_st,
+ 	cmd_st,
  	0, //cmd_add,
  	0, //cmd_sub,
  	cmd_and,
