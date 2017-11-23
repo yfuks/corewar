@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:53:50 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/21 10:52:44 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/23 14:07:37 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ bool		parse_mnemonique(t_instruction **cursor, char **line)
 			if (!mnm_compare(mnm_line, cursor))
 				return (false);
 			*line = ft_strtrim(ft_strsub(*line, i, ft_strlen(*line)));
+			return (true);
 		}
 		i++;
 	}

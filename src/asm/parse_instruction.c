@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 13:13:19 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/21 18:17:30 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/23 14:08:31 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,15 @@ bool		parse_instruction(t_instruction *cursor, char *line)
 	if (!(ft_strcmp((line = ft_strtrim(line)), "")))
 		return (true);
 	if (cursor->label != NULL)
+	{
 		line = ft_strtrim(ft_strsub(line, ft_strlen(cursor->label) + 1,
 		ft_strlen(line)));
-
+		if (ft_strcmp(line, "") == 0)
+		{
+			cursor->instr_byte_size = 0;
+			return (true);
+		}
+	}
 	if (cursor->double_label != NULL)
 		line = ft_strtrim(ft_strsub(line, ft_strlen(cursor->double_label) + 1,
 		ft_strlen(line)));

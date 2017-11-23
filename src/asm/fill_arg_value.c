@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:46:50 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/21 19:07:37 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/23 11:45:11 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,12 @@ static bool	check_arg_label(t_instruction **list_instr, t_instruction **cursor, 
 	tmp = *list_instr;
 	while (tmp && tmp->next)
 	{
-		if (tmp->label != NULL && ft_strcmp((*cursor)->arg[i] + 2, tmp->label) == 0)
+		if (tmp->label != NULL &&
+		ft_strcmp((*cursor)->arg[i] + 2, tmp->label) == 0)
 		{
-			(*cursor)->arg_value[i] =  (tmp->cumul_byte_size - tmp->instr_byte_size) - ((*cursor)->cumul_byte_size - (*cursor)->instr_byte_size);
+			(*cursor)->arg_value[i] = (tmp->cumul_byte_size -
+			tmp->instr_byte_size) -
+			((*cursor)->cumul_byte_size - (*cursor)->instr_byte_size);
 			return (true);
 		}
 		tmp = tmp->next;
