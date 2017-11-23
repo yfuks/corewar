@@ -36,12 +36,12 @@ static int		next_cycle(t_arena *arena, int cycle_to_die, t_options *options)
 	cycle = cycle_to_die;
 	while (cycle > 0)
 	{
+		check_process(arena, options);
 		if (options->dump == arena->current_cycle)
 		{
 			print_map_arena(arena);
 			return (0);
 		}
-		check_process(arena, options);
 		arena->current_cycle += 1;
 		if (options->verbose & SHOW_CYCLES)
 		{
