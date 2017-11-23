@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/15 17:00:49 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/23 13:56:19 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct	s_arena
 	int					current_cycle;
 	int					lives[MAX_PLAYERS];
 	int					nb_champs;
+	int					last_live;
 	t_champion			champions[MAX_PLAYERS];
 }				t_arena;
 
