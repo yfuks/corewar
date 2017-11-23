@@ -18,7 +18,7 @@ t_op op_tab[17];
 static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts) =
 {
  	cmd_live,
- 	0, //cmd_ld,
+ 	cmd_ld,
  	cmd_st,
  	0, //cmd_add,
  	0, //cmd_sub,
