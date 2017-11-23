@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:38 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/15 16:59:43 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/23 15:21:48 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main(int argc, char **argv)
 
 	options.dump = -1;
 	options.print = 0;
+	options.verbose = 0;
 	i = 0;
 	ft_bzero(&arena, sizeof(arena));
 	if (!parse_arguments(argc, argv, &arena, &options))

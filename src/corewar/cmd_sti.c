@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 16:07:53 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/18 16:07:54 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/23 15:41:49 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void     print_infos(int addr1, int addr2, int index) {
     ft_putstr_fd(")\n", STD_IN);
 }
 
-void	   		cmd_sti(t_process *proc, t_champion *champion, t_arena *arena)
+void	   		cmd_sti(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
   int   index;
   int   i;
@@ -61,9 +61,11 @@ void	   		cmd_sti(t_process *proc, t_champion *champion, t_arena *arena)
         args[i - 1] = proc->IND[i];
       i++;
   }
-  print_sti(champion->player_id, proc->REG[0], args[0], args[1]);
+  if (opts->verbose & SHOW_OPERATIONS)
+	  print_sti(champion->player_id, proc->REG[0], args[0], args[1]);
   index_tmp = add_to_index(proc->index, args[0] + args[1]);
-  print_infos(args[0], args[1], index_tmp);
+  if (opts->verbose & SHOW_OPERATIONS)
+	  print_infos(args[0], args[1], index_tmp);
   copy_int_to_arena(arena, champion->registers[(int)(proc->REG[0] - 1)], index_tmp);
   proc->index = index;
 }

@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:18:33 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/16 11:18:34 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/11/23 15:43:14 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,14 @@ static int		next_cycle(t_arena *arena, int cycle_to_die, t_options *options)
 			print_map_arena(arena);
 			return (0);
 		}
-		check_process(arena);
+		check_process(arena, options);
 		arena->current_cycle += 1;
+		if (options->verbose & SHOW_CYCLES)
+		{
+			ft_putstr_fd("It is now cycle ", STD_IN);
+			ft_putnbr_fd(arena->current_cycle, STD_IN);
+			ft_putstr_fd("\n", STD_IN);
+		}
 		cycle--;
 	}
 	return (1);
@@ -61,7 +67,7 @@ void		play(t_arena *arena, t_options *options)
 		if (!next_cycle(arena, cycle_to_die, options))
 			return ;
 		nb_live = check_total_lives(arena->lives);
-		if (check_deads(arena))
+		if (arena->current_cycle != CYCLE_TO_DIE && !check_deads(arena))
 			return ;
 		checks++;
 		if (arena->current_cycle != CYCLE_TO_DIE

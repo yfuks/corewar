@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:02:23 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/16 17:02:25 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/11/23 15:39:17 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 t_op op_tab[17];
 
-static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena) =
+static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts) =
 {
  	cmd_live,
  	0, //cmd_ld,
@@ -35,16 +35,17 @@ static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena) =
  	0, //cmd_aff
 };
 
-void		exec_command(t_process *proc, t_champion *champion, t_arena *arena, int opcode)
+void		exec_command(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
 	//int        next_command_opcode;
-	char       encoding;
+	int			opcode;
+	char		encoding;
 
-	/*if (!(opcode = check_opcode(proc, arena)))
+	if (!(opcode = check_opcode(proc, arena)))
 	{
 		proc->index = next_index(proc->index);
 		return ;
-	}*/
+	}
 	encoding = arena->arena[next_index(proc->index)];
 	if (!is_valid_param(opcode, encoding))
 	{
@@ -52,6 +53,6 @@ void		exec_command(t_process *proc, t_champion *champion, t_arena *arena, int op
 		return ;
 	}
     if (func[opcode - 1])
-        func[opcode - 1](proc, champion, arena);
+        func[opcode - 1](proc, champion, arena, opts);
     proc->remaining_cycles = 1;
 }
