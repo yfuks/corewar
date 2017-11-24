@@ -2,8 +2,8 @@
 .comment "just a basic living prog"
 		
 	sti r1, %:field1, %1
-	ld %0, r10
-	add r7, r5, r4
+	ld %42, r10
+	aff r10
 	ldi 3,%4,r1
 field1:			live %0
 	zjmp %:field1

@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/24 15:08:50 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/24 15:44:24 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef	struct	s_options
 	int			dump;
 	char		print;
 	int			verbose;
+	char		aff;
 }				t_options;
 
 # define SHOW_LIVES			1

@@ -31,6 +31,9 @@ void        get_command_arguments(t_process *proc, t_arena *arena, int *index, i
     i = 0;
     encoding = arena->arena[*index];
     ft_bzero(proc->args, sizeof(int) * 4);
+    ft_bzero(proc->REG, sizeof(int) * 3);
+    ft_bzero(proc->IND, sizeof(int) * 3);
+    ft_bzero(proc->DIR, sizeof(int) * 3);
     while (i < op_tab[cmd].nb_arg)
     {
         ft_bzero(&integer, sizeof(char) * 4);
@@ -53,7 +56,7 @@ void        get_command_arguments(t_process *proc, t_arena *arena, int *index, i
         }
         else if (tmp == REG_CODE)
         {
-            *index = next_index(*index);
+			*index = next_index(*index);
             proc->REG[i] = arena->arena[*index];
             proc->args[i] = T_REG;
         }

@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:34:18 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/20 16:49:25 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/24 15:52:56 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char			**ft_split_t_sp(const char *s, char c, char d);
 char			*ft_strtrim(const char *s);
 int				ft_strlen(const char *s);
 void			ft_putstr_fd(const char *s, int fd);
+void			ft_putchar_fd(char c, int fd);
 void			ft_putendl_fd(const char *s, int fd);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_isdigit(char c);

@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 17:21:49 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/23 15:33:14 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/24 15:44:08 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int				parse_options(int *index, char **av, t_options *options)
 	}
 	else if (ft_strcmp(av[*index], "-p") == 0)
 		options->print = 1;
+	else if (ft_strcmp(av[*index], "-a") == 0)
+		options->aff = 1;
 	else if (ft_strcmp(av[*index], "-v") == 0)
 	{
 		if (!is_valid_verbose_arg(*index, av))

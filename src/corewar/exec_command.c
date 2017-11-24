@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:02:23 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/24 14:48:46 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/24 15:34:48 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena, t
  	cmd_lld,
  	0, //cmd_lldi,
  	0, //cmd_lfork,
- 	0, //cmd_aff
+ 	cmd_aff
 };
 
 void		exec_command(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
