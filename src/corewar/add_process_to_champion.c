@@ -15,16 +15,11 @@
 
 void	add_process_to_champion(t_champion *champion, t_process *process)
 {
-	t_process *tmp;
-
-	tmp = champion->process;
 	if (!champion->process)
 	{
 		champion->process = process;
 		return ;
 	}
-	while(champion->process->next != NULL)
-		champion->process = champion->process->next;
-	champion->process->next = process;
-	champion->process = tmp;
+	process->next = champion->process;
+	champion->process = process;
 }
