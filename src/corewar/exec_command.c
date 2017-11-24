@@ -28,7 +28,7 @@ static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena, t
  	cmd_zjmp,
  	cmd_ldi,
  	cmd_sti,
- 	0, //cmd_fork,
+ 	cmd_fork,
  	cmd_lld,
  	cmd_lldi,
  	0, //cmd_lfork,
