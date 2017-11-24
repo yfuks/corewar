@@ -115,6 +115,7 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)cmd_ld.c \
 				  $(COREWARDIR)cmd_or.c \
 				  $(COREWARDIR)cmd_xor.c \
+				  $(COREWARDIR)cmd_lld.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)
