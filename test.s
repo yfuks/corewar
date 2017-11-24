@@ -1,4 +1,4 @@
-.name "zork"
+.name "zoewfwefew"
 .comment "just a basic living prog"
 
 fd:
