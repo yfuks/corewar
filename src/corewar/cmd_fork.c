@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 16:10:25 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/24 16:10:28 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/11/24 17:51:18 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ void            cmd_fork(t_process *proc, t_champion *champion, t_arena *arena, 
 	value = get_memory(arena, index, 2);
 	index_tmp = add_to_index(proc->index, value % IDX_MOD);
 	if (opts->verbose & SHOW_OPERATIONS)
-		print_fork(champion->player_id, value, index_tmp);
+		print_fork(proc->number, value, index_tmp);
 	proc->index = add_to_index(index, 2);
 	process = new_process(index_tmp);
+	process->remaining_cycles = 1;
 	add_process_to_champion(champion, process);
 }

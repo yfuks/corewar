@@ -41,7 +41,7 @@ void	   		cmd_live(t_process *proc, t_champion *champion, t_arena *arena, t_opti
 	}
 	player_nb = ctoi(integer);
 	if (opts->verbose & SHOW_OPERATIONS)
-		print_live(champion->player_id, player_nb);
+		print_live(proc->number, player_nb);
 	champion->last_live = arena->current_cycle;
 	player_nb *= -1;
 	if (player_nb <= arena->nb_champs && player_nb > 0)

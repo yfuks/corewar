@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:43:03 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/23 18:14:58 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/24 17:54:03 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ void            cmd_zjmp(t_process *proc, t_champion *champion, t_arena *arena, 
 	if (!champion->carry)
 	{
 		if (opts->verbose & SHOW_OPERATIONS)
-			print_zjmp_failed(champion->player_id, (ind % IDX_MOD));
+			print_zjmp_failed(proc->number, (ind % IDX_MOD));
 		proc->index = index;
 		return ;
 	}
 	if (opts->verbose & SHOW_OPERATIONS)
-		print_zjmp(champion->player_id, (ind % IDX_MOD));
+		print_zjmp(proc->number, (ind % IDX_MOD));
 	index = add_to_index(proc->index, (ind % IDX_MOD));
 	proc->index = index;
 }

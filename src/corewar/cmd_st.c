@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:13:05 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/23 18:07:07 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/11/24 17:53:00 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ void	   		cmd_st(t_process *proc, t_champion *champion, t_arena *arena, t_option
         copy_int_to_arena(arena, args[0], index_tmp);
     }
     if (opts->verbose & SHOW_OPERATIONS)
-        print_st(champion->player_id, proc->REG[0], proc->IND[1]);
+        print_st(proc->number, proc->REG[0], proc->IND[1]);
     proc->index = index;
 }

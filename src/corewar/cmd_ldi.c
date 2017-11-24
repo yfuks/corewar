@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 14:48:59 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/24 15:24:45 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/24 17:51:46 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	   		cmd_ldi(t_process *proc, t_champion *champion, t_arena *arena, t_optio
 	index_tmp = add_to_index(proc->index, (args[0] + args[1]) % IDX_MOD);
     if (opts->verbose & SHOW_OPERATIONS)
 	{
-        print_ldi(champion->player_id, args[0], args[1], proc->REG[2]);
+        print_ldi(proc->number, args[0], args[1], proc->REG[2]);
 		print_infos(args[0], args[1], index_tmp);
 	}
 	i = get_memory(arena, index_tmp, REG_SIZE);

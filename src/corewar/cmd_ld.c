@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:12:56 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/23 18:11:30 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/24 17:51:32 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ void	   		cmd_ld(t_process *proc, t_champion *champion, t_arena *arena, t_option
         champion->carry = 0;
     champion->registers[(int)(proc->REG[1] - 1)] = args[0];
     if (opts->verbose & SHOW_OPERATIONS)
-        print_ld(champion->player_id, proc->REG[1], args[0]);
+        print_ld(proc->number, proc->REG[1], args[0]);
     proc->index = index;
 }

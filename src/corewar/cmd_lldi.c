@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:35:26 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/24 15:35:27 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/11/24 17:52:29 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	   		cmd_lldi(t_process *proc, t_champion *champion, t_arena *arena, t_opti
 	index_tmp = add_to_index(proc->index, args[0] + args[1]);
     if (opts->verbose & SHOW_OPERATIONS)
 	{
-        print_lldi(champion->player_id, args[0], args[1], proc->REG[2]);
+        print_lldi(proc->number, args[0], args[1], proc->REG[2]);
 		print_infos(args[0], args[1], proc->index);
 	}
 	i = get_memory(arena, index_tmp, REG_SIZE);

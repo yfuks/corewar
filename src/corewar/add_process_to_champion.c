@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 16:29:13 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/15 16:48:49 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/24 17:43:13 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ void	add_process_to_champion(t_champion *champion, t_process *process)
 {
 	if (!champion->process)
 	{
+		process->number = 1;
 		champion->process = process;
 		return ;
 	}
 	process->next = champion->process;
+	process->number = champion->process->number + 1;
 	champion->process = process;
 }

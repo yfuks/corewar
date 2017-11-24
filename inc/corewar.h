@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/24 15:44:24 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/24 17:35:15 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef struct	s_process
 {
 	int					index;
+	int					number;
 	int					remaining_cycles;
 	char				waiting;
 	int					args[4];
