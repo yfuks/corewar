@@ -14,6 +14,15 @@ static void     print_live(int champion_number, int value)
     ft_putstr_fd("\n", STD_IN);
 }
 
+static void		print_said_alive(t_champion *champion)
+{
+	ft_putstr_fd("Player ", STD_IN);
+	ft_putnbr_fd(champion->player_id, STD_IN);
+	ft_putstr_fd(" (", STD_IN);
+	ft_putstr_fd(champion->name, STD_IN);
+	ft_putstr_fd(") is said to be alive\n", STD_IN);
+}
+
 void	   		cmd_live(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
 	int		index;
@@ -37,6 +46,8 @@ void	   		cmd_live(t_process *proc, t_champion *champion, t_arena *arena, t_opti
 	player_nb *= -1;
 	if (player_nb <= arena->nb_champs && player_nb > 0)
 	{
+		if (opts->verbose & SHOW_LIVES)
+			print_said_alive(&(arena->champions[player_nb - 1]));
 		arena->lives[player_nb - 1] += 1;
 		arena->last_live = player_nb;
 	}
