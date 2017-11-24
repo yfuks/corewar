@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:02:23 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/23 18:04:43 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/24 13:58:26 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena, t
  	cmd_live,
  	cmd_ld,
  	cmd_st,
- 	0, //cmd_add,
+ 	cmd_add,
  	0, //cmd_sub,
  	cmd_and,
 	cmd_or,
