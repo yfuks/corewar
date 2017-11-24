@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:02:23 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/23 15:39:17 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/23 18:04:43 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena, t
  	cmd_and,
 	cmd_or,
 	cmd_xor,
- 	0, //cmd_zjmp,
+ 	cmd_zjmp,
  	0, //cmd_ldi,
  	cmd_sti,
  	0, //cmd_fork,

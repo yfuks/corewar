@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:12:56 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/23 17:12:58 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/11/23 18:11:30 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ void	   		cmd_ld(t_process *proc, t_champion *champion, t_arena *arena, t_option
     }
     else if (proc->args[0] == T_DIR)
         args[0] = proc->DIR[0];
-    champion->registers[(int)(proc->REG[1] - 1)] = args[0];
+	if (champion->registers[(int)(proc->REG[1] - 1)] == args[0])
+		champion->carry = 1;
+	champion->registers[(int)(proc->REG[1] - 1)] = args[0];
     if (opts->verbose & SHOW_OPERATIONS)
         print_ld(champion->player_id, proc->REG[1], args[0]);
     proc->index = index;
