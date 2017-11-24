@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/24 14:06:36 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/24 15:08:50 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,6 @@ int				add_champion_in_arena(t_champion *champion, t_arena *arena);
 int				print_usage(char *executable_name);
 void			print_champ(t_champion *champion);
 void      		copy_int_to_arena(t_arena *arena, unsigned int value, int index);
+int				get_memory(t_arena *arena, int index, int size);
 
 #endif
