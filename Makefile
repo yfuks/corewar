@@ -120,6 +120,7 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)cmd_sub.c \
 				  $(COREWARDIR)cmd_ldi.c \
 				  $(COREWARDIR)get_memory.c \
+				  $(COREWARDIR)cmd_lldi.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

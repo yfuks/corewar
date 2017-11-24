@@ -30,7 +30,7 @@ static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena, t
  	cmd_sti,
  	0, //cmd_fork,
  	cmd_lld,
- 	0, //cmd_lldi,
+ 	cmd_lldi,
  	0, //cmd_lfork,
  	0, //cmd_aff
 };
