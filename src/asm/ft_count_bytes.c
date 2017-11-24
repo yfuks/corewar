@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 08:32:53 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/23 18:15:35 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/24 08:52:28 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,34 @@
 static void	count_direct_special(t_instruction **cursor, int i)
 {
 	if ((*cursor)->arg_type[i] == T_REG)
+	{
+		(*cursor)->arg_size[i] = 1;
 		(*cursor)->instr_byte_size += 1;
+	}
 	else
+	{
+		(*cursor)->arg_size[i] = 2;
 		(*cursor)->instr_byte_size += 2;
+	}
 }
 
 static void	count_direct(t_instruction **cursor, int i)
 {
 	if ((*cursor)->arg_type[i] == T_REG)
+	{
+		(*cursor)->arg_size[i] = 1;
 		(*cursor)->instr_byte_size += 1;
+	}
 	else if ((*cursor)->arg_type[i] == T_IND)
+	{
+		(*cursor)->arg_size[i] = 2;
 		(*cursor)->instr_byte_size += 2;
+	}
 	else
+	{
+		(*cursor)->arg_size[i] = 4;
 		(*cursor)->instr_byte_size += 4;
+	}
 }
 
 void		ft_count_bytes(t_instruction **cursor)

@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/23 18:15:00 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/24 09:34:12 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,16 @@ static bool		parse_first_read(t_header *header, t_instruction **list_instr,
 
 	count.cumul = 0;
 	count.nb_line = 0;
+	// ft_putstr_fd("parse_first_read start\n", 1);
 	while ((ret_gnl = get_next_line(fd, &line)) == 1)
 	{
+		// ft_putstr_fd("parse_first_read 1\n", 1);
 		count.nb_line++;
 		cursor = add_end_instruction(list_instr);
+		// ft_putstr_fd("parse_first_read 2\n", 1);
 		cursor->nb_line = count.nb_line;
 		check_commentchar(line);
+		// ft_putstr_fd("parse_first_read 3\n", 1);
 		if (state->name < 1 || state->comment < 1)
 		{
 			if (!parse_id(header, line, state))
@@ -61,13 +65,18 @@ static bool		parse_first_read(t_header *header, t_instruction **list_instr,
 		}
 		else
 		{
+			// ft_putstr_fd("parse_first_read 4\n", 1);
 			parse_label(list_instr, cursor, line);
+			// ft_putstr_fd("parse_first_read 5\n", 1);
 			if (!(parse_instruction(cursor, line)))
 				return (false);
+			// ft_putstr_fd("parse_first_read 6\n", 1);
 			cursor->cumul_byte_size = count.cumul + cursor->instr_byte_size;
 			count.cumul = cursor->cumul_byte_size;
+			// ft_putstr_fd("parse_first_read 7\n", 1);
 		}
 	}
+	// ft_putstr_fd("parse_first_read end\n", 1);
 	header->prog_size = count.cumul;
 	return (true);
 }
@@ -84,21 +93,36 @@ static bool		parse_second_read(t_instruction **list_instr, int fd)
 	char			*line;
 	t_instruction	*cursor;
 	int				ret_gnl;
-
+	// int i;
+	// ft_putstr_fd("parse_second_read start\n", 1);
 	cursor = *list_instr;
 	while ((ret_gnl = get_next_line(fd, &line)) == 1)
 	{
+		// ft_putstr_fd("parse_second_read 1\n", 1);
 		if (cursor && cursor->start_instr == 0)
 			cursor = cursor->next;
 		else
 		{
+			// ft_putstr_fd("parse_second_read 2\n", 1);
 			check_commentchar(line);
+			// ft_putstr_fd("parse_second_read 3\n", 1);
 			if(!(fill_arg_value(list_instr, &cursor)))
 				return (false);
+			// ft_putstr_fd("parse_second_read 4\n", 1);
+			// if (cursor->start_instr == 1)
+			// {
+			// 	i = 0;
+			// 	while (cursor->arg[i])
+			// 	{
+			// 		printf("%zu: %d,%s,%d,%d,%d\n",cursor->nb_line, cursor->opcode, cursor->arg[i], cursor->arg_type[i],cursor->arg_size[i], cursor->arg_value[i]);
+			// 		i++;
+			// 	}
+			// }
 			if (cursor && cursor->next)
 				cursor = cursor->next;
 		}
 	}
+	// ft_putstr_fd("parse_second_read end\n", 1);
 	return (true);
 }
 

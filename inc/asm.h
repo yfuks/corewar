@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/23 17:07:24 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/24 08:50:11 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct				s_instruction
 	int						state; // a 1 si un seul argument
 	int						start_instr;
 	int						arg_type[3];
+	int						arg_size[3];
 	char					**arg;
 	int						arg_value[3];
 	int 					instr_label[3];
