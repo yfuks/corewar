@@ -36,10 +36,11 @@ void	   		cmd_st(t_process *proc, t_champion *champion, t_arena *arena, t_option
     int   args[2];
 
     index = next_index(proc->index);
+
     ft_bzero(args, sizeof(int) * 2);
     index_tmp = 0;
     get_command_arguments(proc, arena, &index, CMD_ST_INDEX);
-    if (proc->REG[0] >= REG_NUMBER || !proc->REG[0] || proc->DIR[1] || proc->REG[1] >= REG_NUMBER)
+    if (proc->REG[0] >= REG_NUMBER || !proc->REG[0] || proc->REG[1] >= REG_NUMBER)
         return ;
     args[0] = champion->registers[(int)proc->REG[0] - 1];
     if (proc->REG[1])

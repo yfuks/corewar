@@ -21,7 +21,7 @@ static void     print_xor(int champion_number, int arg1, int arg2, int reg)
 {
     ft_putstr_fd("P    ", STD_IN);
     ft_putnbr_fd(champion_number, STD_IN);
-    ft_putstr_fd(" | or ", STD_IN);
+    ft_putstr_fd(" | xor ", STD_IN);
     ft_putnbr_fd(arg1, STD_IN);
     ft_putstr_fd(" ", STD_IN);
     ft_putnbr_fd(arg2, STD_IN);

@@ -22,6 +22,15 @@ static void		print_zjmp(int champion_number, int ind)
 	ft_putstr_fd(" OK\n", STD_IN);
 }
 
+static void		print_zjmp_failed(int champion_number, int ind)
+{
+	ft_putstr_fd("P    ", STD_IN);
+    ft_putnbr_fd(champion_number, STD_IN);
+	ft_putstr_fd(" | zjmp ", STD_IN);
+	ft_putnbr_fd(ind, STD_IN);
+	ft_putstr_fd(" FAILED\n", STD_IN);
+}
+
 void            cmd_zjmp(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
 	int		index;
@@ -29,8 +38,6 @@ void            cmd_zjmp(t_process *proc, t_champion *champion, t_arena *arena, 
 	int		count;
 	int		ind;
 
-	if (!champion->carry)
-		return ;
 	index = next_index(proc->index);
 	ft_bzero(integer, sizeof(char) * IND_SIZE);
 	count = 0;
@@ -41,6 +48,13 @@ void            cmd_zjmp(t_process *proc, t_champion *champion, t_arena *arena, 
 		count++;
 	}
 	ind = ctos(integer);
+	if (!champion->carry)
+	{
+		if (opts->verbose & SHOW_OPERATIONS)
+			print_zjmp_failed(champion->player_id, (ind % IDX_MOD));
+		proc->index = index;
+		return ;
+	}
 	if (opts->verbose & SHOW_OPERATIONS)
 		print_zjmp(champion->player_id, (ind % IDX_MOD));
 	index = add_to_index(proc->index, (ind % IDX_MOD));

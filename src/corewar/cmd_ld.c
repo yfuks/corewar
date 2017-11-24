@@ -45,9 +45,11 @@ void	   		cmd_ld(t_process *proc, t_champion *champion, t_arena *arena, t_option
     }
     else if (proc->args[0] == T_DIR)
         args[0] = proc->DIR[0];
-	if (champion->registers[(int)(proc->REG[1] - 1)] == args[0])
-		champion->carry = 1;
-	champion->registers[(int)(proc->REG[1] - 1)] = args[0];
+    if (0 == args[0])
+        champion->carry = 1;
+    else 
+        champion->carry = 0;
+    champion->registers[(int)(proc->REG[1] - 1)] = args[0];
     if (opts->verbose & SHOW_OPERATIONS)
         print_ld(champion->player_id, proc->REG[1], args[0]);
     proc->index = index;
