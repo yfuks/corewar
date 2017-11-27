@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 14:48:59 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 13:46:02 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 15:49:23 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,12 @@ void	   		cmd_ldi(t_process *proc, t_champion *champion, t_arena *arena, t_optio
 		}
 		i++;
 	}
+	i = (args[0] + args[1]) % IDX_MOD;
 	index_tmp = add_to_index(proc->index, (args[0] + args[1]) % IDX_MOD);
     if (opts->verbose & SHOW_OPERATIONS)
 	{
         print_ldi(proc->number, args[0], args[1], proc->REG[2]);
-		print_infos(args[0], args[1], index_tmp);
+		print_infos(args[0], args[1], proc->index + i);
 	}
 	i = get_memory(arena, index_tmp, REG_SIZE);
 	proc->registers[proc->REG[2] - 1] = i;
