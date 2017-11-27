@@ -56,10 +56,12 @@ void	   		cmd_sti(t_process *proc, t_champion *champion, t_arena *arena, t_optio
   i = 1;
   while (i < op_tab[CMD_STI_INDEX].nb_arg)
   {
-      if (proc->DIR[i])
+      if (proc->args[i] == T_DIR)
         args[i - 1] = proc->DIR[i];
-      else
+      else if (proc->args[i] == T_IND)
         args[i - 1] = proc->IND[i];
+       else if (proc->args[i] == T_REG)
+        args[i - 1] = proc->registers[proc->REG[i] - 1];
       i++;
   }
   if (opts->verbose & SHOW_OPERATIONS)
