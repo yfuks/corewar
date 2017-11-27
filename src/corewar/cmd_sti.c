@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 16:07:53 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 13:36:31 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 14:34:27 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,10 @@ void	   		cmd_sti(t_process *proc, t_champion *champion, t_arena *arena, t_optio
   }
   if (opts->verbose & SHOW_OPERATIONS)
 	  print_sti(proc->number, proc->REG[0], args[0], args[1]);
-  index_tmp = add_to_index(proc->index, args[0] + args[1]);
+  i = (args[0] + args[1]) % IDX_MOD;
+  index_tmp = add_to_index(proc->index, (args[0] + args[1]) % IDX_MOD);
   if (opts->verbose & SHOW_OPERATIONS)
-	  print_infos(args[0], args[1], index_tmp);
+	  print_infos(args[0], args[1], proc->index + i);
   copy_int_to_arena(arena, proc->registers[(int)(proc->REG[0] - 1)], index_tmp);
   proc->index = index;
 }

@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   next_index.c                                       :+:      :+:    :+:   */
+/*   modulo_idx_mod.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/20 12:15:22 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 14:27:07 by yfuks            ###   ########.fr       */
+/*   Created: 2017/11/27 14:20:29 by yfuks             #+#    #+#             */
+/*   Updated: 2017/11/27 14:25:25 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op.h"
+#include "corewar.h"
+#include "tools.h"
 
-int     next_index(int index)
+int			modulo_idx_mod(int value)
 {
-    if (index == MEM_SIZE)
-        return (0);
-    return (index + 1);
-}
+	int		ret;
 
-int     prev_index(int index)
-{
-    if (index == 0)
-        return (MEM_SIZE);
-    return (index - 1);
+	if (value >= 0)
+		ret = value % IDX_MOD;
+	else
+	{
+		ret = (value * -1) % IDX_MOD;
+		ret *= -1;
+	}
+	ft_putnbr_fd(ret, STD_IN);
+	ft_putstr_fd("\n", STD_IN);
+	return (ret);
 }

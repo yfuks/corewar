@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 13:33:23 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 14:22:36 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ int				check_deads(t_arena *arena, t_options *options, int cycle_to_die);
 **	TOOLS
 */
 
+int				modulo_idx_mod(int value);
 t_process		*new_process(int position);
 void			add_process_to_champion(t_champion *champion, t_process *process);
 int				parse_arguments(int ac, char **av, t_arena *arena, t_options *options);
