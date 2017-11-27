@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:28:49 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/27 13:51:34 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/11/27 14:33:21 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ void	create_cor(t_instruction *list_instr, t_header *header, char *filename_s)
 	int i;
 	int bc;
 
-	printf("cumul_byte_size: %d\n", list_instr->instr_byte_size);
-	printf("prog_size: %d\n", header->prog_size);
 	tmp = list_instr;
 	list_instr = NULL;
 	header->magic = swap_uint32(COREWAR_EXEC_MAGIC);
@@ -82,7 +80,7 @@ void	create_cor(t_instruction *list_instr, t_header *header, char *filename_s)
 		return ;
 	filename_cor = ft_strcpy(filename_cor, "./");
 	filename_cor = ft_strcat(ft_strncpy(filename_cor, filename_s, ft_strlen(filename_s) - 2), ".cor");
-	fd = open(filename_cor, O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+	fd = open(filename_cor, O_RDWR | O_CREAT | O_TRUNC, S_IRWXU | S_IRWXG | S_IRWXO);
 	write(fd, header, sizeof(t_header));
 	while (tmp)
 	{
@@ -100,16 +98,15 @@ void	create_cor(t_instruction *list_instr, t_header *header, char *filename_s)
 				if (tmp->arg_size[i] == 4)
 					tmp->arg_value[i] = swap_uint32(tmp->arg_value[i]);
 				write(fd, &(tmp->arg_value[i]), tmp->arg_size[i]);
-				printf("arg_value: %d\n", tmp->arg_value[i]);
-				printf("arg_size:  %d\n", tmp->arg_size[i]);
-				printf("----\n");
 				i++;
 			}
 			// write(fd, &(tmp->opcode), 1);
 		}
-		printf("++++\n");
 		tmp = tmp->next;
 	}
+	ft_putstr_fd("Writing output program to ", 1);
+	ft_putstr_fd(filename_cor, 1);
+	ft_putstr_fd("\n", 1);
 }
 
 
