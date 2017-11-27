@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:02:23 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/27 15:47:53 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 17:42:46 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena, t
 
 void		exec_command(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
-	//int        next_command_opcode;
 	int			opcode;
 	char		encoding;
+	int			init_index;
 
+	init_index = proc->index;
 	if (!(opcode = check_opcode(proc, arena)))
 	{
 		proc->index = next_index(proc->index);
@@ -54,5 +55,7 @@ void		exec_command(t_process *proc, t_champion *champion, t_arena *arena, t_opti
 	}
     if (func[opcode - 1])
         func[opcode - 1](proc, champion, arena, opts);
+	if (opts->verbose & SHOW_PC_MOOV && opcode != 9)
+		print_pc_moove(arena, init_index, proc->index);
     proc->remaining_cycles = 1;
 }

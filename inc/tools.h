@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:34:18 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/24 15:52:56 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 17:27:30 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void   			*ft_memalloc(size_t size);
 void			ft_putnbr_fd(int n, int fd);
 char			*ft_itoa(int n);
 unsigned int	reverse_uint(unsigned int n);
+char	        ctoc(char tab[1]);
 short           ctos(char tab[2]);
 int             ctoi(char tab[4]);
 void			ft_put_hex_fd(unsigned int n, int fd, int len);

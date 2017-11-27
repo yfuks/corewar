@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 14:22:36 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 17:43:46 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef	struct	s_options
 # define SHOW_CYCLES		2
 # define SHOW_OPERATIONS	4
 # define SHOW_DEATHS		8
+# define SHOW_PC_MOOV		16
 
 /*
 **  AFFICHAGE
@@ -71,6 +72,7 @@ typedef	struct	s_options
 
 void			print_map_arena(t_arena *arena);
 void			print_arena(t_arena *arena);
+void			print_pc_moove(t_arena *arena, int from, int to);
 
 /*
 **	BATTLE

@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/27 14:22:40 by yfuks            ###   ########.fr        #
+#    Updated: 2017/11/27 17:43:14 by yfuks            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,6 +102,7 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)next_index.c \
 				  $(TOOLSDIR)ctos.c \
 				  $(TOOLSDIR)ctoi.c \
+				  $(TOOLSDIR)ctoc.c \
 				  $(COREWARDIR)get_command_arguments.c \
 				  $(COREWARDIR)add_to_index.c \
 				  $(COREWARDIR)copy_int_to_arena.c \
@@ -125,6 +126,7 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)cmd_lldi.c \
 				  $(COREWARDIR)cmd_fork.c \
 				  $(COREWARDIR)modulo_idx_mod.c \
+				  $(COREWARDIR)print_pc_moove.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

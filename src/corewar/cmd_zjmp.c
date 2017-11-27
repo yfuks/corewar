@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:43:03 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 13:38:31 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 17:41:52 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void            cmd_zjmp(t_process *proc, t_champion *champion, t_arena *arena, 
 	{
 		if (opts->verbose & SHOW_OPERATIONS)
 			print_zjmp_failed(proc->number, (ind % IDX_MOD));
+		if (opts->verbose & SHOW_PC_MOOV)
+			print_pc_moove(arena, proc->index, index);
 		proc->index = index;
 		return ;
 	}
