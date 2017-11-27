@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:35:26 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/24 17:52:29 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 13:47:39 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	   		cmd_lldi(t_process *proc, t_champion *champion, t_arena *arena, t_opti
 
     index = next_index(proc->index);
     index_tmp = 0;
-    ft_bzero(args, sizeof(int) * 3);
+    (void)champion;
+	ft_bzero(args, sizeof(int) * 3);
     get_command_arguments(proc, arena, &index, CMD_LLDI_INDEX);
     if (proc->REG[2] >= REG_NUMBER || !proc->REG[2])
         return ;
@@ -58,7 +59,7 @@ void	   		cmd_lldi(t_process *proc, t_champion *champion, t_arena *arena, t_opti
 	while (i < 2)
 	{
 		if (proc->args[i] == T_REG)
-			args[i] = champion->registers[proc->REG[i] - 1];
+			args[i] = proc->registers[proc->REG[i] - 1];
 		else if (proc->args[i] == T_DIR)
 			args[i] = proc->DIR[i];
 		else if (proc->args[i] == T_IND)
@@ -76,11 +77,11 @@ void	   		cmd_lldi(t_process *proc, t_champion *champion, t_arena *arena, t_opti
 		print_infos(args[0], args[1], proc->index);
 	}
 	i = get_memory(arena, index_tmp, REG_SIZE);
-	champion->registers[proc->REG[2] - 1] = i;
-    if (champion->registers[proc->REG[2] - 1] == i)
-        champion->carry = 1;
+	proc->registers[proc->REG[2] - 1] = i;
+    if (proc->registers[proc->REG[2] - 1] == i)
+        proc->carry = 1;
     else 
-        champion->carry = 0;
+        proc->carry = 0;
     proc->index = index;
 }
 

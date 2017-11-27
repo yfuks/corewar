@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:08:36 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/15 17:01:02 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 13:50:11 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static int		init_champions_id(t_arena *arena)
 				j++;
 			arena->champions[i].player_id = j;
 		}
-		arena->champions[i].registers[0] = (arena->champions[i].player_id * -1);
 		i++;
 	}
 	return (i);
@@ -100,6 +99,7 @@ int			init_arena(t_arena *arena)
 		if (!(process = new_process(position)))
 			return (0);
 		add_process_to_champion(&arena->champions[i], process);
+		arena->champions[i].process->registers[0] = (arena->champions[i].player_id * -1);
 		position += size;
 		i++;
 	}

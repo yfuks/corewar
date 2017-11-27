@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:13:05 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/24 17:53:00 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 13:38:01 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ void	   		cmd_st(t_process *proc, t_champion *champion, t_arena *arena, t_option
     int   index_tmp;
     int   args[2];
 
+	(void)champion;
     index = next_index(proc->index);
-
     ft_bzero(args, sizeof(int) * 2);
     index_tmp = 0;
     get_command_arguments(proc, arena, &index, CMD_ST_INDEX);
     if (proc->REG[0] >= REG_NUMBER || !proc->REG[0] || proc->REG[1] >= REG_NUMBER)
         return ;
-    args[0] = champion->registers[(int)proc->REG[0] - 1];
+    args[0] = proc->registers[(int)proc->REG[0] - 1];
     if (proc->REG[1])
-        champion->registers[(int)proc->REG[1] - 1] = args[0];
+        proc->registers[(int)proc->REG[1] - 1] = args[0];
     else if (proc->IND[1])
     {
         index_tmp = add_to_index(proc->index, (proc->IND[1] % IDX_MOD));

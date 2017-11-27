@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 14:48:59 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/24 17:51:46 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 13:46:02 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	   		cmd_ldi(t_process *proc, t_champion *champion, t_arena *arena, t_optio
 
     index = next_index(proc->index);
     index_tmp = 0;
+	(void)champion;
     ft_bzero(args, sizeof(int) * 3);
     get_command_arguments(proc, arena, &index, CMD_LDI_INDEX);
     if (proc->REG[2] >= REG_NUMBER || !proc->REG[2])
@@ -58,7 +59,7 @@ void	   		cmd_ldi(t_process *proc, t_champion *champion, t_arena *arena, t_optio
 	while (i < 2)
 	{
 		if (proc->args[i] == T_REG)
-			args[i] = champion->registers[proc->REG[i] - 1];
+			args[i] = proc->registers[proc->REG[i] - 1];
 		else if (proc->args[i] == T_DIR)
 			args[i] = proc->DIR[i];
 		else if (proc->args[i] == T_IND)
@@ -76,10 +77,10 @@ void	   		cmd_ldi(t_process *proc, t_champion *champion, t_arena *arena, t_optio
 		print_infos(args[0], args[1], index_tmp);
 	}
 	i = get_memory(arena, index_tmp, REG_SIZE);
-	champion->registers[proc->REG[2] - 1] = i;
-    if (champion->registers[proc->REG[2] - 1] == i)
-        champion->carry = 1;
+	proc->registers[proc->REG[2] - 1] = i;
+    if (proc->registers[proc->REG[2] - 1] == i)
+        proc->carry = 1;
     else 
-        champion->carry = 0;
+        proc->carry = 0;
     proc->index = index;
 }

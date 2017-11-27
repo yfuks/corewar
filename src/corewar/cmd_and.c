@@ -24,6 +24,7 @@ void	   		cmd_and(t_process *proc, t_champion *champion, t_arena *arena, t_optio
     int   i;
     int   args[3];
 
+	(void)champion;
     index = next_index(proc->index);
     ft_bzero(args, sizeof(int) * 3);
     get_command_arguments(proc, arena, &index, CMD_AND_INDEX);
@@ -35,7 +36,7 @@ void	   		cmd_and(t_process *proc, t_champion *champion, t_arena *arena, t_optio
         if (proc->args[i] & T_REG)
         {
             if (i <= 2)
-                args[i] = champion->registers[proc->REG[i] - 1];
+                args[i] = proc->registers[proc->REG[i] - 1];
             else
                 args[i] = proc->REG[i];
         }
@@ -47,8 +48,8 @@ void	   		cmd_and(t_process *proc, t_champion *champion, t_arena *arena, t_optio
     }
 	if (opts->verbose & SHOW_OPERATIONS)
 		print_and(proc->number, args[0], args[1], proc->REG[2]);
-    champion->registers[proc->REG[2] - 1] = (args[0] & args[1]);
+    proc->registers[proc->REG[2] - 1] = (args[0] & args[1]);
     if (args[0] & args[1])
-        champion->carry = 1;
+        proc->carry = 1;
     proc->index = index;
 }

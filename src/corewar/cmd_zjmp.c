@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:43:03 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/24 17:54:03 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 13:38:31 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void            cmd_zjmp(t_process *proc, t_champion *champion, t_arena *arena, 
 	int		count;
 	int		ind;
 
+	(void)champion;
 	index = next_index(proc->index);
 	ft_bzero(integer, sizeof(char) * IND_SIZE);
 	count = 0;
@@ -48,7 +49,7 @@ void            cmd_zjmp(t_process *proc, t_champion *champion, t_arena *arena, 
 		count++;
 	}
 	ind = ctos(integer);
-	if (!champion->carry)
+	if (!proc->carry)
 	{
 		if (opts->verbose & SHOW_OPERATIONS)
 			print_zjmp_failed(proc->number, (ind % IDX_MOD));

@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 14:14:58 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/24 17:52:16 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 13:43:10 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	   		cmd_lld(t_process *proc, t_champion *champion, t_arena *arena, t_optio
 
     index = next_index(proc->index);
     index_tmp = 0;
-    ft_bzero(args, sizeof(int) * 2);
+    (void)champion;
+	ft_bzero(args, sizeof(int) * 2);
     get_command_arguments(proc, arena, &index, CMD_LLD_INDEX);
     if (proc->REG[1] >= REG_NUMBER || !proc->REG[1])
         return ;
@@ -46,10 +47,10 @@ void	   		cmd_lld(t_process *proc, t_champion *champion, t_arena *arena, t_optio
     else if (proc->args[0] == T_DIR)
         args[0] = proc->DIR[0];
     if (0 == args[0])
-        champion->carry = 1;
+        proc->carry = 1;
     else 
-        champion->carry = 0;
-    champion->registers[(int)(proc->REG[1] - 1)] = args[0];
+        proc->carry = 0;
+    proc->registers[(int)(proc->REG[1] - 1)] = args[0];
     if (opts->verbose & SHOW_OPERATIONS)
         print_lld(proc->number, proc->REG[1], args[0]);
     proc->index = index;

@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:38 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/23 15:21:48 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 13:53:03 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 	ft_bzero(&arena, sizeof(arena));
 	if (!parse_arguments(argc, argv, &arena, &options))
 		return (1);
+	ft_putendl_fd("");
 	if (!init_arena(&arena))
 		return (1);
 	ft_putstr_fd("Introducing contestants...\n", STD_IN);

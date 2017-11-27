@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 18:11:41 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/24 17:52:43 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 13:41:40 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	   		cmd_or(t_process *proc, t_champion *champion, t_arena *arena, t_option
     int   args[3];
 
     index = next_index(proc->index);
+	(void)champion;
     ft_bzero(args, sizeof(int) * 3);
     get_command_arguments(proc, arena, &index, CMD_OR_INDEX);
     if (proc->REG[0] >= REG_NUMBER || proc->REG[1] >= REG_NUMBER || proc->REG[2] >= REG_NUMBER)
@@ -47,7 +48,7 @@ void	   		cmd_or(t_process *proc, t_champion *champion, t_arena *arena, t_option
         if (proc->args[i] & T_REG)
         {
             if (i <= 2)
-                args[i] = champion->registers[proc->REG[i] - 1];
+                args[i] = proc->registers[proc->REG[i] - 1];
             else
                 args[i] = proc->REG[i];
         }
@@ -59,8 +60,8 @@ void	   		cmd_or(t_process *proc, t_champion *champion, t_arena *arena, t_option
     }
 	if (opts->verbose & SHOW_OPERATIONS)
 		print_or(proc->number, args[0], args[1], proc->REG[2]);
-    champion->registers[proc->REG[2] - 1] = (args[0] | args[1]);
+    proc->registers[proc->REG[2] - 1] = (args[0] | args[1]);
     if (args[0] | args[1])
-        champion->carry = 1;
+        proc->carry = 1;
     proc->index = index;
 }

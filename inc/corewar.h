@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 13:29:30 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 13:33:23 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_process
 	int					DIR[3];
 	int					IND[3];
 	int					carry;
+	int					registers[REG_NUMBER];
 	struct s_process	*next;
 }				t_process;
 
@@ -37,7 +38,6 @@ typedef struct	s_champion
 	int					last_live;
 	unsigned int		prog_size;
 	unsigned int		player_id;
-	int					registers[REG_NUMBER];
 	int					is_dead;
 	t_process			*process;
 }				t_champion;

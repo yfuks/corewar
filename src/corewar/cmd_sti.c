@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 16:07:53 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/24 17:53:13 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 13:36:31 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	   		cmd_sti(t_process *proc, t_champion *champion, t_arena *arena, t_optio
   int   index_tmp;
   int   args[3];
 
+  (void)champion;
   index = next_index(proc->index);
   get_command_arguments(proc, arena, &index, CMD_STI_INDEX);
   if (proc->REG[0] >= REG_NUMBER || !proc->REG[0])
@@ -66,6 +67,6 @@ void	   		cmd_sti(t_process *proc, t_champion *champion, t_arena *arena, t_optio
   index_tmp = add_to_index(proc->index, args[0] + args[1]);
   if (opts->verbose & SHOW_OPERATIONS)
 	  print_infos(args[0], args[1], index_tmp);
-  copy_int_to_arena(arena, champion->registers[(int)(proc->REG[0] - 1)], index_tmp);
+  copy_int_to_arena(arena, proc->registers[(int)(proc->REG[0] - 1)], index_tmp);
   proc->index = index;
 }
