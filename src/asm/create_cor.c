@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:28:49 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/24 11:54:30 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/27 13:51:34 by alansiva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int byte_code(t_instruction *tmp)
 	return (byte_code);
 }
 
+#include <stdio.h>
+
 void	create_cor(t_instruction *list_instr, t_header *header, char *filename_s)
 {
 	int		fd;
@@ -70,9 +72,12 @@ void	create_cor(t_instruction *list_instr, t_header *header, char *filename_s)
 	int i;
 	int bc;
 
+	printf("cumul_byte_size: %d\n", list_instr->instr_byte_size);
+	printf("prog_size: %d\n", header->prog_size);
 	tmp = list_instr;
 	list_instr = NULL;
-	header->magic = COREWAR_EXEC_MAGIC;
+	header->magic = swap_uint32(COREWAR_EXEC_MAGIC);
+	header->prog_size = swap_uint32(header->prog_size);
 	if (!(filename_cor = ft_strnew(2)))
 		return ;
 	filename_cor = ft_strcpy(filename_cor, "./");
@@ -85,7 +90,8 @@ void	create_cor(t_instruction *list_instr, t_header *header, char *filename_s)
 		{
 			write(fd, &(tmp->opcode), 1);
 			bc = byte_code(tmp);
-			write(fd, &(bc), 1);
+			if (bc != 0)
+				write(fd, &(bc), 1);
 			i = 0;
 			while (tmp->arg[i] && i < 3)
 			{
@@ -94,10 +100,14 @@ void	create_cor(t_instruction *list_instr, t_header *header, char *filename_s)
 				if (tmp->arg_size[i] == 4)
 					tmp->arg_value[i] = swap_uint32(tmp->arg_value[i]);
 				write(fd, &(tmp->arg_value[i]), tmp->arg_size[i]);
+				printf("arg_value: %d\n", tmp->arg_value[i]);
+				printf("arg_size:  %d\n", tmp->arg_size[i]);
+				printf("----\n");
 				i++;
 			}
 			// write(fd, &(tmp->opcode), 1);
 		}
+		printf("++++\n");
 		tmp = tmp->next;
 	}
 }
