@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 16:10:25 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/24 17:51:18 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 13:57:11 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void            cmd_fork(t_process *proc, t_champion *champion, t_arena *arena, 
 		print_fork(proc->number, value, index_tmp);
 	proc->index = add_to_index(index, 2);
 	process = new_process(index_tmp);
+	process->carry = proc->carry;
+	ft_memcpy(process->registers, proc->registers, sizeof(int) * REG_NUMBER);
 	process->remaining_cycles = 1;
 	add_process_to_champion(champion, process);
 }
