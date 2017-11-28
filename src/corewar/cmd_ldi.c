@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 14:48:59 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 15:49:23 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/28 16:30:00 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 
 static void print_ldi(int champion_number, int value, int value2, int reg) 
 {
-    ft_putstr_fd("P    ", STD_IN);
-    ft_putnbr_fd(champion_number, STD_IN);
+	print_process_number(champion_number);
     ft_putstr_fd(" | ldi ", STD_IN);
     ft_putnbr_fd(value, STD_IN);
     ft_putstr_fd(" ", STD_IN);

@@ -7,8 +7,7 @@ t_op op_tab[17];
 
 static void     print_and(int champion_number, int arg1, int arg2, int reg)
 {
-    ft_putstr_fd("P    ", STD_IN);
-    ft_putnbr_fd(champion_number, STD_IN);
+	print_process_number(champion_number);
     ft_putstr_fd(" | and ", STD_IN);
     ft_putnbr_fd(arg1, STD_IN);
     ft_putstr_fd(" ", STD_IN);

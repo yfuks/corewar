@@ -7,8 +7,7 @@
 
 static void     print_live(int champion_number, int value)
 {
-    ft_putstr_fd("P    ", STD_IN);
-    ft_putnbr_fd(champion_number, STD_IN);
+	print_process_number(champion_number);
     ft_putstr_fd(" | live ", STD_IN);
     ft_putnbr_fd(value, STD_IN);
     ft_putstr_fd("\n", STD_IN);

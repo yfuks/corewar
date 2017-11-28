@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 16:10:25 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/27 17:51:19 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/28 16:29:27 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 static void		print_fork(int champion_number, int ind, int total)
 {
-	ft_putstr_fd("P    ", STD_IN);
-    ft_putnbr_fd(champion_number, STD_IN);
+	print_process_number(champion_number);
 	ft_putstr_fd(" | fork ", STD_IN);
 	ft_putnbr_fd(ind, STD_IN);
 	ft_putstr_fd(" (", STD_IN);

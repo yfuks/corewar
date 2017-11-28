@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:13:05 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/27 13:38:01 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/28 16:30:42 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ t_op op_tab[17];
 
 static void print_st(int champion_number, int reg, int addr1) 
 {
-    ft_putstr_fd("P    ", STD_IN);
-    ft_putnbr_fd(champion_number, STD_IN);
+	print_process_number(champion_number);
     ft_putstr_fd(" | st r", STD_IN);
     ft_putnbr_fd(reg, STD_IN);
     ft_putstr_fd(" ", STD_IN);

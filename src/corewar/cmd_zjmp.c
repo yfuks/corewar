@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:43:03 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 17:41:52 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/28 16:34:32 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 static void		print_zjmp(int champion_number, int ind)
 {
-	ft_putstr_fd("P    ", STD_IN);
-    ft_putnbr_fd(champion_number, STD_IN);
+	print_process_number(champion_number);
 	ft_putstr_fd(" | zjmp ", STD_IN);
 	ft_putnbr_fd(ind, STD_IN);
 	ft_putstr_fd(" OK\n", STD_IN);
@@ -24,8 +23,7 @@ static void		print_zjmp(int champion_number, int ind)
 
 static void		print_zjmp_failed(int champion_number, int ind)
 {
-	ft_putstr_fd("P    ", STD_IN);
-    ft_putnbr_fd(champion_number, STD_IN);
+	print_process_number(champion_number);
 	ft_putstr_fd(" | zjmp ", STD_IN);
 	ft_putnbr_fd(ind, STD_IN);
 	ft_putstr_fd(" FAILED\n", STD_IN);

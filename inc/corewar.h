@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 17:43:46 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/28 16:24:21 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef	struct	s_options
 void			print_map_arena(t_arena *arena);
 void			print_arena(t_arena *arena);
 void			print_pc_moove(t_arena *arena, int from, int to);
+void			print_process_number(int number);
 
 /*
 **	BATTLE

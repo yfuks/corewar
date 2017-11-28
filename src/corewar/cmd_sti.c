@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 16:07:53 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 15:33:00 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/28 16:30:58 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 t_op op_tab[17];
 
-static void print_sti(int champion_number, int reg, int addr1, int addr2) {
-    ft_putstr_fd("P    ", STD_IN);
-    ft_putnbr_fd(champion_number, STD_IN);
+static void print_sti(int champion_number, int reg, int addr1, int addr2)
+{
+	print_process_number(champion_number);
     ft_putstr_fd(" | sti r", STD_IN);
     ft_putnbr_fd(reg, STD_IN);
     ft_putstr_fd(" ", STD_IN);
@@ -29,7 +29,8 @@ static void print_sti(int champion_number, int reg, int addr1, int addr2) {
     ft_putstr_fd("\n", STD_IN);
 }
 
-static void     print_infos(int addr1, int addr2, int index) {
+static void     print_infos(int addr1, int addr2, int index)
+{
     ft_putstr_fd("       | -> store to ", STD_IN);
     ft_putnbr_fd(addr1, STD_IN);
     ft_putstr_fd(" + ", STD_IN);

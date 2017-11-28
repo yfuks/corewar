@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 18:15:21 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/27 14:04:50 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/28 16:31:21 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ t_op op_tab[17];
 
 static void     print_xor(int champion_number, int arg1, int arg2, int reg)
 {
-    ft_putstr_fd("P    ", STD_IN);
-    ft_putnbr_fd(champion_number, STD_IN);
+	print_process_number(champion_number);
     ft_putstr_fd(" | xor ", STD_IN);
     ft_putnbr_fd(arg1, STD_IN);
     ft_putstr_fd(" ", STD_IN);

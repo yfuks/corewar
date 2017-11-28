@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 13:49:08 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 13:44:14 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/28 16:27:57 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 
 static void		print_add(int champion_number, int reg1, int reg2, int reg3)
 {
-	ft_putstr_fd("P    ", STD_IN);
-    ft_putnbr_fd(champion_number, STD_IN);
+	print_process_number(champion_number);
 	ft_putstr_fd(" | add r", STD_IN);
 	ft_putnbr_fd(reg1, STD_IN);
 	ft_putstr_fd(" r", STD_IN);

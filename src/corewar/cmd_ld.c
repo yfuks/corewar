@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:12:56 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/27 13:40:34 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/28 16:29:48 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 
 static void print_ld(int champion_number, int reg, int value) 
 {
-    ft_putstr_fd("P    ", STD_IN);
-    ft_putnbr_fd(champion_number, STD_IN);
+	print_process_number(champion_number);
     ft_putstr_fd(" | ld ", STD_IN);
     ft_putnbr_fd(value, STD_IN);
     ft_putstr_fd(" r", STD_IN);
