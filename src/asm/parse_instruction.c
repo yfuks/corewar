@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 13:13:19 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/24 09:22:12 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/28 16:03:47 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,29 @@ static bool	error_instruction(t_instruction *cursor)
 
 bool		parse_instruction(t_instruction *cursor, char *line)
 {
-	if (!(ft_strcmp((line = ft_strtrim(line)), "")))
+	char *line2;
+	char *line3;
+	char *line4;
+	if (!(ft_strcmp((line2 = ft_strtrim(line)), "")))
 		return (true);
-	if (cursor->label != NULL)
+	if (cursor->label) // != NULL)
 	{
-		line = ft_strtrim(ft_strsub(line, ft_strlen(cursor->label) + 1,
-		ft_strlen(line)));
-		if (ft_strcmp(line, "") == 0)
+		line3 = ft_strsub(line2, ft_strlen(cursor->label) + 1, ft_strlen(line2));
+		line4 = ft_strtrim(line3);
+		if (ft_strcmp(line4, "") == 0)
 		{
 			cursor->instr_byte_size = 0;
 			return (true);
 		}
 	}
+	ft_putstr_fd(line4, 1);
+	ft_putstr_fd("\n", 1);
 	if (cursor->double_label != NULL)
-		line = ft_strtrim(ft_strsub(line, ft_strlen(cursor->double_label) + 1,
-		ft_strlen(line)));
-	if (!parse_mnemonique(&cursor, &line))
+		line4 = ft_strtrim(ft_strsub(line3, ft_strlen(cursor->double_label) + 1,
+		ft_strlen(line3)));
+	if (!parse_mnemonique(&cursor, &line4))
 		return (error_instruction(cursor));
-	if (!parse_arguments(&cursor, line))
+	if (!parse_arguments(&cursor, line4))
 		return (false);
 	return (true);
 }

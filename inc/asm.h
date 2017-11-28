@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 16:19:27 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/28 15:12:04 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ bool			parse_id(t_header *id, char *line, t_hstate *state);
 bool			fill_id_name(t_header *header, char *line, t_hstate *state);
 bool			fill_id_com(t_header *header, char *line, t_hstate *state);
 
-void			parse_label(t_instruction **list_instr, t_instruction *cursor,char *line);
+int				s_label_char(char *line);
+int				parse_label(t_instruction **list_instr, t_instruction *cursor,char *line, int i);
 bool			check_labelschar(char *line); // verifie que les nom de label soit valide
 bool			check_double_label(t_instruction **list_instr, char *label);
 

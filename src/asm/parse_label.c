@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:06:16 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/24 08:58:12 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/28 15:57:16 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 ** - on ajoute le label dans le maillon
 */
 
-static int	s_label_char(char *line)
+int		s_label_char(char *line)
 {
 	int	state_label_char;
 	int	i;
@@ -46,32 +46,37 @@ static int	s_label_char(char *line)
 	return (0);
 }
 
-void		parse_label(t_instruction **list_instr, t_instruction *cursor,
-	char *line)
+int		parse_label(t_instruction **list_instr, t_instruction *cursor, char *line, int i)
 {
-	int	i;
+	char *line2;
+	char *line3;
 
-	if ((i = s_label_char(line)) == 0)
-		return ;
+	line2 = NULL;
+	line3 = NULL;
+	if (line[i - 1] == TAB || line[i - 1] == SPACE
+		|| line[i - 1] == DIRECT_CHAR || line[i - 1] == SEPARATOR_CHAR)
+		return (0);
 	else
 	{
-		if (line[i - 1] == TAB || line[i - 1] == SPACE
-		|| line[i - 1] == DIRECT_CHAR || line[i - 1] == SEPARATOR_CHAR)
-			return ;
-		else
+		line2 = ft_strsub(line, 0, i);
+		if (!(check_labelschar(line3 = ft_strtrim(line2))))
+			return (0);
+		ft_putstr_fd(line3,1);
+		ft_putstr_fd(" ici\n",1);
+		if (!check_double_label(list_instr, line3))
 		{
-			if (!check_labelschar(line = ft_strtrim(ft_strsub(line, 0, i))))
-				return ;
-			if (!check_double_label(list_instr, line))
-			{
-				if (!(cursor->double_label = ft_strnew(ft_strlen(line))))
-					return ;
-				cursor->double_label = ft_strcpy(cursor->double_label, line);
-				return ;
-			}
-			if (!(cursor->label = ft_strnew(ft_strlen(line))))
-				return ;
-			cursor->label = ft_strcpy(cursor->label, line);
+			if (!(cursor->double_label = ft_strnew(ft_strlen(line3))))
+				return (0);
+			cursor->double_label = ft_strcpy(cursor->double_label, line3);
+			return (1);
 		}
+		ft_putstr_fd(line3,1);
+		ft_putstr_fd(" ici2\n",1);
+		if (!(cursor->label = ft_strnew(ft_strlen(line3))))
+			return (0);
+		cursor->label = ft_strcpy(cursor->label, line3);
+		ft_putstr_fd(cursor->label,1);
+		ft_putstr_fd(" ici3\n",1);
+		return (1);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/27 15:24:25 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/28 15:59:14 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,28 @@ static bool		parse_first_read(t_header *header, t_instruction **list_instr,
 		}
 		else
 		{
-			parse_label(list_instr, cursor, line);
+			// ft_putstr_fd("parse_first_read\n", 1);
+			ft_putnbr_fd(s_label_char(line), 1);
+			ft_putstr_fd("\n",1);
+			if (s_label_char(line) > 0)
+			{
+				ft_putnbr_fd(s_label_char(line), 1);
+				ft_putstr_fd("\n",1);
+				// ft_putstr_fd("parse_first_read2\n", 1);
+				if (!(parse_label(list_instr, cursor, line, s_label_char(line))))
+				{
+					// ft_putstr_fd("parse_first_read21\n", 1);
+					return (false);
+				}
+			}
+			ft_putstr_fd("parse_first_read3\n", 1);
 			if (!(parse_instruction(cursor, line)))
 				return (false);
+			ft_putstr_fd("parse_first_read4\n", 1);
 			cursor->cumul_byte_size = count.cumul + cursor->instr_byte_size;
 			count.cumul = cursor->cumul_byte_size;
 		}
+		ft_memdel((void**)&line);
 	}
 	header->prog_size = count.cumul;
 	return (true);
@@ -98,6 +114,7 @@ static bool		parse_second_read(t_instruction **list_instr, int fd)
 			if (cursor && cursor->next)
 				cursor = cursor->next;
 		}
+		ft_memdel((void**)&line);
 	}
 	return (true);
 }

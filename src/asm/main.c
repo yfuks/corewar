@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:16 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/21 14:21:43 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/28 15:42:22 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ int	main(int ac, char **av)
 		return (1);
 	if (!parse(header, &list_instr, fd, av[1]))
 		return (1);
+	create_cor(list_instr, header, av[1]);
 	if (close(fd) == -1)
 		return (1);
-	create_cor(list_instr, header, av[1]);
+	ft_memdel((void**)&list_instr);
+	ft_memdel((void**)&header);
+	// while (1)
+	// 	;
 	return (0);
 }
