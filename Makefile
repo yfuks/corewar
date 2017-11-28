@@ -127,6 +127,7 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)cmd_fork.c \
 				  $(COREWARDIR)modulo_idx_mod.c \
 				  $(COREWARDIR)print_pc_moove.c \
+				  $(COREWARDIR)index_jump.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

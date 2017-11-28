@@ -51,8 +51,13 @@ void		exec_command(t_process *proc, t_champion *champion, t_arena *arena, t_opti
 	if (!is_valid_param(opcode, encoding))
 	{
 		proc->index = next_index(proc->index);
+		proc->index = index_jump(opcode, encoding, proc->index);
+		if (opts->verbose & SHOW_PC_MOOV && opcode != 9)
+			print_pc_moove(arena, init_index, proc->index);
+		proc->remaining_cycles = 1;
 		return ;
 	}
+
     if (func[opcode - 1])
         func[opcode - 1](proc, champion, arena, opts);
 	if (opts->verbose & SHOW_PC_MOOV && opcode != 9)
