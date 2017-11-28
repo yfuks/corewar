@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:18:33 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/24 13:37:21 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/28 17:55:57 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,26 @@ static int		check_total_lives(int lives[MAX_PLAYERS])
 	return (total_lives);
 }
 
+static void		reset_process_lives(t_arena *arena)
+{
+	int			i;
+	t_process	*cursor;
+	t_champion	*champion;
+
+	i = 0;
+	while (i < arena->nb_champs)
+	{
+		champion = &(arena->champions[i]);
+		cursor = champion->process;
+		while (cursor)
+		{
+			cursor->live = 0;
+			cursor = cursor->next;
+		}
+		i++;
+	}
+}
+
 static int		next_cycle(t_arena *arena, int cycle_to_die, t_options *options, int print)
 {
 	int 	cycle;
@@ -37,6 +57,7 @@ static int		next_cycle(t_arena *arena, int cycle_to_die, t_options *options, int
 	if (cycle_to_die <= 0)
 		cycle = 1;
 	ft_bzero(arena->lives, sizeof(int) * MAX_PLAYERS);
+	reset_process_lives(arena);
 	while (cycle > 0)
 	{
 		check_process(arena, options);

@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/28 16:24:21 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/28 17:48:06 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ typedef struct	s_process
 	char				REG[3];
 	int					DIR[3];
 	int					IND[3];
+	char				live;
+	int					last_live;
+	char				is_dead;
 	int					carry;
 	int					registers[REG_NUMBER];
 	struct s_process	*next;
