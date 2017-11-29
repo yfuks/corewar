@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 12:02:01 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/24 09:21:43 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 11:56:31 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ bool		parse_arguments(t_instruction **cursor, char *line)
 	(*cursor)->arg = ft_strsplit(line, SEPARATOR_CHAR);
 	while ((*cursor)->arg[nb_arg])
 	{
-		(*cursor)->arg[nb_arg] = ft_strtrim((*cursor)->arg[nb_arg]);
+		(*cursor)->arg[nb_arg] = ft_trim((*cursor)->arg[nb_arg]);
 		nb_arg++;
 	}
 	if (nb_arg != g_op_tab[(*cursor)->opcode - 1].nb_arg)

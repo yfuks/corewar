@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:56:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/29 11:51:06 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 11:56:10 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,17 @@ static bool	parse_id_name(t_header *header, char *line, t_hstate *state)
 	if (!(compare_name = ft_strncpy(compare_name, line, 5)))
 		return (false);
 	if (ft_strcmp(NAME_CMD_STRING, compare_name) == 1)
+	{
+		ft_memdel((void**)&compare_name);
 		return (error_id(2));
+	}
 	else
 	{
 		line = ft_trim(ft_strsub(line, 5, ft_strlen(line)));
 		if (!(fill_id_name(header, line, state)))
 			return (error_id(3));
 	}
+	ft_memdel((void**)&compare_name);
 	return (true);
 }
 
@@ -61,13 +65,17 @@ static bool	parse_id_comment(t_header *header, char *line, t_hstate *state)
 	if (!(compare_comment = ft_strncpy(compare_comment, line, 8)))
 		return (false);
 	if (ft_strcmp(COMMENT_CMD_STRING, compare_comment) == 1)
+	{
+		ft_memdel((void**)&compare_comment);
 		return (error_id(2));
+	}
 	else
 	{
 		line = ft_trim(ft_strsub(line, 8, ft_strlen(line)));
 		if (!(fill_id_com(header, line, state)))
 			return (error_id(3));
 	}
+	ft_memdel((void**)&compare_comment);
 	return (true);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:16 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/21 14:21:43 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 15:01:37 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int	main(int ac, char **av)
 	if (close(fd) == -1)
 		return (1);
 	create_cor(list_instr, header, av[1]);
+	ft_memdel((void**)&header);
 	return (0);
 }

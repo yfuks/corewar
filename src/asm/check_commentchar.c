@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 10:24:42 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/29 11:49:33 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 12:07:34 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ char	*ft_trim(char *str)
 		return (ft_trim_empty(tmp, str));
 	while (str[i] && (str[i] == TAB || str[i] == SPACE))
 		i++;
-	tmp = ft_strnew(len - i + 1);
+	if (!(tmp = ft_strnew(len - i + 1)))
+		return (NULL);
 	j = 0;
 	len = len - i;
 	while (j < len + 1)

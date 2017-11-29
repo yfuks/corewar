@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:28:49 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/27 16:20:52 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 14:51:17 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,5 @@ char *filename_s)
 		tmp = tmp->next;
 	}
 	end_message_asm(filename_cor);
+	ft_memdel((void**)&filename_cor);
 }
