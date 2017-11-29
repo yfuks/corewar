@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 14:57:43 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/15 15:12:31 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 15:30:41 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	ft_strdel(char **as)
 {
 	if (!as || !*as)
 		return ;
-	*as = NULL;
 	free(*as);
+	*as = NULL;
 }
