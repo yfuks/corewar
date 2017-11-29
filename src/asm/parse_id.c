@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:56:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/23 15:40:10 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 11:51:06 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static bool	parse_id_name(t_header *header, char *line, t_hstate *state)
 		return (error_id(2));
 	else
 	{
-		line = ft_strtrim(ft_strsub(line, 5, ft_strlen(line)));
+		line = ft_trim(ft_strsub(line, 5, ft_strlen(line)));
 		if (!(fill_id_name(header, line, state)))
 			return (error_id(3));
 	}
@@ -64,7 +64,7 @@ static bool	parse_id_comment(t_header *header, char *line, t_hstate *state)
 		return (error_id(2));
 	else
 	{
-		line = ft_strtrim(ft_strsub(line, 8, ft_strlen(line)));
+		line = ft_trim(ft_strsub(line, 8, ft_strlen(line)));
 		if (!(fill_id_com(header, line, state)))
 			return (error_id(3));
 	}
@@ -73,7 +73,7 @@ static bool	parse_id_comment(t_header *header, char *line, t_hstate *state)
 
 bool		parse_id(t_header *header, char *line, t_hstate *state)
 {
-	line = ft_strtrim(line);
+	line = ft_trim(line);
 	if (ft_strcmp(line, "\0") == 0)
 		return (true);
 	if (line[0] != '.')

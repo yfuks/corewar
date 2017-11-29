@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 16:19:27 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 11:34:07 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ bool			check_and_fill_arg(t_instruction **cursor);
 bool			fill_arg_value(t_instruction **list_instr, t_instruction **cursor);
 
 void			ft_count_bytes(t_instruction **cursor);
+char			*ft_trim(char *str);
 
 /*
 ** LIST FCT ====================================================================

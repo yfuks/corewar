@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/27 16:19:48 by jthillar         ###   ########.fr        #
+#    Updated: 2017/11/29 11:53:55 by jthillar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,6 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(TOOLSDIR)ft_strcmp.c \
 				  $(TOOLSDIR)ft_strdup.c \
 				  $(TOOLSDIR)ft_strchr.c \
-				  $(TOOLSDIR)ft_strtrim.c \
 				  $(TOOLSDIR)ft_split_t_sp.c \
 				  $(TOOLSDIR)ft_split.c \
 				  $(TOOLSDIR)ft_strncpy.c \

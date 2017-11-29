@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 13:13:19 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/24 09:22:12 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 11:52:39 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ static bool	error_instruction(t_instruction *cursor)
 
 bool		parse_instruction(t_instruction *cursor, char *line)
 {
-	if (!(ft_strcmp((line = ft_strtrim(line)), "")))
+	if (!(ft_strcmp((line = ft_trim(line)), "")))
 		return (true);
 	if (cursor->label != NULL)
 	{
-		line = ft_strtrim(ft_strsub(line, ft_strlen(cursor->label) + 1,
+		line = ft_trim(ft_strsub(line, ft_strlen(cursor->label) + 1,
 		ft_strlen(line)));
 		if (ft_strcmp(line, "") == 0)
 		{
@@ -45,7 +45,7 @@ bool		parse_instruction(t_instruction *cursor, char *line)
 		}
 	}
 	if (cursor->double_label != NULL)
-		line = ft_strtrim(ft_strsub(line, ft_strlen(cursor->double_label) + 1,
+		line = ft_trim(ft_strsub(line, ft_strlen(cursor->double_label) + 1,
 		ft_strlen(line)));
 	if (!parse_mnemonique(&cursor, &line))
 		return (error_instruction(cursor));
