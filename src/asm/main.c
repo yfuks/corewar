@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:16 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/29 15:01:37 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 19:29:17 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 	list_instr = NULL;
 	if ((fd = open(av[1], O_RDONLY)) == -1)
 		return (1);
-	if (!parse(header, &list_instr, fd, av[1]))
+	if (!parse(header, &list_instr, fd))
 		return (1);
 	if (close(fd) == -1)
 		return (1);

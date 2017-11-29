@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:28:49 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/29 14:51:17 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 16:45:42 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,8 @@ int			byte_code(t_instruction *tmp)
 
 char		*file_newname(char *filename_cor, char *filename_s)
 {
-	if (!(filename_cor = ft_strnew(2)))
-		return (NULL);
-	filename_cor = ft_strcpy(filename_cor, "./");
-	filename_cor = ft_strcat(ft_strncpy(filename_cor, filename_s,
-		ft_strlen(filename_s) - 2), ".cor");
+	filename_cor = ft_strsub(filename_s, 0, ft_strlen(filename_s) - 2);
+	filename_cor = ft_strcat(filename_cor, ".cor");
 	return (filename_cor);
 }
 

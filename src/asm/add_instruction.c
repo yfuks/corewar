@@ -6,13 +6,14 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:44:37 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/24 09:01:18 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 19:29:25 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "asm.h"
 #include "tools.h"
+#include <stdio.h>
 
 t_instruction	*add_end_instruction(t_instruction **list_instr)
 {
@@ -24,7 +25,7 @@ t_instruction	*add_end_instruction(t_instruction **list_instr)
 	{
 		while (cursor && cursor->next)
 			cursor = cursor->next;
-		if (!(cursor->next = (t_instruction*)malloc(sizeof(t_instruction))))
+		if (!(cursor->next = ft_memalloc(sizeof(t_instruction))))
 			return (NULL);
 		tmp = cursor->next;
 		tmp->next = NULL;

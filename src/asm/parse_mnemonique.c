@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:53:50 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/29 11:51:45 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 18:21:01 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,43 @@ static int	mnm_compare(char *mnm_line, t_instruction **cursor)
 ** dans l'g_op_tap
 */
 
-bool		parse_mnemonique(t_instruction **cursor, char **line)
+static char	*ft_cpymnm(char *dest, char *src, int i)
+{
+	int j;
+
+	j = 0;
+	while (j < i)
+	{
+		dest[j] = src[j];
+		j++;
+	}
+	return (dest);
+}
+
+bool		parse_mnemonique(t_instruction **cursor, char *line)
 {
 	int		i;
 	char	*mnm_line;
 
 	i = 0;
-	while ((*line)[i])
+	// ft_putstr_fd("parse mnemonique: ",1);
+	// ft_putstr_fd(line,1);
+	// ft_putstr_fd("\n",1);
+	while (line[i])
 	{
-		if ((*line)[i] == TAB || (*line)[i] == SPACE)
+		if (line[i] == TAB || line[i] == SPACE)
 		{
 			if (!(mnm_line = ft_strnew(i)))
 				return (false);
 			(*cursor)->start_instr = 1;
-			mnm_line = ft_strcpy(mnm_line, ft_strsub(*line, 0, i));
+			mnm_line = ft_cpymnm(mnm_line, line, i);
 			if (!mnm_compare(mnm_line, cursor))
+			{
+				ft_memdel((void**)&mnm_line);
 				return (false);
-			*line = ft_trim(ft_strsub(*line, i, ft_strlen(*line)));
+			}
+			line = ft_trim(ft_strsub2(line, i, ft_strlen(line)));
+			ft_memdel((void**)&mnm_line);
 			return (true);
 		}
 		i++;

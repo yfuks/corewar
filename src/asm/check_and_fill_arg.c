@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:27:41 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/24 10:27:39 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 17:53:06 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ bool		check_and_fill_arg(t_instruction **cursor)
 	int i;
 
 	i = 0;
-	while ((*cursor)->arg[i])
+	while ((*cursor)->arg[i] && i < 3)
 	{
 		if ((*cursor)->arg[i][0] == DIRECT_CHAR)
 			(*cursor)->arg_type[i] = T_DIR;

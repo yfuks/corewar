@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:34:18 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/29 15:05:51 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 15:35:03 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void			ft_memdel(void **ap);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strcat(char *dest, const char *src);
 char			*ft_strsub(const char *s, unsigned int start, size_t len);
+char			*ft_strsub2(char *str, unsigned int start, size_t len);
 char			**ft_split_t_sp(const char *s, char c, char d);
 char			*ft_strtrim(const char *s);
 int				ft_strlen(const char *s);

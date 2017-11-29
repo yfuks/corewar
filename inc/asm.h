@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/29 11:34:07 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 17:07:41 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct				s_instruction
 ** PARSER ======================================================================
 */
 
-bool			parse(t_header *header, t_instruction **list_instr, int fd, char *filename);
+bool			parse(t_header *header, t_instruction **list_instr, int fd);
 void			check_commentchar(char *line);
 bool			check_namechar(char *line, int size); // verifie s'il n'y a pas un mauvais caractere dans le .nom ou .comment
 
@@ -74,7 +74,7 @@ bool			check_labelschar(char *line); // verifie que les nom de label soit valide
 bool			check_double_label(t_instruction **list_instr, char *label);
 
 bool			parse_instruction(t_instruction *cursor,char *line);
-bool			parse_mnemonique(t_instruction **cursor, char **line);
+bool			parse_mnemonique(t_instruction **cursor, char *line);
 bool			parse_arguments(t_instruction **cursor, char *line);
 bool			check_and_fill_arg(t_instruction **cursor);
 
