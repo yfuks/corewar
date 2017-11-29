@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 16:15:29 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/18 16:15:30 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 16:37:41 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,21 @@ int  is_valid_param(int cmd_opcode, char encoding)
       **    permet de garder que les deux dernier bits
       **    00 01 11 10 devient 00 00 00 10
       */
-      if (op_tab[cmd_opcode - 1].args_types[i] == T_IND)
+      /*if (op_tab[cmd_opcode - 1].args_types[i] == T_IND)
       {
         if(!(tmp & IND_CODE))
           return (0);
-      } 
+		  } 
       if (!(op_tab[cmd_opcode - 1].args_types[i] & tmp))
-        return (0);
+	  return (0);*/
+	  if ((op_tab[cmd_opcode - 1].args_types[i] & T_IND) && (tmp == IND_CODE))
+		  ;
+	  else if ((op_tab[cmd_opcode - 1].args_types[i] & T_DIR) && (tmp == DIR_CODE))
+		  ;
+	  else if ((op_tab[cmd_opcode - 1].args_types[i] & T_REG) && (tmp == REG_CODE))
+		  ;
+	  else
+		  return (0);
       i++;
   }
   return (1);

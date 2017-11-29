@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:18:33 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/29 16:03:09 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 16:09:07 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void		play(t_arena *arena, t_options *options)
 		print = 0;
 		if (cycle_to_die <= 0)
 			next_cycle(arena, cycle_to_die, options, print);
-		if (arena->current_cycle != CYCLE_TO_DIE)
+		if (arena->current_cycle > CYCLE_TO_DIE)
 		{
 			arena->should_check_deads = 1;
 			if (!check_deads(arena))

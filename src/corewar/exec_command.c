@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:02:23 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/27 17:42:46 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 16:49:46 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void		exec_command(t_process *proc, t_champion *champion, t_arena *arena, t_opti
 		proc->remaining_cycles = 1;
 		return ;
 	}
-
     if (func[opcode - 1])
         func[opcode - 1](proc, champion, arena, opts);
 	if (opts->verbose & SHOW_PC_MOOV && opcode != 9)

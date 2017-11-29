@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 14:38:49 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/28 14:38:51 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/11/29 16:50:18 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int				index_jump(int opcode, char encoding, int index)
 	index_tmp = 1;
 	size_direct = 2;
 	i = 0;
-	if (opcode == 0 || opcode == 1 || opcode == 5 || opcode == 6 || opcode == 7 || opcode == 12)
+	if (opcode == 1 || opcode == 2 || opcode == 6 || opcode == 7 || opcode == 8 || opcode == 13
         size_direct = 4;
 	while (i < op_tab[opcode - 1].nb_arg)
  	{

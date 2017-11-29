@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 14:23:16 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/28 16:31:07 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 16:10:59 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void            cmd_sub(t_process *proc, t_champion *champion, t_arena *arena, t
 	proc->registers[proc->REG[2] - 1] = value;
 	if (opts->verbose & SHOW_OPERATIONS)
 		print_add(proc->number, proc->REG[0], proc->REG[1], proc->REG[2]);
-	if (value >= 0)
+	if (value == 0)
 		proc->carry = 1;
 	else
 		proc->carry = 0;
