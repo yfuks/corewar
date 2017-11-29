@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/28 17:48:06 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 15:24:14 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct	s_arena
 	int					lives[MAX_PLAYERS];
 	int					nb_champs;
 	int					last_live;
+	char				should_check_deads;
 	t_champion			champions[MAX_PLAYERS];
 }				t_arena;
 
@@ -77,16 +78,18 @@ void			print_map_arena(t_arena *arena);
 void			print_arena(t_arena *arena);
 void			print_pc_moove(t_arena *arena, int from, int to);
 void			print_process_number(int number);
+void			print_winner(t_arena *arena);
 
 /*
 **	BATTLE
 */
 
+void			check_process_deads(t_arena *arena, t_options *opts, int ctd);
 int				next_index(int index);
 int    			prev_index(int index);
 int				index_jump(int opcode, char encoding, int index);
 int        		add_to_index(int index, int nbr);
-void			check_process(t_arena *arena, t_options *opts);
+void			check_process(t_arena *arena, t_options *opts, int cycle_to_die);
 int				check_opcode(t_process *proc, t_arena *arena);
 void			exec_command(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts);
 int				is_valid_param(int cmd_opcode, char encoding);
@@ -115,7 +118,7 @@ void			cmd_aff(t_process *proc, t_champion *champion, t_arena *arena, t_options 
 
 int				init_arena(t_arena *arena);
 void			play(t_arena *arena, t_options *options);
-int				check_deads(t_arena *arena, t_options *options, int cycle_to_die);
+int				check_deads(t_arena *arena);
 
 /*
 **	TOOLS

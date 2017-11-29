@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 14:48:59 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/28 16:30:00 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 14:19:28 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	   		cmd_ldi(t_process *proc, t_champion *champion, t_arena *arena, t_optio
 	}
 	i = get_memory(arena, index_tmp, REG_SIZE);
 	proc->registers[proc->REG[2] - 1] = i;
-    if (proc->registers[proc->REG[2] - 1] == i)
+    if (proc->registers[proc->REG[2] - 1] == 0)
         proc->carry = 1;
     else 
         proc->carry = 0;

@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 18:11:41 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/28 16:30:33 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 14:17:42 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ void	   		cmd_or(t_process *proc, t_champion *champion, t_arena *arena, t_option
 	if (opts->verbose & SHOW_OPERATIONS)
 		print_or(proc->number, args[0], args[1], proc->REG[2]);
     proc->registers[proc->REG[2] - 1] = (args[0] | args[1]);
-    if (args[0] | args[1])
+    if ((args[0] | args[1]) == 0)
         proc->carry = 1;
+	else
+		proc->carry = 0;
     proc->index = index;
 }

@@ -48,7 +48,9 @@ void	   		cmd_and(t_process *proc, t_champion *champion, t_arena *arena, t_optio
 	if (opts->verbose & SHOW_OPERATIONS)
 		print_and(proc->number, args[0], args[1], proc->REG[2]);
     proc->registers[proc->REG[2] - 1] = (args[0] & args[1]);
-    if (args[0] & args[1])
+    if ((args[0] & args[1]) == 0)
         proc->carry = 1;
+	else
+		proc->carry = 0;
     proc->index = index;
 }

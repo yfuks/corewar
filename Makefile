@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/28 16:24:45 by yfuks            ###   ########.fr        #
+#    Updated: 2017/11/29 15:24:34 by yfuks            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -129,6 +129,8 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)print_pc_moove.c \
 				  $(COREWARDIR)index_jump.c \
 				  $(COREWARDIR)print_process_number.c \
+				  $(COREWARDIR)check_process_deads.c \
+				  $(COREWARDIR)print_winner.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)
