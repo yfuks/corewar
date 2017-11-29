@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:18:33 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/29 15:22:44 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 16:03:09 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,14 @@ static int		next_cycle(t_arena *arena, int cycle_to_die, t_options *options, int
 			ft_putnbr_fd(arena->current_cycle, STD_IN);
 			ft_putstr_fd("\n", STD_IN);
 		}
-		check_process(arena, options, cycle_to_die);
-/*		if (arena->current_cycle > CYCLE_TO_DIE && cycle == cycle_to_die - 1)
-		{
-			if (!check_deads(arena, options, cycle_to_die))
-				return (0);
-				}*/
+		check_process(arena, options, cycle_to_die, print);
 		if (print && options->verbose & SHOW_CYCLES && ((cycle == cycle_to_die)
 				|| (cycle_to_die <= 0 && cycle == 1)))
 		{
 			ft_putstr_fd("Cycle to die is now ", STD_IN);
 			ft_putnbr_fd(cycle_to_die, STD_IN);
 			ft_putstr_fd("\n", STD_IN);
+			print = 0;
 		}
 		if (options->dump == arena->current_cycle)
 		{
