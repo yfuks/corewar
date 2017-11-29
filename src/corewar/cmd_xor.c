@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 18:15:21 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/28 16:31:21 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 19:29:53 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,18 @@ static void     print_xor(int champion_number, int arg1, int arg2, int reg)
 
 void	   		cmd_xor(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
-    int   index;
+//    int   index;
     int   i;
     int   args[3];
 
-    index = next_index(proc->index);
+//    index = next_index(proc->index);
     (void)champion;
-	ft_bzero(args, sizeof(int) * 3);
-    get_command_arguments(proc, arena, &index, CMD_XOR_INDEX);
+	(void)arena;
+//	ft_bzero(args, sizeof(int) * 3);
+	args[0] = 0;
+	args[1] = 0;
+	args[2] = 0;
+//    get_command_arguments(proc, arena, &index, CMD_XOR_INDEX);
     if (proc->REG[0] >= REG_NUMBER || proc->REG[1] >= REG_NUMBER || proc->REG[2] >= REG_NUMBER)
       return ;
     i = 0;
@@ -64,5 +68,5 @@ void	   		cmd_xor(t_process *proc, t_champion *champion, t_arena *arena, t_optio
         proc->carry = 1;
 	else
 		proc->carry = 0;
-    proc->index = index;
+//    proc->index = index;
 }

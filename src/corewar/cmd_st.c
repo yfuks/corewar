@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:13:05 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/28 16:30:42 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 19:22:42 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,17 @@ static void print_st(int champion_number, int reg, int addr1)
 
 void	   		cmd_st(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
-    int   index;
+//    int   index;
     int   index_tmp;
     int   args[2];
 
 	(void)champion;
-    index = next_index(proc->index);
-    ft_bzero(args, sizeof(int) * 2);
+//    index = next_index(proc->index);
+	args[0] = 0;
+	args[1] = 0;
+//    ft_bzero(args, sizeof(int) * 2);
     index_tmp = 0;
-    get_command_arguments(proc, arena, &index, CMD_ST_INDEX);
+//    get_command_arguments(proc, arena, &index, CMD_ST_INDEX);
     if (proc->REG[0] >= REG_NUMBER || !proc->REG[0] || proc->REG[1] >= REG_NUMBER)
         return ;
     args[0] = proc->registers[(int)proc->REG[0] - 1];
@@ -46,10 +48,10 @@ void	   		cmd_st(t_process *proc, t_champion *champion, t_arena *arena, t_option
         proc->registers[(int)proc->REG[1] - 1] = args[0];
     else if (proc->IND[1])
     {
-        index_tmp = add_to_index(proc->index, (proc->IND[1] % IDX_MOD));
+        index_tmp = add_to_index(proc->index_opc, (proc->IND[1] % IDX_MOD));
         copy_int_to_arena(arena, args[0], index_tmp);
     }
     if (opts->verbose & SHOW_OPERATIONS)
         print_st(proc->number, proc->REG[0], proc->IND[1]);
-    proc->index = index;
+//    proc->index = index;
 }

@@ -24,21 +24,26 @@ static void		print_said_alive(t_champion *champion)
 
 void	   		cmd_live(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
-	int		index;
+//	int		index;
 	char	integer[4];
 	int		count;
 	int		player_nb;
 
-	index = next_index(proc->index);
-	ft_bzero(integer, sizeof(char) * 4);
+//	index = next_index(proc->index);
+	integer[0] = 0;
+	integer[1] = 0;
+	integer[2] = 0;
+	integer[3] = 0;
+//	ft_bzero(integer, sizeof(char) * 4);
 	count = 0;
-	while (count < 4)
+/*	while (count < 4)
 	{
 		integer[count] = arena->arena[index];
 		index = next_index(index);
 		count++;
 	}
-	player_nb = ctoi(integer);
+	player_nb = ctoi(integer);*/
+	player_nb = proc->DIR[0];
 	if (opts->verbose & SHOW_OPERATIONS)
 		print_live(proc->number, player_nb);
 	champion->last_live = arena->current_cycle;
@@ -52,5 +57,5 @@ void	   		cmd_live(t_process *proc, t_champion *champion, t_arena *arena, t_opti
 		arena->lives[player_nb - 1] += 1;
 		arena->last_live = player_nb;
 	}
-	proc->index = index;
+//	proc->index = index;
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_fork.c                                         :+:      :+:    :+:   */
+/*   cmd_lfork.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/24 16:10:25 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/29 19:31:46 by yfuks            ###   ########.fr       */
+/*   Created: 2017/11/29 18:17:04 by yfuks             #+#    #+#             */
+/*   Updated: 2017/11/29 19:32:03 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void		cpy_registers(t_process *proc, t_process *new)
 	}
 }
 
-void            cmd_fork(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
+void            cmd_lfork(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
 //	int			index;
 	int			index_tmp;
@@ -46,10 +46,10 @@ void            cmd_fork(t_process *proc, t_champion *champion, t_arena *arena, 
 //	index = next_index(proc->index);
 //	value = get_memory(arena, index, 2);
 	value = proc->DIR[0];
-	index_tmp = add_to_index(proc->index, value % IDX_MOD);
+	index_tmp = add_to_index(proc->index_opc, value);
 	if (opts->verbose & SHOW_OPERATIONS)
 		print_fork(proc->number, value, index_tmp);
-	//proc->index = add_to_index(index, 2);
+//	proc->index = add_to_index(index, 2);
 	process = new_process(index_tmp);
 	process->carry = proc->carry;
 	cpy_registers(proc, process);

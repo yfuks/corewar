@@ -19,14 +19,14 @@ static void     print_and(int champion_number, int arg1, int arg2, int reg)
 
 void	   		cmd_and(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
-    int   index;
+//    int   index;
     int   i;
     int   args[3];
 
 	(void)champion;
-    index = next_index(proc->index);
-    ft_bzero(args, sizeof(int) * 3);
-    get_command_arguments(proc, arena, &index, CMD_AND_INDEX);
+	(void)arena;
+//    index = next_index(proc->index);
+//    get_command_arguments(proc, arena, &index, CMD_AND_INDEX);
     if (proc->REG[0] >= REG_NUMBER || proc->REG[1] >= REG_NUMBER || proc->REG[2] >= REG_NUMBER)
       return ;
     i = 0;
@@ -52,5 +52,5 @@ void	   		cmd_and(t_process *proc, t_champion *champion, t_arena *arena, t_optio
         proc->carry = 1;
 	else
 		proc->carry = 0;
-    proc->index = index;
+//    proc->index = index;
 }

@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:02:23 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/29 16:49:46 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 19:36:55 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,35 +31,35 @@ static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena, t
  	cmd_fork,
  	cmd_lld,
  	cmd_lldi,
- 	0, //cmd_lfork,
+ 	cmd_lfork,
  	cmd_aff
 };
 
 void		exec_command(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
-	int			opcode;
-	char		encoding;
+//	int			opcode;
+//	char		encoding;
 	int			init_index;
 
 	init_index = proc->index;
-	if (!(opcode = check_opcode(proc, arena)))
+/*	if (!(opcode = check_opcode(proc, arena)))
 	{
 		proc->index = next_index(proc->index);
 		return ;
-	}
-	encoding = arena->arena[next_index(proc->index)];
-	if (!is_valid_param(opcode, encoding))
+	}*/
+//	encoding = arena->arena[next_index(proc->index)];
+/*	if (!is_valid_param(proc->current_opcode, encoding))
 	{
 		proc->index = next_index(proc->index);
-		proc->index = index_jump(opcode, encoding, proc->index);
-		if (opts->verbose & SHOW_PC_MOOV && opcode != 9)
+		proc->index = index_jump(proc->current_opcode, encoding, proc->index);
+		if (opts->verbose & SHOW_PC_MOOV && proc->current_opcode != 9)
 			print_pc_moove(arena, init_index, proc->index);
 		proc->remaining_cycles = 1;
 		return ;
-	}
-    if (func[opcode - 1])
-        func[opcode - 1](proc, champion, arena, opts);
-	if (opts->verbose & SHOW_PC_MOOV && opcode != 9)
-		print_pc_moove(arena, init_index, proc->index);
+		}*/
+    if (func[proc->current_opcode - 1])
+        func[proc->current_opcode - 1](proc, champion, arena, opts);
+	if (opts->verbose & SHOW_PC_MOOV && proc->current_opcode != 9)
+		print_pc_moove(arena, proc->index_opc, proc->index);
     proc->remaining_cycles = 1;
 }
