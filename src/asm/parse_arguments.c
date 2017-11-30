@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 12:02:01 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 11:45:17 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 13:41:33 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ static bool	error_arg(t_instruction **cursor)
 
 bool		parse_arguments(t_instruction **cursor, char *line)
 {
-	int		nb_arg;
+	int	nb_arg;
 
 	nb_arg = 0;
-	(*cursor)->arg = ft_strsplit(line, SEPARATOR_CHAR);
+	(*cursor)->arg = ft_strsplit(line, SEPARATOR_CHAR, (*cursor)->arg);
 	while ((*cursor)->arg[nb_arg] && nb_arg < 3)
 	{
 		ft_trim((*cursor)->arg[nb_arg]);

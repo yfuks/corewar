@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:34:18 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/30 10:09:47 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 12:11:14 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char			*ft_strncpy(char *dst, const char *src, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 char			*ft_strndup(char **s, int c);
 int				ft_realloc(char **rest);
-char			**ft_strsplit(char const *s, char c);
+char			**ft_strsplit(char const *s, char c, char **av);
 char			*ft_trim(char *str);
 
 

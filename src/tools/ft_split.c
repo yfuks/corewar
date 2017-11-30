@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 13:17:33 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/29 17:49:30 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 13:38:00 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,8 @@ static char	*ft_fill_word(const char *s, char *av, int start, int len_word)
 	return (av);
 }
 
-char		**ft_strsplit(char const *s, char c)
+char		**ft_strsplit(char const *s, char c, char **av)
 {
-	char	**av;
 	int		len_word;
 	int		i;
 	int		k;
