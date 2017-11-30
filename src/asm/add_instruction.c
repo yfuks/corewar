@@ -6,14 +6,12 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:44:37 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/29 19:29:25 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:35:47 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "asm.h"
 #include "tools.h"
-#include <stdio.h>
 
 t_instruction	*add_end_instruction(t_instruction **list_instr)
 {

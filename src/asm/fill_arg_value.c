@@ -6,15 +6,12 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:46:50 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 09:57:14 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:44:01 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-#include "op.h"
 #include "tools.h"
-#include <unistd.h>
-#include <stdio.h>
 
 /*
 ** verifie si les labels dans les arguements correspondent

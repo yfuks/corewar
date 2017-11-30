@@ -6,15 +6,12 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/30 11:31:00 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:47:46 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-#include "op.h"
 #include "tools.h"
-#include <fcntl.h>
-#include <stdio.h>
 
 /*
 **	On met les variable d'etat du header a zero

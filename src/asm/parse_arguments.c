@@ -6,15 +6,13 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 12:02:01 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 10:00:26 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:45:17 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 #include "op.h"
 #include "tools.h"
-#include <unistd.h>
-#include <stdio.h>
 
 extern t_op g_op_tab[17];
 

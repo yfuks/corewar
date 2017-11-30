@@ -6,12 +6,11 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:27:23 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/17 12:10:08 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:38:12 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-#include "op.h"
 #include "tools.h"
 
 static bool	error_labelschar(void)

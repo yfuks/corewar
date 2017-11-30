@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:28:49 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/29 16:45:42 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:40:50 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 #include "op.h"
 #include "tools.h"
 #include <fcntl.h>
-#include <stdint.h>
-#include <stdio.h>
 
 extern t_op g_op_tab[17];
 
-t_calc_bc	byte_code_bin(t_calc_bc *byco)
+static t_calc_bc	byte_code_bin(t_calc_bc *byco)
 {
 	while (byco->i < 3)
 	{
@@ -29,7 +27,7 @@ t_calc_bc	byte_code_bin(t_calc_bc *byco)
 	return (*byco);
 }
 
-int			byte_code(t_instruction *tmp)
+static int			byte_code(t_instruction *tmp)
 {
 	t_calc_bc	byco;
 
@@ -55,21 +53,21 @@ int			byte_code(t_instruction *tmp)
 	return (byco.byte_code);
 }
 
-char		*file_newname(char *filename_cor, char *filename_s)
+static char			*file_newname(char *filename_cor, char *filename_s)
 {
 	filename_cor = ft_strsub(filename_s, 0, ft_strlen(filename_s) - 2);
 	filename_cor = ft_strcat(filename_cor, ".cor");
 	return (filename_cor);
 }
 
-void		end_message_asm(char *filename_cor)
+static void			end_message_asm(char *filename_cor)
 {
 	ft_putstr_fd("Writing output program to ", 1);
 	ft_putstr_fd(filename_cor, 1);
 	ft_putstr_fd("\n", 1);
 }
 
-void		create_cor(t_instruction *list_instr, t_header *header,
+void				create_cor(t_instruction *list_instr, t_header *header,
 char *filename_s)
 {
 	int				fd;

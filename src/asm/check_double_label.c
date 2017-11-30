@@ -6,13 +6,12 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 13:26:23 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 10:02:43 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:37:36 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 #include "tools.h"
-#include <stdio.h>
 
 bool	check_double_label(t_instruction **list_instr, char *label)
 {

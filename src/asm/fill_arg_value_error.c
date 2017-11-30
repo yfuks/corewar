@@ -6,12 +6,11 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 16:38:00 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/23 19:49:42 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:42:23 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-#include "op.h"
 #include "tools.h"
 
 bool	error_fill_arg(int n, t_instruction **cursor)

@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/30 11:31:24 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:34:01 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct	s_calc_bc
 {
 	int						byte_code;
 	int						i;
-}							t_calc_bc;
+}				t_calc_bc;
 
 typedef struct	s_hstate
 {
@@ -39,7 +39,7 @@ typedef struct	s_hstate
 	int						comment;
 }				t_hstate;
 
-typedef struct				s_instruction
+typedef struct	s_instruction
 {
 	char					*label;
 	char					*double_label;
@@ -55,8 +55,7 @@ typedef struct				s_instruction
 	int						cumul_byte_size;
 	size_t					nb_line;
 	struct s_instruction	*next;
-}							t_instruction;
-
+}				t_instruction;
 
 /*
 ** PARSER ======================================================================
@@ -72,7 +71,7 @@ void			parse_label(t_instruction **list_instr, t_instruction *cursor,
 	char *line);
 bool			check_labelschar(char *line);
 bool			check_double_label(t_instruction **list_instr, char *label);
-bool			parse_instruction(t_instruction *cursor,char *line);
+bool			parse_instruction(t_instruction *cursor, char *line);
 bool			parse_mnemonique(t_instruction **cursor, char *line);
 bool			parse_arguments(t_instruction **cursor, char *line);
 bool			check_and_fill_arg(t_instruction **cursor);
@@ -91,22 +90,21 @@ t_instruction	*add_end_instruction(t_instruction **list_instr);
 ** CONVERSION ==================================================================
 */
 
-void			create_cor(t_instruction *list_instr, t_header *id, char *filename_s);
+void			create_cor(t_instruction *list_instr, t_header *id,
+	char *filename_s);
 void			fill_id_hex(t_header *id, int fd);
-void 			fill_instruction_hex(t_instruction *list_instr, int fd);
-void    		get_bytecode(t_instruction *list_instr);
-void    		get_value_param(t_instruction *list_instr);
+void			fill_instruction_hex(t_instruction *list_instr, int fd);
+void			get_bytecode(t_instruction *list_instr);
+void			get_value_param(t_instruction *list_instr);
 uint16_t		swap_uint16(uint16_t val);
 uint32_t		swap_uint32(uint32_t val);
 void			writing_header_fd(int fd, t_header *header);
 void			writing_prog_fd(int fd, t_instruction *tmp);
 
-
-
 /*
 ** ERROR =======================================================================
 */
 
-bool	error_stdin(char **av, int ac);
-bool	error_fill_arg(int n, t_instruction **cursor);
+bool			error_stdin(char **av, int ac);
+bool			error_fill_arg(int n, t_instruction **cursor);
 #endif

@@ -6,15 +6,12 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 13:13:19 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 09:54:06 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:45:59 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-#include "op.h"
 #include "tools.h"
-#include <unistd.h>
-#include <stdio.h>
 
 static bool	error_instruction(t_instruction *cursor)
 {

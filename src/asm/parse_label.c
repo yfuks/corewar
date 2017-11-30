@@ -6,12 +6,11 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:06:16 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 10:18:09 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:46:40 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-#include "op.h"
 #include "tools.h"
 
 /*

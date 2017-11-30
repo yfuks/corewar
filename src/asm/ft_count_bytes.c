@@ -6,15 +6,13 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 08:32:53 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/24 08:52:28 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:44:20 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 #include "op.h"
 #include "tools.h"
-#include <unistd.h>
-#include <stdio.h>
 
 /*
 ** le nobre d'octets se calcule :

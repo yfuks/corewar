@@ -6,13 +6,12 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 16:39:17 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/15 15:04:52 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:41:44 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 #include "tools.h"
-#include <unistd.h>
 
 bool	error_stdin(char **av, int ac)
 {
