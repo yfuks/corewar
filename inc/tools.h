@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:34:18 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/29 15:35:03 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 10:09:47 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # define BUFF_SIZE 1
 # include <unistd.h>
 # include <stdlib.h>
+# define SPACE	' '
+# define TAB 	'\t'
 
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strnew(size_t size);
@@ -50,5 +52,7 @@ void			*ft_memcpy(void *dst, const void *src, size_t n);
 char			*ft_strndup(char **s, int c);
 int				ft_realloc(char **rest);
 char			**ft_strsplit(char const *s, char c);
+char			*ft_trim(char *str);
+
 
 #endif

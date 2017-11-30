@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 12:02:01 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/29 17:52:55 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 10:00:26 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,11 @@ bool		parse_arguments(t_instruction **cursor, char *line)
 
 	nb_arg = 0;
 	(*cursor)->arg = ft_strsplit(line, SEPARATOR_CHAR);
-	// ft_putnbr_fd(nb_arg, 1);
-	// ft_putstr_fd(" parse_arguments\n", 1);
 	while ((*cursor)->arg[nb_arg] && nb_arg < 3)
 	{
-		// ft_putnbr_fd(nb_arg, 1);
-		// ft_putstr_fd(" boucle\n", 1);
-		// ft_putstr_fd((*cursor)->arg[nb_arg], 1);
-		// ft_putstr_fd("\n", 1);
 		ft_trim((*cursor)->arg[nb_arg]);
 		nb_arg++;
 	}
-	// ft_putnbr_fd(nb_arg, 1);
-	// ft_putstr_fd(" parse_arguments 2\n", 1);
 	if (nb_arg != g_op_tab[(*cursor)->opcode - 1].nb_arg)
 		return (error_arg(cursor));
 	if (!(check_and_fill_arg(cursor)))

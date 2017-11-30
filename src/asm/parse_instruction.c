@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 13:13:19 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/29 18:39:04 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 09:54:06 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ static bool	error_instruction(t_instruction *cursor)
 
 bool		parse_instruction(t_instruction *cursor, char *line)
 {
-	// ft_putstr_fd("parse instruction: ",1);
-	// ft_putstr_fd(line,1);
-	// ft_putstr_fd("\n",1);
 	if (!(ft_strcmp(line, "")) || !(ft_strcmp((line = ft_trim(line)), "")))
 	{
 		cursor->instr_byte_size = 0;
@@ -50,23 +47,12 @@ bool		parse_instruction(t_instruction *cursor, char *line)
 			return (true);
 		}
 	}
-	// ft_putstr_fd("parse instruction2: ",1);
-	// ft_putstr_fd(line,1);
-	// ft_putstr_fd("\n",1);
 	if (cursor->double_label != NULL)
 		line = ft_trim(ft_strsub2(line, ft_strlen(cursor->double_label) + 1,
 		ft_strlen(line)));
-	// ft_putstr_fd("parse instruction3: ",1);
-	// ft_putstr_fd(line,1);
-	// ft_putstr_fd("\n",1);
 	if (!parse_mnemonique(&cursor, line))
 		return (error_instruction(cursor));
-	// ft_putstr_fd("parse instruction4: ",1);
-	// ft_putstr_fd(line,1);
-	// ft_putstr_fd("\n",1);
 	if (!parse_arguments(&cursor, line))
 		return (false);
-	// ft_putstr_fd("salut", 1);
-	// ft_putstr_fd("\n", 1);
 	return (true);
 }

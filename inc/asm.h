@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/29 17:07:41 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 10:22:05 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct				s_count
 {
 	int				nb_line;
 	int 			cumul;
+	int				ret_gnl;
 }							t_count;
 
 typedef struct				s_calc_bc
@@ -81,7 +82,6 @@ bool			check_and_fill_arg(t_instruction **cursor);
 bool			fill_arg_value(t_instruction **list_instr, t_instruction **cursor);
 
 void			ft_count_bytes(t_instruction **cursor);
-char			*ft_trim(char *str);
 
 /*
 ** LIST FCT ====================================================================

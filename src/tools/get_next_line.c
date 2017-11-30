@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 14:13:34 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/29 15:06:43 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 10:30:55 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int		end_of_file(char **rest, char **str, char **line)
 	return (1);
 }
 
-int		get_next_line(const int fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
 	int				ret;
 	char			buf[BUFF_SIZE + 1];

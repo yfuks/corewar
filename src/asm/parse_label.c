@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:06:16 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/29 18:45:04 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 10:18:09 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,22 @@ static int	s_label_char(char *line)
 	return (0);
 }
 
+static int	parse_double_label(t_instruction **list_instr,
+	t_instruction *cursor, char *labelname)
+{
+	if (check_double_label(list_instr, labelname))
+	{
+		if (!(cursor->double_label = ft_strnew(ft_strlen(labelname))))
+			return (0);
+		cursor->double_label = ft_strcpy(cursor->double_label, labelname);
+		{
+			ft_memdel((void**)&labelname);
+			return (0);
+		}
+	}
+	return (1);
+}
+
 void		parse_label(t_instruction **list_instr, t_instruction *cursor,
 	char *line)
 {
@@ -53,14 +69,8 @@ void		parse_label(t_instruction **list_instr, t_instruction *cursor,
 	char	*labelname;
 
 	labelname = NULL;
-	// ft_putstr_fd("parse label: ",1);
-	// ft_putstr_fd(line,1);
-	// ft_putstr_fd("\n",1);
 	if ((i = s_label_char(line)) == 0)
-	{
-		cursor->label = NULL;
 		return ;
-	}
 	else
 	{
 		if (line[i - 1] == TAB || line[i - 1] == SPACE
@@ -71,22 +81,8 @@ void		parse_label(t_instruction **list_instr, t_instruction *cursor,
 			labelname = ft_strsub(line, 0, i);
 			if (!check_labelschar(labelname = ft_trim(labelname)))
 				return ;
-			// ft_putstr_fd("parse label before check double: ",1);
-			// ft_putstr_fd(line,1);
-			// ft_putstr_fd("\n",1);
-			if (check_double_label(list_instr, labelname))
-			{
-				// ft_putstr_fd("parse label after check double: ",1);
-				// ft_putstr_fd(line,1);
-				// ft_putstr_fd("\n",1);
-				if (!(cursor->double_label = ft_strnew(ft_strlen(labelname))))
-					return ;
-				cursor->double_label = ft_strcpy(cursor->double_label, labelname);
-				{
-					ft_memdel((void**)&labelname);
-					return ;
-				}
-			}
+			if (!(parse_double_label(list_instr, cursor, labelname)))
+				return ;
 			if (!(cursor->label = ft_strnew(ft_strlen(labelname))))
 				return ;
 			cursor->label = ft_strcpy(cursor->label, labelname);

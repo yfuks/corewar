@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:53:50 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/29 18:21:01 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 09:59:17 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,6 @@ bool		parse_mnemonique(t_instruction **cursor, char *line)
 	char	*mnm_line;
 
 	i = 0;
-	// ft_putstr_fd("parse mnemonique: ",1);
-	// ft_putstr_fd(line,1);
-	// ft_putstr_fd("\n",1);
 	while (line[i])
 	{
 		if (line[i] == TAB || line[i] == SPACE)

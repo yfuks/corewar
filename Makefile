@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/29 11:53:55 by jthillar         ###   ########.fr        #
+#    Updated: 2017/11/30 10:08:48 by jthillar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(ASMDIR)reverse_endian.c \
 				  $(ASMDIR)writing_fd.c \
 				  $(TOOLSDIR)ft_strrchr.c \
+				  $(TOOLSDIR)ft_trim.c \
 				  $(TOOLSDIR)ft_strlen.c \
 				  $(TOOLSDIR)ft_itoa.c \
 				  $(TOOLSDIR)ft_putstr_fd.c \
