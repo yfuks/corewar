@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/30 10:30:16 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:31:00 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,17 +93,12 @@ static bool		parse_second_read(t_instruction **list_instr)
 	cursor = *list_instr;
 	while (cursor)
 	{
-		if (cursor->start_instr == 0)
-		{
-			if (cursor->next)
-				cursor = cursor->next;
-		}
-		else
+		if (cursor->start_instr == 1)
 		{
 			if (!(fill_arg_value(list_instr, &cursor)))
 				return (false);
-			cursor = cursor->next;
 		}
+		cursor = cursor->next;
 	}
 	return (true);
 }
