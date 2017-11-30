@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/30 13:49:31 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 17:46:44 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,24 @@ static bool		parse_first_read(t_header *header, t_instruction **list_instr,
 static bool		parse_second_read(t_instruction **list_instr)
 {
 	t_instruction	*cursor;
+	int				script;
 
+	script = 0;
 	cursor = *list_instr;
 	while (cursor)
 	{
 		if (cursor->start_instr == 1)
 		{
+			script++;
 			if (!(fill_arg_value(list_instr, &cursor)))
 				return (false);
 		}
 		cursor = cursor->next;
+	}
+	if (script == 0)
+	{
+		ft_putstr_fd("File has just a header\n", 2);
+		return (false);
 	}
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:27:41 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 11:36:35 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 18:28:30 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ extern t_op g_op_tab[17];
 
 static bool	error_lab_instr(t_instruction **cursor, int n)
 {
-	ft_putstr_fd("line: ", 2);
+	ft_putstr_fd("line : ", 2);
 	ft_putnbr_fd((*cursor)->nb_line, 2);
 	if (n == 1)
 		ft_putstr_fd(" -> an argument is not well formated\n", 2);
 	if (n == 2)
 		ft_putstr_fd(" -> an argument does not correspond to the \
-		instruction list\n", 2);
+mnemonique list\n", 2);
 	return (false);
 }
 
@@ -69,7 +69,8 @@ bool		check_and_fill_arg(t_instruction **cursor)
 		else if ((*cursor)->arg[i][0] == REG_CHAR)
 			(*cursor)->arg_type[i] = T_REG;
 		else if (ft_isdigit((*cursor)->arg[i][0])
-		|| (*cursor)->arg[i][0] == LABEL_CHAR)
+		|| (*cursor)->arg[i][0] == LABEL_CHAR ||
+		((*cursor)->arg[i][0] == '-' && ft_isdigit((*cursor)->arg[i][1])))
 			(*cursor)->arg_type[i] = T_IND;
 		else
 			return (error_lab_instr(cursor, 1));

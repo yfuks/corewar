@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/30 13:50:28 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 17:43:46 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ASM_H
 # include <stdlib.h>
 # include <stdbool.h>
+# include <stdio.h>
 # include "op.h"
 # define SPACE	' '
 # define TAB 	'\t'

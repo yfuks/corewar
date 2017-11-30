@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:46:50 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 13:32:51 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 17:45:45 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_instruction **cursor, int i, int n)
 	t_instruction *tmp;
 
 	tmp = *list_instr;
-	while (tmp && tmp->next)
+	while (tmp)
 	{
 		if (tmp->label != NULL &&
 		ft_strcmp((*cursor)->arg[i] + n, tmp->label) == 0)
