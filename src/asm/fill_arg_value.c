@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:46:50 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 17:45:45 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/01 13:43:58 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static bool	reg_value(t_instruction **cursor, int i)
 	if ((*cursor)->arg[i][1] == '\0' && !ft_isdigit((*cursor)->arg[i][1]))
 		return (error_fill_arg(1, cursor));
 	(*cursor)->arg_value[i] = ft_atoi((*cursor)->arg[i] + 1);
-	if ((*cursor)->arg_value[i] > 16)
+	if ((*cursor)->arg_value[i] > 16 || (*cursor)->arg_value[i] < 1)
 		return (error_fill_arg(2, cursor));
 	return (true);
 }

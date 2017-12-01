@@ -11,7 +11,7 @@ label:		zjmp %:avantdebt
 		zjmp %0				# pour eviter ecrasement
 						# de l'instruction suivante
 code:		live %42			# 5
-		sti  r15,%0,r14			# 6
+		sti  r0,%0,r14			# 6
 		zjmp %-200			# 3
 		live %42			# 5
 		sti  r15,%0,r14			# 6
