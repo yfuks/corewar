@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 14:48:59 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/29 14:19:28 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 19:30:51 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,18 @@ static void	print_infos(int value, int value2, int total)
 
 void	   		cmd_ldi(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
-    int   	index;
+//    int   	index;
     int   	args[3];
 	int		i;
 	int		index_tmp;
 
-    index = next_index(proc->index);
+//    index = next_index(proc->index);
     index_tmp = 0;
 	(void)champion;
-    ft_bzero(args, sizeof(int) * 3);
-    get_command_arguments(proc, arena, &index, CMD_LDI_INDEX);
+	args[0] = 0;
+	args[1] = 0;
+	args[2] = 0;
+//    get_command_arguments(proc, arena, &index, CMD_LDI_INDEX);
     if (proc->REG[2] >= REG_NUMBER || !proc->REG[2])
         return ;
 	i = 0;
@@ -64,13 +66,13 @@ void	   		cmd_ldi(t_process *proc, t_champion *champion, t_arena *arena, t_optio
 		else if (proc->args[i] == T_IND)
 		{
 			args[i] = (proc->IND[i] % IDX_MOD);
-			index_tmp = add_to_index(proc->index, args[i]);		
+			index_tmp = add_to_index(proc->index_opc, args[i]);		
 			args[i] = get_memory(arena, index_tmp, 4);
 		}
 		i++;
 	}
 	i = (args[0] + args[1]) % IDX_MOD;
-	index_tmp = add_to_index(proc->index, (args[0] + args[1]) % IDX_MOD);
+	index_tmp = add_to_index(proc->index_opc, (args[0] + args[1]) % IDX_MOD);
     if (opts->verbose & SHOW_OPERATIONS)
 	{
         print_ldi(proc->number, args[0], args[1], proc->REG[2]);
@@ -82,5 +84,5 @@ void	   		cmd_ldi(t_process *proc, t_champion *champion, t_arena *arena, t_optio
         proc->carry = 1;
     else 
         proc->carry = 0;
-    proc->index = index;
+//    proc->index = index;
 }

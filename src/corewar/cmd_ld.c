@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:12:56 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/28 16:29:48 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 19:41:30 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,23 @@ static void print_ld(int champion_number, int reg, int value)
 
 void	   		cmd_ld(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
-    int   index;
+//    int   index;
     int   index_tmp;
     int   args[2];
 
-    index = next_index(proc->index);
+//    index = next_index(proc->index);
     index_tmp = 0;
+	args[0] = 0;
+	args[1] = 0;
 	(void)champion;
-    ft_bzero(args, sizeof(int) * 2);
-    get_command_arguments(proc, arena, &index, CMD_LD_INDEX);
+	ft_putendl_fd("ld", STD_IN);
+//    get_command_arguments(proc, arena, &index, CMD_LD_INDEX);
     if (proc->REG[1] >= REG_NUMBER || !proc->REG[1])
+	{
+		ft_putendl_fd("bad", STD_IN);
+		ft_putnbr_fd(proc->REG[1], STD_IN);
         return ;
+	}
     if (proc->args[0] == T_IND)
     {
     	index_tmp = add_to_index(proc->index, (proc->IND[0] % IDX_MOD));
@@ -52,5 +58,5 @@ void	   		cmd_ld(t_process *proc, t_champion *champion, t_arena *arena, t_option
     proc->registers[(int)(proc->REG[1] - 1)] = args[0];
     if (opts->verbose & SHOW_OPERATIONS)
         print_ld(proc->number, proc->REG[1], args[0]);
-    proc->index = index;
+//    proc->index = index;
 }

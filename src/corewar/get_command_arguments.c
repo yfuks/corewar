@@ -18,6 +18,34 @@ void       add_args_in_process(t_arena *arena, int *index, int size, char intege
         }
 }
 
+static void	clean_proc(t_process *proc)
+{
+	int		i;
+
+	i = 0;
+	while (i < 3)
+	{
+		proc->REG[i] = 0;
+		proc->IND[i] = 0;
+		proc->DIR[i] = 0;
+		proc->args[i] = 0;
+		i++;
+	}
+	proc->args[i] = 0;
+}
+
+static void	clean_integer(char integer[4])
+{
+	int		i;
+
+	i = 0;
+	while (i < 4)
+	{
+		integer[i] = 0;
+		i++;
+	}
+}
+
 void        get_command_arguments(t_process *proc, t_arena *arena, int *index, int cmd)
 {
     int   i;
@@ -30,13 +58,10 @@ void        get_command_arguments(t_process *proc, t_arena *arena, int *index, i
         size_direct = 4;
     i = 0;
     encoding = arena->arena[*index];
-    ft_bzero(proc->args, sizeof(int) * 4);
-    ft_bzero(proc->REG, sizeof(int) * 3);
-    ft_bzero(proc->IND, sizeof(int) * 3);
-    ft_bzero(proc->DIR, sizeof(int) * 3);
+	clean_proc(proc);
     while (i < op_tab[cmd].nb_arg)
     {
-        ft_bzero(&integer, sizeof(char) * 4);
+		clean_integer(integer);
         tmp = encoding >> (6 - (i * 2));
         tmp = tmp & 0x3;
         if (tmp == IND_CODE)

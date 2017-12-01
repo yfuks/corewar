@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 14:14:58 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/28 16:30:23 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 19:30:11 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,23 @@ static void print_lld(int champion_number, int reg, int value)
 
 void	   		cmd_lld(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
-    int   index;
+//    int   index;
     int   index_tmp;
     int   args[2];
 
-    index = next_index(proc->index);
+//    index = next_index(proc->index);
     index_tmp = 0;
     (void)champion;
-	ft_bzero(args, sizeof(int) * 2);
-    get_command_arguments(proc, arena, &index, CMD_LLD_INDEX);
+	(void)arena;
+//	ft_bzero(args, sizeof(int) * 2);
+	args[0] = 0;
+	args[1] = 0;
+//    get_command_arguments(proc, arena, &index, CMD_LLD_INDEX);
     if (proc->REG[1] >= REG_NUMBER || !proc->REG[1])
         return ;
     if (proc->args[0] == T_IND)
     {
-    	index_tmp = add_to_index(proc->index, proc->IND[0]);
+    	index_tmp = add_to_index(proc->index_opc, proc->IND[0]);
     	args[0] = arena->arena[index_tmp];
     }
     else if (proc->args[0] == T_DIR)
@@ -52,6 +55,6 @@ void	   		cmd_lld(t_process *proc, t_champion *champion, t_arena *arena, t_optio
     proc->registers[(int)(proc->REG[1] - 1)] = args[0];
     if (opts->verbose & SHOW_OPERATIONS)
         print_lld(proc->number, proc->REG[1], args[0]);
-    proc->index = index;
+    //proc->index = index;
 }
 
