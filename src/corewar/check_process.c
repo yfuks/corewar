@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:55:44 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/29 16:02:56 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/01 17:58:15 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	check_process_in_champion(t_arena *arena, t_champion *champion, t_op
 		if (!cursor->opcode)
 		{
 			cursor->index_opc = cursor->index;
+			cursor->cycle_opc = arena->current_cycle;
 			if (!(cursor->opcode = check_opcode(cursor, arena)))
 			{
 				cursor->index = next_index(cursor->index);

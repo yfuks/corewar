@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:59:00 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/29 15:05:43 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/01 17:52:38 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	check_process_deads(t_arena *arena, t_options *opts, int ctd)
 		cursor = arena->champions[i].process;
 		while (cursor)
 		{
-			if (!cursor->is_dead && !cursor->live)
+			if (!cursor->is_dead && (!cursor->live || arena->is_last_cycle))
 			{
 				cursor->is_dead = 1;
 				if (opts->verbose & SHOW_DEATHS)

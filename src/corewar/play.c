@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:18:33 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/29 16:09:07 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/01 17:51:29 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int		next_cycle(t_arena *arena, int cycle_to_die, t_options *options, int
 	int 	cycle;
 
 	cycle = cycle_to_die;
-	if (cycle_to_die <= 0)
+	if (cycle_to_die <= 0 || arena->is_last_cycle)
 		cycle = 1;
 	ft_bzero(arena->lives, sizeof(int) * MAX_PLAYERS);
 	if (arena->current_cycle)
@@ -85,19 +85,16 @@ void		play(t_arena *arena, t_options *options)
 		nb_live = check_total_lives(arena->lives);
 		checks++;
 		print = 0;
-		if (cycle_to_die <= 0)
-		{
-			arena->should_check_deads = 1;
-			next_cycle(arena, cycle_to_die, options, print);
-		}
 		if (arena->current_cycle > CYCLE_TO_DIE)
 		{
 			arena->should_check_deads = 1;
 			if (!check_deads(arena))
+			{
+				arena->is_last_cycle = 1;
+				next_cycle(arena, cycle_to_die, options, print);
 				return ;
+			}
 		}
-		if (cycle_to_die <= 0)
-			return ;
 		if (nb_live >= NBR_LIVE || checks >= MAX_CHECKS)
 		{
 			checks = 0;
