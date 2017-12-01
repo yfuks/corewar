@@ -24,5 +24,9 @@ int			check_opcode(t_process *proc, t_arena *arena)
 		i++;
 	if (i >= 17)
 		return (0);
+	if (proc->index_opc == 0)
+		proc->remaining_cycles = 1;
+	else
+		proc->remaining_cycles = 2;
 	return (op_tab[i].op_code);
 }

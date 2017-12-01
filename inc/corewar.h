@@ -19,6 +19,8 @@ typedef struct	s_process
 {
 	int					index;
 	int					number;
+	int					opcode;
+	int					index_opc;
 	int					remaining_cycles;
 	char				waiting;
 	int					args[4];

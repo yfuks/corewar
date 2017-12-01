@@ -31,35 +31,29 @@ static void (*func[17])(t_process *proc, t_champion *champion, t_arena *arena, t
  	cmd_fork,
  	cmd_lld,
  	cmd_lldi,
- 	0, //cmd_lfork,
+ 	cmd_lfork,
  	cmd_aff
 };
 
 void		exec_command(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
-	int			opcode;
 	char		encoding;
-	int			init_index;
 
-	init_index = proc->index;
-	if (!(opcode = check_opcode(proc, arena)))
-	{
-		proc->index = next_index(proc->index);
-		return ;
-	}
 	encoding = arena->arena[next_index(proc->index)];
-	if (!is_valid_param(opcode, encoding))
+	if (!is_valid_param(proc->opcode, encoding))
 	{
 		proc->index = next_index(proc->index);
-		proc->index = index_jump(opcode, encoding, proc->index);
-		if (opts->verbose & SHOW_PC_MOOV && opcode != 9)
-			print_pc_moove(arena, init_index, proc->index);
+		proc->index = index_jump(proc->opcode, encoding, proc->index);
+		if (opts->verbose & SHOW_PC_MOOV && proc->opcode != 9)
+			print_pc_moove(arena, proc->index_opc, proc->index);
 		proc->remaining_cycles = 1;
+		proc->opcode = 0;
 		return ;
 	}
-    if (func[opcode - 1])
-        func[opcode - 1](proc, champion, arena, opts);
-	if (opts->verbose & SHOW_PC_MOOV && opcode != 9)
-		print_pc_moove(arena, init_index, proc->index);
+    if (func[proc->opcode - 1])
+        func[proc->opcode - 1](proc, champion, arena, opts);
+	if (opts->verbose & SHOW_PC_MOOV && proc->opcode != 9)
+		print_pc_moove(arena, proc->index_opc, proc->index);
+	proc->opcode = 0;
     proc->remaining_cycles = 1;
 }

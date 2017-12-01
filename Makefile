@@ -131,6 +131,7 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)print_process_number.c \
 				  $(COREWARDIR)check_process_deads.c \
 				  $(COREWARDIR)print_winner.c \
+				  $(COREWARDIR)cmd_lfork.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

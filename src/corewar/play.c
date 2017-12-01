@@ -86,7 +86,10 @@ void		play(t_arena *arena, t_options *options)
 		checks++;
 		print = 0;
 		if (cycle_to_die <= 0)
+		{
+			arena->should_check_deads = 1;
 			next_cycle(arena, cycle_to_die, options, print);
+		}
 		if (arena->current_cycle > CYCLE_TO_DIE)
 		{
 			arena->should_check_deads = 1;

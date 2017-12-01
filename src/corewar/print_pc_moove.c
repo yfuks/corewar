@@ -18,6 +18,14 @@ static int	get_size(int from, int to)
 	int		size;
 
 	size = 0;
+	if (to < from)
+	{
+		while (from != 0 && from < MEM_SIZE)
+		{
+			from = next_index(from);
+			size++;
+		}
+	}
 	while (from < to)
 	{
 		from = next_index(from);
@@ -38,7 +46,10 @@ void		print_pc_moove(t_arena *arena, int from, int to)
 	ft_putstr_fd(" (0x", STD_IN);
 	ft_put_hex_fd(from, STD_IN, 4);
 	ft_putstr_fd(" -> 0x", STD_IN);
-	ft_put_hex_fd(to, STD_IN, 4);
+	if (to < from)
+		ft_put_hex_fd(to + MEM_SIZE, STD_IN, 4);
+	else
+		ft_put_hex_fd(to, STD_IN, 4);
 	ft_putstr_fd(") ", STD_IN);
 	i = 0;
 	while (i < size)
