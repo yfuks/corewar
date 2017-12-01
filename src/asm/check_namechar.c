@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 10:29:50 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 11:38:55 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/01 12:17:54 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ bool	check_namechar(char *line, int size)
 
 bool	fill_id_name(t_header *header, char *line, t_hstate *state)
 {
-	if (line[0] != '\"' && line[ft_strlen(line) - 1] != '\"')
-		return (false);
+	if (line[0] != '\"' || line[ft_strlen(line) - 1] != '"')
+		return (error_id(4));
 	else
 	{
 		line++;
 		state->name = 1;
 		if (!(check_namechar(line, ft_strlen(line) - 1)))
-			return (false);
+			return (error_id(3));
 		ft_strncpy(&(*header->prog_name), line, ft_strlen(line) - 1);
 	}
 	return (true);
@@ -54,14 +54,14 @@ bool	fill_id_name(t_header *header, char *line, t_hstate *state)
 
 bool	fill_id_com(t_header *header, char *line, t_hstate *state)
 {
-	if (line[0] != '\"' && line[ft_strlen(line) - 1] != '\"')
-		return (false);
+	if (line[0] != '\"' || line[ft_strlen(line) - 1] != '\"')
+		return (error_id(5));
 	else
 	{
 		line++;
 		state->comment = 1;
 		if (!(check_namechar(line, ft_strlen(line) - 1)))
-			return (false);
+			return (error_id(3));
 		ft_strncpy(&(*header->comment), line, ft_strlen(line) - 1);
 	}
 	return (true);

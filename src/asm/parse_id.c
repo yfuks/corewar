@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:56:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/30 13:52:28 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/01 12:17:10 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "tools.h"
 #include <stdio.h>
 
-static bool	error_id(int n)
+bool		error_id(int n)
 {
 	if (n == 1)
 		ft_putstr_fd("name or comment command must start with a .\n", 2);
@@ -22,6 +22,10 @@ static bool	error_id(int n)
 		ft_putstr_fd("command does not exist\n", 2);
 	if (n == 3)
 		ft_putstr_fd("Char \" can't be in comment or name string\n", 2);
+	if (n == 4)
+		ft_putstr_fd("Name not well formated\n", 2);
+	if (n == 5)
+		ft_putstr_fd("Comment not well formated\n", 2);
 	return (false);
 }
 
@@ -51,7 +55,7 @@ static bool	parse_id_name(t_header *header, char *line, t_hstate *state)
 	{
 		line = ft_trim(ft_strsub2(line, 5, ft_strlen(line)));
 		if (!(fill_id_name(header, line, state)))
-			return (error_id(3));
+			return (false);
 	}
 	ft_memdel((void**)&compare_name);
 	return (true);
@@ -74,7 +78,7 @@ static bool	parse_id_comment(t_header *header, char *line, t_hstate *state)
 	{
 		line = ft_trim(ft_strsub2(line, 8, ft_strlen(line)));
 		if (!(fill_id_com(header, line, state)))
-			return (error_id(3));
+			return (false);
 	}
 	ft_memdel((void**)&compare_comment);
 	return (true);
