@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:28:49 by alansiva          #+#    #+#             */
-/*   Updated: 2017/11/30 17:34:28 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/01 14:06:31 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,7 @@ char *filename_s)
 	tmp = list_instr;
 	filename_cor = NULL;
 	filename_cor = file_newname(filename_cor, filename_s);
-	fd = open(filename_cor, O_RDWR | O_CREAT | O_TRUNC,
-		S_IRWXU | S_IRWXG | S_IRWXO);
+	fd = open(filename_cor, O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 	writing_header_fd(fd, header);
 	while (tmp)
 	{
