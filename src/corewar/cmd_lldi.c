@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:35:26 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/29 19:21:42 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/27 13:47:39 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,16 @@ static void	print_infos(int value, int value2, int total)
 
 void	   		cmd_lldi(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
-//    int   	index;
+    int   	index;
     int   	args[3];
 	int		i;
 	int		index_tmp;
 
-//    index = next_index(proc->index);
+    index = next_index(proc->index);
     index_tmp = 0;
     (void)champion;
-	args[0] = 0;
-	args[1] = 0;
-	args[2] = 0;
-//	ft_bzero(args, sizeof(int) * 3);
-//    get_command_arguments(proc, arena, &index, CMD_LLDI_INDEX);
+	ft_bzero(args, sizeof(int) * 3);
+    get_command_arguments(proc, arena, &index, CMD_LLDI_INDEX);
     if (proc->REG[2] >= REG_NUMBER || !proc->REG[2])
         return ;
 	i = 0;
@@ -68,16 +65,16 @@ void	   		cmd_lldi(t_process *proc, t_champion *champion, t_arena *arena, t_opti
 		else if (proc->args[i] == T_IND)
 		{
 			args[i] = (proc->IND[i]);
-			index_tmp = add_to_index(proc->index_opc, args[i]);		
+			index_tmp = add_to_index(proc->index, args[i]);		
 			args[i] = get_memory(arena, index_tmp, 4);
 		}
 		i++;
 	}
-	index_tmp = add_to_index(proc->index_opc, args[0] + args[1]);
+	index_tmp = add_to_index(proc->index, args[0] + args[1]);
     if (opts->verbose & SHOW_OPERATIONS)
 	{
         print_lldi(proc->number, args[0], args[1], proc->REG[2]);
-		print_infos(args[0], args[1], proc->index_opc);
+		print_infos(args[0], args[1], proc->index);
 	}
 	i = get_memory(arena, index_tmp, REG_SIZE);
 	proc->registers[proc->REG[2] - 1] = i;
@@ -85,6 +82,6 @@ void	   		cmd_lldi(t_process *proc, t_champion *champion, t_arena *arena, t_opti
         proc->carry = 1;
     else 
         proc->carry = 0;
-//    proc->index = index;
+    proc->index = index;
 }
 

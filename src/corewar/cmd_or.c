@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 18:11:41 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/29 19:29:41 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 14:17:42 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,14 @@ static void     print_or(int champion_number, int arg1, int arg2, int reg)
 
 void	   		cmd_or(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
-//    int   index;
+    int   index;
     int   i;
     int   args[3];
 
-//    index = next_index(proc->index);
+    index = next_index(proc->index);
 	(void)champion;
-	(void)arena;
-	args[0] = 0;
-	args[1] = 0;
-	args[2] = 0;
-//    ft_bzero(args, sizeof(int) * 3);
-//    get_command_arguments(proc, arena, &index, CMD_OR_INDEX);
+    ft_bzero(args, sizeof(int) * 3);
+    get_command_arguments(proc, arena, &index, CMD_OR_INDEX);
     if (proc->REG[0] >= REG_NUMBER || proc->REG[1] >= REG_NUMBER || proc->REG[2] >= REG_NUMBER)
       return ;
     i = 0;
@@ -68,5 +64,5 @@ void	   		cmd_or(t_process *proc, t_champion *champion, t_arena *arena, t_option
         proc->carry = 1;
 	else
 		proc->carry = 0;
-	//  proc->index = index;
+    proc->index = index;
 }

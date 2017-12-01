@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 13:49:08 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/29 19:30:23 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 14:18:58 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,12 @@ static void		print_add(int champion_number, int reg1, int reg2, int reg3)
 
 void            cmd_add(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
-//	int		index;
+	int		index;
 	int		value;
 
-//	index = next_index(proc->index);
+	index = next_index(proc->index);
 	(void)champion;
-	(void)arena;
-//	get_command_arguments(proc, arena, &index, CMD_ADD_INDEX);
+	get_command_arguments(proc, arena, &index, CMD_ADD_INDEX);
 	if (!proc->REG[0] || !proc->REG[1] || !proc->REG[2]
 		|| proc->REG[0] >= REG_NUMBER
 		|| proc->REG[1] >= REG_NUMBER || proc->REG[2] >= REG_NUMBER)
@@ -48,5 +47,5 @@ void            cmd_add(t_process *proc, t_champion *champion, t_arena *arena, t
 		proc->carry = 1;
 	else
 		proc->carry = 0;
-//	proc->index = index;
+	proc->index = index;
 }

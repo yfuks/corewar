@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:43:03 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/29 19:29:29 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/28 16:34:32 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,36 +31,33 @@ static void		print_zjmp_failed(int champion_number, int ind)
 
 void            cmd_zjmp(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
-//	int		index;
+	int		index;
 	char	integer[IND_SIZE];
 	int		count;
 	int		ind;
 
 	(void)champion;
-//	index = next_index(proc->index);
-	integer[0] = 0;
-	integer[1] = 0;
-//	ft_bzero(integer, sizeof(char) * IND_SIZE);
+	index = next_index(proc->index);
+	ft_bzero(integer, sizeof(char) * IND_SIZE);
 	count = 0;
-/*	while (count < IND_SIZE)
+	while (count < IND_SIZE)
 	{
 		integer[count] = arena->arena[index];
 		index = next_index(index);
 		count++;
 	}
-	ind = ctos(integer);*/
-	ind = proc->DIR[0];
+	ind = ctos(integer);
 	if (!proc->carry)
 	{
 		if (opts->verbose & SHOW_OPERATIONS)
 			print_zjmp_failed(proc->number, (ind % IDX_MOD));
 		if (opts->verbose & SHOW_PC_MOOV)
-			print_pc_moove(arena, proc->index_opc, proc->index);
-		//proc->index = index;
+			print_pc_moove(arena, proc->index, index);
+		proc->index = index;
 		return ;
 	}
 	if (opts->verbose & SHOW_OPERATIONS)
 		print_zjmp(proc->number, (ind % IDX_MOD));
-	//index = add_to_index(proc->index_opc, (ind % IDX_MOD));
-	proc->index = add_to_index(proc->index_opc, (ind % IDX_MOD));
+	index = add_to_index(proc->index, (ind % IDX_MOD));
+	proc->index = index;
 }

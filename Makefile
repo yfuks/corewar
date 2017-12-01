@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/29 18:17:49 by yfuks            ###   ########.fr        #
+#    Updated: 2017/11/29 15:24:34 by yfuks            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -125,7 +125,6 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_putchar_fd.c \
 				  $(COREWARDIR)cmd_lldi.c \
 				  $(COREWARDIR)cmd_fork.c \
-				  $(COREWARDIR)cmd_lfork.c \
 				  $(COREWARDIR)modulo_idx_mod.c \
 				  $(COREWARDIR)print_pc_moove.c \
 				  $(COREWARDIR)index_jump.c \
