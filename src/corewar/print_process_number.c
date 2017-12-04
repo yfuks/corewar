@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 16:16:02 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/28 16:33:31 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/04 20:11:11 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		print_process_number(int number)
 	spaces[4] = 0;
 	ft_putstr_fd("P", STD_IN);
 	tmp = number;
-	while (tmp >= 10 && i >= 0)
+	while (tmp >= 10 && i >= 1)
 	{
 		spaces[i] = 0;
 		i--;
