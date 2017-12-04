@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/29 16:01:27 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/01 17:57:23 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_process
 	int					index_opc;
 	int					remaining_cycles;
 	char				waiting;
+	int					cycle_opc;
 	int					args[4];
 	char				REG[3];
 	int					DIR[3];
@@ -55,6 +56,7 @@ typedef struct	s_arena
 	int					nb_champs;
 	int					last_live;
 	char				should_check_deads;
+	char				is_last_cycle;
 	t_champion			champions[MAX_PLAYERS];
 }				t_arena;
 

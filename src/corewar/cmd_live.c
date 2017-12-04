@@ -49,7 +49,7 @@ void	   		cmd_live(t_process *proc, t_champion *champion, t_arena *arena, t_opti
 	{
 		if (opts->verbose & SHOW_LIVES)
 			print_said_alive(&(arena->champions[player_nb - 1]));
-		arena->lives[player_nb - 1] += 1;
+		arena->lives[arena->champions[player_nb - 1].player_id - 1] += 1;
 		arena->last_live = player_nb;
 	}
 	proc->index = index;

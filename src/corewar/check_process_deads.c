@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:59:00 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/29 15:05:43 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/01 17:52:38 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	check_process_deads(t_arena *arena, t_options *opts, int ctd)
 {
 	t_process	*cursor;
 	int			i;
-	// int			j;
 	int			lst_live;
 
 	i = 0;
@@ -40,7 +39,6 @@ void	check_process_deads(t_arena *arena, t_options *opts, int ctd)
 		cursor = arena->champions[i].process;
 		while (cursor)
 		{
-			// j = 0;
 			lst_live = arena->current_cycle - cursor->last_live;
 			if (!cursor->is_dead && lst_live >= ctd)
 			{
@@ -48,14 +46,10 @@ void	check_process_deads(t_arena *arena, t_options *opts, int ctd)
 				if (opts->verbose & SHOW_DEATHS)
 					print_death(cursor, arena, ctd);
 			}
-			// else
-			// 	j++;
+
 			cursor = cursor->next;
 		}
-		// if (j == 0 && !arena->champions[i].is_dead)
-		// {
-		// 	arena->champions[i].is_dead = 1;
-		// }
+
 		i++;
 	}
 }

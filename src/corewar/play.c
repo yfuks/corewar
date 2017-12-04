@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:18:33 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/29 16:09:07 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/01 18:59:33 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int		next_cycle(t_arena *arena, int cycle_to_die, t_options *options, int
 	int 	cycle;
 
 	cycle = cycle_to_die;
-	if (cycle_to_die <= 0)
+	if (cycle_to_die <= 0 || arena->is_last_cycle)
 		cycle = 1;
 	if (arena->current_cycle)
 		arena->current_cycle += 1;

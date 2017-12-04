@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 13:44:12 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/29 15:23:39 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/01 19:06:33 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int			check_deads(t_arena *arena)
 			is_alive++;
 		i++;
 	}
+	ft_bzero(arena->lives, sizeof(int) * MAX_PLAYERS);
 	return (is_alive);
 }
