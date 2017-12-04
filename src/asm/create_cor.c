@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:28:49 by alansiva          #+#    #+#             */
-/*   Updated: 2017/12/04 16:42:51 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/04 19:45:28 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "op.h"
 #include "tools.h"
 #include <fcntl.h>
-
-extern t_op g_op_tab[17];
 
 static t_calc_bc	byte_code_bin(t_calc_bc *byco)
 {

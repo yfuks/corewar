@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 12:02:01 by jthillar          #+#    #+#             */
-/*   Updated: 2017/12/04 14:44:37 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/04 19:49:35 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "op.h"
 #include "tools.h"
 
-extern t_op g_op_tab[17];
+t_op g_op_tab[17];
 
 static bool	error_arg(t_instruction **cursor)
 {

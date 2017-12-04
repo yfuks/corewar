@@ -6,14 +6,12 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 16:18:49 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 11:49:47 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/04 19:43:54 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 #include "tools.h"
-
-extern t_op g_op_tab[17];
 
 void		writing_header_fd(int fd, t_header *header)
 {

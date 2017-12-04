@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:27:41 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 18:28:30 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/04 19:49:10 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "op.h"
 #include "tools.h"
 
-extern t_op g_op_tab[17];
+t_op g_op_tab[17];
 
 static bool	error_lab_instr(t_instruction **cursor, int n)
 {

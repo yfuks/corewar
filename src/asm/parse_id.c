@@ -6,13 +6,12 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:56:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/12/04 17:39:56 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/04 19:44:37 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 #include "tools.h"
-#include <stdio.h>
 
 bool		error_id(int n)
 {
