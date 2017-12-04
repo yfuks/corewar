@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 18:21:42 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/09 18:22:01 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/04 15:14:46 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_atoi(char *str)
 {
 	int			i;
-	long		res;
+	int 		res;
 	int			negatif;
 
 	res = 0;

@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/12/01 12:16:44 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/04 15:07:11 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <stdio.h>
+# include <limits.h>
 # include "op.h"
 # define SPACE	' '
 # define TAB 	'\t'
@@ -50,7 +51,7 @@ typedef struct	s_instruction
 	int						arg_type[3];
 	int						arg_size[3];
 	char					**arg;
-	int						arg_value[3];
+	unsigned int			arg_value[3];
 	int						instr_label[3];
 	int						instr_byte_size;
 	int						cumul_byte_size;
