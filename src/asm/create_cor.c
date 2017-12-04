@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:28:49 by alansiva          #+#    #+#             */
-/*   Updated: 2017/12/01 14:06:31 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/04 16:42:51 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int			byte_code(t_instruction *tmp)
 	byco.i = 0;
 	byco.byte_code = 0;
 	if (tmp->opcode == 1 || tmp->opcode == 9 || tmp->opcode == 12
-		|| tmp->opcode == 15 || tmp->opcode == 16)
+		|| tmp->opcode == 15)
 		return (byco.byte_code);
 	else
 	{

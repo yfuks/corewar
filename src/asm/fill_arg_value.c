@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:46:50 by jthillar          #+#    #+#             */
-/*   Updated: 2017/12/04 14:47:56 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/04 16:54:11 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ t_instruction **cursor, int i, int n)
 	tmp = *list_instr;
 	while (tmp)
 	{
-		if (tmp->label != NULL &&
-		ft_strcmp((*cursor)->arg[i] + n, tmp->label) == 0)
+		if (tmp->label && ft_strcmp((*cursor)->arg[i] + n, tmp->label) == 0)
 		{
 			(*cursor)->arg_value[i] = (tmp->cumul_byte_size -
 			tmp->instr_byte_size) -
