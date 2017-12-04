@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 13:13:19 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 13:55:31 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/04 19:10:21 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ static bool	error_instruction(t_instruction *cursor)
 
 bool		parse_instruction(t_instruction *cursor, char *line)
 {
-	if (!(ft_strcmp(line, "")) || !(ft_strcmp((line = ft_trim(line)), "")))
+
+	line = ft_trim(line);
+	if (ft_strcmp(line, "") == 0 || !(ft_strcmp((line = ft_trim(line)), "")))
+	// if (!line || line[0] == '\0')
 	{
 		cursor->instr_byte_size = 0;
 		return (true);

@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 10:07:25 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 10:08:11 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/04 19:26:56 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	*ft_trim_copy(char *str, char *tmp, int len, int i)
 
 	j = 0;
 	len = len - i;
-	while (j < len + 1)
+	while (j < len)
 	{
 		tmp[j] = str[i];
 		j++;
@@ -44,15 +44,15 @@ char		*ft_trim(char *str)
 	char	*tmp;
 
 	i = 0;
-	len = ft_strlen(str) - 1;
+	len = ft_strlen(str);
 	tmp = NULL;
-	while (str[len] && (str[len] == TAB || str[len] == SPACE))
+	while (len > 0 && (str[len - 1] == TAB || str[len - 1] == SPACE))
 		len--;
-	if (len == -1)
+	if (len == 0)
 		return (ft_trim_empty(tmp, str));
 	while (str[i] && (str[i] == TAB || str[i] == SPACE))
 		i++;
-	if (!(tmp = ft_strnew(len - i + 1)))
+	if (!(tmp = ft_strnew(len - i)))
 		return (NULL);
 	tmp = ft_trim_copy(str, tmp, len, i);
 	ft_bzero(str, ft_strlen(str));

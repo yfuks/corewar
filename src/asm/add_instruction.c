@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:44:37 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/30 11:35:47 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/04 17:46:20 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_instruction	*add_end_instruction(t_instruction **list_instr)
 		if (!(cursor->next = ft_memalloc(sizeof(t_instruction))))
 			return (NULL);
 		tmp = cursor->next;
-		tmp->next = NULL;
 		return (cursor->next);
 	}
 	else

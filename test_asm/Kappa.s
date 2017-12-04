@@ -1,9 +1,10 @@
+#		fork	%:init_forward 
 .name				"Kappa"
 .comment			"AKA Kappa Sandwich."
 
 	# st	r2,	15
 	# st	r3,	-1
-	# live	%1							  |      r1       |
+	# live	%1							  |     r1    |
 	# 0370 0200		0f03 7003		ffff 01xx		xxxx xx
 	# 57672192		251883523		4294902016		xx
 
@@ -48,7 +49,7 @@
 		sti		r1,		%:alive,		%1
 		ld		%75,	r13
 		aff		r13
-		fork	%:init_forward
+		fork	%:init_forward #vrdilug
 		live	%1337
 
 init_backward:
