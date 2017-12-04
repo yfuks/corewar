@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm asm_our/*.cor asm_zaz/*.cor diff/*.txt
+
 for champion in `ls *.s`
 do
 	echo _____________________________________________
