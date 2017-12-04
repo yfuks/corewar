@@ -38,6 +38,7 @@ void            cmd_lfork(t_process *proc, t_champion *champion, t_arena *arena,
 	proc->index = add_to_index(index, 2);
 	process = new_process(index_tmp);
 	process->carry = proc->carry;
+	process->last_live = arena->current_cycle - 1000;
 	ft_memcpy(process->registers, proc->registers, sizeof(int) * REG_NUMBER);
 	process->remaining_cycles = 1;
 	add_process_to_champion(champion, process);

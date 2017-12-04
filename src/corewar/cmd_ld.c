@@ -30,6 +30,7 @@ void	   		cmd_ld(t_process *proc, t_champion *champion, t_arena *arena, t_option
     int   index;
     int   index_tmp;
     int   args[2];
+    int   i;
 
     index = next_index(proc->index);
     index_tmp = 0;
@@ -38,10 +39,11 @@ void	   		cmd_ld(t_process *proc, t_champion *champion, t_arena *arena, t_option
     get_command_arguments(proc, arena, &index, CMD_LD_INDEX);
     if (proc->REG[1] >= REG_NUMBER || !proc->REG[1])
         return ;
+    i = 0;
     if (proc->args[0] == T_IND)
     {
     	index_tmp = add_to_index(proc->index, (proc->IND[0] % IDX_MOD));
-    	args[0] = arena->arena[index_tmp];
+    	args[0] = get_memory(arena, index_tmp, 4);
     }
     else if (proc->args[0] == T_DIR)
         args[0] = proc->DIR[0];

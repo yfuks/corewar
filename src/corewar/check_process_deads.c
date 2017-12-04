@@ -31,6 +31,8 @@ void	check_process_deads(t_arena *arena, t_options *opts, int ctd)
 {
 	t_process	*cursor;
 	int			i;
+	// int			j;
+	int			lst_live;
 
 	i = 0;
 	while (i < arena->nb_champs)
@@ -38,14 +40,22 @@ void	check_process_deads(t_arena *arena, t_options *opts, int ctd)
 		cursor = arena->champions[i].process;
 		while (cursor)
 		{
-			if (!cursor->is_dead && !cursor->live)
+			// j = 0;
+			lst_live = arena->current_cycle - cursor->last_live;
+			if (!cursor->is_dead && lst_live >= ctd)
 			{
 				cursor->is_dead = 1;
 				if (opts->verbose & SHOW_DEATHS)
 					print_death(cursor, arena, ctd);
 			}
+			// else
+			// 	j++;
 			cursor = cursor->next;
 		}
+		// if (j == 0 && !arena->champions[i].is_dead)
+		// {
+		// 	arena->champions[i].is_dead = 1;
+		// }
 		i++;
 	}
 }

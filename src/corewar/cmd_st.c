@@ -27,7 +27,6 @@ static void print_st(int champion_number, int reg, int addr1)
     ft_putstr_fd("\n", STD_IN);
 }
 
-
 void	   		cmd_st(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
 {
     int   index;
@@ -43,13 +42,17 @@ void	   		cmd_st(t_process *proc, t_champion *champion, t_arena *arena, t_option
         return ;
     args[0] = proc->registers[(int)proc->REG[0] - 1];
     if (proc->REG[1])
+    {
         proc->registers[(int)proc->REG[1] - 1] = args[0];
+        if (opts->verbose & SHOW_OPERATIONS)
+            print_st(proc->number, proc->REG[0], proc->REG[1]);
+    }
     else if (proc->IND[1])
     {
         index_tmp = add_to_index(proc->index, (proc->IND[1] % IDX_MOD));
         copy_int_to_arena(arena, args[0], index_tmp);
+        if (opts->verbose & SHOW_OPERATIONS)
+            print_st(proc->number, proc->REG[0], proc->IND[1]);
     }
-    if (opts->verbose & SHOW_OPERATIONS)
-        print_st(proc->number, proc->REG[0], proc->IND[1]);
     proc->index = index;
 }

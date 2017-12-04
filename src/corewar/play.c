@@ -36,7 +36,6 @@ static int		next_cycle(t_arena *arena, int cycle_to_die, t_options *options, int
 	cycle = cycle_to_die;
 	if (cycle_to_die <= 0)
 		cycle = 1;
-	ft_bzero(arena->lives, sizeof(int) * MAX_PLAYERS);
 	if (arena->current_cycle)
 		arena->current_cycle += 1;
 	while (cycle > 0)
@@ -90,16 +89,17 @@ void		play(t_arena *arena, t_options *options)
 			arena->should_check_deads = 1;
 			next_cycle(arena, cycle_to_die, options, print);
 		}
-		if (arena->current_cycle > CYCLE_TO_DIE)
-		{
-			arena->should_check_deads = 1;
-			if (!check_deads(arena))
-				return ;
-		}
 		if (cycle_to_die <= 0)
 			return ;
 		if (nb_live >= NBR_LIVE || checks >= MAX_CHECKS)
 		{
+			if (cycle_to_die < CYCLE_TO_DIE)
+			{
+				arena->should_check_deads = 1;
+				if (!check_deads(arena))
+					return ;
+			}
+			ft_bzero(arena->lives, sizeof(int) * MAX_PLAYERS);
 			checks = 0;
 			cycle_to_die -= CYCLE_DELTA;
 			print = 1;
