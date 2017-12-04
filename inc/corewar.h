@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/12/01 17:57:23 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/04 19:55:53 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ typedef struct	s_arena
 	int					lives[MAX_PLAYERS];
 	int					nb_champs;
 	int					last_live;
+	int					nb_lives;
 	char				should_check_deads;
 	char				is_last_cycle;
+	char				at_least_one_process_alive;
 	t_champion			champions[MAX_PLAYERS];
 }				t_arena;
 
@@ -93,7 +95,7 @@ int				next_index(int index);
 int    			prev_index(int index);
 int				index_jump(int opcode, char encoding, int index);
 int        		add_to_index(int index, int nbr);
-void			check_process(t_arena *arena, t_options *opts, int cycle_to_die, int print);
+int				check_process(t_arena *arena, t_options *opts, int cycle_to_die, int print);
 int				check_opcode(t_process *proc, t_arena *arena);
 void			exec_command(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts);
 int				is_valid_param(int cmd_opcode, char encoding);

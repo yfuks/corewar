@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:55:44 by jpascal           #+#    #+#             */
-/*   Updated: 2017/12/01 17:58:15 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/04 19:57:25 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void		reset_process_lives(t_arena *arena)
 	}
 }
 
-void		check_process(t_arena *arena, t_options *opts, int cycle_to_die, int print)
+int			check_process(t_arena *arena, t_options *opts, int cycle_to_die, int print)
 {
 	int		i;
 
@@ -79,8 +79,12 @@ void		check_process(t_arena *arena, t_options *opts, int cycle_to_die, int print
 		cycle_to_die += CYCLE_DELTA;
 	if (arena->should_check_deads)
 	{
+		arena->at_least_one_process_alive = 0;
 		check_process_deads(arena, opts, cycle_to_die);
+		if (!arena->at_least_one_process_alive)
+			return (0);
 		arena->should_check_deads = 0;
 		reset_process_lives(arena);
 	}
+	return (1);
 }
