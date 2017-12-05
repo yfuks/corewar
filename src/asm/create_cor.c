@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 14:28:49 by alansiva          #+#    #+#             */
-/*   Updated: 2017/12/05 10:53:05 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/05 11:06:37 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,9 @@ static int			byte_code(t_instruction *tmp)
 
 static char			*file_newname(char *filename_cor, char *filename_s)
 {
-	// ft_putstr_fd(filename_s,1);
-	// ft_putstr_fd("\n",1);
 	int size;
 
 	size = ft_strlen(filename_s) - 2 + 4;
-
 	filename_cor = ft_strnew(size);
 	ft_strncat(filename_cor, filename_s, ft_strlen(filename_s) - 2);
 	ft_strcat(filename_cor, ".cor");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 16:13:49 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/10 16:14:05 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/12/05 11:35:08 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,19 @@ static int			len_number(long int nb, int base)
 		len_nb++;
 		nb = nb / base;
 	}
-	return(len_nb);
+	return (len_nb);
 }
 
 char				*ft_itoa_base(int nb, int base)
 {
 	int				size;
-	long int 		nbl;
-	char 			*ret;
+	long int		nbl;
+	char			*ret;
 
 	nbl = nb;
 	size = len_number(nbl, base);
 	if (!(ret = (char*)malloc(sizeof(size))))
-		return(0);
+		return (0);
 	ret[size] = '\0';
 	size -= 1;
 	if (nbl < 0)

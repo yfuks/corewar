@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:16 by yfuks             #+#    #+#             */
-/*   Updated: 2017/12/05 11:03:47 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/05 11:28:29 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ static void				ft_free_list(t_instruction *list)
 	}
 }
 
+static int				error_file(void)
+{
+	ft_putstr_fd("File doesn't exist.\n", 2);
+	return (1);
+}
+
 int						main(int ac, char **av)
 {
 	int				fd;
@@ -61,10 +67,7 @@ int						main(int ac, char **av)
 		return (1);
 	list_instr = NULL;
 	if ((fd = open(av[1], O_RDONLY)) == -1)
-	{
-		ft_putstr_fd("File doesn't exist.\n", 2);
-		return (1);
-	}
+		return (error_file());
 	if (!parse(header, &list_instr, fd))
 	{
 		ft_free_list(list_instr);

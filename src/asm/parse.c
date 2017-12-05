@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/12/04 19:27:41 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/05 11:07:11 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,6 @@ static bool		parse_first_read(t_header *header, t_instruction **list_instr,
 	ft_bzero(&count, sizeof(t_count));
 	while ((count.ret_gnl = get_next_line(fd, &line)) == 1)
 	{
-		// line = ft_trim(line);
-		// ft_putstr_fd(line,1);
-        //
-		// return (true);
 		count.nb_line++;
 		cursor = add_end_instruction(list_instr);
 		cursor->nb_line = count.nb_line;
