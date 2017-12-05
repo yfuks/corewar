@@ -50,14 +50,14 @@ void            cmd_zjmp(t_process *proc, t_champion *champion, t_arena *arena, 
 	if (!proc->carry)
 	{
 		if (opts->verbose & SHOW_OPERATIONS)
-			print_zjmp_failed(proc->number, (ind % IDX_MOD));
+			print_zjmp_failed(proc->number, (ind));
 		if (opts->verbose & SHOW_PC_MOOV)
 			print_pc_moove(arena, proc->index, index);
 		proc->index = index;
 		return ;
 	}
 	if (opts->verbose & SHOW_OPERATIONS)
-		print_zjmp(proc->number, (ind % IDX_MOD));
+		print_zjmp(proc->number, (ind));
 	index = add_to_index(proc->index, (ind % IDX_MOD));
 	proc->index = index;
 }
