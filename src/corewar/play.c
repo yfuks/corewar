@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:18:33 by jpascal           #+#    #+#             */
-/*   Updated: 2017/12/04 20:02:54 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/05 17:16:42 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void		play(t_arena *arena, t_options *options)
 				return ;
 			}
 		}
+		else
+			reset_process_lives(arena);
 		if (nb_live > NBR_LIVE || checks >= MAX_CHECKS)
 		{
 			checks = 0;

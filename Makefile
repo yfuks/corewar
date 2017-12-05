@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/29 15:24:34 by yfuks            ###   ########.fr        #
+#    Updated: 2017/12/05 17:17:55 by yfuks            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,6 +132,7 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)check_process_deads.c \
 				  $(COREWARDIR)print_winner.c \
 				  $(COREWARDIR)cmd_lfork.c \
+				  $(COREWARDIR)reset_process_lives.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)

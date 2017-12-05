@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:55:44 by jpascal           #+#    #+#             */
-/*   Updated: 2017/12/04 19:57:25 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/05 17:17:37 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,6 @@ static void	check_process_in_champion(t_arena *arena, t_champion *champion, t_op
 		else
 			cursor->remaining_cycles++;
 		cursor = cursor->next;
-	}
-}
-
-static void		reset_process_lives(t_arena *arena)
-{
-	int			i;
-	t_process	*cursor;
-	t_champion	*champion;
-
-	i = 0;
-	while (i < arena->nb_champs)
-	{
-		champion = &(arena->champions[i]);
-		cursor = champion->process;
-		while (cursor)
-		{
-			cursor->live = 0;
-			cursor = cursor->next;
-		}
-		i++;
 	}
 }
 

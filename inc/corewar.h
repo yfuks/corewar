@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/12/04 19:55:53 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/05 17:18:13 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void			print_winner(t_arena *arena);
 **	BATTLE
 */
 
+void			reset_process_lives(t_arena *arena);
 void			check_process_deads(t_arena *arena, t_options *opts, int ctd);
 int				next_index(int index);
 int    			prev_index(int index);
