@@ -44,14 +44,6 @@ fi
 
 for element in ${CHAMPS[@]}
 do
-	CHAMP_PATH=$CHAMPSDIR/$element
-	if [ ! -f $CHAMP_PATH.s ]; then
-		CHAMP_PATH=$CHAMPSDIR/examples/$element
-	fi
-	if [ ! -f $CHAMP_PATH.cor ]; then
-		$ZAZVM/asm $CHAMP_PATH.s >&-
-	fi
-
 	## print element name ##
 	echo -en "- " $element
 	LENGTH=${#element}
@@ -59,6 +51,18 @@ do
 		echo -en "\t"
 	fi
 	echo -en "\t"
+
+	CHAMP_PATH=$CHAMPSDIR/$element
+	if [ ! -f $CHAMP_PATH.s ]; then
+		CHAMP_PATH=$CHAMPSDIR/examples/$element
+	fi
+	if [ ! -f $CHAMP_PATH.s ]; then
+		echo -e " [?] Champ not found in" $CHAMPSDIR/$element.s "&" $CHAMP_PATH.s
+		continue
+	fi
+	if [ ! -f $CHAMP_PATH.cor ]; then
+		$ZAZVM/asm $CHAMP_PATH.s >&-
+	fi
 
 	## create zaz file ##
 	if [ ! -f $TESTSDIR/zaz_file_$element ]; then
