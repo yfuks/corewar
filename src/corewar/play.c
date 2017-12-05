@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:18:33 by jpascal           #+#    #+#             */
-/*   Updated: 2017/12/05 17:16:42 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/05 17:34:22 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void		play(t_arena *arena, t_options *options)
 		}
 		else
 			reset_process_lives(arena);
-		if (nb_live > NBR_LIVE || checks >= MAX_CHECKS)
+		if (nb_live >= NBR_LIVE || checks >= MAX_CHECKS)
 		{
 			checks = 0;
 			cycle_to_die -= CYCLE_DELTA;
