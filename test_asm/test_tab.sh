@@ -8,19 +8,11 @@ do
 	echo Champion : $champion
 	echo "____ O U R      A S M ____"
 	./$1 $champion
-done
-
-mv *.cor asm_our
-
-for champion in `ls *.s`
-do
-	echo _____________________________________________
-	echo Champion : $champion
+	mv *.cor asm_our
 	echo "____ Z A Z      A S M ____"
 	./$2 $champion
+	mv *.cor asm_zaz
 done
-
-mv *.cor asm_zaz/
 
 for champion in `ls asm_our/*.cor`
 do
@@ -46,6 +38,7 @@ array=($(ls diff/*.txt))
 
 for j in `seq 1 $nb_diff`
 do
+	echo diff ${array[i]} --------- ${array[i+1]} 
 	diff -q ${array[i]} ${array[i+1]}
 	let 'i += 2'
 done

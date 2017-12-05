@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:16 by yfuks             #+#    #+#             */
-/*   Updated: 2017/12/04 19:49:46 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/05 11:03:47 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ static t_instruction	*list_remove_first(t_instruction *list)
 static void				ft_free_list(t_instruction *list)
 {
 	while (list)
-		list = list_remove_first(list);
+	{
+		if (list)
+		{
+			list = list_remove_first(list);
+		}
+	}
 }
 
 int						main(int ac, char **av)
@@ -56,7 +61,10 @@ int						main(int ac, char **av)
 		return (1);
 	list_instr = NULL;
 	if ((fd = open(av[1], O_RDONLY)) == -1)
+	{
+		ft_putstr_fd("File doesn't exist.\n", 2);
 		return (1);
+	}
 	if (!parse(header, &list_instr, fd))
 	{
 		ft_free_list(list_instr);

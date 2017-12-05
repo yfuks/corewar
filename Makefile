@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/12/04 15:15:10 by jthillar         ###   ########.fr        #
+#    Updated: 2017/12/05 10:55:27 by jthillar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME_COREWAR 	= corewar
 
 # COMPILATION
 CC				= clang
-FLAGS			= -Wall -Wextra -Werror -g3
+FLAGS			= -g3
 
 # DIRECTORYS
 SRCDIR			= src/
@@ -48,6 +48,7 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(ASMDIR)reverse_endian.c \
 				  $(ASMDIR)writing_fd.c \
 				  $(TOOLSDIR)ft_strrchr.c \
+				  $(TOOLSDIR)ft_strncat.c \
 				  $(TOOLSDIR)ft_trim.c \
 				  $(TOOLSDIR)ft_strlen.c \
 				  $(TOOLSDIR)ft_itoa.c \

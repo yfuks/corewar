@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:34:18 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/30 12:11:14 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/05 10:55:49 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define SPACE	' '
 # define TAB 	'\t'
 
+char			*ft_strncat(char *dest, const char *src, size_t n);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strnew(size_t size);
 void			ft_strdel(char **as);
