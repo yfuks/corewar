@@ -29,6 +29,15 @@ TESTSDIR=$SCRIPTDIR/TEST
 MKDIR=/bin/mkdir
 
 ## --------------------------------- START ---------------------------------- ##
+if [ ! -f $USERVM/corewar ]; then
+	echo -e "No corewar executable found in\033[1;32m" $USERVM "\033[mdid you forget to \033[1;35mmake\033[m or change the \033[1;35mUSERVM\033[0m path in script ?"
+	exit 1
+fi
+if [ ! -f $ZAZVM/corewar ]; then
+	echo "No corewar executable found at\033[1;32m" $ZAZVM/corewar "\033[m you can change \033[1;35mZAZVM\033[0m path in script"
+	exit 1
+fi
+
 if [ ! -d $TESTSDIR ]; then
 	$MKDIR $TESTSDIR
 fi
@@ -40,7 +49,7 @@ do
 		CHAMP_PATH=$CHAMPSDIR/examples/$element
 	fi
 	if [ ! -f $CHAMP_PATH.cor ]; then
-		$ZAZVM/asm $CHAMP_PATH.s
+		$ZAZVM/asm $CHAMP_PATH.s >&-
 	fi
 
 	## print element name ##
