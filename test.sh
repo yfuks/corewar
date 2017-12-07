@@ -3,19 +3,25 @@
 ## -------------------------------- PATHS ----------------------------------- ##
 ZAZVM=/Users/yfuks/Desktop/corewar
 USERVM=/Users/yfuks/corewar
-CHAMPSDIR=/Users/yfuks/corewar/champs
+CHAMPSDIR=$ZAZVM/champs
+## -------------------------------------------------------------------------- ##
+
+## -------------------------------- TESTS ----------------------------------- ##
+## PUT 0 IF YOU DON'T WANT TO TEST
+TESTSOLOCHAMPS=0
+TESTBATTLE=1
 ## -------------------------------------------------------------------------- ##
 
 ## -------------- CHAMPS TO TEST (comment what you don't want) -------------- ##
 ## !! CHAMPS SHOULD BE IN CHAMPSDIR OR IN CHAMPSDIR/examples
 CHAMPS[0]=Gagnant
-#CHAMPS[1]=Octobre_Rouge_V4.2
+CHAMPS[1]=Octobre_Rouge_V4.2
 CHAMPS[2]=ex
-#CHAMPS[3]=first
+CHAMPS[3]=first
 CHAMPS[4]=jumper
-#CHAMPS[5]=maxidef
+CHAMPS[5]=maxidef
 CHAMPS[6]=mortel
-#CHAMPS[7]=slider2
+CHAMPS[7]=slider2
 CHAMPS[8]=toto
 CHAMPS[9]=bigzork
 CHAMPS[10]=fluttershy
@@ -42,8 +48,33 @@ if [ ! -d $TESTSDIR ]; then
 	$MKDIR $TESTSDIR
 fi
 
+i=0
 for element in ${CHAMPS[@]}
 do
+	if [[ $TESTSBATTLE == 0 && $TESTSOLOCHMAPS == 0 ]]; then
+		break
+	fi
+	CHAMP_PATH=$CHAMPSDIR/$element
+	if [ ! -f $CHAMP_PATH.s ]; then
+		CHAMP_PATH=$CHAMPSDIR/examples/$element
+	fi
+	if [ ! -f $CHAMP_PATH.s ]; then
+		((i++))
+		continue
+	fi
+	if [ ! -f $CHAMP_PATH.cor ]; then
+		$ZAZVM/asm $CHAMP_PATH.s >&-
+	fi
+	CHAMPS_PATH[i]=$CHAMP_PATH
+	((i++))
+done
+
+
+for element in ${CHAMPS[@]}
+do
+	if [[ $TESTSOLOCHAMPS == 0 ]]; then
+		break
+	fi
 	## print element name ##
 	echo -en "- " $element
 	LENGTH=${#element}
@@ -57,11 +88,7 @@ do
 		CHAMP_PATH=$CHAMPSDIR/examples/$element
 	fi
 	if [ ! -f $CHAMP_PATH.s ]; then
-		echo -e " [?] Champ not found in" $CHAMPSDIR/$element.s "&" $CHAMP_PATH.s
 		continue
-	fi
-	if [ ! -f $CHAMP_PATH.cor ]; then
-		$ZAZVM/asm $CHAMP_PATH.s >&-
 	fi
 
 	## create zaz file ##
@@ -84,3 +111,29 @@ do
 		echo $NB_DIFF "diff(s) in" $TESTSDIR/diff_$element
 	fi
 done
+
+if [[ $TESTSBATTLE != 0 ]]; then
+	TIT="-"
+	BATTLENAME=${CHAMPS[0]}$TIT${CHAMPS[3]}
+	echo -en "- " $BATTLENAME
+
+	## create zaz file ##
+	if [ ! -f $TESTSDIR/zaz_file_$BATTLENAME ]; then
+		$ZAZVM/corewar -v 31 ${CHAMPS_PATH[0]}.cor ${CHAMPS_PATH[3]}.cor> $TESTSDIR/zaz_file_$BATTLENAME
+	fi
+
+	## create user file ##
+	$USERVM/corewar -v 31 ${CHAMPS_PATH[0]}.cor ${CHAMPS_PATH[3]}.cor > $TESTSDIR/user_file_$BATTLENAME
+		
+	## create diff ##
+	diff $TESTSDIR/user_file_$BATTLENAME $TESTSDIR/zaz_file_$BATTLENAME > $TESTSDIR/diff_$BATTLENAME
+
+	## print ok or bad from the return of the diff command ##
+	if [[ $? == 0 ]]; then
+		echo -en " [\033[1;35m√\033[m]\n"
+	else
+		NB_DIFF="$( cat $TESTSDIR/diff_$BATTLENAME | wc -l)"
+		echo -en " [\033[0;31mX\033[m] "
+		echo $NB_DIFF "diff(s) in" $TESTSDIR/diff_$BATTLENAME
+	fi
+fi
