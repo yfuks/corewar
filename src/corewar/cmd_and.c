@@ -27,13 +27,21 @@ void	   		cmd_and(t_process *proc, t_champion *champion, t_arena *arena, t_optio
     index = next_index(proc->index);
     ft_bzero(args, sizeof(int) * 3);
     get_command_arguments(proc, arena, &index, CMD_AND_INDEX);
-    if (proc->REG[0] >= REG_NUMBER || proc->REG[1] >= REG_NUMBER || proc->REG[2] >= REG_NUMBER)
-      return ;
+	if (proc->REG[2] <= 0 || proc->REG[2] > REG_NUMBER)
+	{
+		proc->index = index;
+		return ;				
+	}
     i = 0;
     while (i < op_tab[CMD_AND_INDEX].nb_arg - 1)
     {
         if (proc->args[i] & T_REG)
         {
+			if (proc->REG[i] <= 0 || proc->REG[i] > REG_NUMBER)
+			{
+				proc->index = index;
+				return ;				
+			}
             if (i <= 2)
                 args[i] = proc->registers[proc->REG[i] - 1];
             else

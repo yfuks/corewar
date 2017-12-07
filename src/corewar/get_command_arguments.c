@@ -20,20 +20,20 @@ void       add_args_in_process(t_arena *arena, int *index, int size, char intege
 
 void        get_command_arguments(t_process *proc, t_arena *arena, int *index, int cmd)
 {
-    int   i;
-    char  integer[4];
-    char  tmp;
-    char  encoding;
-    int   size_direct = 2;
+    int   	i;
+    char  	integer[4];
+    char  	tmp;
+    char  	encoding;
+    int   	size_direct = 2;
 
-    if (cmd == 0 || cmd == 1 || cmd == 5 || cmd == 6 || cmd == 7 || cmd == 12)
+    if (cmd == 0 || cmd == 1 || cmd == 3 || cmd == 5 || cmd == 6 || cmd == 7 || cmd == 12)
         size_direct = 4;
     i = 0;
-    encoding = arena->arena[*index];
-    ft_bzero(proc->args, sizeof(int) * 4);
-    ft_bzero(proc->REG, sizeof(int) * 3);
-    ft_bzero(proc->IND, sizeof(int) * 3);
-    ft_bzero(proc->DIR, sizeof(int) * 3);
+	encoding = arena->arena[*index];
+	ft_bzero(proc->args, sizeof(int) * 4);
+	ft_bzero(proc->REG, sizeof(int) * 3);
+	ft_bzero(proc->IND, sizeof(int) * 3);
+	ft_bzero(proc->DIR, sizeof(int) * 3);
     while (i < op_tab[cmd].nb_arg)
     {
         ft_bzero(&integer, sizeof(char) * 4);

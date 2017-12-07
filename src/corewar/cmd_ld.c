@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:12:56 by jpascal           #+#    #+#             */
-/*   Updated: 2017/12/05 17:23:03 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/07 19:38:08 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	   		cmd_ld(t_process *proc, t_champion *champion, t_arena *arena, t_option
 	(void)champion;
     ft_bzero(args, sizeof(int) * 2);
     get_command_arguments(proc, arena, &index, CMD_LD_INDEX);
-    if (proc->REG[1] > REG_NUMBER || !proc->REG[1])
+    if (proc->REG[1] > REG_NUMBER || proc->REG[1] <= 0)
 	{
 		proc->index = index;
         return ;

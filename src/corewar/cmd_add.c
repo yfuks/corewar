@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 13:49:08 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/29 14:18:58 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/07 19:35:33 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,13 @@ void            cmd_add(t_process *proc, t_champion *champion, t_arena *arena, t
 	index = next_index(proc->index);
 	(void)champion;
 	get_command_arguments(proc, arena, &index, CMD_ADD_INDEX);
-	if (!proc->REG[0] || !proc->REG[1] || !proc->REG[2]
-		|| proc->REG[0] >= REG_NUMBER
-		|| proc->REG[1] >= REG_NUMBER || proc->REG[2] >= REG_NUMBER)
+	if (proc->REG[0] <= 0|| proc->REG[1] <= 0|| proc->REG[2] <= 0
+		|| proc->REG[0] > REG_NUMBER
+		|| proc->REG[1] > REG_NUMBER || proc->REG[2] > REG_NUMBER)
+	{
+		proc->index = index;
 		return ;
+	}
 	value = proc->registers[proc->REG[0] - 1] + proc->registers[proc->REG[1] - 1];
 	proc->registers[proc->REG[2] - 1] = value;
 	if (opts->verbose & SHOW_OPERATIONS)

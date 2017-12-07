@@ -114,16 +114,16 @@ done
 
 if [[ $TESTSBATTLE != 0 ]]; then
 	TIT="-"
-	BATTLENAME=${CHAMPS[0]}$TIT${CHAMPS[3]}
+	BATTLENAME=${CHAMPS[1]}$TIT${CHAMPS[4]}
 	echo -en "- " $BATTLENAME
 
 	## create zaz file ##
 	if [ ! -f $TESTSDIR/zaz_file_$BATTLENAME ]; then
-		$ZAZVM/corewar -v 31 ${CHAMPS_PATH[0]}.cor ${CHAMPS_PATH[3]}.cor> $TESTSDIR/zaz_file_$BATTLENAME
+		$ZAZVM/corewar -v 31 ${CHAMPS_PATH[1]}.cor ${CHAMPS_PATH[4]}.cor> $TESTSDIR/zaz_file_$BATTLENAME
 	fi
 
 	## create user file ##
-	$USERVM/corewar -v 31 ${CHAMPS_PATH[0]}.cor ${CHAMPS_PATH[3]}.cor > $TESTSDIR/user_file_$BATTLENAME
+	$USERVM/corewar -v 31 ${CHAMPS_PATH[1]}.cor ${CHAMPS_PATH[4]}.cor > $TESTSDIR/user_file_$BATTLENAME
 		
 	## create diff ##
 	diff $TESTSDIR/user_file_$BATTLENAME $TESTSDIR/zaz_file_$BATTLENAME > $TESTSDIR/diff_$BATTLENAME

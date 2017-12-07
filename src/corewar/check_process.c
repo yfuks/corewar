@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:55:44 by jpascal           #+#    #+#             */
-/*   Updated: 2017/12/07 18:27:16 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/07 19:22:59 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,7 @@ static void	check_process_in_champion(t_arena *arena, t_champion *champion, t_op
 
 int			check_process(t_arena *arena, t_options *opts, int cycle_to_die, int print)
 {
-	int		i;
-
-	i = arena->nb_champs;
-	while (i >= 0)
-	{
-		check_process_in_champion(arena, &arena->champions[i], opts);
-		i--;
-	}
+	check_process_in_champion(arena, &arena->champions[0], opts);
 	if (print)
 		cycle_to_die += CYCLE_DELTA;
 	if (arena->should_check_deads)

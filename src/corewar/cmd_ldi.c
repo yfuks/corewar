@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 14:48:59 by yfuks             #+#    #+#             */
-/*   Updated: 2017/12/05 18:43:15 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/07 19:59:00 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	   		cmd_ldi(t_process *proc, t_champion *champion, t_arena *arena, t_optio
 	int		index_tmp;
 
     index = next_index(proc->index);
-    index_tmp = 0;
+    index_tmp = 0;	
 	(void)champion;
     ft_bzero(args, sizeof(int) * 3);
     get_command_arguments(proc, arena, &index, CMD_LDI_INDEX);

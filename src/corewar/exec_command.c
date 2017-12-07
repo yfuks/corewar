@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:02:23 by jpascal           #+#    #+#             */
-/*   Updated: 2017/12/07 18:27:19 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/07 20:02:20 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void		exec_command(t_process *proc, t_champion *champion, t_arena *arena, t_opti
 	char		encoding;
 
 	encoding = arena->arena[next_index(proc->index)];
+/*	if (arena->current_cycle >= 22577 && arena->current_cycle <= 22579)
+	ft_putnbr_fd(proc->opcode, 1);*/
 	if (!is_valid_param(proc->opcode, encoding))
 	{
 		proc->index = next_index(proc->index);

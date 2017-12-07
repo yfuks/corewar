@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 18:11:41 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/29 14:17:42 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/07 20:18:26 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,21 @@ void	   		cmd_or(t_process *proc, t_champion *champion, t_arena *arena, t_option
 	(void)champion;
     ft_bzero(args, sizeof(int) * 3);
     get_command_arguments(proc, arena, &index, CMD_OR_INDEX);
-    if (proc->REG[0] >= REG_NUMBER || proc->REG[1] >= REG_NUMBER || proc->REG[2] >= REG_NUMBER)
-      return ;
+	if (proc->REG[2] <= 0 || proc->REG[2] > REG_NUMBER)
+	{
+		proc->index = index;
+		return ;
+	}
     i = 0;
     while (i < op_tab[CMD_OR_INDEX].nb_arg - 1)
     {
         if (proc->args[i] & T_REG)
         {
+			if (proc->REG[i] <= 0 || proc->REG[i] > REG_NUMBER)
+			{
+				proc->index = index;
+				return ;
+			}
             if (i <= 2)
                 args[i] = proc->registers[proc->REG[i] - 1];
             else
