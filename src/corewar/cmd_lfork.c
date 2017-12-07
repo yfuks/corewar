@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 16:10:25 by jpascal           #+#    #+#             */
-/*   Updated: 2017/12/01 18:42:07 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/05 18:14:13 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void            cmd_lfork(t_process *proc, t_champion *champion, t_arena *arena,
 	value = get_memory(arena, index, 2);
 	index_tmp = add_to_index(proc->index, value);
 	if (opts->verbose & SHOW_OPERATIONS)
-		print_lfork(proc->number, value, index_tmp);
+		print_lfork(proc->number, value, proc->index + value);
 	proc->index = add_to_index(index, 2);
 	process = new_process(index_tmp);
 	process->carry = proc->carry;

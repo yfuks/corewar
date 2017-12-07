@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 16:07:53 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/28 16:30:58 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/05 18:30:29 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,11 @@ void	   		cmd_sti(t_process *proc, t_champion *champion, t_arena *arena, t_optio
   (void)champion;
   index = next_index(proc->index);
   get_command_arguments(proc, arena, &index, CMD_STI_INDEX);
-  if (proc->REG[0] >= REG_NUMBER || !proc->REG[0])
-    return ;
+  if (proc->REG[0] > REG_NUMBER || proc->REG[0] <= 0)
+  {
+	  proc->index = index;
+	  return ;
+  }
   i = 1;
   while (i < op_tab[CMD_STI_INDEX].nb_arg)
   {
@@ -62,7 +65,14 @@ void	   		cmd_sti(t_process *proc, t_champion *champion, t_arena *arena, t_optio
       else if (proc->args[i] == T_IND)
         args[i - 1] = proc->IND[i];
        else if (proc->args[i] == T_REG)
-        args[i - 1] = proc->registers[proc->REG[i] - 1];
+	   {
+		   if (proc->REG[i] > REG_NUMBER || proc->REG[i] <= 0)
+		   {
+			   proc->index = index;
+			   return ;
+		   }
+		   args[i - 1] = proc->registers[proc->REG[i] - 1];
+	   }
       i++;
   }
   if (opts->verbose & SHOW_OPERATIONS)
