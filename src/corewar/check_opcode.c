@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 17:28:06 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/16 17:28:08 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/12/07 18:26:51 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			check_opcode(t_process *proc, t_arena *arena)
 		i++;
 	if (i >= 17)
 		return (0);
-	if (proc->index_opc == 0)
+	if (arena->current_cycle == 0)
 		proc->remaining_cycles = 1;
 	else
 		proc->remaining_cycles = 2;

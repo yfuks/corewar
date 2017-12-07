@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/12/05 17:18:13 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/07 17:48:45 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct	s_process
 	int					last_live;
 	char				is_dead;
 	int					carry;
+	char				just_nexted;
 	int					registers[REG_NUMBER];
 	struct s_process	*next;
 }				t_process;
