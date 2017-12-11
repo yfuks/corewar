@@ -27,22 +27,24 @@ static void		print_add(int champion_number, int reg1, int reg2, int reg3)
 	ft_putstr_fd("\n", STD_IN);
 }
 
-void            cmd_add(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
+void			cmd_add(t_process *proc, t_champion *champion, t_arena *arena,
+	t_options *opts)
 {
-	int		index;
-	int		value;
+	int			index;
+	int			value;
 
 	index = next_index(proc->index);
 	(void)champion;
 	get_command_arguments(proc, arena, &index, CMD_ADD_INDEX);
-	if (proc->REG[0] <= 0|| proc->REG[1] <= 0|| proc->REG[2] <= 0
+	if (proc->REG[0] <= 0 || proc->REG[1] <= 0 || proc->REG[2] <= 0
 		|| proc->REG[0] > REG_NUMBER
 		|| proc->REG[1] > REG_NUMBER || proc->REG[2] > REG_NUMBER)
 	{
 		proc->index = index;
 		return ;
 	}
-	value = proc->registers[proc->REG[0] - 1] + proc->registers[proc->REG[1] - 1];
+	value = proc->registers[proc->REG[0] - 1] +
+	proc->registers[proc->REG[1] - 1];
 	proc->registers[proc->REG[2] - 1] = value;
 	if (opts->verbose & SHOW_OPERATIONS)
 		print_add(proc->number, proc->REG[0], proc->REG[1], proc->REG[2]);

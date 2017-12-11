@@ -22,9 +22,10 @@ static void		print_aff(char value)
 	ft_putstr_fd("\n", STD_IN);
 }
 
-void            cmd_aff(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
+void			cmd_aff(t_process *proc, t_champion *champion, t_arena *arena,
+	t_options *opts)
 {
-	int		index;
+	int			index;
 
 	(void)champion;
 	ft_bzero(&proc->REG, sizeof(int) * 3);

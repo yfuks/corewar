@@ -23,11 +23,12 @@ static void		print_lfork(int champion_number, int ind, int total)
 	ft_putstr_fd(")\n", STD_IN);
 }
 
-void            cmd_lfork(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
+void			cmd_lfork(t_process *proc, t_champion *champion,
+	t_arena *arena, t_options *opts)
 {
 	int			index;
 	int			index_tmp;
-	int 		value;
+	int			value;
 	t_process	*process;
 
 	(void)champion;
