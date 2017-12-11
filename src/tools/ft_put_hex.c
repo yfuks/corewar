@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 16:12:31 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/13 16:14:33 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/05 11:31:12 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		ft_put_hex_fd(unsigned int n, int fd)
 	if ((len = ft_strlen(hexa)) > 2)
 	{
 		hexa[0] = hexa[len];
-		hexa[1] = hexa[len -1];
+		hexa[1] = hexa[len - 1];
 		hexa[2] = 0;
 	}
 	else if (ft_strlen(hexa) == 1)

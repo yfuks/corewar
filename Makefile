@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/11/15 15:24:17 by yfuks            ###   ########.fr        #
+#    Updated: 2017/12/05 10:55:27 by jthillar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME_COREWAR 	= corewar
 
 # COMPILATION
 CC				= clang
-FLAGS			= -Wall -Wextra -Werror -g3
+FLAGS			= -g3
 
 # DIRECTORYS
 SRCDIR			= src/
@@ -28,6 +28,7 @@ TOOLSDIR		= $(SRCDIR)tools/
 
 # FILES
 SRCSASM			= $(ASMDIR)main.c \
+				  $(ASMDIR)fill_arg_value_error.c \
 				  $(ASMDIR)error_stdin.c \
 				  $(ASMDIR)parse.c \
 				  $(ASMDIR)parse_id.c \
@@ -38,9 +39,21 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(ASMDIR)check_double_label.c \
 				  $(ASMDIR)add_instruction.c \
 				  $(ASMDIR)parse_instruction.c \
+				  $(ASMDIR)parse_mnemonique.c \
+				  $(ASMDIR)parse_arguments.c \
+				  $(ASMDIR)check_and_fill_arg.c \
+				  $(ASMDIR)fill_arg_value.c \
+				  $(ASMDIR)ft_count_bytes.c \
+				  $(ASMDIR)create_cor.c \
+				  $(ASMDIR)reverse_endian.c \
+				  $(ASMDIR)writing_fd.c \
 				  $(TOOLSDIR)ft_strrchr.c \
+				  $(TOOLSDIR)ft_strncat.c \
+				  $(TOOLSDIR)ft_trim.c \
 				  $(TOOLSDIR)ft_strlen.c \
+				  $(TOOLSDIR)ft_itoa.c \
 				  $(TOOLSDIR)ft_putstr_fd.c \
+				  $(TOOLSDIR)ft_putnbr_fd.c \
 				  $(TOOLSDIR)ft_memalloc.c \
 				  $(TOOLSDIR)ft_bzero.c \
 				  $(TOOLSDIR)ft_strnew.c \
@@ -55,9 +68,14 @@ SRCSASM			= $(ASMDIR)main.c \
 				  $(TOOLSDIR)ft_strcmp.c \
 				  $(TOOLSDIR)ft_strdup.c \
 				  $(TOOLSDIR)ft_strchr.c \
-				  $(TOOLSDIR)ft_strtrim.c \
 				  $(TOOLSDIR)ft_split_t_sp.c \
-				  $(TOOLSDIR)ft_strncpy.c
+				  $(TOOLSDIR)ft_split.c \
+				  $(TOOLSDIR)ft_strncpy.c \
+				  $(TOOLSDIR)ft_isdigit.c \
+				  $(TOOLSDIR)ft_atoi.c \
+				  $(TOOLSDIR)ft_atol.c \
+				  $(TOOLSDIR)ft_isspace.c \
+				  $(TOOLSDIR)op.c
 
 
 SRCSCOREWAR		= $(COREWARDIR)main.c \

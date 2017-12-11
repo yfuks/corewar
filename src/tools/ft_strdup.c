@@ -6,27 +6,29 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 15:05:39 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/10 15:05:46 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/11/29 14:55:01 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tools.h"
 #include <stdlib.h>
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s)
 {
-	char	*str;
 	int		i;
+	int		size;
+	char	*dest;
 
 	i = 0;
-	if ((str = (char *)malloc(sizeof(const char) * ft_strlen(s1) + 1)))
-		str[ft_strlen(s1)] = '\0';
-	else
+	size = ft_strlen(s);
+	dest = (char*)malloc(sizeof(char) * (size + 1));
+	if (dest == NULL)
 		return (NULL);
-	while (s1[i])
+	while (s[i])
 	{
-		str[i] = s1[i];
+		dest[i] = (char)s[i];
 		i++;
 	}
-	return (str);
+	dest[i] = '\0';
+	return (dest);
 }

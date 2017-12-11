@@ -6,26 +6,26 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:44:37 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 14:39:51 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/04 17:46:20 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "asm.h"
 #include "tools.h"
 
-t_instruction  *add_end_instruction(t_instruction **list_instr)
+t_instruction	*add_end_instruction(t_instruction **list_instr)
 {
-	t_instruction *cursor;
+	t_instruction	*cursor;
+	t_instruction	*tmp;
 
 	cursor = *list_instr;
 	if (*list_instr)
 	{
 		while (cursor && cursor->next)
 			cursor = cursor->next;
-		if (!(cursor->next = (t_instruction*)malloc(sizeof(t_instruction))))
+		if (!(cursor->next = ft_memalloc(sizeof(t_instruction))))
 			return (NULL);
-		// (cursor)->next->prev = cursor;
+		tmp = cursor->next;
 		return (cursor->next);
 	}
 	else

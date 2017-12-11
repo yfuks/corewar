@@ -6,7 +6,7 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 15:15:35 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 15:15:57 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/29 14:59:15 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ int		ft_realloc(char **rest)
 		return (0);
 	*rest = ft_strcpy(*rest, tmp);
 	ft_memdel((void **)&tmp);
-	tmp = NULL;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/15 15:05:44 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/05 14:36:01 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,88 +17,95 @@
 # include "op.h"
 # define SPACE	' '
 # define TAB 	'\t'
+# define SIGNE  '-'
+# define REG_CHAR 'r'
 
-typedef struct				s_hstate
+typedef struct	s_count
+{
+	int						nb_line;
+	int						cumul;
+	int						ret_gnl;
+}				t_count;
+
+typedef struct	s_calc_bc
+{
+	int						byte_code;
+	int						i;
+}				t_calc_bc;
+
+typedef struct	s_hstate
 {
 	int						name;
 	int						comment;
-}							t_hstate;
+}				t_hstate;
 
-typedef struct              s_label
+typedef struct	s_instruction
 {
-    struct s_instruction    *label;
-    struct s_label          *next;
-}                           t_label;
-
-typedef struct				s_instruction
-{
-	char					*label; // 1er read
-	char 					*double_label; // on stock le label s'il est double dans cette chaine seulement
-	char					*mnm;
-	int						state; // a 1 si un seul argument
+	char					*label;
+	char					*double_label;
+	int						opcode;
+	int						state;
 	int						start_instr;
-	char					reg[3];
-	char					dir[3];
-	char					ind[3];
-	int						value;
-    size_t                  nb_line;
-	struct s_label          *instr_label;
-    struct s_instruction	*next;
-}							t_instruction;
-
+	int						arg_type[3];
+	int						arg_size[3];
+	char					**arg;
+	unsigned int			arg_value[3];
+	int						instr_label[3];
+	int						instr_byte_size;
+	int						cumul_byte_size;
+	size_t					nb_line;
+	struct s_instruction	*next;
+}				t_instruction;
 
 /*
 ** PARSER ======================================================================
 */
 
-bool	parse(t_header *header, t_instruction **list_instr, int fd, char *filename);
-void	check_commentchar(char **line);
-bool	check_namechar(char *line, int size); // verifie s'il n'y a pas un mauvais caractere dans le .nom ou .comment
+bool			parse(t_header *header, t_instruction **list_instr, int fd);
+void			check_commentchar(char *line);
+bool			check_namechar(char *line, int size);
+bool			parse_id(t_header *id, char *line, t_hstate *state);
+bool			fill_id_name(t_header *header, char *line, t_hstate *state);
+bool			fill_id_com(t_header *header, char *line, t_hstate *state);
+void			parse_label(t_instruction **list_instr, t_instruction *cursor,
+	char *line);
+bool			check_labelschar(char *line);
+bool			check_double_label(t_instruction **list_instr, char *label);
+bool			parse_instruction(t_instruction *cursor, char *line);
+bool			parse_mnemonique(t_instruction **cursor, char *line);
+bool			parse_arguments(t_instruction **cursor, char *line);
+bool			check_and_fill_arg(t_instruction **cursor);
 
-bool	parse_id(t_header *id, char *line, t_hstate *state);
-
-void	parse_label(t_instruction **list_instr, t_instruction *cursor,char *line);
-bool	check_labelschar(char *line); // verifie que les nom de label soit valide
-bool    check_double_label(t_instruction **list_instr, char *label);
-//void    get_label(t_instruction *list_instr, char *line);
-
-bool	parse_instruction(t_instruction **list_instr, t_instruction *cursor,char *line);
-
-bool	parse_one_dir(t_instruction *list_instr, char *line); // LIVE ZJMP FORK LFOR
-bool	parse_log_op(t_instruction *list_instr, char *line); // AND OR XOR
-bool	parse_arith_op(t_instruction *list_instr, char *line); // ADD SUB
-bool	parse_ldi_lldi(t_instruction *list_instr, char *line); // LDI LLDI
-bool	parse_ld_lld(t_instruction *list_instr, char *line); // LD LLD
-bool	parse_aff(t_instruction *list_instr, char *line); // AFF
-bool	parse_st(t_instruction *list_instr, char *line); // ST
-bool	parse_sti(t_instruction *list_instr, char *line); // STI
-
-
-// if (#) get next line
+bool			fill_arg_value(t_instruction **list_instr,
+	t_instruction **cursor);
+void			ft_count_bytes(t_instruction **cursor);
 
 /*
 ** LIST FCT ====================================================================
 */
 
 t_instruction	*add_end_instruction(t_instruction **list_instr);
-t_instruction   *add_end_label(t_label *instr_label);
 
 /*
 ** CONVERSION ==================================================================
 */
 
-void	create_cor(t_instruction *list_instr, t_header *id);
-
-void	fill_id_hex(t_header *id, int fd);
-
-void 	fill_instruction_hex(t_instruction *list_instr, int fd);
-void    get_bytecode(t_instruction *list_instr);
-void    get_value_param(t_instruction *list_instr);
+void			create_cor(t_instruction *list_instr, t_header *id,
+	char *filename_s);
+void			fill_id_hex(t_header *id, int fd);
+void			fill_instruction_hex(t_instruction *list_instr, int fd);
+void			get_bytecode(t_instruction *list_instr);
+void			get_value_param(t_instruction *list_instr);
+uint16_t		swap_uint16(uint16_t val);
+uint32_t		swap_uint32(uint32_t val);
+void			writing_header_fd(int fd, t_header *header);
+void			writing_prog_fd(int fd, t_instruction *tmp);
 
 /*
 ** ERROR =======================================================================
 */
 
-bool	error_stdin(char **av, int ac); // ac == 2, arg fini par .s
-
+bool			error_stdin(char **av, int ac);
+bool			error_fill_arg(int n, t_instruction **cursor);
+bool			error_id(int n);
 #endif

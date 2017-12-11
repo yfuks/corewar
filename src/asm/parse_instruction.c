@@ -6,44 +6,51 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 13:13:19 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 14:58:47 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/05 11:07:47 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-#include "op.h"
 #include "tools.h"
-#include <unistd.h>
 
-// void	get_mnm(t_instruction **cursor, char *line)
-// {
-// 	int 	i;
-// 	char	*mnm_compare;
-// 	i = 0;
-// 	while (line[i])
-// 	{
-// 		if (line[i] == TAB || line[i] == space)
-// 		{
-// 			if(!(mnm_compare = ft_strnew(i)))
-// 				return ;
-// 			mnm_compare = ft_strcpy(mnm_compare, )
-// 		}
-// 		i++;
-// 	}
-//
-// }
-
-bool	parse_instruction(t_instruction **list_instr, t_instruction *cursor, char *line)
+static bool	error_instruction(t_instruction *cursor)
 {
+	ft_putstr_fd("line : ", 2);
+	ft_putnbr_fd(cursor->nb_line, 2);
+	ft_putstr_fd(" -> wrong mnemonique\n", 2);
+	return (false);
+}
 
-	if (!(ft_strcmp((line = ft_strtrim(line)), "")))
+/*
+** - On commence par supprimer le label du debut de la ligne
+** - On cherche ensuite le nom de l'instruction (mnemonique)
+** - On parse les arguments de l'instruction
+*/
+
+bool		parse_instruction(t_instruction *cursor, char *line)
+{
+	line = ft_trim(line);
+	if (ft_strcmp(line, "") == 0 || !(ft_strcmp((line = ft_trim(line)), "")))
+	{
+		cursor->instr_byte_size = 0;
 		return (true);
+	}
 	if (cursor->label != NULL)
-		line = ft_strtrim(ft_strsub(line, ft_strlen(cursor->label) + 1, ft_strlen(line)));
+	{
+		line = ft_trim(ft_strsub2(line, ft_strlen(cursor->label) + 1,
+		ft_strlen(line)));
+		if (ft_strcmp(line, "") == 0)
+		{
+			cursor->instr_byte_size = 0;
+			return (true);
+		}
+	}
 	if (cursor->double_label != NULL)
-		line = ft_strtrim(ft_strsub(line, ft_strlen(cursor->double_label) + 1, ft_strlen(line)));
-	// get_mnm(&cursor, line))
-	// printf("mnm : '%s'\n", cursor->mnm);
-	list_instr = NULL;
+		line = ft_trim(ft_strsub2(line, ft_strlen(cursor->double_label) + 1,
+		ft_strlen(line)));
+	if (!parse_mnemonique(&cursor, line))
+		return (error_instruction(cursor));
+	if (!parse_arguments(&cursor, line))
+		return (false);
 	return (true);
 }

@@ -6,21 +6,20 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 11:27:23 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 14:36:29 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/11/30 11:38:12 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-#include "op.h"
 #include "tools.h"
 
-static bool error_labelschar()
+static bool	error_labelschar(void)
 {
 	ft_putstr_fd("Error : wrong label char\n", 2);
 	return (false);
 }
 
-bool	check_labelschar(char *line)
+bool		check_labelschar(char *line)
 {
 	int i;
 	int j;
