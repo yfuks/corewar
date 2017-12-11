@@ -15,7 +15,7 @@
 
 #define CMD_XOR_INDEX 7
 
-t_op op_tab[17];
+t_op g_op_tab[17];
 
 static void     print_xor(int champion_number, int arg1, int arg2, int reg)
 {
@@ -45,7 +45,7 @@ void	   		cmd_xor(t_process *proc, t_champion *champion, t_arena *arena, t_optio
 		return ;
 	}
     i = 0;
-    while (i < op_tab[CMD_XOR_INDEX].nb_arg - 1)
+    while (i < g_op_tab[CMD_XOR_INDEX].nb_arg - 1)
     {
         if (proc->args[i] & T_REG)
         {

@@ -15,8 +15,6 @@
 
 #define CMD_ST_INDEX 2
 
-t_op op_tab[17];
-
 static void print_st(int champion_number, int reg, int addr1) 
 {
 	print_process_number(champion_number);

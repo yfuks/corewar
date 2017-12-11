@@ -3,7 +3,7 @@
 
 #define CMD_AND_INDEX 5
 
-t_op op_tab[17];
+t_op g_op_tab[17];
 
 static void     print_and(int champion_number, int arg1, int arg2, int reg)
 {
@@ -33,7 +33,7 @@ void	   		cmd_and(t_process *proc, t_champion *champion, t_arena *arena, t_optio
 		return ;				
 	}
     i = 0;
-    while (i < op_tab[CMD_AND_INDEX].nb_arg - 1)
+    while (i < g_op_tab[CMD_AND_INDEX].nb_arg - 1)
     {
         if (proc->args[i] & T_REG)
         {

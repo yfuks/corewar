@@ -13,7 +13,7 @@
 #include "corewar.h"
 #include "tools.h"
 
-t_op op_tab[17];
+t_op g_op_tab[17];
 
 int				index_jump(int opcode, char encoding, int index)
 {
@@ -27,7 +27,7 @@ int				index_jump(int opcode, char encoding, int index)
 	i = 0;
 	if (opcode == 1 || opcode == 2 || opcode == 3 || opcode == 4 || opcode == 5 || opcode == 6 || opcode == 7 || opcode == 8 || opcode == 9 || opcode == 13)
         size_direct = 4;
-	while (i < op_tab[opcode - 1].nb_arg)
+	while (i < g_op_tab[opcode - 1].nb_arg)
  	{
     	tmp = encoding >> (6 - (i * 2));
     	tmp = tmp & 0x3;	

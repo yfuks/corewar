@@ -15,7 +15,7 @@
 
 #define CMD_OR_INDEX 6
 
-t_op op_tab[17];
+t_op g_op_tab[17];
 
 static void     print_or(int champion_number, int arg1, int arg2, int reg)
 {
@@ -45,7 +45,7 @@ void	   		cmd_or(t_process *proc, t_champion *champion, t_arena *arena, t_option
 		return ;
 	}
     i = 0;
-    while (i < op_tab[CMD_OR_INDEX].nb_arg - 1)
+    while (i < g_op_tab[CMD_OR_INDEX].nb_arg - 1)
     {
         if (proc->args[i] & T_REG)
         {

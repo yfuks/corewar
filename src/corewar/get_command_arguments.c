@@ -3,7 +3,7 @@
 #include "tools.h"
 #include <stdio.h>
 
-t_op op_tab[17];
+t_op g_op_tab[17];
 
 void       add_args_in_process(t_arena *arena, int *index, int size, char integer[4])
 {
@@ -34,7 +34,7 @@ void        get_command_arguments(t_process *proc, t_arena *arena, int *index, i
 	ft_bzero(proc->REG, sizeof(int) * 3);
 	ft_bzero(proc->IND, sizeof(int) * 3);
 	ft_bzero(proc->DIR, sizeof(int) * 3);
-    while (i < op_tab[cmd].nb_arg)
+    while (i < g_op_tab[cmd].nb_arg)
     {
         ft_bzero(&integer, sizeof(char) * 4);
         tmp = encoding >> (6 - (i * 2));

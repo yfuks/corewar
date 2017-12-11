@@ -13,17 +13,17 @@
 #include "corewar.h"
 #include "tools.h"
 
-t_op op_tab[17];
+t_op g_op_tab[17];
 
 int  is_valid_param(int cmd_opcode, char encoding)
 {
   int   i;
   char  tmp;
 
-  if (!op_tab[cmd_opcode - 1].ocp)
+  if (!g_op_tab[cmd_opcode - 1].ocp)
     return (1);
   i = 0;
-  while (i < op_tab[cmd_opcode - 1].nb_arg)
+  while (i < g_op_tab[cmd_opcode - 1].nb_arg)
   {
       tmp = encoding >> (6 - (i * 2));
       /*
@@ -37,18 +37,18 @@ int  is_valid_param(int cmd_opcode, char encoding)
       **    permet de garder que les deux dernier bits
       **    00 01 11 10 devient 00 00 00 10
       */
-      /*if (op_tab[cmd_opcode - 1].args_types[i] == T_IND)
+      /*if (g_op_tab[cmd_opcode - 1].args_types[i] == T_IND)
       {
         if(!(tmp & IND_CODE))
           return (0);
 		  } 
-      if (!(op_tab[cmd_opcode - 1].args_types[i] & tmp))
+      if (!(g_op_tab[cmd_opcode - 1].args_types[i] & tmp))
 	  return (0);*/
-	  if ((op_tab[cmd_opcode - 1].args_types[i] & T_IND) && (tmp == IND_CODE))
+	  if ((g_op_tab[cmd_opcode - 1].args_types[i] & T_IND) && (tmp == IND_CODE))
 		  ;
-	  else if ((op_tab[cmd_opcode - 1].args_types[i] & T_DIR) && (tmp == DIR_CODE))
+	  else if ((g_op_tab[cmd_opcode - 1].args_types[i] & T_DIR) && (tmp == DIR_CODE))
 		  ;
-	  else if ((op_tab[cmd_opcode - 1].args_types[i] & T_REG) && (tmp == REG_CODE))
+	  else if ((g_op_tab[cmd_opcode - 1].args_types[i] & T_REG) && (tmp == REG_CODE))
 		  ;
 	  else
 		  return (0);

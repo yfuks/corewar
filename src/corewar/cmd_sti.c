@@ -15,7 +15,7 @@
 
 #define CMD_STI_INDEX 10
 
-t_op op_tab[17];
+t_op g_op_tab[17];
 
 static void print_sti(int champion_number, int reg, int addr1, int addr2)
 {
@@ -58,7 +58,7 @@ void	   		cmd_sti(t_process *proc, t_champion *champion, t_arena *arena, t_optio
 	  return ;
   }
   i = 1;
-  while (i < op_tab[CMD_STI_INDEX].nb_arg)
+  while (i < g_op_tab[CMD_STI_INDEX].nb_arg)
   {
       if (proc->args[i] == T_DIR)
         args[i - 1] = proc->DIR[i];
