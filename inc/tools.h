@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:34:18 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/27 17:27:30 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/11 19:56:10 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ char			*ft_itoa_base(int nb, int base);
 char			*ft_uctoa_base(unsigned char nb, int base);
 char			*ft_ustoa_base(unsigned short nb, int base);
 char			*ft_uitoa_base(unsigned int nb, int base);
-void            split_int_in_char(char integer[4], unsigned int value);
+void			split_int_in_char(char integer[4], unsigned int value);
 int				get_next_line(const int fd, char **line);
 int				ft_strequ(char *s1, char *s2);
-void   			*ft_memalloc(size_t size);
+void			*ft_memalloc(size_t size);
 void			ft_putnbr_fd(int n, int fd);
 char			*ft_itoa(int n);
 unsigned int	reverse_uint(unsigned int n);
-char	        ctoc(char tab[1]);
-short           ctos(char tab[2]);
-int             ctoi(char tab[4]);
+char			ctoc(char tab[1]);
+short			ctos(char tab[2]);
+int				ctoi(char tab[4]);
 void			ft_put_hex_fd(unsigned int n, int fd, int len);
 char			*ft_strcpy(char *dst, const char *src);
 char			*ft_strncpy(char *dst, const char *src, size_t n);

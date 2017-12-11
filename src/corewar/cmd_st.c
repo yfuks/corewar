@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:13:05 by jpascal           #+#    #+#             */
-/*   Updated: 2017/12/05 18:51:08 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/11 19:42:59 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,50 +15,64 @@
 
 #define CMD_ST_INDEX 2
 
-static void print_st(int champion_number, int reg, int addr1) 
+static void	print_st(int champion_number, int reg, int addr1)
 {
 	print_process_number(champion_number);
-    ft_putstr_fd(" | st r", STD_IN);
-    ft_putnbr_fd(reg, STD_IN);
-    ft_putstr_fd(" ", STD_IN);
-    ft_putnbr_fd(addr1, STD_IN);
-    ft_putstr_fd("\n", STD_IN);
+	ft_putstr_fd(" | st r", STD_IN);
+	ft_putnbr_fd(reg, STD_IN);
+	ft_putstr_fd(" ", STD_IN);
+	ft_putnbr_fd(addr1, STD_IN);
+	ft_putstr_fd("\n", STD_IN);
 }
 
-void	   		cmd_st(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
+static char	is_reg_valid(t_process *proc, int reg_number, int index)
 {
-    int   index;
-    int   index_tmp;
-    int   args[2];
-
-	(void)champion;
-    index = next_index(proc->index);
-    ft_bzero(args, sizeof(int) * 2);
-    index_tmp = 0;
-    get_command_arguments(proc, arena, &index, CMD_ST_INDEX);
-    if (proc->REG[0] > REG_NUMBER || proc->REG[0] <= 0 || proc->REG[1] > REG_NUMBER)
+	if (proc->REG[reg_number] <= 0 || proc->REG[reg_number] > REG_NUMBER)
 	{
 		proc->index = index;
-        return ;
+		return (0);
 	}
-    args[0] = proc->registers[(int)proc->REG[0] - 1];
-    if (proc->args[1] == T_REG)
-    {
-		if (proc->REG[1] <= 0)
-		{
-			proc->index = index;
+	return (1);
+}
+
+static void	inits(t_process *proc, t_arena *arena, int *index, int *index_tmp)
+{
+	*index = next_index(proc->index);
+	*index_tmp = 0;
+	get_command_arguments(proc, arena, index, CMD_ST_INDEX);
+}
+
+static void	show_if_options(t_process *proc, t_options *opts, int ar1, int ar2)
+{
+	if (opts->verbose & SHOW_OPERATIONS)
+		print_st(proc->number, ar1, ar2);
+}
+
+void		cmd_st(t_process *proc, t_champion *champion,
+				t_arena *arena, t_options *opts)
+{
+	int		index;
+	int		index_tmp;
+	int		args[2];
+
+	(void)champion;
+	ft_bzero(args, sizeof(int) * 2);
+	inits(proc, arena, &index, &index_tmp);
+	if (!is_reg_valid(proc, 0, index))
+		return ;
+	args[0] = proc->registers[(int)proc->REG[0] - 1];
+	if (proc->args[1] == T_REG)
+	{
+		if (!is_reg_valid(proc, 1, index))
 			return ;
-		}
-        proc->registers[(int)proc->REG[1] - 1] = args[0];
-        if (opts->verbose & SHOW_OPERATIONS)
-            print_st(proc->number, proc->REG[0], proc->REG[1]);
-    }
-    else if (proc->args[1] == T_IND)
-    {
-        index_tmp = add_to_index(proc->index, (proc->IND[1] % IDX_MOD));
-        copy_int_to_arena(arena, args[0], index_tmp);
-        if (opts->verbose & SHOW_OPERATIONS)
-            print_st(proc->number, proc->REG[0], proc->IND[1]);
-    }
-    proc->index = index;
+		proc->registers[(int)proc->REG[1] - 1] = args[0];
+		show_if_options(proc, opts, proc->REG[0], proc->REG[1]);
+	}
+	else if (proc->args[1] == T_IND)
+	{
+		index_tmp = add_to_index(proc->index, (proc->IND[1] % IDX_MOD));
+		copy_int_to_arena(arena, args[0], index_tmp);
+		show_if_options(proc, opts, proc->REG[0], proc->IND[1]);
+	}
+	proc->index = index;
 }

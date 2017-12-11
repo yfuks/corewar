@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 18:14:51 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/15 17:26:09 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/11 18:02:23 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,4 @@ void	print_map_arena(t_arena *arena)
 			ft_putstr_fd("\n", STD_OUT);
 		i++;
 	}
-	//ft_putstr_fd("\n", STD_OUT);
 }

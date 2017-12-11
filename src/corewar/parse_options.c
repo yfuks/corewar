@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 17:21:49 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/24 15:44:08 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/11 18:19:19 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "corewar.h"
 #include <limits.h>
 
-static int				is_valid_dump_arg(int index, char **av)
+static int		is_valid_dump_arg(int index, char **av)
 {
-	int 				i;
+	int		i;
 
 	i = 0;
 	if (!av[index + 1])
@@ -27,7 +27,7 @@ static int				is_valid_dump_arg(int index, char **av)
 			return (0);
 		i++;
 	}
-	if (ft_strlen(av[index + 1]) > 10 || ft_atol(av[index + 1]) < 0 || 
+	if (ft_strlen(av[index + 1]) > 10 || ft_atol(av[index + 1]) < 0 ||
 		ft_atol(av[index + 1]) > INT_MAX)
 		return (0);
 	return (1);
@@ -35,7 +35,7 @@ static int				is_valid_dump_arg(int index, char **av)
 
 static int		is_valid_verbose_arg(int index, char **av)
 {
-	int 				i;
+	int		i;
 
 	i = 0;
 	if (!av[index + 1])
@@ -46,7 +46,7 @@ static int		is_valid_verbose_arg(int index, char **av)
 			return (0);
 		i++;
 	}
-	if (ft_strlen(av[index + 1]) > 10 || ft_atol(av[index + 1]) < 0 || 
+	if (ft_strlen(av[index + 1]) > 10 || ft_atol(av[index + 1]) < 0 ||
 		ft_atol(av[index + 1]) > INT_MAX)
 		return (0);
 	return (1);
@@ -70,7 +70,7 @@ int				parse_options(int *index, char **av, t_options *options)
 		if (!is_valid_verbose_arg(*index, av))
 			return (0);
 		*index += 1;
-		options->verbose = ft_atoi(av[*index]);		
+		options->verbose = ft_atoi(av[*index]);
 	}
 	return (1);
 }

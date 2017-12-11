@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:43:03 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/28 16:34:32 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/11 19:07:12 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,30 @@ static void		print_zjmp_failed(int champion_number, int ind)
 	ft_putstr_fd(" FAILED\n", STD_IN);
 }
 
-void            cmd_zjmp(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
+static void		get_dir(t_arena *arena, char integer[IND_SIZE], int *index)
+{
+	int		count;
+
+	count = 0;
+	while (count < IND_SIZE)
+	{
+		integer[count] = arena->arena[*index];
+		*index = next_index(*index);
+		count++;
+	}
+}
+
+void			cmd_zjmp(t_process *proc, t_champion *champion,
+						t_arena *arena, t_options *opts)
 {
 	int		index;
 	char	integer[IND_SIZE];
-	int		count;
 	int		ind;
 
 	(void)champion;
 	index = next_index(proc->index);
 	ft_bzero(integer, sizeof(char) * IND_SIZE);
-	count = 0;
-	while (count < IND_SIZE)
-	{
-		integer[count] = arena->arena[index];
-		index = next_index(index);
-		count++;
-	}
+	get_dir(arena, integer, &index);
 	ind = ctos(integer);
 	if (!proc->carry)
 	{

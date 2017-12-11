@@ -6,14 +6,14 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:22:07 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/29 15:25:10 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/11 17:52:30 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tools.h"
 #include "corewar.h"
 
-static void print_victory(t_champion *champion)
+static void	print_victory(t_champion *champion)
 {
 	ft_putstr_fd("Contestant ", STD_IN);
 	ft_putnbr_fd(champion->player_id, STD_IN);

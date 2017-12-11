@@ -6,18 +6,18 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:38 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/29 15:24:47 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/11 18:28:07 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 #include "tools.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_arena		arena;
 	t_options	options;
-	 int 		i;
+	int			i;
 
 	options.dump = -1;
 	options.print = 0;

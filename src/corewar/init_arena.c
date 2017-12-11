@@ -6,14 +6,12 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:08:36 by jpascal           #+#    #+#             */
-/*   Updated: 2017/12/07 19:22:52 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/11 18:33:48 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 #include "tools.h"
-
-#define	STD_ERR 2
 
 static int	print_champion_number_not_valid(t_champion champion)
 {
@@ -40,7 +38,7 @@ static int	number_taken(int j, t_champion champions[MAX_PLAYERS])
 	return (0);
 }
 
-static int 	check_valid_champions_id(t_arena *arena)
+static int	check_valid_champions_id(t_arena *arena)
 {
 	int i;
 	int j;
@@ -58,7 +56,7 @@ static int 	check_valid_champions_id(t_arena *arena)
 	return (1);
 }
 
-static int		init_champions_id(t_arena *arena)
+static int	init_champions_id(t_arena *arena)
 {
 	int i;
 	int j;
@@ -80,11 +78,11 @@ static int		init_champions_id(t_arena *arena)
 
 int			init_arena(t_arena *arena)
 {
-	int nb_champions;
-	int i;
-	int size;
-	int position;
-	t_process *process;
+	int			nb_champions;
+	int			i;
+	int			size;
+	int			position;
+	t_process	*process;
 
 	position = 0;
 	i = 0;

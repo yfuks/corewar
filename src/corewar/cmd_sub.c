@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 14:23:16 by yfuks             #+#    #+#             */
-/*   Updated: 2017/12/07 19:32:31 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/11 19:21:20 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void		print_add(int champion_number, int reg1, int reg2, int reg3)
 	ft_putstr_fd("\n", STD_IN);
 }
 
-void            cmd_sub(t_process *proc, t_champion *champion, t_arena *arena, t_options *opts)
+void			cmd_sub(t_process *proc, t_champion *champion,
+						t_arena *arena, t_options *opts)
 {
 	int		index;
 	int		value;
@@ -42,7 +43,8 @@ void            cmd_sub(t_process *proc, t_champion *champion, t_arena *arena, t
 		proc->index = index;
 		return ;
 	}
-	value = proc->registers[proc->REG[0] - 1] - proc->registers[proc->REG[1] - 1];
+	value = proc->registers[proc->REG[0] - 1] -
+		proc->registers[proc->REG[1] - 1];
 	proc->registers[proc->REG[2] - 1] = value;
 	if (opts->verbose & SHOW_OPERATIONS)
 		print_add(proc->number, proc->REG[0], proc->REG[1], proc->REG[2]);
