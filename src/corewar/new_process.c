@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 16:24:59 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/15 16:49:32 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/11 15:26:29 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_process	*new_process(int position)
 		return (NULL);
 	ft_bzero(process, sizeof(t_process));
 	process->next = NULL;
+	process->live = 0;
 	process->index = position;
 	return (process);
 }

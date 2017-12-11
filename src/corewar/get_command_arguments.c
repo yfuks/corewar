@@ -26,7 +26,7 @@ void        get_command_arguments(t_process *proc, t_arena *arena, int *index, i
     char  	encoding;
     int   	size_direct = 2;
 
-    if (cmd == 0 || cmd == 1 || cmd == 3 || cmd == 5 || cmd == 6 || cmd == 7 || cmd == 12)
+    if (cmd == 0 || cmd == 1 || cmd == 5 || cmd == 6 || cmd == 7 || cmd == 12)
         size_direct = 4;
     i = 0;
 	encoding = arena->arena[*index];
