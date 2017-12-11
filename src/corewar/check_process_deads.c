@@ -13,9 +13,9 @@
 #include "corewar.h"
 #include "tools.h"
 
-static void	print_death(t_process *process, t_arena *arena, int ctd)
+static void			print_death(t_process *process, t_arena *arena, int ctd)
 {
-	int		lst_live;
+	int				lst_live;
 
 	lst_live = arena->current_cycle - process->last_live;
 	ft_putstr_fd("Process ", STD_IN);
@@ -27,12 +27,13 @@ static void	print_death(t_process *process, t_arena *arena, int ctd)
 	ft_putstr_fd(")\n", STD_IN);
 }
 
-void	check_process_deads(t_arena *arena, t_options *opts, int ctd)
+void				check_process_deads(t_arena *arena, t_options *opts,
+	int ctd)
 {
-	t_process	*cursor;
-	int			i;
-	int			lst_live;
-	char		one_alive;
+	t_process		*cursor;
+	int				i;
+	int				lst_live;
+	char			one_alive;
 
 	i = 0;
 	while (i < arena->nb_champs)
@@ -42,7 +43,8 @@ void	check_process_deads(t_arena *arena, t_options *opts, int ctd)
 		while (cursor)
 		{
 			lst_live = arena->current_cycle - cursor->last_live;
-			if (!cursor->is_dead && (!cursor->live || arena->is_last_cycle) && lst_live >= ctd)
+			if (!cursor->is_dead && (!cursor->live || arena->is_last_cycle)
+				&& lst_live >= ctd)
 			{
 				cursor->is_dead = 1;
 				if (opts->verbose & SHOW_DEATHS)

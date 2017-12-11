@@ -13,9 +13,10 @@
 #include "corewar.h"
 #include "tools.h"
 
-t_op op_tab[17];
+t_op g_op_tab[17];
 
-static void	check_process_in_champion(t_arena *arena, t_champion *champion, t_options *opts)
+static void	check_process_in_champion(t_arena *arena, t_champion *champion,
+	t_options *opts)
 {
 	t_process	*cursor;
 
@@ -34,7 +35,8 @@ static void	check_process_in_champion(t_arena *arena, t_champion *champion, t_op
 			if (!(cursor->opcode = check_opcode(cursor, arena)))
 				cursor->index = next_index(cursor->index);
 		}
-		else if (cursor->remaining_cycles == op_tab[cursor->opcode - 1].nb_cycles)
+		else if (cursor->remaining_cycles ==
+			g_op_tab[cursor->opcode - 1].nb_cycles)
 			exec_command(cursor, champion, arena, opts);
 		else
 			cursor->remaining_cycles++;
@@ -42,7 +44,8 @@ static void	check_process_in_champion(t_arena *arena, t_champion *champion, t_op
 	}
 }
 
-int			check_process(t_arena *arena, t_options *opts, int cycle_to_die, int print)
+int			check_process(t_arena *arena, t_options *opts, int cycle_to_die,
+	int print)
 {
 	check_process_in_champion(arena, &arena->champions[0], opts);
 	if (print)

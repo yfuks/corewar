@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 	if (!init_arena(&arena))
 		return (1);
 	ft_putstr_fd("Introducing contestants...\n", STD_IN);
-	while (arena.champions[i].prog_size)
+	while (arena.champions[i].prog_size && i < MAX_PLAYERS)
 	{
 		print_champ(&arena.champions[i]);
 		i++;

@@ -22,13 +22,6 @@ int			check_deads(t_arena *arena)
 	i = 0;
 	while (arena->champions[i].prog_size && i < MAX_PLAYERS)
 	{
-//		check_process_dead(&(arena->champions[i]), arena, cycle_to_die, opts);
-/*		if (arena->lives[i] == 0)
-		{
-			arena->champions[i].is_dead = 1;
-			//print_death(&(arena->champions[i]), arena, cycle_to_die);
-		}
-		else */
 		if (!arena->champions[i].is_dead)
 			is_alive++;
 		i++;

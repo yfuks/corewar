@@ -17,8 +17,7 @@
 
 static void print_lldi(int champion_number, int value, int value2, int reg) 
 {
-    ft_putstr_fd("P    ", STD_IN);
-    ft_putnbr_fd(champion_number, STD_IN);
+    print_process_number(champion_number);
     ft_putstr_fd(" | lldi ", STD_IN);
     ft_putnbr_fd(value, STD_IN);
     ft_putstr_fd(" ", STD_IN);

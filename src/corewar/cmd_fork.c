@@ -35,7 +35,7 @@ void            cmd_fork(t_process *proc, t_champion *champion, t_arena *arena, 
 	value = get_memory(arena, index, 2);
 	index_tmp = add_to_index(proc->index, value % IDX_MOD);
 	if (opts->verbose & SHOW_OPERATIONS)
-		print_fork(proc->number, value, index_tmp);
+		print_fork(proc->number, value, proc->index + (value % IDX_MOD));
 	proc->index = add_to_index(index, 2);
 	process = new_process(index_tmp);
 	process->carry = proc->carry;

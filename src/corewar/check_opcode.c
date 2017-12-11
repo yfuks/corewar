@@ -13,14 +13,14 @@
 #include "corewar.h"
 #include "tools.h"
 
-t_op op_tab[17];
+t_op g_op_tab[17];
 
 int			check_opcode(t_process *proc, t_arena *arena)
 {
 	int		i;
 
 	i = 0;
-	while (op_tab[i].op_code != arena->arena[proc->index] && i < 17)
+	while (g_op_tab[i].op_code != arena->arena[proc->index] && i < 17)
 		i++;
 	if (i >= 17)
 		return (0);
@@ -28,5 +28,5 @@ int			check_opcode(t_process *proc, t_arena *arena)
 		proc->remaining_cycles = 1;
 	else
 		proc->remaining_cycles = 2;
-	return (op_tab[i].op_code);
+	return (g_op_tab[i].op_code);
 }

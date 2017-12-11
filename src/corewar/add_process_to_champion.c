@@ -13,7 +13,7 @@
 #include "corewar.h"
 #include <unistd.h>
 
-void	add_process_to_champion(t_champion *champion, t_process *process)
+void		add_process_to_champion(t_champion *champion, t_process *process)
 {
 	static int	process_number;
 
