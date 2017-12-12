@@ -8,14 +8,14 @@ CHAMPSDIR=$ZAZVM/champs
 
 ## -------------------------------- TESTS ----------------------------------- ##
 ## PUT 0 IF YOU DON'T WANT TO TEST
-TESTSOLOCHAMPS=0
-TESTBATTLE=1
+TESTSOLOCHAMPS=1
+TESTBATTLE=0
 ## -------------------------------------------------------------------------- ##
 
 ## -------------- CHAMPS TO TEST (comment what you don't want) -------------- ##
 ## !! CHAMPS SHOULD BE IN CHAMPSDIR OR IN CHAMPSDIR/examples
 CHAMPS[0]=Gagnant
-CHAMPS[1]=Octobre_Rouge_V4.2
+#CHAMPS[1]=Octobre_Rouge_V4.2
 CHAMPS[2]=ex
 CHAMPS[3]=first
 CHAMPS[4]=jumper
@@ -81,6 +81,12 @@ do
 	if [[ $LENGTH -lt 5 ]]; then
 		echo -en "\t"
 	fi
+	if [[ $LENGTH -lt 14 ]]; then
+		echo -en "\t"
+	fi
+	if [[ $LENGTH -lt 27 ]]; then
+		echo -en "\t"
+	fi
 	echo -en "\t"
 
 	CHAMP_PATH=$CHAMPSDIR/$element
@@ -112,18 +118,29 @@ do
 	fi
 done
 
-if [[ $TESTSBATTLE != 0 ]]; then
+if [[ $TESTSBATTLE -ne 0 ]]; then
 	TIT="-"
-	BATTLENAME=${CHAMPS[1]}$TIT${CHAMPS[4]}
+	BATTLENAME=${CHAMPS[0]}$TIT${CHAMPS[4]}$TIT${CHAMPS[6]}$TIT${CHAMPS[6]}
 	echo -en "- " $BATTLENAME
+	LENGTH=${#BATTLENAME}
+	if [[ $LENGTH -lt 5 ]]; then
+		echo -en "\t"
+	fi
+	if [[ $LENGTH -lt 14 ]]; then
+		echo -en "\t"
+	fi
+	if [[ $LENGTH -lt 27 ]]; then
+		echo -en "\t"
+	fi
+	echo -en "\t"
 
 	## create zaz file ##
 	if [ ! -f $TESTSDIR/zaz_file_$BATTLENAME ]; then
-		$ZAZVM/corewar -v 31 ${CHAMPS_PATH[1]}.cor ${CHAMPS_PATH[4]}.cor> $TESTSDIR/zaz_file_$BATTLENAME
+		$ZAZVM/corewar -v 31 ${CHAMPS_PATH[1]}.cor ${CHAMPS_PATH[4]}.cor ${CHAMPS_PATH[6]}.cor ${CHAMPS_PATH[7]}.cor > $TESTSDIR/zaz_file_$BATTLENAME
 	fi
 
 	## create user file ##
-	$USERVM/corewar -v 31 ${CHAMPS_PATH[1]}.cor ${CHAMPS_PATH[4]}.cor > $TESTSDIR/user_file_$BATTLENAME
+	$USERVM/corewar -v 31 ${CHAMPS_PATH[1]}.cor ${CHAMPS_PATH[4]}.cor ${CHAMPS_PATH[6]}.cor ${CHAMPS_PATH[7]}.cor > $TESTSDIR/user_file_$BATTLENAME
 		
 	## create diff ##
 	diff $TESTSDIR/user_file_$BATTLENAME $TESTSDIR/zaz_file_$BATTLENAME > $TESTSDIR/diff_$BATTLENAME

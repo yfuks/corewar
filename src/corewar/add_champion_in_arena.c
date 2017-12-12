@@ -6,7 +6,7 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 15:35:26 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/14 15:35:28 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/12/12 13:37:29 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,8 @@ int				add_champion_in_arena(t_champion *champion, t_arena *arena)
 	if (i >= MAX_PLAYERS)
 		return (print_too_many_champion());
 	arena->champions[i] = *champion;
+	arena->champions[i].name = champion->name;
+	arena->champions[i].description = champion->description;
+	free(champion);
 	return (1);
 }

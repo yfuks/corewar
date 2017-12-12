@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:57:38 by yfuks             #+#    #+#             */
-/*   Updated: 2017/12/11 18:28:07 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/12 12:36:08 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int	main(int argc, char **argv)
 	arena.nb_champs = i;
 	play(&arena, &options);
 	print_winner(&arena);
+	free_arena(&arena);
 	return (0);
 }

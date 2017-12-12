@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:58 by yfuks             #+#    #+#             */
-/*   Updated: 2017/12/11 19:54:53 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/12 12:30:19 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,15 @@ typedef	struct	s_options
 	int			verbose;
 	char		aff;
 }				t_options;
+
+typedef struct	s_get_arguments
+{
+	char		integer[4];
+	char		encoding;
+	int			size_direct;
+	int			tmp;
+	int			i;
+}				t_get_arguments;
 
 # define SHOW_LIVES			1
 # define SHOW_CYCLES		2
@@ -151,6 +160,7 @@ int				check_deads(t_arena *arena);
 **	TOOLS
 */
 
+void			free_arena(t_arena *arena);
 int				modulo_idx_mod(int value);
 t_process		*new_process(int position);
 void			add_process_to_champion(t_champion *champion,
