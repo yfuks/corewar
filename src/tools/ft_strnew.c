@@ -6,16 +6,16 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 14:19:55 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/13 14:44:29 by alansiva         ###   ########.fr       */
+/*   Updated: 2017/12/05 11:32:36 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"tools.h"
+#include "tools.h"
 #include <stdlib.h>
 
 char	*ft_strnew(size_t size)
 {
-	char *mem;
+	char	*mem;
 
 	mem = (char*)malloc(sizeof(char) * (size + 1));
 	if (mem != NULL)

@@ -6,16 +6,16 @@
 /*   By: jthillar <jthillar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 14:13:34 by jthillar          #+#    #+#             */
-/*   Updated: 2017/11/15 15:18:11 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/05 11:33:23 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tools.h"
 #include <unistd.h>
 
-static int	end_of_file(char **rest, char **str, char **line)
+static int		end_of_file(char **rest, char **str, char **line)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	if (ft_strcmp(*rest, *str) == 0 && (*rest)[0] == '\0')
 	{
@@ -37,11 +37,10 @@ static int	end_of_file(char **rest, char **str, char **line)
 		*line = ft_strdup(*str);
 		ft_strdel(rest);
 	}
-	ft_strdel(str);
 	return (1);
 }
 
-int			get_next_line(const int fd, char **line)
+int				get_next_line(const int fd, char **line)
 {
 	int				ret;
 	char			buf[BUFF_SIZE + 1];

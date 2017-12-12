@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 16:50:22 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/20 16:50:39 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/12 13:41:29 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ static int			len_number(unsigned int nb, int base)
 		len_nb++;
 		nb = nb / base;
 	}
-	return(len_nb);
+	return (len_nb);
 }
 
 char				*ft_uitoa_base(unsigned int nb, int base)
 {
 	int				size;
-	char 			*ret;
+	char			*ret;
 
 	size = len_number(nb, base);
 	if (!(ret = (char*)malloc(sizeof(size))))
-		return(0);
+		return (0);
 	ret[size] = '\0';
 	size -= 1;
 	if (nb == 0)

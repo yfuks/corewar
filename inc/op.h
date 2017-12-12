@@ -6,7 +6,7 @@
 /*   By: zaz <zaz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2017/12/11 19:50:52 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/12 13:43:17 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,19 @@
 
 # define MAX_ARGS_NUMBER			4
 # define MAX_PLAYERS				4
+
 # define MEM_SIZE				(4*1024)
-# define IDX_MOD					(MEM_SIZE / 8)
+# define IDX_MOD				(MEM_SIZE / 8)
 # define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
 
 # define COMMENT_CHAR			'#'
 # define LABEL_CHAR				':'
-# define DIRECT_CHAR				'%'
+# define DIRECT_CHAR			'%'
 # define SEPARATOR_CHAR			','
 
-# define LABEL_CHARS				"abcdefghijklmnopqrstuvwxyz_0123456789"
+# define LABEL_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789"
 
-# define NAME_CMD_STRING			".name"
+# define NAME_CMD_STRING		".name"
 # define COMMENT_CMD_STRING		".comment"
 
 # define REG_NUMBER				16
@@ -49,12 +50,20 @@
 # define NBR_LIVE				21
 # define MAX_CHECKS				10
 
+/*
+** *****************************************************************************
+*/
+
 typedef char	t_arg_type;
 
 # define T_REG					1
 # define T_DIR					2
 # define T_IND					4
 # define T_LAB					8
+
+/*
+** *****************************************************************************
+*/
 
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
@@ -69,8 +78,18 @@ typedef struct		s_header
 }					t_header;
 
 typedef struct		s_op
+
+typedef struct	s_header
 {
-	char			command[6];
+	unsigned int	magic;
+	char			prog_name[PROG_NAME_LENGTH + 1];
+	unsigned int	prog_size;
+	char			comment[COMMENT_LENGTH + 1];
+}				t_header;
+
+typedef struct	s_op
+{
+	char			*command;
 	int				nb_arg;
 	int				args_types[MAX_ARGS_NUMBER];
 	int				op_code;
@@ -78,6 +97,5 @@ typedef struct		s_op
 	char			*description;
 	int				ocp;
 	int				fuks;
-}					t_op;
-
+}				t_op;
 #endif
