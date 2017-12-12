@@ -67,6 +67,7 @@ static void		get_cmd_ldi_args(t_process *proc, int index, t_arena *arena,
 			index_tmp = add_to_index(proc->index, args[i]);
 			args[i] = get_memory(arena, index_tmp, 4);
 		}
+		i++;
 	}
 }
 

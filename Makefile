@@ -94,7 +94,6 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(COREWARDIR)new_champion.c \
 				  $(TOOLSDIR)ft_bzero.c \
 				  $(TOOLSDIR)ft_strdup.c \
-				  $(TOOLSDIR)ft_itoa_base.c \
 				  $(TOOLSDIR)ft_putnbr_fd.c \
 				  $(TOOLSDIR)ft_itoa.c \
 				  $(TOOLSDIR)reverse_uint.c \

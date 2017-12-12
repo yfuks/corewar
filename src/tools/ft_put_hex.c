@@ -26,19 +26,16 @@ void		ft_put_hex_fd(unsigned int n, int fd, int len)
 	else if (len <= 4)
 	{
 		if (!(hexa = ft_ustoa_base(n, 16)))
-		   return ;
+			return ;
 	}
 	else
 	{
 		if (!(hexa = ft_uitoa_base(n, 16)))
-		   return ;
+			return ;
 	}
 	size = ft_strlen(hexa);
-	while (size < len)
-	{
+	while (size < len--)
 		ft_putstr_fd("0", fd);
-		len--;
-	}
 	ft_putstr_fd(hexa, fd);
 	free(hexa);
 }
