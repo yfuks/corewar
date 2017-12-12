@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 14:58:41 by yfuks             #+#    #+#             */
-/*   Updated: 2017/11/15 15:27:58 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/11 18:27:18 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static int		print_wrong_size(char *filename, t_champion *champion, int size)
 	ft_putstr_fd(filename, STD_ERR);
 	ft_putstr_fd(" size in header (", STD_ERR);
 	ft_putnbr_fd(champion->prog_size, STD_ERR);
-	ft_putstr_fd(") don't match code size (", STD_ERR);	
+	ft_putstr_fd(") don't match code size (", STD_ERR);
 	ft_putnbr_fd(size, STD_ERR);
 	ft_putstr_fd(")\n", STD_ERR);
 	return (0);
-}	
+}
 
 static int		print_cant_read_code(char *filename)
 {
@@ -50,7 +50,7 @@ static int		read_code(char *filename, t_champion *champion, int fd)
 	return (1);
 }
 
-t_champion      *new_champion(char *filename, t_header *header, int fd)
+t_champion		*new_champion(char *filename, t_header *header, int fd)
 {
 	t_champion	*champion;
 

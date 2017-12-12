@@ -6,14 +6,12 @@
 /*   By: jpascal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:08:36 by jpascal           #+#    #+#             */
-/*   Updated: 2017/11/14 16:08:37 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/12/11 18:33:48 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 #include "tools.h"
-
-#define	STD_ERR 2
 
 static int	print_champion_number_not_valid(t_champion champion)
 {
@@ -33,14 +31,14 @@ static int	number_taken(int j, t_champion champions[MAX_PLAYERS])
 	i = 0;
 	while (champions[i].prog_size && i < MAX_PLAYERS)
 	{
-		if (champions[i].player_id == j)
+		if (champions[i].player_id == (unsigned int)j)
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-static int 	check_valid_champions_id(t_arena *arena)
+static int	check_valid_champions_id(t_arena *arena)
 {
 	int i;
 	int j;
@@ -51,14 +49,14 @@ static int 	check_valid_champions_id(t_arena *arena)
 		i++;
 	while (arena->champions[j].prog_size && i < MAX_PLAYERS)
 	{
-		if (arena->champions[j].player_id > i)
+		if (arena->champions[j].player_id > (unsigned int)i)
 			return (print_champion_number_not_valid(arena->champions[j]));
 		j++;
 	}
 	return (1);
 }
 
-static int		init_champions_id(t_arena *arena)
+static int	init_champions_id(t_arena *arena)
 {
 	int i;
 	int j;
@@ -73,7 +71,6 @@ static int		init_champions_id(t_arena *arena)
 				j++;
 			arena->champions[i].player_id = j;
 		}
-		arena->champions[i].registers[0] = arena->champions[i].player_id;
 		i++;
 	}
 	return (i);
@@ -81,10 +78,11 @@ static int		init_champions_id(t_arena *arena)
 
 int			init_arena(t_arena *arena)
 {
-	int nb_champions;
-	int i;
-	int size;
-	int position;
+	int			nb_champions;
+	int			i;
+	int			size;
+	int			position;
+	t_process	*process;
 
 	position = 0;
 	i = 0;
@@ -96,6 +94,10 @@ int			init_arena(t_arena *arena)
 	{
 		ft_memcpy(&arena->arena[position], arena->champions[i].code, \
 		arena->champions[i].prog_size);
+		if (!(process = new_process(position)))
+			return (0);
+		process->registers[0] = (arena->champions[i].player_id * -1);
+		add_process_to_champion(&(arena->champions[0]), process);
 		position += size;
 		i++;
 	}

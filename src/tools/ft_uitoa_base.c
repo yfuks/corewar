@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 16:06:15 by yfuks             #+#    #+#             */
-/*   Updated: 2017/12/05 11:33:58 by jthillar         ###   ########.fr       */
+/*   Created: 2017/11/20 16:50:22 by yfuks             #+#    #+#             */
+/*   Updated: 2017/12/12 13:41:29 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int			len_number(unsigned char nb, int base)
+static int			len_number(unsigned int nb, int base)
 {
 	int				len_nb;
 
@@ -31,7 +31,7 @@ static int			len_number(unsigned char nb, int base)
 	return (len_nb);
 }
 
-char				*ft_uitoa_base(unsigned char nb, int base)
+char				*ft_uitoa_base(unsigned int nb, int base)
 {
 	int				size;
 	char			*ret;

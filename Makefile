@@ -6,7 +6,7 @@
 #    By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:48:15 by yfuks             #+#    #+#              #
-#    Updated: 2017/12/05 10:55:27 by jthillar         ###   ########.fr        #
+#    Updated: 2017/12/12 13:43:29 by yfuks            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,13 +99,59 @@ SRCSCOREWAR		= $(COREWARDIR)main.c \
 				  $(TOOLSDIR)ft_itoa.c \
 				  $(TOOLSDIR)reverse_uint.c \
 				  $(TOOLSDIR)ft_uitoa_base.c \
+				  $(TOOLSDIR)ft_ustoa_base.c \
 				  $(TOOLSDIR)ft_put_hex.c \
 				  $(TOOLSDIR)ft_strcpy.c \
 				  $(TOOLSDIR)ft_memcpy.c \
 				  $(COREWARDIR)add_champion_in_arena.c \
 				  $(COREWARDIR)init_arena.c \
 				  $(COREWARDIR)print_champ.c \
-				  $(COREWARDIR)print_map_arena.c
+				  $(COREWARDIR)print_map_arena.c \
+				  $(COREWARDIR)new_process.c \
+				  $(COREWARDIR)add_process_to_champion.c \
+				  $(COREWARDIR)play.c \
+				  $(COREWARDIR)check_process.c \
+				  $(COREWARDIR)check_deads.c \
+				  $(COREWARDIR)exec_command.c \
+				  $(TOOLSDIR)op.c \
+				  $(COREWARDIR)check_opcode.c \
+				  $(COREWARDIR)cmd_sti.c \
+				  $(COREWARDIR)is_valid_param.c \
+				  $(COREWARDIR)next_index.c \
+				  $(TOOLSDIR)ctos.c \
+				  $(TOOLSDIR)ctoi.c \
+				  $(TOOLSDIR)ctoc.c \
+				  $(COREWARDIR)get_command_arguments.c \
+				  $(COREWARDIR)add_to_index.c \
+				  $(COREWARDIR)copy_int_to_arena.c \
+				  $(TOOLSDIR)ft_uctoa_base.c \
+				  $(TOOLSDIR)split_int_in_char.c \
+				  $(TOOLSDIR)ft_putendl_fd.c \
+				  $(COREWARDIR)cmd_and.c \
+				  $(COREWARDIR)cmd_live.c \
+				  $(COREWARDIR)cmd_st.c \
+				  $(COREWARDIR)cmd_zjmp.c \
+				  $(COREWARDIR)cmd_ld.c \
+				  $(COREWARDIR)cmd_or.c \
+				  $(COREWARDIR)cmd_xor.c \
+				  $(COREWARDIR)cmd_lld.c \
+				  $(COREWARDIR)cmd_add.c \
+				  $(COREWARDIR)cmd_sub.c \
+				  $(COREWARDIR)cmd_ldi.c \
+				  $(COREWARDIR)get_memory.c \
+				  $(COREWARDIR)cmd_aff.c \
+				  $(TOOLSDIR)ft_putchar_fd.c \
+				  $(COREWARDIR)cmd_lldi.c \
+				  $(COREWARDIR)cmd_fork.c \
+				  $(COREWARDIR)modulo_idx_mod.c \
+				  $(COREWARDIR)print_pc_moove.c \
+				  $(COREWARDIR)index_jump.c \
+				  $(COREWARDIR)print_process_number.c \
+				  $(COREWARDIR)check_process_deads.c \
+				  $(COREWARDIR)print_winner.c \
+				  $(COREWARDIR)cmd_lfork.c \
+				  $(COREWARDIR)reset_process_lives.c \
+				  $(COREWARDIR)free_arena.c \
 
 # OBJ FILES
 OBJSASM 		= $(SRCSASM:$(SRCDIR)%.c=$(OBJDIR)%.o)
