@@ -6,7 +6,7 @@
 /*   By: zaz <zaz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2017/12/12 13:43:17 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/12 13:44:43 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,6 @@ typedef struct		s_header
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
 }					t_header;
-
-typedef struct		s_op
-
-typedef struct	s_header
-{
-	unsigned int	magic;
-	char			prog_name[PROG_NAME_LENGTH + 1];
-	unsigned int	prog_size;
-	char			comment[COMMENT_LENGTH + 1];
-}				t_header;
 
 typedef struct	s_op
 {
