@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 16:07:53 by yfuks             #+#    #+#             */
-/*   Updated: 2017/12/11 19:31:03 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/12 11:55:16 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void		print_infos(int addr1, int addr2, int index)
 
 static char		is_reg_valid(t_process *proc, int reg_number, int index)
 {
-	if (proc->REG[reg_number] <= 0 || proc->REG[reg_number] > REG_NUMBER)
+	if (proc->reg[reg_number] <= 0 || proc->reg[reg_number] > REG_NUMBER)
 	{
 		proc->index = index;
 		return (0);
@@ -55,14 +55,14 @@ static char		is_reg_valid(t_process *proc, int reg_number, int index)
 static char		check_args(t_process *proc, int i, int index, int args[3])
 {
 	if (proc->args[i] == T_DIR)
-		args[i - 1] = proc->DIR[i];
+		args[i - 1] = proc->dir[i];
 	else if (proc->args[i] == T_IND)
-		args[i - 1] = proc->IND[i];
+		args[i - 1] = proc->ind[i];
 	else if (proc->args[i] == T_REG)
 	{
 		if (!is_reg_valid(proc, i, index))
 			return (0);
-		args[i - 1] = proc->registers[proc->REG[i] - 1];
+		args[i - 1] = proc->registers[proc->reg[i] - 1];
 	}
 	return (1);
 }
@@ -87,12 +87,12 @@ void			cmd_sti(t_process *proc, t_champion *champion,
 		index[1]++;
 	}
 	if (opts->verbose & SHOW_OPERATIONS)
-		print_sti(proc->number, proc->REG[0], args[0], args[1]);
+		print_sti(proc->number, proc->reg[0], args[0], args[1]);
 	index[1] = (args[0] + args[1]) % IDX_MOD;
 	index_tmp = add_to_index(proc->index, (args[0] + args[1]) % IDX_MOD);
 	if (opts->verbose & SHOW_OPERATIONS)
 		print_infos(args[0], args[1], proc->index + index[1]);
-	copy_int_to_arena(arena, proc->registers[(int)(proc->REG[0] - 1)],
+	copy_int_to_arena(arena, proc->registers[(int)(proc->reg[0] - 1)],
 					index_tmp);
 	proc->index = index[0];
 }

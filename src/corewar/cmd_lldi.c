@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:35:26 by jpascal           #+#    #+#             */
-/*   Updated: 2017/12/11 20:02:44 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/12/12 12:03:21 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ static int		get_cmd_lldi_args(t_process *proc, t_options *opts,
 	index_tmp = add_to_index(proc->index, args[0] + args[1]);
 	if (opts->verbose & SHOW_OPERATIONS)
 	{
-		print_lldi(proc->number, args[0], args[1], proc->REG[2]);
+		print_lldi(proc->number, args[0], args[1], proc->reg[2]);
 		print_infos(args[0], args[1], proc->index);
 	}
 	while (i < 2)
 	{
 		if (proc->args[i] == T_REG)
-			args[i] = proc->registers[proc->REG[i] - 1];
+			args[i] = proc->registers[proc->reg[i] - 1];
 		else if (proc->args[i] == T_DIR)
-			args[i] = proc->DIR[i];
+			args[i] = proc->dir[i];
 		else if (proc->args[i] == T_IND)
 		{
-			args[i] = (proc->IND[i]);
+			args[i] = (proc->ind[i]);
 			index_tmp = add_to_index(proc->index, args[i]);
 			args[i] = get_memory(arena, index_tmp, 4);
 		}
@@ -83,14 +83,14 @@ void			cmd_lldi(t_process *proc, t_champion *champion, t_arena *arena,
 	(void)champion;
 	ft_bzero(args, sizeof(int) * 3);
 	get_command_arguments(proc, arena, &index, CMD_LLDI_INDEX);
-	if (proc->REG[2] >= REG_NUMBER || !proc->REG[2])
+	if (proc->reg[2] >= REG_NUMBER || !proc->reg[2])
 	{
 		proc->index = index;
 		return ;
 	}
 	index_tmp = get_cmd_lldi_args(proc, opts, arena, args);
 	i = get_memory(arena, index_tmp, REG_SIZE);
-	proc->registers[proc->REG[2] - 1] = i;
-	proc->carry = (proc->registers[proc->REG[2] - 1] == i) ? 1 : 0;
+	proc->registers[proc->reg[2] - 1] = i;
+	proc->carry = (proc->registers[proc->reg[2] - 1] == i) ? 1 : 0;
 	proc->index = index;
 }

@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 18:11:41 by jpascal           #+#    #+#             */
-/*   Updated: 2017/12/11 19:47:38 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/12 11:58:40 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void		print_or(int champion_number, int arg1, int arg2, int reg)
 
 static char		is_reg_valid(t_process *proc, int reg_number, int index)
 {
-	if (proc->REG[reg_number] <= 0 || proc->REG[reg_number] > REG_NUMBER)
+	if (proc->reg[reg_number] <= 0 || proc->reg[reg_number] > REG_NUMBER)
 	{
 		proc->index = index;
 		return (0);
@@ -46,14 +46,14 @@ static char		check_args(t_process *proc, int i, int index, int args[3])
 		if (!is_reg_valid(proc, i, index))
 			return (0);
 		if (i <= 2)
-			args[i] = proc->registers[proc->REG[i] - 1];
+			args[i] = proc->registers[proc->reg[i] - 1];
 		else
-			args[i] = proc->REG[i];
+			args[i] = proc->reg[i];
 	}
 	else if (proc->args[i] & T_DIR)
-		args[i] = proc->DIR[i];
+		args[i] = proc->dir[i];
 	else
-		args[i] = proc->IND[i];
+		args[i] = proc->ind[i];
 	return (1);
 }
 
@@ -78,8 +78,8 @@ void			cmd_or(t_process *proc, t_champion *champion,
 		i++;
 	}
 	if (opts->verbose & SHOW_OPERATIONS)
-		print_or(proc->number, args[0], args[1], proc->REG[2]);
-	proc->registers[proc->REG[2] - 1] = (args[0] | args[1]);
+		print_or(proc->number, args[0], args[1], proc->reg[2]);
+	proc->registers[proc->reg[2] - 1] = (args[0] | args[1]);
 	proc->carry = (((args[0] | args[1]) == 0)) ? 1 : 0;
 	proc->index = index;
 }

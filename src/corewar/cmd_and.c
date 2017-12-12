@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 18:53:46 by jpascal           #+#    #+#             */
-/*   Updated: 2017/12/11 19:02:37 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/12/12 11:56:42 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,20 @@ static void		get_cmd_and_args(t_process *proc, int *args, int index)
 	{
 		if (proc->args[i] & T_REG)
 		{
-			if (proc->REG[i] <= 0 || proc->REG[i] > REG_NUMBER)
+			if (proc->reg[i] <= 0 || proc->reg[i] > REG_NUMBER)
 			{
 				proc->index = index;
 				return ;
 			}
 			if (i <= 2)
-				args[i] = proc->registers[proc->REG[i] - 1];
+				args[i] = proc->registers[proc->reg[i] - 1];
 			else
-				args[i] = proc->REG[i];
+				args[i] = proc->reg[i];
 		}
 		else if (proc->args[i] & T_DIR)
-			args[i] = proc->DIR[i];
+			args[i] = proc->dir[i];
 		else
-			args[i] = proc->IND[i];
+			args[i] = proc->ind[i];
 		i++;
 	}
 }
@@ -66,15 +66,15 @@ void			cmd_and(t_process *proc, t_champion *champion, t_arena *arena,
 	index = next_index(proc->index);
 	ft_bzero(args, sizeof(int) * 3);
 	get_command_arguments(proc, arena, &index, CMD_AND_INDEX);
-	if (proc->REG[2] <= 0 || proc->REG[2] > REG_NUMBER)
+	if (proc->reg[2] <= 0 || proc->reg[2] > REG_NUMBER)
 	{
 		proc->index = index;
 		return ;
 	}
 	get_cmd_and_args(proc, args, index);
 	if (opts->verbose & SHOW_OPERATIONS)
-		print_and(proc->number, args[0], args[1], proc->REG[2]);
-	proc->registers[proc->REG[2] - 1] = (args[0] & args[1]);
+		print_and(proc->number, args[0], args[1], proc->reg[2]);
+	proc->registers[proc->reg[2] - 1] = (args[0] & args[1]);
 	if ((args[0] & args[1]) == 0)
 		proc->carry = 1;
 	else

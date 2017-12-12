@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 18:46:08 by yfuks             #+#    #+#             */
-/*   Updated: 2017/12/11 18:57:00 by yfuks            ###   ########.fr       */
+/*   Updated: 2017/12/12 11:55:58 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static void	add_args_in_process(t_arena *arena, int *index, int size,
 static void	resets_args(t_process *proc)
 {
 	ft_bzero(proc->args, sizeof(int) * 4);
-	ft_bzero(proc->REG, sizeof(int) * 3);
-	ft_bzero(proc->IND, sizeof(int) * 3);
-	ft_bzero(proc->DIR, sizeof(int) * 3);
+	ft_bzero(proc->reg, sizeof(int) * 3);
+	ft_bzero(proc->ind, sizeof(int) * 3);
+	ft_bzero(proc->dir, sizeof(int) * 3);
 }
 
 void		get_command_arguments(t_process *proc, t_arena *arena, int *index,
@@ -61,22 +61,22 @@ void		get_command_arguments(t_process *proc, t_arena *arena, int *index,
 		if (tmp == IND_CODE)
 		{
 			add_args_in_process(arena, index, IND_SIZE, integer);
-			proc->IND[i] = ctos(integer);
+			proc->ind[i] = ctos(integer);
 			proc->args[i] = T_IND;
 		}
 		else if (tmp == DIR_CODE)
 		{
 			add_args_in_process(arena, index, size_direct, integer);
 			if (size_direct > 2)
-				proc->DIR[i] = ctoi(integer);
+				proc->dir[i] = ctoi(integer);
 			else
-				proc->DIR[i] = ctos(integer);
+				proc->dir[i] = ctos(integer);
 			proc->args[i] = T_DIR;
 		}
 		else if (tmp == REG_CODE)
 		{
 			*index = next_index(*index);
-			proc->REG[i] = arena->arena[*index];
+			proc->reg[i] = arena->arena[*index];
 			proc->args[i] = T_REG;
 		}
 		i++;

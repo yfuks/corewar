@@ -6,7 +6,7 @@
 /*   By: jpascal <jpascal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 17:12:56 by jpascal           #+#    #+#             */
-/*   Updated: 2017/12/11 19:19:57 by jpascal          ###   ########.fr       */
+/*   Updated: 2017/12/12 11:58:04 by yfuks            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,22 @@ void			cmd_ld(t_process *proc, t_champion *champion,
 	index_tmp = 0;
 	(void)champion;
 	get_command_arguments(proc, arena, &index, CMD_LD_INDEX);
-	if (proc->REG[1] > REG_NUMBER || proc->REG[1] <= 0)
+	if (proc->reg[1] > REG_NUMBER || proc->reg[1] <= 0)
 	{
 		proc->index = index;
 		return ;
 	}
 	if (proc->args[0] == T_IND)
 	{
-		index_tmp = add_to_index(proc->index, (proc->IND[0] % IDX_MOD));
-		proc->registers[(int)(proc->REG[1] - 1)] =
+		index_tmp = add_to_index(proc->index, (proc->ind[0] % IDX_MOD));
+		proc->registers[(int)(proc->reg[1] - 1)] =
 			get_memory(arena, index_tmp, 4);
 	}
 	else if (proc->args[0] == T_DIR)
-		proc->registers[(int)(proc->REG[1] - 1)] = proc->DIR[0];
-	proc->carry = (0 == proc->registers[(int)(proc->REG[1] - 1)]) ? 1 : 0;
+		proc->registers[(int)(proc->reg[1] - 1)] = proc->dir[0];
+	proc->carry = (0 == proc->registers[(int)(proc->reg[1] - 1)]) ? 1 : 0;
 	if (opts->verbose & SHOW_OPERATIONS)
-		print_ld(proc->number, proc->REG[1],
-	proc->registers[(int)(proc->REG[1] - 1)]);
+		print_ld(proc->number, proc->reg[1],
+	proc->registers[(int)(proc->reg[1] - 1)]);
 	proc->index = index;
 }
