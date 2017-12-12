@@ -1,10 +1,12 @@
-.name "zork"
-.comment "just a basic living prog"
+.name "fuks zork"
+.comment "42 born 2 pause"
 		
-	sti r1, %:field1, %1
-	ld %42, r10
-	add r2, r10, r4
-	ldi 3,%4,r1
-field1:			live %0
-	zjmp %:field1
+		sti r1, %:live, %1
+		sti r1, %:live2, %1
+		ld	%0, r2
+live:	live %0
+		fork %:live2
+		zjmp %:live
+live2:	live %0
+		zjmp %:live2
 	

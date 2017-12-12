@@ -8,14 +8,14 @@ CHAMPSDIR=$ZAZVM/champs
 
 ## -------------------------------- TESTS ----------------------------------- ##
 ## PUT 0 IF YOU DON'T WANT TO TEST
-TESTSOLOCHAMPS=1
-TESTBATTLE=0
+TESTSOLOCHAMPS=0
+TESTSBATTLE=1
 ## -------------------------------------------------------------------------- ##
 
 ## -------------- CHAMPS TO TEST (comment what you don't want) -------------- ##
 ## !! CHAMPS SHOULD BE IN CHAMPSDIR OR IN CHAMPSDIR/examples
 CHAMPS[0]=Gagnant
-#CHAMPS[1]=Octobre_Rouge_V4.2
+CHAMPS[1]=Octobre_Rouge_V4.2
 CHAMPS[2]=ex
 CHAMPS[3]=first
 CHAMPS[4]=jumper
