@@ -26,8 +26,8 @@
 # define DIR_CODE				2
 # define IND_CODE				3
 
-# define MAX_ARGS_NUMBER			4
-# define MAX_PLAYERS				4
+# define MAX_ARGS_NUMBER		4
+# define MAX_PLAYERS			4
 
 # define MEM_SIZE				(4*1024)
 # define IDX_MOD				(MEM_SIZE / 8)
@@ -46,7 +46,7 @@
 # define REG_NUMBER				16
 
 # define CYCLE_TO_DIE			1536
-# define CYCLE_DELTA				50
+# define CYCLE_DELTA			50
 # define NBR_LIVE				21
 # define MAX_CHECKS				10
 
@@ -54,7 +54,7 @@
 ** *****************************************************************************
 */
 
-typedef char	t_arg_type;
+typedef char		t_arg_type;
 
 # define T_REG					1
 # define T_DIR					2
@@ -77,7 +77,7 @@ typedef struct		s_header
 	char				comment[COMMENT_LENGTH + 1];
 }					t_header;
 
-typedef struct	s_op
+typedef struct		s_op
 {
 	char			*command;
 	int				nb_arg;
@@ -87,5 +87,5 @@ typedef struct	s_op
 	char			*description;
 	int				ocp;
 	int				fuks;
-}				t_op;
+}					t_op;
 #endif

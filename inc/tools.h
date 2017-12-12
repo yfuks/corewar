@@ -42,7 +42,6 @@ int				ft_atoi(char *str);
 long int		ft_atol(char *str);
 char			*ft_strdup(const char *s1);
 void			ft_bzero(void *s, size_t n);
-char			*ft_itoa_base(int nb, int base);
 char			*ft_uctoa_base(unsigned char nb, int base);
 char			*ft_ustoa_base(unsigned short nb, int base);
 char			*ft_uitoa_base(unsigned int nb, int base);
@@ -64,6 +63,5 @@ char			*ft_strndup(char **s, int c);
 int				ft_realloc(char **rest);
 char			**ft_strsplit(char const *s, char c, char **av);
 char			*ft_trim(char *str);
-
 
 #endif

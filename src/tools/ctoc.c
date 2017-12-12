@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char   ctoc(char tab[1])
+char		ctoc(char tab[1])
 {
-    char   value;
+	char	value;
 
-    value = (tab[0] & 0xFF);
-    return (value);
+	value = (tab[0] & 0xFF);
+	return (value);
 }

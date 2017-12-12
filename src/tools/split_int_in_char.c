@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void        split_int_in_char(char integer[4], unsigned int value)
+void		split_int_in_char(char integer[4], unsigned int value)
 {
-    integer[3] = value & 0xFF;
-    integer[2] = (value >> 8) & 0xFF;
-    integer[1] = (value >> 16) & 0xFF;
-    integer[0] = (value >> 24) & 0xFF;
+	integer[3] = value & 0xFF;
+	integer[2] = (value >> 8) & 0xFF;
+	integer[1] = (value >> 16) & 0xFF;
+	integer[0] = (value >> 24) & 0xFF;
 }

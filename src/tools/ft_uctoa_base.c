@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <stdlib.h>
 
 static int			len_number(unsigned char nb, int base)
@@ -29,17 +28,17 @@ static int			len_number(unsigned char nb, int base)
 		len_nb++;
 		nb = nb / base;
 	}
-	return(len_nb);
+	return (len_nb);
 }
 
 char				*ft_uctoa_base(unsigned char nb, int base)
 {
 	int				size;
-	char 			*ret;
+	char			*ret;
 
 	size = len_number(nb, base);
 	if (!(ret = (char*)malloc(sizeof(size))))
-		return(0);
+		return (0);
 	ret[size] = '\0';
 	size -= 1;
 	if (nb == 0)
