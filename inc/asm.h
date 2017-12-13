@@ -6,7 +6,7 @@
 /*   By: yfuks <yfuks@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:58:27 by yfuks             #+#    #+#             */
-/*   Updated: 2017/12/05 14:36:01 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/13 11:34:14 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,5 @@ void			writing_prog_fd(int fd, t_instruction *tmp);
 bool			error_stdin(char **av, int ac);
 bool			error_fill_arg(int n, t_instruction **cursor);
 bool			error_id(int n);
+bool			error_eof(char *error);
 #endif

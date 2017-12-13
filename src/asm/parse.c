@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/12/05 11:07:11 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/13 11:36:38 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,6 @@ static t_hstate	ft_zero_state(t_hstate *state)
 	state->comment = 0;
 	return (*state);
 }
-
-/*
-** Premier read du fichier source : Pour recuperer le header et les label
-** des instructions
-** - on ajoute un nouveau maillon
-** - on lui donne le numero de la igne du fichier source lue
-** - on suprime ce qui est a gauche du COMMENTCHAR s'il y en a un
-** - on parse et recupere les donnee du header
-** - on parse et reupere les labels
-** - on parse et ajoute les donnes des instruction
-*/
 
 static int		prev_parse_laband_instr(t_instruction **list_instr,
 	t_instruction *cursor, char *line, t_count *count)
@@ -70,6 +59,8 @@ static bool		parse_first_read(t_header *header, t_instruction **list_instr,
 		if (line)
 			ft_memdel((void**)&line);
 	}
+	if (count.ret_gnl == 2)
+		return (error_eof("Syntax error : file should end with a newline\n"));
 	header->prog_size = count.cumul;
 	return (true);
 }
