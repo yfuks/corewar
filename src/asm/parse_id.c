@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:56:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/12/04 19:44:37 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/13 14:54:54 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,18 @@ bool		parse_id(t_header *header, char *line, t_hstate *state)
 	if (line[1] == 'n' && state->name == 0)
 	{
 		if (!(parse_id_name(header, line, state)))
+		{
+			ft_memdel((void**)&line);
 			return (false);
+		}
 	}
 	else if (line[1] == 'c' && state->comment == 0)
 	{
 		if (!(parse_id_comment(header, line, state)))
+		{
+			ft_memdel((void**)&line);
 			return (false);
+		}
 	}
 	return (true);
 }

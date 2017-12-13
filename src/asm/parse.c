@@ -6,7 +6,7 @@
 /*   By: alansiva <alansiva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 13:42:33 by alansiva          #+#    #+#             */
-/*   Updated: 2017/12/13 11:36:38 by jthillar         ###   ########.fr       */
+/*   Updated: 2017/12/13 14:53:30 by jthillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ static int		prev_parse_laband_instr(t_instruction **list_instr,
 {
 	parse_label(list_instr, cursor, line);
 	if (!(parse_instruction(cursor, line)))
+	{
+		ft_memdel((void**)&line);
 		return (0);
+	}
 	cursor->cumul_byte_size = count->cumul + cursor->instr_byte_size;
 	count->cumul = cursor->cumul_byte_size;
 	return (1);
