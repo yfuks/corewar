@@ -36,6 +36,7 @@ static int		end_of_file(char **rest, char **str, char **line)
 	{
 		*line = ft_strdup(*str);
 		ft_strdel(rest);
+		return (2);
 	}
 	return (1);
 }
